@@ -458,7 +458,6 @@
   const common2 = "rescene";
   const STORAGE_PREFIX = "rescene_mama_done_";
 
-  // 한국 시간(KST) 기준 날짜 계산
   function getKSTDate() {
     const now = new Date();
     const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
@@ -475,13 +474,9 @@
   }
 
   const today = getKSTDate();
-
-  // 상단 날짜 뱃지 세팅
   document.getElementById('currentDateBadge').textContent = today.display;
 
-  // 로컬스토리지에서 오늘의 완료 내역 불러오기
   function loadTodayState() {
-    // 다른 날짜의 옛날 데이터가 있으면 정리
     for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
       if (k && k.startsWith(STORAGE_PREFIX) && k !== STORAGE_PREFIX + today.key) {
@@ -507,7 +502,6 @@
     updateProgress();
   }
 
-  // 상태 로컬스토리지에 저장
   function saveTodayState() {
     const doneList = [];
     document.querySelectorAll('.team-card.done').forEach(card => {
@@ -516,7 +510,6 @@
     localStorage.setItem(STORAGE_PREFIX + today.key, JSON.stringify(doneList));
   }
 
-  // 수동/자동 초기화
   function resetTodayData(showToastMsg = false) {
     localStorage.removeItem(STORAGE_PREFIX + today.key);
     ['card-1', 'card-2', 'card-3', 'card-4'].forEach(id => {
@@ -530,13 +523,16 @@
     }
   }
 
+  // ⭐️ 모바일 트위터 앱에서 맨 위 빈 줄(엔터)이 생기지 않도록 앞뒤 공백/개행 완전 제거 ⭐️
   function getFullText(teamTag) {
-    return `#${common1}\n#${common2}\n#${teamTag}\n`;
+    return `#${common1}\n#${common2}\n#${teamTag}`.trim();
   }
 
   function openTweet(teamTag, cardId) {
     const text = getFullText(teamTag);
-    const intentUrl = `https://x.com/intent/post?text=${encodeURIComponent(text)}`;
+    
+    // 모바일 앱 연동 시 x.com보다 twitter.com 엔드포인트가 개행 파싱이 훨씬 정확함
+    const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
 
     window.open(intentUrl, '_blank');
 
@@ -601,7 +597,6 @@
     setTimeout(() => toast.classList.remove('show'), 3000);
   }
 
-  // 페이지 진입 시 실행
   loadTodayState();
 </script>
 
