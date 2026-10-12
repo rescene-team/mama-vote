@@ -16,6 +16,7 @@
       --text-muted: #94a3b8;
       --twitter-blue: #1d9bf0;
       --success: #10b981;
+      --mama-purple: #7928ca;
     }
 
     * {
@@ -46,7 +47,7 @@
     /* 상단 헤더 */
     header {
       text-align: center;
-      padding: 10px 4px 4px;
+      padding: 10px 4px 2px;
     }
 
     .top-badge-row {
@@ -93,6 +94,79 @@
       font-size: 13px;
       color: var(--text-muted);
       line-height: 1.4;
+    }
+
+    /* 🗳️ 엠넷플러스 공식 1차 투표 바로가기 배너 */
+    .vote-banner-link {
+      text-decoration: none;
+      display: block;
+    }
+
+    .vote-banner {
+      background: linear-gradient(135deg, rgba(121, 40, 202, 0.35) 0%, rgba(255, 94, 184, 0.25) 100%);
+      border: 1.5px solid rgba(255, 94, 184, 0.45);
+      border-radius: 18px;
+      padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 6px 20px rgba(121, 40, 202, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .vote-banner:active {
+      transform: scale(0.98);
+      border-color: var(--primary);
+      background: linear-gradient(135deg, rgba(121, 40, 202, 0.5) 0%, rgba(255, 94, 184, 0.35) 100%);
+    }
+
+    .vote-banner-content {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .vote-period-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      background: #ff5eb8;
+      color: #fff;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      width: fit-content;
+      letter-spacing: -0.2px;
+    }
+
+    .vote-banner-title {
+      font-size: 15.5px;
+      font-weight: 800;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .vote-banner-sub {
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+
+    .vote-banner-arrow {
+      background: rgba(255, 255, 255, 0.15);
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-left: 10px;
     }
 
     /* 진행도 카드 */
@@ -181,6 +255,14 @@
 
     .notice-box li {
       margin-bottom: 3px;
+    }
+
+    .notice-tip {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed rgba(56, 189, 248, 0.25);
+      font-size: 11.5px;
+      color: #94a3b8;
     }
 
     /* 팀 리스트 */
@@ -337,6 +419,21 @@
     <p class="subtitle">터치 한 번으로 해시태그 완성된 트위터 창 열기</p>
   </header>
 
+  <!-- 🗳️ 1차 투표 바로가기 링크 배너 (추천인/미션 파라미터 제외한 순수 딥링크) -->
+  <a href="https://mnetplus.world/event/ko/2026-mama?deeplink=mnetplus%3A%2F%2Fvote%2Ftemplates%2Fmama-fans-choice-vote-r1%2F6ab09532c314bb17315adc4e%3Furl_fallback_type%3Dupdate" 
+     target="_blank" 
+     rel="noopener noreferrer" 
+     class="vote-banner-link">
+    <div class="vote-banner">
+      <div class="vote-banner-content">
+        <span class="vote-period-tag">10.12(월) ~ 10.22(목)</span>
+        <div class="vote-banner-title">🗳️ 1차 투표 바로가기</div>
+        <div class="vote-banner-sub">엠넷플러스(Mnet Plus) 공식 투표 페이지 이동</div>
+      </div>
+      <div class="vote-banner-arrow">→</div>
+    </div>
+  </a>
+
   <!-- 진행 상황 및 자동 초기화 안내 -->
   <div class="progress-card">
     <div class="progress-header">
@@ -359,6 +456,9 @@
       <li>아래 팀별 <b>[글쓰기]</b> 버튼을 누르면 트위터가 열립니다.</li>
       <li>트위터 작성창에서 <b>사진(갤러리) 아이콘</b>을 눌러 인증서를 넣고 <b>[게시]</b> 누르면 끝!</li>
     </ol>
+    <div class="notice-tip">
+      💡 <b>참고:</b> 카톡/인스타 등에서 X 로그인 창이 뜬다면 우측 상단 [···]을 눌러 'Safari/Chrome으로 열기'를 하시거나, <b>[태그 복사]</b> 버튼을 이용해 주세요.
+    </div>
   </div>
 
   <!-- 4개 팀 리스트 -->
@@ -523,15 +623,12 @@
     }
   }
 
-  // ⭐️ 모바일 트위터 앱에서 맨 위 빈 줄(엔터)이 생기지 않도록 앞뒤 공백/개행 완전 제거 ⭐️
   function getFullText(teamTag) {
     return `#${common1}\n#${common2}\n#${teamTag}`.trim();
   }
 
   function openTweet(teamTag, cardId) {
     const text = getFullText(teamTag);
-    
-    // 모바일 앱 연동 시 x.com보다 twitter.com 엔드포인트가 개행 파싱이 훨씬 정확함
     const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
 
     window.open(intentUrl, '_blank');
