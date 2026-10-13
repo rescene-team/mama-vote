@@ -25,16 +25,17 @@ jobs:
       - name: Fetch Tweet Counts from X API
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          ADMIN_DATA_KEY: ${{ secrets.ADMIN_DATA_KEY || 'remine0326' }}
         run: node scripts/fetch-tweet-counts.js
 
       - name: Commit and Push if changed
         run: |
           git config --local user.name "github-actions[bot]"
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/tweet_counts.json data/tweet_counts.js
+          git add data/tweet_counts.enc.js
           if git diff --staged --quiet; then
             echo "No changes in tweet counts."
           else
-            git commit -m "chore(stats): Update real-time tweet counts"
+            git commit -m "chore(stats): Update real-time tweet counts (encrypted)"
             git push
           fi

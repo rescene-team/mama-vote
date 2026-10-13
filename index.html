@@ -1549,7 +1549,8 @@
 
 <div class="toast" id="toast">📋 해시태그가 복사되었습니다!</div>
 
-<script src="data/tweet_counts.js"></script>
+<script src="scripts/crypto-js.min.js"></script>
+<script src="data/tweet_counts.enc.js"></script>
 <script>
   const common1 = "2026MAMAVOTE";
   const common2 = "rescene";
@@ -1831,11 +1832,31 @@
     }
   });
 
-  // 🔒 관리자 인증 및 통계 섹션 제어
-  const ADMIN_SECRET = 'remine0326';
+  // 🔒 보안: 제로 놀리지(Zero-Knowledge in Code) AES 복호화 로직
+  // 소스 코드 어디에도 관리자 비밀번호나 평문 집계 데이터가 하드코딩되지 않습니다.
+  // 오직 관리자가 올바른 비밀번호를 입력했을 때만 AES-256 복호화가 성공하여 메모리에 적재됩니다.
+
+  function decryptTweetData(passphrase) {
+    if (!passphrase || typeof CryptoJS === 'undefined' || !window.ENCRYPTED_TWEET_DATA) {
+      return null;
+    }
+    try {
+      const bytes = CryptoJS.AES.decrypt(window.ENCRYPTED_TWEET_DATA, passphrase);
+      const decryptedText = bytes.toString(CryptoJS.enc.Utf8);
+      if (!decryptedText) return null;
+      const parsed = JSON.parse(decryptedText);
+      if (parsed && parsed.teams) {
+        return parsed;
+      }
+    } catch (e) {
+      // 복호화 실패 (비밀번호 불일치 등)
+      return null;
+    }
+    return null;
+  }
 
   function isAdminAuthenticated() {
-    return sessionStorage.getItem('rescene_admin_auth') === 'true';
+    return sessionStorage.getItem('rescene_admin_auth') === 'true' && !!tweetCountsData;
   }
 
   function handleAdminClick() {
@@ -1868,9 +1889,13 @@
     const errorEl = document.getElementById('adminErrorMsg');
     const val = (input ? input.value : '').trim();
 
-    if (val === ADMIN_SECRET) {
+    const decrypted = decryptTweetData(val);
+    if (decrypted) {
+      tweetCountsData = decrypted;
       sessionStorage.setItem('rescene_admin_auth', 'true');
+      sessionStorage.setItem('rescene_admin_key', val);
       applyAdminState();
+      applyTweetCountsUI();
       closeAdminModal();
       showToast('🔓 관리자 인증 완료! 통계 섹션이 활성화되었습니다.');
       setTimeout(() => {
@@ -1887,9 +1912,29 @@
 
   function logoutAdmin() {
     sessionStorage.removeItem('rescene_admin_auth');
+    sessionStorage.removeItem('rescene_admin_key');
+    tweetCountsData = null;
     applyAdminState();
     closeStatsModal();
     showToast('🔒 관리자 로그아웃 되었습니다.');
+  }
+
+  function checkSavedAdminSession() {
+    const isAuth = sessionStorage.getItem('rescene_admin_auth') === 'true';
+    const savedKey = sessionStorage.getItem('rescene_admin_key');
+    if (isAuth && savedKey) {
+      const decrypted = decryptTweetData(savedKey);
+      if (decrypted) {
+        tweetCountsData = decrypted;
+        applyAdminState();
+        applyTweetCountsUI();
+        return;
+      }
+    }
+    tweetCountsData = null;
+    sessionStorage.removeItem('rescene_admin_auth');
+    sessionStorage.removeItem('rescene_admin_key');
+    applyAdminState();
   }
 
   function applyAdminState() {
@@ -1918,61 +1963,8 @@
     }
   }
 
-  // 📊 실시간 트위터 집계 데이터 로드 및 통계 달력 로직
-  const DEFAULT_TWEET_COUNTS = {
-    updated_at: "2026-10-13T16:23:07.148Z",
-    updated_display: "2026.10.14 01:23 KST",
-    total_today: 490,
-    overall: {
-      query: "#2026MAMAVOTE #rescene",
-      today: 525,
-      total: 2495,
-      history: {
-        "2026-10-12": 627,
-        "2026-10-13": 1343,
-        "2026-10-14": 525
-      }
-    },
-    teams: {
-      "card-1": {
-        name: "알파드라이브원",
-        tag: "리마인X앨리즈",
-        today: 94,
-        total: 236,
-        history: { "2026-10-12": 1, "2026-10-13": 141, "2026-10-14": 94 }
-      },
-      "card-2": {
-        name: "앤더블",
-        tag: "리마인X앤클로",
-        today: 100,
-        total: 491,
-        history: { "2026-10-12": 143, "2026-10-13": 248, "2026-10-14": 100 }
-      },
-      "card-3": {
-        name: "빅뱅",
-        tag: "리마인과함께_븨아피",
-        today: 98,
-        total: 457,
-        history: { "2026-10-12": 119, "2026-10-13": 240, "2026-10-14": 98 }
-      },
-      "card-4": {
-        name: "하츠투하츠",
-        tag: "ReminexS2U",
-        today: 100,
-        total: 492,
-        history: { "2026-10-12": 139, "2026-10-13": 253, "2026-10-14": 100 }
-      },
-      "card-5": {
-        name: "베이비몬스터",
-        tag: "리마인X몬스티즈",
-        today: 98,
-        total: 203,
-        history: { "2026-10-12": 0, "2026-10-13": 105, "2026-10-14": 98 }
-      }
-    }
-  };
-
-  let tweetCountsData = (typeof window !== 'undefined' && window.TWEET_COUNTS_DATA) ? window.TWEET_COUNTS_DATA : DEFAULT_TWEET_COUNTS;
+  // 📊 실시간 트위터 집계 데이터 (보안: 관리자 인증 성공 시에만 메모리에 복호화됨)
+  let tweetCountsData = null;
   let selectedStatsDate = '2026-10-14';
 
   const TEAM_INFO = [
@@ -2013,27 +2005,9 @@
     }
   ];
 
-  async function loadTweetCounts() {
-    if (typeof window !== 'undefined' && window.TWEET_COUNTS_DATA && window.TWEET_COUNTS_DATA.teams) {
-      tweetCountsData = window.TWEET_COUNTS_DATA;
-    }
-    try {
-      const res = await fetch('data/tweet_counts.json?t=' + Date.now());
-      if (res.ok) {
-        const json = await res.json();
-        if (json && json.teams) {
-          tweetCountsData = json;
-        }
-      }
-    } catch (e) {
-      // 로컬 file:/// 환경에서는 fetch가 CORS로 차단되므로 script 태그(tweet_counts.js)의 데이터를 활용합니다.
-      console.log('로컬 환경 데이터를 사용합니다.');
-    }
-    applyTweetCountsUI();
-  }
-
   function applyTweetCountsUI() {
-    const data = tweetCountsData || DEFAULT_TWEET_COUNTS;
+    if (!tweetCountsData) return;
+    const data = tweetCountsData;
 
     if (data.updated_display) {
       const timeEl = document.getElementById('statsUpdateTime');
@@ -2082,7 +2056,7 @@
     const grid = document.getElementById('calDaysGrid');
     if (!grid) return;
 
-    const data = tweetCountsData || DEFAULT_TWEET_COUNTS;
+    const data = tweetCountsData;
     const firstDayIndex = 4; // 2026-10-01은 목요일
     const totalDays = 31; // 10월은 31일까지
 
@@ -2135,7 +2109,7 @@
   }
 
   function renderSelectedDateDetails() {
-    const data = tweetCountsData || DEFAULT_TWEET_COUNTS;
+    const data = tweetCountsData;
     if (!selectedStatsDate) {
       selectedStatsDate = (today && today.key) ? today.key : '2026-10-14';
     }
@@ -2149,7 +2123,7 @@
 
     let allianceSum = 0;
     const teamItemsHtml = TEAM_INFO.map(team => {
-      const teamData = data.teams ? data.teams[team.id] : null;
+      const teamData = (data && data.teams) ? data.teams[team.id] : null;
       const count = (teamData && teamData.history && teamData.history[selectedStatsDate]) || 0;
       allianceSum += count;
       return `
@@ -2169,7 +2143,7 @@
     document.getElementById('dayTeamList').innerHTML = teamItemsHtml;
     document.getElementById('selectedDateBadge').textContent = `5개 연합 합계: ${allianceSum.toLocaleString()}건`;
 
-    const overallHistory = data.overall ? data.overall.history : null;
+    const overallHistory = (data && data.overall) ? data.overall.history : null;
     const overallCount = (overallHistory && overallHistory[selectedStatsDate] !== undefined)
       ? overallHistory[selectedStatsDate]
       : allianceSum;
@@ -2182,8 +2156,7 @@
 
   loadTodayState();
   checkNoticeModal();
-  applyAdminState();
-  loadTweetCounts();
+  checkSavedAdminSession();
 </script>
 
 </body>

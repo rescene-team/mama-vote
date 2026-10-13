@@ -13,6 +13,8 @@ const TEAMS = [
 const OVERALL_QUERY = '#2026MAMAVOTE #rescene';
 const DATA_FILE = path.join(__dirname, '..', 'data', 'tweet_counts.json');
 const JS_DATA_FILE = path.join(__dirname, '..', 'data', 'tweet_counts.js');
+const ENC_DATA_FILE = path.join(__dirname, '..', 'data', 'tweet_counts.enc.js');
+const CryptoJS = require('./crypto-js.min.js');
 
 function getKSTDateString(utcIsoString) {
   const date = new Date(utcIsoString);
@@ -175,7 +177,13 @@ async function main() {
   currentData.total_today = grandTotalTeamsToday;
 
   fs.writeFileSync(DATA_FILE, JSON.stringify(currentData, null, 2), 'utf8');
-  fs.writeFileSync(JS_DATA_FILE, `// 자동 생성된 실시간 트위터 집계 데이터 (로컬 file:/// 및 웹 공용)\nwindow.TWEET_COUNTS_DATA = ${JSON.stringify(currentData, null, 2)};\n`, 'utf8');
+  fs.writeFileSync(JS_DATA_FILE, `// 자동 생성된 실시간 트위터 집계 데이터 (로컬 개발용)\nwindow.TWEET_COUNTS_DATA = ${JSON.stringify(currentData, null, 2)};\n`, 'utf8');
+
+  // 🔒 AES-256 암호화 데이터 생성 (배포용: 개발자 도구 및 평문 유출 방지)
+  const adminSecret = process.env.ADMIN_DATA_KEY || 'remine0326';
+  const ciphertext = CryptoJS.AES.encrypt(JSON.stringify(currentData), adminSecret).toString();
+  fs.writeFileSync(ENC_DATA_FILE, `// 자동 생성된 실시간 트위터 집계 암호화 데이터 (AES-256)\nwindow.ENCRYPTED_TWEET_DATA = "${ciphertext}";\n`, 'utf8');
+  console.log(`🔒 암호화 데이터 생성 완료: ${ENC_DATA_FILE}`);
   console.log(`🎉 6개 쿼리 완료! 연합 합계: ${grandTotalTeamsToday}건, 리센느 전체 MAMA: ${currentData.overall?.today || 0}건`);
 }
 
