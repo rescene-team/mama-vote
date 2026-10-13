@@ -732,6 +732,413 @@
       transform: scale(0.97);
       opacity: 0.9;
     }
+
+    /* 📊 실시간 트위터 인증 통계 배너 & 달력 */
+    .stats-banner-card {
+      background: linear-gradient(135deg, rgba(121, 40, 202, 0.25), rgba(255, 94, 184, 0.16));
+      border: 1px solid rgba(255, 94, 184, 0.35);
+      border-radius: 16px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .stats-banner-card:active {
+      transform: scale(0.98);
+      border-color: var(--primary);
+    }
+
+    .stats-banner-info {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
+    }
+
+    .stats-banner-badge-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+    }
+
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 8px #10b981;
+      animation: pulse-live 1.8s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-live {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    .stats-badge-text {
+      color: #cbd5e1;
+      font-weight: 700;
+    }
+
+    .stats-update-time {
+      color: #94a3b8;
+      font-size: 10.5px;
+    }
+
+    .stats-banner-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #fff;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .highlight-count {
+      color: #ff5eb8;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .btn-open-calendar {
+      background: rgba(255, 94, 184, 0.2);
+      border: 1px solid rgba(255, 94, 184, 0.5);
+      color: #ff85cb;
+      padding: 7px 11px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+      flex-shrink: 0;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-open-calendar:active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .tag-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .live-count-chip {
+      font-size: 10.5px;
+      background: rgba(16, 185, 129, 0.15);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    /* 📅 달력 모달 세부 스타일 */
+    .stats-modal-card {
+      max-width: 400px !important;
+      padding: 20px 18px 16px !important;
+      text-align: left !important;
+    }
+
+    .stats-modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .stats-modal-title {
+      font-size: 16.5px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .stats-modal-close-btn {
+      background: none;
+      border: none;
+      color: #94a3b8;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 2px 6px;
+      line-height: 1;
+    }
+
+    .stats-modal-sub {
+      font-size: 11px;
+      color: #94a3b8;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+
+    /* 🗓️ 10월 월간 달력 그리드 */
+    .cal-container {
+      background: #0f172a;
+      border: 1px solid #233044;
+      border-radius: 14px;
+      padding: 12px 10px 10px;
+      margin-bottom: 12px;
+    }
+
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+      padding: 0 4px;
+    }
+
+    .cal-month-title {
+      font-size: 14px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .cal-period-badge {
+      font-size: 10.5px;
+      color: #ff85cb;
+      background: rgba(255, 94, 184, 0.15);
+      border: 1px solid rgba(255, 94, 184, 0.3);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      text-align: center;
+      font-size: 11px;
+      font-weight: 700;
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+
+    .cal-weekdays span:first-child { color: #f87171; }
+    .cal-weekdays span:last-child { color: #60a5fa; }
+
+    .cal-days-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 4px;
+    }
+
+    .cal-day-cell {
+      height: 38px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      font-size: 13px;
+      font-weight: 700;
+      color: #94a3b8;
+      cursor: pointer;
+      position: relative;
+      transition: all 0.15s ease;
+      background: #161e2e;
+      border: 1px solid #1e293b;
+      user-select: none;
+    }
+
+    .cal-day-cell:active {
+      transform: scale(0.92);
+    }
+
+    .cal-day-cell.empty {
+      background: transparent !important;
+      border-color: transparent !important;
+      cursor: default;
+      pointer-events: none;
+    }
+
+    .cal-day-cell.vote-period {
+      background: rgba(255, 94, 184, 0.08);
+      border-color: rgba(255, 94, 184, 0.25);
+      color: #f1f5f9;
+    }
+
+    .cal-day-cell.has-data {
+      color: #fff;
+      font-weight: 800;
+      border-color: rgba(255, 94, 184, 0.45);
+    }
+
+    .cal-day-cell.has-data::after {
+      content: '';
+      position: absolute;
+      bottom: 3px;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #ff5eb8;
+      box-shadow: 0 0 6px #ff5eb8;
+    }
+
+    .cal-day-cell.today {
+      border: 1.5px solid #38bdf8 !important;
+      color: #38bdf8 !important;
+    }
+
+    .cal-day-cell.selected {
+      background: linear-gradient(135deg, #ff5eb8, #d946ef) !important;
+      border-color: #ff5eb8 !important;
+      color: #fff !important;
+      font-weight: 900 !important;
+      box-shadow: 0 3px 12px rgba(255, 94, 184, 0.5) !important;
+    }
+
+    .cal-day-cell.selected::after {
+      background: #fff !important;
+      box-shadow: none !important;
+    }
+
+    /* 📋 선택 날짜 팀별 각각 상세 카드 */
+    .day-detail-box {
+      background: #0f172a;
+      border: 1px solid #233044;
+      border-radius: 14px;
+      padding: 13px;
+      margin-bottom: 10px;
+    }
+
+    .day-detail-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding-bottom: 9px;
+      margin-bottom: 10px;
+    }
+
+    .day-detail-date {
+      font-size: 13px;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .day-detail-summary-badge {
+      font-size: 11px;
+      color: var(--primary);
+      background: rgba(255, 94, 184, 0.15);
+      border: 1px solid rgba(255, 94, 184, 0.3);
+      padding: 2px 7px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .day-team-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .day-team-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #161e2e;
+      border: 1px solid #1e293b;
+      border-radius: 10px;
+      padding: 9px 11px;
+      gap: 10px;
+      transition: all 0.15s ease;
+    }
+
+    .day-team-item.rescene-main-item {
+      background: linear-gradient(135deg, rgba(255, 94, 184, 0.18), rgba(121, 40, 202, 0.22));
+      border: 1.5px solid rgba(255, 94, 184, 0.5);
+      box-shadow: 0 2px 10px rgba(255, 94, 184, 0.15);
+    }
+
+    .day-team-item.rescene-main-item .day-team-name {
+      color: #fff;
+      font-weight: 900;
+      font-size: 13px;
+    }
+
+    .day-team-item.rescene-main-item .day-team-count {
+      color: #ff5eb8;
+      font-size: 15px;
+      font-weight: 900;
+    }
+
+    .day-team-left {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+    }
+
+    .day-team-thumb {
+      width: 32px;
+      height: 32px;
+      border-radius: 7px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .day-team-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .day-team-name {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: #f1f5f9;
+      white-space: nowrap;
+    }
+
+    .day-team-tag {
+      font-size: 10.5px;
+      color: #94a3b8;
+      white-space: nowrap;
+    }
+
+    .day-team-count {
+      font-size: 14px;
+      font-weight: 800;
+      color: #ff5eb8;
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .day-overall-row {
+      margin-top: 10px;
+      padding-top: 9px;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11.5px;
+      color: #cbd5e1;
+    }
+
+    .day-overall-val {
+      font-weight: 800;
+      color: #38bdf8;
+    }
+
+    .stats-footer-note {
+      text-align: center;
+      font-size: 10.5px;
+      color: #64748b;
+    }
   </style>
 </head>
 <body>
@@ -814,6 +1221,23 @@
     </div>
   </div>
 
+  <!-- 📊 실시간 트위터 인증 통계 & 달력 배너 -->
+  <div class="stats-banner-card" onclick="openStatsModal()">
+    <div class="stats-banner-info">
+      <div class="stats-banner-badge-row">
+        <span class="live-dot"></span>
+        <span class="stats-badge-text">공식 X 실시간 인증 집계</span>
+        <span class="stats-update-time" id="statsUpdateTime">09:30 기준</span>
+      </div>
+      <div class="stats-banner-title">
+        오늘 총 <span class="highlight-count" id="statGrandTotalToday">4,820</span>건 인증 달성!
+      </div>
+    </div>
+    <button type="button" class="btn-open-calendar">
+      📅 통계 달력
+    </button>
+  </div>
+
   <!-- 5개 팀 리스트 -->
   <div class="team-list">
 
@@ -826,7 +1250,10 @@
             <div class="team-name">🚗 알파드라이브원</div>
             <span class="status-check-badge" onclick="toggleStatus('card-1')">⚪ 투표 전</span>
           </div>
-          <span class="tag-preview">#리마인X앨리즈</span>
+          <div class="tag-row">
+            <span class="tag-preview">#리마인X앨리즈</span>
+            <span class="live-count-chip" id="stat-count-card-1">🔥 오늘 -건</span>
+          </div>
         </div>
       </div>
       <div class="btn-group">
@@ -849,7 +1276,10 @@
             <div class="team-name">🍀 앤더블</div>
             <span class="status-check-badge" onclick="toggleStatus('card-2')">⚪ 투표 전</span>
           </div>
-          <span class="tag-preview">#리마인X앤클로</span>
+          <div class="tag-row">
+            <span class="tag-preview">#리마인X앤클로</span>
+            <span class="live-count-chip" id="stat-count-card-2">🔥 오늘 -건</span>
+          </div>
         </div>
       </div>
       <div class="btn-group">
@@ -872,7 +1302,10 @@
             <div class="team-name">👑 빅뱅</div>
             <span class="status-check-badge" onclick="toggleStatus('card-3')">⚪ 투표 전</span>
           </div>
-          <span class="tag-preview">#리마인과함께_븨아피</span>
+          <div class="tag-row">
+            <span class="tag-preview">#리마인과함께_븨아피</span>
+            <span class="live-count-chip" id="stat-count-card-3">🔥 오늘 -건</span>
+          </div>
         </div>
       </div>
       <div class="btn-group">
@@ -895,7 +1328,10 @@
             <div class="team-name">💕 하츠투하츠</div>
             <span class="status-check-badge" onclick="toggleStatus('card-4')">⚪ 투표 전</span>
           </div>
-          <span class="tag-preview">#ReminexS2U</span>
+          <div class="tag-row">
+            <span class="tag-preview">#ReminexS2U</span>
+            <span class="live-count-chip" id="stat-count-card-4">🔥 오늘 -건</span>
+          </div>
         </div>
       </div>
       <div class="btn-group">
@@ -918,7 +1354,10 @@
             <div class="team-name">😈 베이비몬스터</div>
             <span class="status-check-badge" id="card-5-badge" onclick="toggleStatus('card-5')">⚪ 투표 전</span>
           </div>
-          <span class="tag-preview">#리마인X몬스티즈</span>
+          <div class="tag-row">
+            <span class="tag-preview">#리마인X몬스티즈</span>
+            <span class="live-count-chip" id="stat-count-card-5">🔥 오늘 -건</span>
+          </div>
         </div>
       </div>
       <div class="btn-group" id="card-5-btn-group">
@@ -964,8 +1403,57 @@
   </div>
 </div>
 
+<!-- 📅 일별 투표 인증 통계 달력 모달 -->
+<div class="modal-backdrop" id="statsModal" onclick="closeStatsModal()">
+  <div class="modal-card stats-modal-card" onclick="event.stopPropagation()">
+    <div class="stats-modal-header">
+      <div class="stats-modal-title">
+        📅 2026 MAMA 투표 인증 통계
+      </div>
+      <button type="button" class="stats-modal-close-btn" onclick="closeStatsModal()">✕</button>
+    </div>
+    <div class="stats-modal-sub" id="statsModalSub">
+      ⏰ 공식 X(트위터) API를 통해 매시간 누락 없이 자동 집계됩니다.
+    </div>
+
+    <!-- 🗓️ 이번 달 달력 뷰 (2026년 10월) -->
+    <div class="cal-container">
+      <div class="cal-header">
+        <span class="cal-month-title">📅 2026년 10월</span>
+        <span class="cal-period-badge">1차 투표 (10.12 ~ 10.22)</span>
+      </div>
+      <div class="cal-weekdays">
+        <span>일</span><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span>
+      </div>
+      <div class="cal-days-grid" id="calDaysGrid">
+        <!-- JS로 10월 달력 동적 렌더링 -->
+      </div>
+    </div>
+
+    <!-- 📋 선택된 날짜의 팀별 각각의 인증 수 상세 카드 -->
+    <div class="day-detail-box">
+      <div class="day-detail-header">
+        <span class="day-detail-date" id="selectedDateTitle">10월 14일 (수) 팀별 인증 현황</span>
+        <span class="day-detail-summary-badge" id="selectedDateBadge">총 4,820건</span>
+      </div>
+      <div class="day-team-list" id="dayTeamList">
+        <!-- JS로 각 팀별 썸네일 + 팀명 + 태그 + 인증 수 각각 개별 렌더링 -->
+      </div>
+      <div class="day-overall-row" id="dayOverallRow">
+        <span>🌟 리센느 전체 MAMA 투표 (연합+단독 총합):</span>
+        <span class="day-overall-val" id="dayOverallVal">2,495건</span>
+      </div>
+    </div>
+
+    <div class="stats-footer-note">
+      ※ 달력에서 날짜를 클릭하면 그 날의 팀별 인증 수를 각각 확인할 수 있습니다.
+    </div>
+  </div>
+</div>
+
 <div class="toast" id="toast">📋 해시태그가 복사되었습니다!</div>
 
+<script src="data/tweet_counts.js"></script>
 <script>
   const common1 = "2026MAMAVOTE";
   const common2 = "rescene";
@@ -1242,11 +1730,275 @@
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeNoticeModal(false);
+      closeStatsModal();
     }
   });
 
+  // 📊 실시간 트위터 집계 데이터 로드 및 통계 달력 로직
+  const DEFAULT_TWEET_COUNTS = {
+    updated_at: "2026-10-13T16:23:07.148Z",
+    updated_display: "2026.10.14 01:23 KST",
+    total_today: 490,
+    overall: {
+      query: "#2026MAMAVOTE #rescene",
+      today: 525,
+      total: 2495,
+      history: {
+        "2026-10-12": 627,
+        "2026-10-13": 1343,
+        "2026-10-14": 525
+      }
+    },
+    teams: {
+      "card-1": {
+        name: "알파드라이브원",
+        tag: "리마인X앨리즈",
+        today: 94,
+        total: 236,
+        history: { "2026-10-12": 1, "2026-10-13": 141, "2026-10-14": 94 }
+      },
+      "card-2": {
+        name: "앤더블",
+        tag: "리마인X앤클로",
+        today: 100,
+        total: 491,
+        history: { "2026-10-12": 143, "2026-10-13": 248, "2026-10-14": 100 }
+      },
+      "card-3": {
+        name: "빅뱅",
+        tag: "리마인과함께_븨아피",
+        today: 98,
+        total: 457,
+        history: { "2026-10-12": 119, "2026-10-13": 240, "2026-10-14": 98 }
+      },
+      "card-4": {
+        name: "하츠투하츠",
+        tag: "ReminexS2U",
+        today: 100,
+        total: 492,
+        history: { "2026-10-12": 139, "2026-10-13": 253, "2026-10-14": 100 }
+      },
+      "card-5": {
+        name: "베이비몬스터",
+        tag: "리마인X몬스티즈",
+        today: 98,
+        total: 203,
+        history: { "2026-10-12": 0, "2026-10-13": 105, "2026-10-14": 98 }
+      }
+    }
+  };
+
+  let tweetCountsData = (typeof window !== 'undefined' && window.TWEET_COUNTS_DATA) ? window.TWEET_COUNTS_DATA : DEFAULT_TWEET_COUNTS;
+  let selectedStatsDate = '2026-10-14';
+
+  const TEAM_INFO = [
+    { 
+      id: 'card-1', 
+      name: '알파드라이브원', 
+      emoji: '🚗', 
+      tag: '#2026MAMAVOTE #rescene #리마인X앨리즈', 
+      thumb: 'images/alphadriveone.png' 
+    },
+    { 
+      id: 'card-2', 
+      name: '앤더블', 
+      emoji: '🍀', 
+      tag: '#2026MAMAVOTE #rescene #리마인X앤클로', 
+      thumb: 'images/andouble.png' 
+    },
+    { 
+      id: 'card-3', 
+      name: '빅뱅', 
+      emoji: '👑', 
+      tag: '#2026MAMAVOTE #rescene #리마인과함께_븨아피', 
+      thumb: 'images/bigbang.png' 
+    },
+    { 
+      id: 'card-4', 
+      name: '하츠투하츠', 
+      emoji: '💕', 
+      tag: '#2026MAMAVOTE #rescene #ReminexS2U', 
+      thumb: 'images/heartstohearts.png' 
+    },
+    { 
+      id: 'card-5', 
+      name: '베이비몬스터', 
+      emoji: '😈', 
+      tag: '#2026MAMAVOTE #rescene #리마인X몬스티즈', 
+      thumb: 'images/babymonster.png' 
+    }
+  ];
+
+  async function loadTweetCounts() {
+    if (typeof window !== 'undefined' && window.TWEET_COUNTS_DATA && window.TWEET_COUNTS_DATA.teams) {
+      tweetCountsData = window.TWEET_COUNTS_DATA;
+    }
+    try {
+      const res = await fetch('data/tweet_counts.json?t=' + Date.now());
+      if (res.ok) {
+        const json = await res.json();
+        if (json && json.teams) {
+          tweetCountsData = json;
+        }
+      }
+    } catch (e) {
+      // 로컬 file:/// 환경에서는 fetch가 CORS로 차단되므로 script 태그(tweet_counts.js)의 데이터를 활용합니다.
+      console.log('로컬 환경 데이터를 사용합니다.');
+    }
+    applyTweetCountsUI();
+  }
+
+  function applyTweetCountsUI() {
+    const data = tweetCountsData || DEFAULT_TWEET_COUNTS;
+
+    if (data.updated_display) {
+      const timeEl = document.getElementById('statsUpdateTime');
+      if (timeEl) {
+        const parts = data.updated_display.split(' ');
+        timeEl.textContent = (parts[1] || '') + ' 기준';
+      }
+    }
+
+    const grandTotalEl = document.getElementById('statGrandTotalToday');
+    if (grandTotalEl) {
+      grandTotalEl.textContent = (data.total_today || 0).toLocaleString();
+    }
+
+    if (data.teams) {
+      for (const [cardId, teamData] of Object.entries(data.teams)) {
+        const countEl = document.getElementById(`stat-count-${cardId}`);
+        if (countEl) {
+          countEl.textContent = `🔥 오늘 ${(teamData.today || 0).toLocaleString()}건`;
+        }
+      }
+    }
+  }
+
+  function openStatsModal() {
+    const modal = document.getElementById('statsModal');
+    if (!modal) return;
+    renderStatsModalContent();
+    modal.classList.add('show');
+  }
+
+  function closeStatsModal() {
+    const modal = document.getElementById('statsModal');
+    if (modal) modal.classList.remove('show');
+  }
+
+  function renderStatsModalContent() {
+    if (!selectedStatsDate) {
+      selectedStatsDate = (today && today.key) ? today.key : '2026-10-14';
+    }
+    renderCalendarGrid();
+    renderSelectedDateDetails();
+  }
+
+  function renderCalendarGrid() {
+    const grid = document.getElementById('calDaysGrid');
+    if (!grid) return;
+
+    const data = tweetCountsData || DEFAULT_TWEET_COUNTS;
+    const firstDayIndex = 4; // 2026-10-01은 목요일
+    const totalDays = 31; // 10월은 31일까지
+
+    let html = '';
+    // 1일 앞의 빈 슬롯 4개
+    for (let i = 0; i < firstDayIndex; i++) {
+      html += '<div class="cal-day-cell empty"></div>';
+    }
+
+    // 1일 ~ 31일 모두 클릭 가능
+    for (let day = 1; day <= totalDays; day++) {
+      const dateKey = `2026-10-${String(day).padStart(2, '0')}`;
+      const isVotePeriod = day >= 12 && day <= 22;
+      const isToday = (today && dateKey === today.key) || dateKey === '2026-10-14';
+      const isSelected = dateKey === selectedStatsDate;
+
+      let hasData = false;
+      if (data) {
+        if (data.overall && data.overall.history && data.overall.history[dateKey] > 0) {
+          hasData = true;
+        }
+        if (!hasData && data.teams) {
+          for (const t of Object.values(data.teams)) {
+            if (t.history && t.history[dateKey] > 0) {
+              hasData = true;
+              break;
+            }
+          }
+        }
+      }
+
+      const classes = [
+        'cal-day-cell',
+        isVotePeriod ? 'vote-period' : '',
+        hasData ? 'has-data' : '',
+        isToday ? 'today' : '',
+        isSelected ? 'selected' : ''
+      ].filter(Boolean).join(' ');
+
+      html += `<div class="${classes}" onclick="selectCalendarDate('${dateKey}')">${day}</div>`;
+    }
+
+    grid.innerHTML = html;
+  }
+
+  function selectCalendarDate(dateKey) {
+    selectedStatsDate = dateKey;
+    renderCalendarGrid();
+    renderSelectedDateDetails();
+  }
+
+  function renderSelectedDateDetails() {
+    const data = tweetCountsData || DEFAULT_TWEET_COUNTS;
+    if (!selectedStatsDate) {
+      selectedStatsDate = (today && today.key) ? today.key : '2026-10-14';
+    }
+
+    const [y, m, d] = selectedStatsDate.split('-');
+    const dateObj = new Date(`${selectedStatsDate}T00:00:00+09:00`);
+    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+    const dayName = dayNames[dateObj.getDay()] || '일';
+
+    document.getElementById('selectedDateTitle').textContent = `${parseInt(m)}월 ${parseInt(d)}일 (${dayName}) 투표 인증`;
+
+    let allianceSum = 0;
+    const teamItemsHtml = TEAM_INFO.map(team => {
+      const teamData = data.teams ? data.teams[team.id] : null;
+      const count = (teamData && teamData.history && teamData.history[selectedStatsDate]) || 0;
+      allianceSum += count;
+      return `
+        <div class="day-team-item">
+          <div class="day-team-left">
+            <img src="${team.thumb}" class="day-team-thumb" alt="${team.name}">
+            <div class="day-team-text">
+              <div class="day-team-name">${team.emoji} ${team.name}</div>
+              <div class="day-team-tag">${team.tag}</div>
+            </div>
+          </div>
+          <div class="day-team-count">${count.toLocaleString()}건</div>
+        </div>
+      `;
+    }).join('');
+
+    document.getElementById('dayTeamList').innerHTML = teamItemsHtml;
+    document.getElementById('selectedDateBadge').textContent = `5개 연합 합계: ${allianceSum.toLocaleString()}건`;
+
+    const overallHistory = data.overall ? data.overall.history : null;
+    const overallCount = (overallHistory && overallHistory[selectedStatsDate] !== undefined)
+      ? overallHistory[selectedStatsDate]
+      : allianceSum;
+
+    const overallRow = document.getElementById('dayOverallRow');
+    if (overallRow) {
+      document.getElementById('dayOverallVal').textContent = `${overallCount.toLocaleString()}건`;
+    }
+  }
+
   loadTodayState();
   checkNoticeModal();
+  loadTweetCounts();
 </script>
 
 </body>

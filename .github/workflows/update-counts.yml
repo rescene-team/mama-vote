@@ -1,0 +1,40 @@
+name: Update Tweet Counts
+
+on:
+  schedule:
+    # 매시간 15분에 자동 실행 (UTC 기준)
+    - cron: '15 * * * *'
+  workflow_dispatch: # 깃허브 웹 화면에서 [Run workflow] 버튼으로 즉시 수동 실행 가능
+
+permissions:
+  contents: write
+
+jobs:
+  update-counts:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch Tweet Counts from X API
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+        run: node scripts/fetch-tweet-counts.js
+
+      - name: Commit and Push if changed
+        run: |
+          git config --local user.name "github-actions[bot]"
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/tweet_counts.json data/tweet_counts.js
+          if git diff --staged --quiet; then
+            echo "No changes in tweet counts."
+          else
+            git commit -m "chore(stats): Update real-time tweet counts"
+            git push
+          fi
