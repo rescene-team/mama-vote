@@ -844,6 +844,81 @@
       white-space: nowrap;
     }
 
+    /* 🔒 관리자 인증 버튼 및 모달 스타일 */
+    .btn-admin-auth {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #94a3b8;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-admin-auth:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #f8fafc;
+      border-color: rgba(255, 255, 255, 0.35);
+    }
+
+    .btn-admin-auth.is-logged-in {
+      background: rgba(56, 189, 248, 0.18);
+      border-color: rgba(56, 189, 248, 0.5);
+      color: #38bdf8;
+    }
+
+    .admin-password-input {
+      width: 100%;
+      padding: 11px 14px;
+      border-radius: 10px;
+      background: rgba(15, 23, 42, 0.85);
+      border: 1px solid rgba(255, 94, 184, 0.35);
+      color: #fff;
+      font-size: 16px;
+      font-weight: 700;
+      text-align: center;
+      letter-spacing: 2px;
+      outline: none;
+      box-sizing: border-box;
+      transition: all 0.2s;
+    }
+
+    .admin-password-input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 12px rgba(255, 94, 184, 0.45);
+    }
+
+    .admin-error-text {
+      color: #ef4444;
+      font-size: 12px;
+      font-weight: 700;
+      margin-top: 8px;
+      text-align: center;
+    }
+
+    .btn-admin-logout {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      color: #fca5a5;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-admin-logout:hover {
+      background: rgba(239, 68, 68, 0.3);
+      color: #fff;
+    }
+
     /* 📅 달력 모달 세부 스타일 */
     .stats-modal-card {
       max-width: 400px !important;
@@ -1174,6 +1249,7 @@
     <div class="top-badge-row">
       <span class="badge">RESCENE 🪽 연합 총공</span>
       <span class="date-badge" id="currentDateBadge">📅 2026.10.13 (화)</span>
+      <button type="button" class="btn-admin-auth" id="adminTopBtn" onclick="handleAdminClick()">🔒 admin</button>
     </div>
     <h1>2026 MAMA X 인증 헬퍼</h1>
     <p class="subtitle">터치 한 번으로 해시태그 완성된 트위터 창 열기</p>
@@ -1221,12 +1297,12 @@
     </div>
   </div>
 
-  <!-- 📊 실시간 트위터 인증 통계 & 달력 배너 -->
-  <div class="stats-banner-card" onclick="openStatsModal()">
+  <!-- 📊 실시간 트위터 인증 통계 & 달력 배너 (관리자 인증 시에만 표시) -->
+  <div class="stats-banner-card" id="statsBannerCard" style="display: none;" onclick="openStatsModal()">
     <div class="stats-banner-info">
       <div class="stats-banner-badge-row">
         <span class="live-dot"></span>
-        <span class="stats-badge-text">공식 X 실시간 인증 집계</span>
+        <span class="stats-badge-text">공식 X 실시간 인증 집계 (관리자)</span>
         <span class="stats-update-time" id="statsUpdateTime">09:30 기준</span>
       </div>
       <div class="stats-banner-title">
@@ -1252,7 +1328,6 @@
           </div>
           <div class="tag-row">
             <span class="tag-preview">#리마인X앨리즈</span>
-            <span class="live-count-chip" id="stat-count-card-1">🔥 오늘 -건</span>
           </div>
         </div>
       </div>
@@ -1278,7 +1353,6 @@
           </div>
           <div class="tag-row">
             <span class="tag-preview">#리마인X앤클로</span>
-            <span class="live-count-chip" id="stat-count-card-2">🔥 오늘 -건</span>
           </div>
         </div>
       </div>
@@ -1304,7 +1378,6 @@
           </div>
           <div class="tag-row">
             <span class="tag-preview">#리마인과함께_븨아피</span>
-            <span class="live-count-chip" id="stat-count-card-3">🔥 오늘 -건</span>
           </div>
         </div>
       </div>
@@ -1330,7 +1403,6 @@
           </div>
           <div class="tag-row">
             <span class="tag-preview">#ReminexS2U</span>
-            <span class="live-count-chip" id="stat-count-card-4">🔥 오늘 -건</span>
           </div>
         </div>
       </div>
@@ -1356,7 +1428,6 @@
           </div>
           <div class="tag-row">
             <span class="tag-preview">#리마인X몬스티즈</span>
-            <span class="live-count-chip" id="stat-count-card-5">🔥 오늘 -건</span>
           </div>
         </div>
       </div>
@@ -1403,6 +1474,28 @@
   </div>
 </div>
 
+<!-- 🔒 관리자 인증 모달 -->
+<div class="modal-backdrop" id="adminModal" onclick="closeAdminModal()">
+  <div class="modal-card" style="max-width: 360px;" onclick="event.stopPropagation()">
+    <div class="modal-icon-badge">🔒</div>
+    <div class="modal-title">관리자 인증</div>
+    <div class="modal-body" style="text-align: center;">
+      <p class="modal-desc" style="font-size: 13px; line-height: 1.5; color: #cbd5e1; margin-bottom: 14px;">
+        통계 달력 및 실시간 집계는 관리자 전용입니다.<br>
+        비밀번호를 입력해 주세요.
+      </p>
+      <input type="password" id="adminCodeInput" class="admin-password-input" placeholder="비밀번호 입력" onkeydown="if(event.key==='Enter') submitAdminAuth()">
+      <div id="adminErrorMsg" class="admin-error-text" style="display: none;">
+        ⚠️ 비밀번호가 일치하지 않습니다.
+      </div>
+    </div>
+    <div class="modal-actions" style="margin-top: 18px;">
+      <button type="button" class="btn-modal-close" onclick="closeAdminModal()">취소</button>
+      <button type="button" class="btn-modal-hide" style="background: var(--primary); color: #fff; font-weight: 700;" onclick="submitAdminAuth()">인증하기</button>
+    </div>
+  </div>
+</div>
+
 <!-- 📅 일별 투표 인증 통계 달력 모달 -->
 <div class="modal-backdrop" id="statsModal" onclick="closeStatsModal()">
   <div class="modal-card stats-modal-card" onclick="event.stopPropagation()">
@@ -1410,7 +1503,10 @@
       <div class="stats-modal-title">
         📅 2026 MAMA 투표 인증 통계
       </div>
-      <button type="button" class="stats-modal-close-btn" onclick="closeStatsModal()">✕</button>
+      <div style="display: flex; align-items: center; gap: 8px;">
+        <button type="button" class="btn-admin-logout" onclick="logoutAdmin()">🔒 로그아웃</button>
+        <button type="button" class="stats-modal-close-btn" onclick="closeStatsModal()">✕</button>
+      </div>
     </div>
     <div class="stats-modal-sub" id="statsModalSub">
       ⏰ 공식 X(트위터) API를 통해 매시간 누락 없이 자동 집계됩니다.
@@ -1731,8 +1827,96 @@
     if (e.key === 'Escape') {
       closeNoticeModal(false);
       closeStatsModal();
+      closeAdminModal();
     }
   });
+
+  // 🔒 관리자 인증 및 통계 섹션 제어
+  const ADMIN_SECRET = 'remine0326';
+
+  function isAdminAuthenticated() {
+    return sessionStorage.getItem('rescene_admin_auth') === 'true';
+  }
+
+  function handleAdminClick() {
+    if (isAdminAuthenticated()) {
+      openStatsModal();
+    } else {
+      openAdminModal();
+    }
+  }
+
+  function openAdminModal() {
+    const modal = document.getElementById('adminModal');
+    const input = document.getElementById('adminCodeInput');
+    const errorEl = document.getElementById('adminErrorMsg');
+    if (errorEl) errorEl.style.display = 'none';
+    if (input) input.value = '';
+    if (modal) modal.classList.add('show');
+    setTimeout(() => {
+      if (input) input.focus();
+    }, 120);
+  }
+
+  function closeAdminModal() {
+    const modal = document.getElementById('adminModal');
+    if (modal) modal.classList.remove('show');
+  }
+
+  function submitAdminAuth() {
+    const input = document.getElementById('adminCodeInput');
+    const errorEl = document.getElementById('adminErrorMsg');
+    const val = (input ? input.value : '').trim();
+
+    if (val === ADMIN_SECRET) {
+      sessionStorage.setItem('rescene_admin_auth', 'true');
+      applyAdminState();
+      closeAdminModal();
+      showToast('🔓 관리자 인증 완료! 통계 섹션이 활성화되었습니다.');
+      setTimeout(() => {
+        openStatsModal();
+      }, 250);
+    } else {
+      if (errorEl) errorEl.style.display = 'block';
+      if (input) {
+        input.value = '';
+        input.focus();
+      }
+    }
+  }
+
+  function logoutAdmin() {
+    sessionStorage.removeItem('rescene_admin_auth');
+    applyAdminState();
+    closeStatsModal();
+    showToast('🔒 관리자 로그아웃 되었습니다.');
+  }
+
+  function applyAdminState() {
+    const isAuth = isAdminAuthenticated();
+    const btn = document.getElementById('adminTopBtn');
+    const banner = document.getElementById('statsBannerCard');
+
+    if (isAuth) {
+      if (btn) {
+        btn.innerHTML = '🔓 admin';
+        btn.classList.add('is-logged-in');
+        btn.title = '관리자 인증 완료 (클릭 시 통계 달력 열기)';
+      }
+      if (banner) {
+        banner.style.display = 'flex';
+      }
+    } else {
+      if (btn) {
+        btn.innerHTML = '🔒 admin';
+        btn.classList.remove('is-logged-in');
+        btn.title = '관리자 인증';
+      }
+      if (banner) {
+        banner.style.display = 'none';
+      }
+    }
+  }
 
   // 📊 실시간 트위터 집계 데이터 로드 및 통계 달력 로직
   const DEFAULT_TWEET_COUNTS = {
@@ -1998,6 +2182,7 @@
 
   loadTodayState();
   checkNoticeModal();
+  applyAdminState();
   loadTweetCounts();
 </script>
 
