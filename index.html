@@ -15,6 +15,7 @@
       --text-main: #f8fafc;
       --text-muted: #94a3b8;
       --twitter-blue: #1d9bf0;
+      --kakao-yellow: #fee500;
       --success: #10b981;
       --mama-purple: #7928ca;
     }
@@ -44,10 +45,105 @@
       gap: 14px;
     }
 
+    /* 🪽 리센느 음원총공팀 프로필 카드 */
+    .stream-team-card {
+      background: rgba(22, 30, 46, 0.85);
+      border: 1px solid rgba(255, 94, 184, 0.25);
+      border-radius: 18px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .stream-team-logo {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1.5px solid var(--primary);
+      flex-shrink: 0;
+      background: #1e293b;
+    }
+
+    .stream-team-info {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .stream-team-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .stream-team-handle {
+      font-size: 11.5px;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .stream-links {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .stream-link-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      border: none;
+    }
+
+    .stream-link-pill.x-link {
+      background: rgba(29, 155, 240, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(29, 155, 240, 0.3);
+    }
+
+    .stream-link-pill.kakao-link {
+      background: rgba(254, 229, 0, 0.15);
+      color: #fde047;
+      border: 1px solid rgba(254, 229, 0, 0.3);
+    }
+
+    .stream-link-pill.web-link {
+      background: rgba(255, 94, 184, 0.15);
+      color: #ff5eb8;
+      border: 1px solid rgba(255, 94, 184, 0.3);
+    }
+
+    .stream-link-pill.mail-link {
+      background: rgba(148, 163, 184, 0.15);
+      color: #cbd5e1;
+      border: 1px solid rgba(148, 163, 184, 0.3);
+    }
+
+    .stream-link-pill:active {
+      transform: scale(0.96);
+      opacity: 0.8;
+    }
+
     /* 상단 헤더 */
     header {
       text-align: center;
-      padding: 10px 4px 2px;
+      padding: 6px 4px 2px;
     }
 
     .top-badge-row {
@@ -96,7 +192,7 @@
       line-height: 1.4;
     }
 
-    /* 🗳️ 엠넷플러스 공식 1차 투표 바로가기 배너 */
+    /* 🗳️ 1차 투표 바로가기 배너 */
     .vote-banner-link {
       text-decoration: none;
       display: block;
@@ -276,7 +372,7 @@
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 18px;
-      padding: 16px;
+      padding: 14px;
       display: flex;
       flex-direction: column;
       gap: 12px;
@@ -289,10 +385,42 @@
       background: rgba(16, 185, 129, 0.06);
     }
 
-    .team-info {
+    .team-card.locked {
+      border-color: #334155;
+      opacity: 0.65;
+      background: #111722;
+    }
+
+    .team-header-row {
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      gap: 12px;
+    }
+
+    .team-poster-thumb {
+      width: 60px;
+      height: 60px;
+      border-radius: 12px;
+      object-fit: cover;
+      flex-shrink: 0;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
+      background: #0f1522;
+    }
+
+    .team-meta {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .team-name-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
     }
 
     .team-name {
@@ -300,16 +428,51 @@
       font-weight: 800;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .status-check-badge {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 9999px;
+      background: rgba(148, 163, 184, 0.15);
+      color: #94a3b8;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3px;
+      flex-shrink: 0;
+      min-width: 66px;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .team-card.done .status-check-badge {
+      background: rgba(16, 185, 129, 0.2);
+      color: var(--success);
+      font-weight: 700;
+    }
+
+    .status-check-badge.locked-badge {
+      background: rgba(148, 163, 184, 0.1);
+      color: #64748b;
+      cursor: not-allowed;
     }
 
     .tag-preview {
-      font-size: 11.5px;
+      font-size: 11px;
       color: var(--primary);
       background: rgba(255, 94, 184, 0.1);
-      padding: 3px 8px;
+      padding: 2px 8px;
       border-radius: 6px;
       font-weight: 600;
+      width: fit-content;
+      word-break: break-all;
     }
 
     /* 버튼 스타일 */
@@ -323,9 +486,9 @@
       background: var(--twitter-blue);
       color: #fff;
       border: none;
-      padding: 13px 14px;
+      padding: 12px 14px;
       border-radius: 12px;
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       display: flex;
       align-items: center;
@@ -338,6 +501,13 @@
     .btn-main:active {
       transform: scale(0.97);
       background: #1a8cd8;
+    }
+
+    .btn-main.btn-locked {
+      background: #252f40 !important;
+      color: #64748b !important;
+      box-shadow: none !important;
+      cursor: not-allowed !important;
     }
 
     .btn-copy {
@@ -360,27 +530,33 @@
       color: #fff;
     }
 
-    .status-check {
-      font-size: 11.5px;
-      color: #64748b;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-      cursor: pointer;
-      align-self: flex-start;
-      margin-top: -2px;
+    .btn-copy.btn-locked {
+      background: #161e2b !important;
+      color: #475569 !important;
+      border-color: #233044 !important;
+      cursor: not-allowed !important;
     }
 
-    .team-card.done .status-check {
-      color: var(--success);
-      font-weight: 600;
-    }
-
+    /* 하단 푸터 (비영리 팬메이드 면책 안내) */
     footer {
       text-align: center;
-      font-size: 12px;
+      font-size: 11px;
       color: #64748b;
-      padding: 8px 0 20px;
+      padding: 14px 6px 20px;
+      line-height: 1.6;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      margin-top: 6px;
+    }
+
+    .footer-disclaimer {
+      color: #64748b;
+      margin-bottom: 6px;
+    }
+
+    .footer-support {
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 12px;
     }
 
     /* 토스트 알림 */
@@ -405,21 +581,198 @@
     .toast.show {
       transform: translateX(-50%) translateY(0);
     }
+
+    /* 📢 최초 안내 팝업 모달 */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      z-index: 10000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-backdrop.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      background: #161e2e;
+      border: 1px solid rgba(255, 94, 184, 0.35);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 360px;
+      padding: 24px 20px 18px;
+      text-align: center;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 94, 184, 0.15);
+      transform: scale(0.92);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    .modal-backdrop.show .modal-card {
+      transform: scale(1);
+    }
+
+    .modal-icon-badge {
+      width: 50px;
+      height: 50px;
+      margin: 0 auto 12px;
+      border-radius: 50%;
+      background: rgba(255, 94, 184, 0.12);
+      border: 1.5px solid rgba(255, 94, 184, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+    }
+
+    .modal-title {
+      font-size: 17px;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 12px;
+      letter-spacing: -0.3px;
+    }
+
+    .modal-body {
+      font-size: 12.5px;
+      line-height: 1.6;
+      color: #cbd5e1;
+      text-align: left;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .modal-desc {
+      text-align: center;
+      color: #f1f5f9;
+      word-break: keep-all;
+    }
+
+    .modal-desc b {
+      color: var(--primary);
+    }
+
+    .modal-alert-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-size: 11.5px;
+      line-height: 1.55;
+      color: #fef08a;
+      word-break: keep-all;
+    }
+
+    .modal-alert-box b {
+      color: #fde047;
+    }
+
+    .modal-subtext {
+      font-size: 11.5px;
+      color: #94a3b8;
+      text-align: center;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .btn-modal-hide {
+      flex: 1.25;
+      background: #1f2a3c;
+      border: 1px solid #334155;
+      color: #94a3b8;
+      padding: 11px 8px;
+      border-radius: 12px;
+      font-size: 11.5px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-modal-hide:active {
+      background: #28364d;
+      color: #e2e8f0;
+    }
+
+    .btn-modal-close {
+      flex: 1;
+      background: linear-gradient(135deg, #ff5eb8, #d946ef);
+      border: none;
+      color: #fff;
+      padding: 11px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(255, 94, 184, 0.3);
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-modal-close:active {
+      transform: scale(0.97);
+      opacity: 0.9;
+    }
   </style>
 </head>
 <body>
 
 <div class="container">
+
+  <!-- 🪽 리센느 음원총공팀 공식 프로필 카드 -->
+  <div class="stream-team-card">
+    <img src="images/rescene_stream_logo.png" class="stream-team-logo" alt="리센느 음원총공팀 로고">
+    <div class="stream-team-info">
+      <div class="stream-team-title">
+        리센느 음원총공팀
+        <span class="stream-team-handle">@ResceneStream</span>
+      </div>
+      <div class="stream-links">
+        <a href="https://x.com/ResceneStream" target="_blank" rel="noopener noreferrer" class="stream-link-pill x-link">
+          𝕏 트위터
+        </a>
+        <a href="https://pf.kakao.com/_WxcxowX" target="_blank" rel="noopener noreferrer" class="stream-link-pill kakao-link">
+          카카오톡
+        </a>
+        <a href="https://rescene.stream/" target="_blank" rel="noopener noreferrer" class="stream-link-pill web-link">
+          총공팀 사이트
+        </a>
+        <button class="stream-link-pill mail-link" onclick="copyStreamEmail()">
+          ✉️ 문의하기
+        </button>
+      </div>
+    </div>
+  </div>
+
   <header>
     <div class="top-badge-row">
       <span class="badge">RESCENE 🪽 연합 총공</span>
-      <span class="date-badge" id="currentDateBadge">📅 2026.10.12 (월)</span>
+      <span class="date-badge" id="currentDateBadge">📅 2026.10.13 (화)</span>
     </div>
     <h1>2026 MAMA X 인증 헬퍼</h1>
     <p class="subtitle">터치 한 번으로 해시태그 완성된 트위터 창 열기</p>
   </header>
 
-  <!-- 🗳️ 1차 투표 바로가기 링크 배너 (추천인/미션 파라미터 제외한 순수 딥링크) -->
+  <!-- 🗳️ 1차 투표 바로가기 링크 배너 -->
   <a href="https://mnetplus.world/event/ko/2026-mama?deeplink=mnetplus%3A%2F%2Fvote%2Ftemplates%2Fmama-fans-choice-vote-r1%2F6ab09532c314bb17315adc4e%3Furl_fallback_type%3Dupdate" 
      target="_blank" 
      rel="noopener noreferrer" 
@@ -434,7 +787,7 @@
     </div>
   </a>
 
-  <!-- 진행 상황 및 자동 초기화 안내 -->
+  <!-- 진행 상황 카드 -->
   <div class="progress-card">
     <div class="progress-header">
       <span>오늘의 인증 진행도</span>
@@ -461,54 +814,66 @@
     </div>
   </div>
 
-  <!-- 4개 팀 리스트 -->
+  <!-- 5개 팀 리스트 -->
   <div class="team-list">
 
     <!-- 1. 알파드라이브원 -->
     <div class="team-card" id="card-1">
-      <div class="team-info">
-        <div class="team-name">🚗 알.파.드.라.이.브.원</div>
-        <span class="tag-preview">#ReminexAllyz</span>
+      <div class="team-header-row">
+        <img src="images/alphadriveone.png" class="team-poster-thumb" alt="알파드라이브원 포스터">
+        <div class="team-meta">
+          <div class="team-name-row">
+            <div class="team-name">🚗 알파드라이브원</div>
+            <span class="status-check-badge" onclick="toggleStatus('card-1')">⚪ 투표 전</span>
+          </div>
+          <span class="tag-preview">#리마인x앨리즈</span>
+        </div>
       </div>
       <div class="btn-group">
-        <button class="btn-main" onclick="openTweet('ReminexAllyz', 'card-1')">
+        <button class="btn-main" onclick="openTweet('리마인x앨리즈', 'card-1')">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
           트위터에 글쓰기
         </button>
-        <button class="btn-copy" onclick="copyTags('ReminexAllyz')">태그 복사</button>
-      </div>
-      <div class="status-check" onclick="toggleStatus('card-1')">
-        <span class="check-icon">⚪</span> <span>인증 완료 표시</span>
+        <button class="btn-copy" onclick="copyTags('리마인x앨리즈')">태그 복사</button>
       </div>
     </div>
 
     <!-- 2. 앤더블 -->
     <div class="team-card" id="card-2">
-      <div class="team-info">
-        <div class="team-name">🍀 앤.더.블</div>
-        <span class="tag-preview">#리마인X앤클로</span>
+      <div class="team-header-row">
+        <img src="images/andouble.png" class="team-poster-thumb" alt="앤더블 포스터">
+        <div class="team-meta">
+          <div class="team-name-row">
+            <div class="team-name">🍀 앤더블</div>
+            <span class="status-check-badge" onclick="toggleStatus('card-2')">⚪ 투표 전</span>
+          </div>
+          <span class="tag-preview">#리마인x앤클로</span>
+        </div>
       </div>
       <div class="btn-group">
-        <button class="btn-main" onclick="openTweet('리마인X앤클로', 'card-2')">
+        <button class="btn-main" onclick="openTweet('리마인x앤클로', 'card-2')">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
           트위터에 글쓰기
         </button>
-        <button class="btn-copy" onclick="copyTags('리마인X앤클로')">태그 복사</button>
-      </div>
-      <div class="status-check" onclick="toggleStatus('card-2')">
-        <span class="check-icon">⚪</span> <span>인증 완료 표시</span>
+        <button class="btn-copy" onclick="copyTags('리마인x앤클로')">태그 복사</button>
       </div>
     </div>
 
     <!-- 3. 빅뱅 -->
     <div class="team-card" id="card-3">
-      <div class="team-info">
-        <div class="team-name">👑 빅.뱅</div>
-        <span class="tag-preview">#리마인과함께_븨아피</span>
+      <div class="team-header-row">
+        <img src="images/bigbang.png" class="team-poster-thumb" alt="빅뱅 포스터">
+        <div class="team-meta">
+          <div class="team-name-row">
+            <div class="team-name">👑 빅뱅</div>
+            <span class="status-check-badge" onclick="toggleStatus('card-3')">⚪ 투표 전</span>
+          </div>
+          <span class="tag-preview">#리마인과함께_븨아피</span>
+        </div>
       </div>
       <div class="btn-group">
         <button class="btn-main" onclick="openTweet('리마인과함께_븨아피', 'card-3')">
@@ -519,36 +884,84 @@
         </button>
         <button class="btn-copy" onclick="copyTags('리마인과함께_븨아피')">태그 복사</button>
       </div>
-      <div class="status-check" onclick="toggleStatus('card-3')">
-        <span class="check-icon">⚪</span> <span>인증 완료 표시</span>
-      </div>
     </div>
 
     <!-- 4. 하츠투하츠 -->
     <div class="team-card" id="card-4">
-      <div class="team-info">
-        <div class="team-name">💕 하.츠.투.하.츠</div>
-        <span class="tag-preview">#ReminexS2U</span>
+      <div class="team-header-row">
+        <img src="images/heartstohearts.png" class="team-poster-thumb" alt="하츠투하츠 포스터">
+        <div class="team-meta">
+          <div class="team-name-row">
+            <div class="team-name">💕 하츠투하츠</div>
+            <span class="status-check-badge" onclick="toggleStatus('card-4')">⚪ 투표 전</span>
+          </div>
+          <span class="tag-preview">#REMINExS2U</span>
+        </div>
       </div>
       <div class="btn-group">
-        <button class="btn-main" onclick="openTweet('ReminexS2U', 'card-4')">
+        <button class="btn-main" onclick="openTweet('REMINExS2U', 'card-4')">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
           트위터에 글쓰기
         </button>
-        <button class="btn-copy" onclick="copyTags('ReminexS2U')">태그 복사</button>
+        <button class="btn-copy" onclick="copyTags('REMINExS2U')">태그 복사</button>
       </div>
-      <div class="status-check" onclick="toggleStatus('card-4')">
-        <span class="check-icon">⚪</span> <span>인증 완료 표시</span>
+    </div>
+
+    <!-- 5. 베이비몬스터 (10/14 활성화 제어) -->
+    <div class="team-card" id="card-5">
+      <div class="team-header-row">
+        <img src="images/babymonster.png" class="team-poster-thumb" alt="베이비몬스터 포스터">
+        <div class="team-meta">
+          <div class="team-name-row">
+            <div class="team-name">😈 베이비몬스터</div>
+            <span class="status-check-badge" id="card-5-badge" onclick="toggleStatus('card-5')">⚪ 투표 전</span>
+          </div>
+          <span class="tag-preview">#리마인X몬스티즈</span>
+        </div>
+      </div>
+      <div class="btn-group" id="card-5-btn-group">
+        <!-- JS에서 날짜에 따라 동적으로 버튼 렌더링 -->
       </div>
     </div>
 
   </div>
 
+  <!-- 면책 및 팬메이드 안내 푸터 -->
   <footer>
-    RESCENE (리센느) 4th Mini [PULSE] 대박 기원 🪽
+    <div class="footer-disclaimer">
+      본 페이지는 리센느(RESCENE)를 응원하는 팬이 자발적으로 제작한 비영리 편의 도구이며,<br>
+      리센느 음원총공팀 및 소속사와 공식적인 관련이 없습니다.
+    </div>
+    <div class="footer-support">
+      RESCENE 4th Mini [PULSE] 대박 기원 🪽
+    </div>
   </footer>
+</div>
+
+<!-- 📢 접속 시 첫 안내 팝업 모달 -->
+<div class="modal-backdrop" id="noticeModal" onclick="closeNoticeModal(false)">
+  <div class="modal-card" onclick="event.stopPropagation()">
+    <div class="modal-icon-badge">📢</div>
+    <div class="modal-title">서비스 이용 안내</div>
+    <div class="modal-body">
+      <p class="modal-desc">
+        본 페이지는 <b>리센느(RESCENE)</b> 팬들을 위해 자발적으로 제작된 <b>비영리 개인 팬메이드 도구</b>입니다.
+      </p>
+      <div class="modal-alert-box">
+        ⚠️ <b>리센느 음원총공팀(@ResceneStream)</b> 및 <b>소속사</b>와 공식적인 관련이 없으며, 트위터(X) 투표 인증 편의만을 제공합니다.
+      </div>
+      <p class="modal-subtext">
+        공식 총공 지침 및 문의사항은 상단에 링크된<br>
+        <b>음원총공팀 공식 채널</b>을 이용해 주세요!
+      </p>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn-modal-hide" onclick="closeNoticeModal(true)">24시간 동안 안 보기</button>
+      <button type="button" class="btn-modal-close" onclick="closeNoticeModal(false)">닫기</button>
+    </div>
+  </div>
 </div>
 
 <div class="toast" id="toast">📋 해시태그가 복사되었습니다!</div>
@@ -560,23 +973,87 @@
 
   function getKSTDate() {
     const now = new Date();
-    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-    const kst = new Date(utc + (9 * 60 * 60 * 1000));
-    const y = kst.getFullYear();
-    const m = String(kst.getMonth() + 1).padStart(2, '0');
-    const d = String(kst.getDate()).padStart(2, '0');
-    const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
-    const dayName = dayNames[kst.getDay()];
-    return {
-      key: `${y}-${m}-${d}`,
-      display: `📅 ${y}.${m}.${d} (${dayName})`
-    };
+    try {
+      const formatter = new Intl.DateTimeFormat('ko-KR', {
+        timeZone: 'Asia/Seoul',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        weekday: 'short'
+      });
+      const parts = formatter.formatToParts(now);
+      const y = parts.find(p => p.type === 'year').value;
+      const m = parts.find(p => p.type === 'month').value;
+      const d = parts.find(p => p.type === 'day').value;
+      const dayName = parts.find(p => p.type === 'weekday').value;
+      return {
+        key: `${y}-${m}-${d}`,
+        display: `📅 ${y}.${m}.${d} (${dayName})`
+      };
+    } catch (e) {
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const kst = new Date(utc + (9 * 60 * 60 * 1000));
+      const y = kst.getFullYear();
+      const m = String(kst.getMonth() + 1).padStart(2, '0');
+      const d = String(kst.getDate()).padStart(2, '0');
+      const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
+      return {
+        key: `${y}-${m}-${d}`,
+        display: `📅 ${y}.${m}.${d} (${dayNames[kst.getDay()]})`
+      };
+    }
   }
 
   const today = getKSTDate();
   document.getElementById('currentDateBadge').textContent = today.display;
 
+  function isBabyMonsterActive() {
+    return Date.now() >= new Date('2026-10-14T00:00:00+09:00').getTime();
+  }
+
+  const babyMonsterActive = isBabyMonsterActive();
+  const activeCards = babyMonsterActive 
+    ? ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'] 
+    : ['card-1', 'card-2', 'card-3', 'card-4'];
+  const TOTAL_TEAMS = activeCards.length;
+
+  function initBabyMonsterCard() {
+    const card5 = document.getElementById('card-5');
+    const badge5 = document.getElementById('card-5-badge');
+    const btnGroup5 = document.getElementById('card-5-btn-group');
+
+    if (babyMonsterActive) {
+      card5.classList.remove('locked');
+      badge5.className = 'status-check-badge';
+      badge5.textContent = '⚪ 투표 전';
+      btnGroup5.innerHTML = `
+        <button class="btn-main" onclick="openTweet('리마인X몬스티즈', 'card-5')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          트위터에 글쓰기
+        </button>
+        <button class="btn-copy" onclick="copyTags('리마인X몬스티즈')">태그 복사</button>
+      `;
+    } else {
+      card5.classList.add('locked');
+      badge5.className = 'status-check-badge locked-badge';
+      badge5.textContent = '🔒 10/14 오픈';
+      badge5.onclick = () => showToast('🔒 베이비몬스터 부문은 10월 14일부터 오픈됩니다!');
+      btnGroup5.innerHTML = `
+        <button class="btn-main btn-locked" onclick="showToast('🔒 10월 14일(내일)부터 활성화됩니다!')">
+          🔒 10/14부터 활성화
+        </button>
+        <button class="btn-copy btn-locked" onclick="showToast('🔒 10월 14일(내일)부터 활성화됩니다!')">
+          태그 복사
+        </button>
+      `;
+    }
+  }
+
   function loadTodayState() {
+    initBabyMonsterCard();
+
     for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
       if (k && k.startsWith(STORAGE_PREFIX) && k !== STORAGE_PREFIX + today.key) {
@@ -589,15 +1066,28 @@
 
     ['card-1', 'card-2', 'card-3', 'card-4'].forEach(id => {
       const card = document.getElementById(id);
-      const checkEl = card.querySelector('.status-check');
+      if (!card) return;
+      const checkEl = card.querySelector('.status-check-badge');
       if (doneList.includes(id)) {
         card.classList.add('done');
-        checkEl.innerHTML = '<span class="check-icon">🟢</span> <span>작성 완료!</span>';
+        checkEl.innerHTML = '🟢 투표 완료';
       } else {
         card.classList.remove('done');
-        checkEl.innerHTML = '<span class="check-icon">⚪</span> <span>인증 완료 표시</span>';
+        checkEl.innerHTML = '⚪ 투표 전';
       }
     });
+
+    if (babyMonsterActive) {
+      const card5 = document.getElementById('card-5');
+      const badge5 = document.getElementById('card-5-badge');
+      if (doneList.includes('card-5')) {
+        card5.classList.add('done');
+        badge5.innerHTML = '🟢 투표 완료';
+      } else {
+        card5.classList.remove('done');
+        badge5.innerHTML = '⚪ 투표 전';
+      }
+    }
 
     updateProgress();
   }
@@ -612,10 +1102,14 @@
 
   function resetTodayData(showToastMsg = false) {
     localStorage.removeItem(STORAGE_PREFIX + today.key);
-    ['card-1', 'card-2', 'card-3', 'card-4'].forEach(id => {
+    activeCards.forEach(id => {
       const card = document.getElementById(id);
+      if (!card) return;
       card.classList.remove('done');
-      card.querySelector('.status-check').innerHTML = '<span class="check-icon">⚪</span> <span>인증 완료 표시</span>';
+      const badge = card.querySelector('.status-check-badge');
+      if (badge && !card.classList.contains('locked')) {
+        badge.innerHTML = '⚪ 투표 전';
+      }
     });
     updateProgress();
     if (showToastMsg) {
@@ -634,9 +1128,10 @@
     window.open(intentUrl, '_blank');
 
     const card = document.getElementById(cardId);
-    if (!card.classList.contains('done')) {
+    if (card && !card.classList.contains('done')) {
       card.classList.add('done');
-      card.querySelector('.status-check').innerHTML = '<span class="check-icon">🟢</span> <span>작성 완료!</span>';
+      const badge = card.querySelector('.status-check-badge');
+      if (badge) badge.innerHTML = '🟢 투표 완료';
       saveTodayState();
       updateProgress();
     }
@@ -661,14 +1156,37 @@
     }
   }
 
+  // ⭐️ 총공팀 이메일 복사 함수 ⭐️
+  function copyStreamEmail() {
+    const email = 'rescenestrmteam@gmail.com';
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(email).then(() => {
+        showToast('📋 총공팀 이메일이 복사되었습니다! (' + email + ')');
+      });
+    } else {
+      const ta = document.createElement('textarea');
+      ta.value = email;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast('📋 총공팀 이메일이 복사되었습니다! (' + email + ')');
+    }
+  }
+
   function toggleStatus(cardId) {
+    if (cardId === 'card-5' && !babyMonsterActive) {
+      showToast('🔒 10월 14일부터 진행되는 투표입니다!');
+      return;
+    }
     const card = document.getElementById(cardId);
-    const checkEl = card.querySelector('.status-check');
+    if (!card) return;
+    const checkEl = card.querySelector('.status-check-badge');
     card.classList.toggle('done');
     if (card.classList.contains('done')) {
-      checkEl.innerHTML = '<span class="check-icon">🟢</span> <span>작성 완료!</span>';
+      checkEl.innerHTML = '🟢 투표 완료';
     } else {
-      checkEl.innerHTML = '<span class="check-icon">⚪</span> <span>인증 완료 표시</span>';
+      checkEl.innerHTML = '⚪ 투표 전';
     }
     saveTodayState();
     updateProgress();
@@ -676,13 +1194,13 @@
 
   function updateProgress() {
     const doneCount = document.querySelectorAll('.team-card.done').length;
-    const pct = (doneCount / 4) * 100;
+    const pct = (doneCount / TOTAL_TEAMS) * 100;
     document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressCount').textContent = `${doneCount} / 4 완료`;
+    document.getElementById('progressCount').textContent = `${doneCount} / ${TOTAL_TEAMS} 완료`;
 
-    if (doneCount === 4) {
+    if (doneCount === TOTAL_TEAMS && TOTAL_TEAMS > 0) {
       setTimeout(() => {
-        showToast('🎉 오늘 4개 팀 인증 모두 완료! 고생하셨습니다! 🪽');
+        showToast(`🎉 오늘 ${TOTAL_TEAMS}개 팀 인증 모두 완료! 고생하셨습니다! 🪽`);
       }, 500);
     }
   }
@@ -694,7 +1212,41 @@
     setTimeout(() => toast.classList.remove('show'), 3000);
   }
 
+  // 📢 첫 접속 안내 팝업 제어
+  function checkNoticeModal() {
+    const hideUntil = localStorage.getItem('rescene_hide_notice_until');
+    if (hideUntil) {
+      const expireTime = parseInt(hideUntil, 10);
+      if (!isNaN(expireTime) && Date.now() < expireTime) {
+        return; // 아직 24시간이 지나지 않았으므로 표시하지 않음
+      }
+    }
+    const modal = document.getElementById('noticeModal');
+    if (modal) {
+      modal.classList.add('show');
+    }
+  }
+
+  function closeNoticeModal(hide24h = false) {
+    if (hide24h) {
+      const expireTime = Date.now() + (24 * 60 * 60 * 1000);
+      localStorage.setItem('rescene_hide_notice_until', expireTime.toString());
+      showToast('⏳ 24시간 동안 안내 팝업을 표시하지 않습니다.');
+    }
+    const modal = document.getElementById('noticeModal');
+    if (modal) {
+      modal.classList.remove('show');
+    }
+  }
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      closeNoticeModal(false);
+    }
+  });
+
   loadTodayState();
+  checkNoticeModal();
 </script>
 
 </body>
