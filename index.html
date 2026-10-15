@@ -2013,7 +2013,7 @@
         </div>
 
         <div class="mma-wide-actions">
-          <a href="https://www.melon.com/mma/2026/vote/top10/" target="_blank" rel="noopener noreferrer" class="btn-mma-wide-vote btn-melon" onclick="markMmaMelonDone()">
+          <a href="https://www.melon.com/mma/2026/vote/top10/" target="_blank" rel="noopener noreferrer" class="btn-mma-wide-vote btn-melon" onclick="handleMelonVoteClick(event)">
             멜론에서 TOP10 투표하기
           </a>
           <button type="button" class="btn-mma-wide-copy" onclick="copyMmaMelonLink()">링크 복사 📋</button>
@@ -2412,6 +2412,32 @@
       localStorage.setItem(MMA_MELON_KEY + today.key, 'true');
     }
     showToast('멜론으로 이동합니다! 리센느에게 투표해주세요 🍈');
+  }
+
+  function handleMelonVoteClick(e) {
+    markMmaMelonDone();
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera || '';
+    const isAndroid = /android/i.test(ua);
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+
+    if (isAndroid) {
+      if (e) e.preventDefault();
+      // 안드로이드: Chrome Intent 스킴 (앱 설치 시 앱 실행, 미설치 시 모바일 웹으로 안전 폴백)
+      const fallbackUrl = encodeURIComponent("https://m2.melon.com/mma/2026/vote/top10/");
+      const intentUrl = "intent://mma/2026/vote/top10#Intent;scheme=melonapp;package=com.iloen.melon;S.browser_fallback_url=" + fallbackUrl + ";end;";
+      window.location.href = intentUrl;
+      return;
+    }
+
+    if (isIOS) {
+      if (e) e.preventDefault();
+      // iOS: 사파리 미설치 오류 팝업 방지를 위해 모바일 전용 웹 투표 페이지로 다이렉트 이동
+      window.location.href = "https://m2.melon.com/mma/2026/vote/top10/";
+      return;
+    }
+
+    // PC 등 기타 환경: 기본 a 태그 링크 동작(target="_blank") 유지
   }
 
   function copyMmaKakaoLink() {
