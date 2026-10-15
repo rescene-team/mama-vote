@@ -2013,7 +2013,7 @@
         </div>
 
         <div class="mma-wide-actions">
-          <a href="https://www.melon.com/mma/2026/vote/top10/" target="_blank" rel="noopener noreferrer" class="btn-mma-wide-vote btn-melon" onclick="handleMelonVoteClick(event)">
+          <a href="https://www.melon.com/mma/2026/vote/top10/?artist=3709231" target="_blank" rel="noopener noreferrer" class="btn-mma-wide-vote btn-melon" onclick="handleMelonVoteClick(event)">
             멜론에서 TOP10 투표하기
           </a>
           <button type="button" class="btn-mma-wide-copy" onclick="copyMmaMelonLink()">링크 복사 📋</button>
@@ -2322,7 +2322,7 @@
 
   // 🌟 [번외] MMA 2026 특별상 & TOP10 로직
   const MMA_KAKAO_LINK = "https://kakaobank.onelink.me/0qMi/p3ifhx4u";
-  const MMA_MELON_LINK = "https://www.melon.com/mma/2026/vote/top10/";
+  const MMA_MELON_LINK = "https://www.melon.com/mma/2026/vote/top10/?artist=3709231";
   const MMA_KAKAO_KEY = "rescene_mma_kakao_done_";
   const MMA_MELON_KEY = "rescene_mma_melon_done_";
 
@@ -2418,22 +2418,12 @@
     markMmaMelonDone();
 
     const ua = navigator.userAgent || navigator.vendor || window.opera || '';
-    const isAndroid = /android/i.test(ua);
-    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream;
+    const isMobile = /Android|iPhone|iPad|iPod/i.test(ua);
 
-    if (isAndroid) {
+    if (isMobile) {
       if (e) e.preventDefault();
-      // 안드로이드: Chrome Intent 스킴 (앱 설치 시 앱 실행, 미설치 시 모바일 웹으로 안전 폴백)
-      const fallbackUrl = encodeURIComponent("https://m2.melon.com/mma/2026/vote/top10/");
-      const intentUrl = "intent://mma/2026/vote/top10#Intent;scheme=melonapp;package=com.iloen.melon;S.browser_fallback_url=" + fallbackUrl + ";end;";
-      window.location.href = intentUrl;
-      return;
-    }
-
-    if (isIOS) {
-      if (e) e.preventDefault();
-      // iOS: 사파리 미설치 오류 팝업 방지를 위해 모바일 전용 웹 투표 페이지로 다이렉트 이동
-      window.location.href = "https://m2.melon.com/mma/2026/vote/top10/";
+      // 모바일: 멜론 앱의 라우팅 버그(투표왕 튕김 현상)를 방지하고 리센느 TOP10 화면으로 안전하게 연결
+      window.location.href = "https://m2.melon.com/mma/2026/vote/top10/?artist=3709231";
       return;
     }
 
