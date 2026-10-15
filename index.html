@@ -537,7 +537,7 @@
       cursor: not-allowed !important;
     }
 
-    /* ⚡ 상단 퀵 점프 네비게이션 바 */
+    /* ⚡ 상단 퀵 점프 네비게이션 바 (인라인) */
     .quick-jump-bar {
       display: flex;
       gap: 8px;
@@ -561,6 +561,7 @@
       border-radius: 12px;
       transition: all 0.2s ease;
       box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      cursor: pointer;
     }
 
     .quick-jump-btn:active {
@@ -574,6 +575,88 @@
       background: rgba(254, 229, 0, 0.08);
     }
 
+    /* 🚀 스크롤 감지 상단 플로팅 네비게이션 바 */
+    .floating-nav-bar {
+      position: fixed;
+      top: -70px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 24px);
+      max-width: 440px;
+      z-index: 1000;
+      transition: top 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .floating-nav-bar.visible {
+      top: 10px;
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .floating-nav-inner {
+      background: rgba(15, 23, 42, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 9999px;
+      padding: 4px;
+      display: flex;
+      gap: 6px;
+      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .floating-nav-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 7px 12px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #94a3b8;
+      background: transparent;
+      border: 1px solid transparent;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .floating-nav-btn:active {
+      transform: scale(0.97);
+    }
+
+    .floating-nav-btn.active.mama {
+      background: rgba(255, 94, 184, 0.18);
+      color: #ff5eb8;
+      border-color: rgba(255, 94, 184, 0.45);
+      box-shadow: 0 2px 10px rgba(255, 94, 184, 0.25);
+    }
+
+    .floating-nav-btn.active.mma {
+      background: linear-gradient(135deg, rgba(254, 229, 0, 0.18), rgba(0, 205, 60, 0.18));
+      color: #ffd200;
+      border-color: rgba(254, 229, 0, 0.45);
+      box-shadow: 0 2px 10px rgba(254, 229, 0, 0.25);
+    }
+
+    .floating-nav-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #ff3366;
+      box-shadow: 0 0 8px #ff3366;
+      display: inline-block;
+      animation: pulseDot 1.8s infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.25); opacity: 0.6; }
+    }
+
     /* 🌟 [번외] MMA 2026 섹션 헤더 */
     .extra-section-header {
       display: flex;
@@ -581,7 +664,7 @@
       gap: 10px;
       margin-top: 14px;
       margin-bottom: 4px;
-      scroll-margin-top: 16px;
+      scroll-margin-top: 60px;
     }
 
     .extra-divider-line {
@@ -604,48 +687,48 @@
       letter-spacing: -0.3px;
     }
 
-    /* 🌟 1안: MMA 듀얼 그리드 (좌우 2분할 반절 카드) */
-    .mma-dual-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
+    /* 🌟 MMA 섹션: 가로 100% 와이드 카드 세로 스택 */
+    .mma-stacked-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
       width: 100%;
     }
 
-    .mma-dual-card {
+    .mma-wide-card {
       background: rgba(22, 30, 46, 0.95);
-      border-radius: 16px;
+      border-radius: 18px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       border: 1.5px solid var(--card-border);
-      transition: all 0.2s ease;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
     }
 
-    .mma-dual-card.kakao {
+    .mma-wide-card.kakao {
       border-color: rgba(254, 229, 0, 0.35);
     }
 
-    .mma-dual-card.melon {
+    .mma-wide-card.melon {
       border-color: rgba(0, 205, 60, 0.4);
     }
 
-    .mma-dual-card.done {
+    .mma-wide-card.done {
       border-color: rgba(16, 185, 129, 0.6) !important;
       background: rgba(16, 185, 129, 0.05);
     }
 
-    .mma-dual-thumb-wrap {
+    .mma-wide-thumb-wrap {
       width: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 16 / 7.2;
       background: #000;
       overflow: hidden;
       position: relative;
       line-height: 0;
     }
 
-    .mma-dual-thumb {
+    .mma-wide-thumb {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -653,180 +736,210 @@
       display: block;
     }
 
-    .mma-dual-tag {
+    .mma-wide-tag {
       position: absolute;
-      top: 6px;
-      right: 6px;
-      font-size: 9.5px;
+      top: 10px;
+      right: 12px;
+      font-size: 10.5px;
       font-weight: 800;
-      padding: 2px 6px;
-      border-radius: 4px;
-      backdrop-filter: blur(4px);
-      -webkit-backdrop-filter: blur(4px);
+      padding: 3px 8px;
+      border-radius: 6px;
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
     }
 
-    .kakao .mma-dual-tag {
-      background: rgba(0, 0, 0, 0.75);
+    .kakao .mma-wide-tag {
+      background: rgba(0, 0, 0, 0.78);
       color: #fee500;
-      border: 1px solid rgba(254, 229, 0, 0.4);
+      border: 1px solid rgba(254, 229, 0, 0.45);
     }
 
-    .melon .mma-dual-tag {
-      background: rgba(0, 0, 0, 0.75);
+    .melon .mma-wide-tag {
+      background: rgba(0, 0, 0, 0.78);
       color: #00cd3c;
-      border: 1px solid rgba(0, 205, 60, 0.4);
+      border: 1px solid rgba(0, 205, 60, 0.45);
     }
 
-    .mma-dual-body {
-      padding: 10px 10px 12px;
+    .mma-wide-body {
+      padding: 12px 14px 14px;
       display: flex;
       flex-direction: column;
+      gap: 10px;
+    }
+
+    .mma-wide-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
       gap: 8px;
-      flex: 1;
-      justify-content: space-between;
     }
 
-    .mma-dual-header {
+    .mma-wide-title-box {
       display: flex;
       flex-direction: column;
-      gap: 3px;
+      gap: 2px;
     }
 
-    .mma-dual-top-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .mma-dual-channel {
-      font-size: 10px;
+    .mma-wide-channel {
+      font-size: 11px;
       font-weight: 700;
       color: #94a3b8;
     }
 
-    .mma-mini-badge {
-      font-size: 9.5px;
-      padding: 2px 6px;
-      border-radius: 9999px;
-      background: rgba(148, 163, 184, 0.15);
-      color: #94a3b8;
-      font-weight: 600;
-      cursor: pointer;
-      flex-shrink: 0;
-      min-width: 50px;
-      text-align: center;
-    }
-
-    .done .mma-mini-badge {
-      background: rgba(16, 185, 129, 0.25);
-      color: #10b981;
-      font-weight: 800;
-    }
-
-    .mma-dual-title {
-      font-size: 13.5px;
+    .mma-wide-title {
+      font-size: 16px;
       font-weight: 800;
       color: #ffffff;
       letter-spacing: -0.3px;
-      line-height: 1.3;
     }
 
-    .mma-dual-desc {
-      font-size: 11px;
-      color: #94a3b8;
-      line-height: 1.3;
-    }
-
-    .mma-dual-bullets {
-      background: rgba(11, 15, 23, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 8px;
-      padding: 7px 8px;
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      font-size: 10.5px;
+    .mma-wide-desc {
+      font-size: 12px;
       color: #cbd5e1;
     }
 
-    .mma-bullet-item {
+    .mma-wide-badge {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      background: rgba(148, 163, 184, 0.15);
+      color: #94a3b8;
+      font-weight: 700;
+      cursor: pointer;
+      flex-shrink: 0;
+      text-align: center;
+      border: 1px solid rgba(148, 163, 184, 0.25);
+      transition: all 0.2s ease;
+    }
+
+    .done .mma-wide-badge {
+      background: rgba(16, 185, 129, 0.22);
+      color: #10b981;
+      border-color: rgba(16, 185, 129, 0.5);
+      font-weight: 800;
+    }
+
+    .mma-info-box {
+      background: rgba(11, 15, 23, 0.65);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 12px;
+      padding: 11px 13px;
       display: flex;
-      align-items: flex-start;
-      gap: 4px;
-      line-height: 1.35;
+      flex-direction: column;
+      gap: 7px;
+      font-size: 12px;
     }
 
-    .mma-bullet-item b {
-      color: #ffffff;
+    .mma-info-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #cbd5e1;
+      line-height: 1.4;
     }
 
-    .kakao .highlight-val {
+    .mma-info-icon {
+      width: 20px;
+      min-width: 20px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13.5px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    .mma-info-label {
+      color: #94a3b8;
+      font-weight: 600;
+      width: 58px;
+      min-width: 58px;
+      flex-shrink: 0;
+      font-size: 11.5px;
+    }
+
+    .mma-info-val {
+      font-weight: 700;
+      color: #f8fafc;
+      word-break: keep-all;
+      font-size: 12px;
+    }
+
+    .mma-info-val.highlight-yellow {
       color: #fee500;
     }
 
-    .melon .highlight-val {
+    .mma-info-val.highlight-green {
       color: #00cd3c;
     }
 
-    .btn-mma-dual-vote {
-      width: 100%;
+    .mma-wide-actions {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .btn-mma-wide-vote {
+      flex: 1;
       text-decoration: none;
-      padding: 10px 8px;
-      border-radius: 10px;
-      font-size: 12.5px;
+      padding: 11px 14px;
+      border-radius: 12px;
+      font-size: 13.5px;
       font-weight: 800;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 4px;
+      gap: 6px;
       border: none;
       cursor: pointer;
       transition: all 0.2s ease;
       white-space: nowrap;
     }
 
-    .btn-mma-dual-vote.btn-kakao {
-      background: #fee500;
+    .btn-mma-wide-vote.btn-kakao {
+      background: linear-gradient(135deg, #fee500, #facc15);
       color: #191919;
-      box-shadow: 0 4px 12px rgba(254, 229, 0, 0.25);
+      box-shadow: 0 4px 14px rgba(254, 229, 0, 0.25);
     }
 
-    .btn-mma-dual-vote.btn-kakao:active {
-      transform: scale(0.97);
+    .btn-mma-wide-vote.btn-kakao:active {
+      transform: scale(0.98);
       background: #ebd300;
     }
 
-    .btn-mma-dual-vote.btn-melon {
-      background: #00cd3c;
+    .btn-mma-wide-vote.btn-melon {
+      background: linear-gradient(135deg, #00cd3c, #00b334);
       color: #ffffff;
-      box-shadow: 0 4px 12px rgba(0, 205, 60, 0.25);
+      box-shadow: 0 4px 14px rgba(0, 205, 60, 0.3);
     }
 
-    .btn-mma-dual-vote.btn-melon:active {
-      transform: scale(0.97);
-      background: #00b334;
+    .btn-mma-wide-vote.btn-melon:active {
+      transform: scale(0.98);
+      background: #00a831;
     }
 
-    .btn-mma-dual-copy {
-      background: #1f2a3c;
+    .btn-mma-wide-copy {
+      background: rgba(30, 41, 59, 0.9);
       color: #94a3b8;
-      border: 1px solid #334155;
-      padding: 6px 8px;
-      border-radius: 8px;
-      font-size: 11px;
-      font-weight: 600;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      padding: 11px 14px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 700;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: 4px;
+      white-space: nowrap;
       transition: all 0.2s ease;
-      width: 100%;
     }
 
-    .btn-mma-dual-copy:active {
-      background: #2a374d;
+    .btn-mma-wide-copy:active {
+      background: rgba(51, 65, 85, 0.9);
       color: #fff;
+      transform: scale(0.97);
     }
 
     /* 📋 MMA 공식 안내 토글 아코디언 */
@@ -1604,6 +1717,18 @@
 </head>
 <body>
 
+<!-- 🚀 상단 슬림 플로팅 네비게이션 바 (스크롤 시 자동 등장) -->
+<div class="floating-nav-bar" id="floatingNav">
+  <div class="floating-nav-inner">
+    <button type="button" class="floating-nav-btn active mama" id="floatMamaBtn" onclick="scrollToSection('mamaSection')">
+      <span>🌐 MAMA 5팀</span>
+    </button>
+    <button type="button" class="floating-nav-btn mma" id="floatMmaBtn" onclick="scrollToSection('mmaSection')">
+      <span>🏆 MMA 2026(멜론, 카뱅)</span>
+    </button>
+  </div>
+</div>
+
 <div class="container">
 
   <!-- 🪽 리센느 음원총공팀 공식 프로필 카드 -->
@@ -1658,8 +1783,12 @@
 
   <!-- ⚡ 빠른 스크롤 점프 바 -->
   <div class="quick-jump-bar">
-    <a href="#mamaSection" class="quick-jump-btn">⚡ MAMA 5팀 인증</a>
-    <a href="#mmaSection" class="quick-jump-btn btn-jump-mma">🏆 MMA 번외 (카카오 · 멜론)</a>
+    <button type="button" class="quick-jump-btn" onclick="scrollToSection('mamaSection')">
+      <span>🌐 MAMA 5팀</span>
+    </button>
+    <button type="button" class="quick-jump-btn btn-jump-mma" onclick="scrollToSection('mmaSection')">
+      <span>🏆 MMA 2026(멜론, 카뱅)</span>
+    </button>
   </div>
 
   <!-- 진행 상황 카드 -->
@@ -1830,100 +1959,116 @@
 
   </div>
 
-  <!-- 🌟 [번외] MMA 2026 X 카카오뱅크 & 멜론 투표 섹션 -->
+  <!-- 🏆 MMA 2026 X 멜론 & 카카오뱅크 투표 섹션 -->
   <div class="extra-section-header" id="mmaSection">
     <div class="extra-divider-line"></div>
     <div class="extra-section-badge">
-      <span>🌟 번외 투표 · MMA 2026 (2개 부문)</span>
+      <span>🏆 MMA 2026 (멜론 · 카카오뱅크)</span>
     </div>
     <div class="extra-divider-line"></div>
   </div>
 
-  <div class="mma-dual-grid">
-    <!-- 🟡 1. 카카오뱅크 특별상 -->
-    <div class="mma-dual-card kakao" id="mmaKakaoCard">
-      <div class="mma-dual-thumb-wrap">
-        <img src="images/mma_kakaobank.jpg" class="mma-dual-thumb" alt="카카오뱅크 특별상">
-        <div class="mma-dual-tag">🟡 카카오뱅크</div>
+  <div class="mma-stacked-list">
+    <!-- 🍈 1. 멜론 TOP10 -->
+    <div class="mma-wide-card melon" id="mmaMelonCard">
+      <div class="mma-wide-thumb-wrap">
+        <img src="images/mma_melon_banner.png" class="mma-wide-thumb" alt="멜론 TOP10 투표">
       </div>
-      <div class="mma-dual-body">
-        <div class="mma-dual-header">
-          <div class="mma-dual-top-row">
-            <span class="mma-dual-channel">특별상 투표</span>
-            <span class="status-check-badge mma-mini-badge" id="mmaKakaoBadge" onclick="toggleMmaKakaoStatus()">⚪ 투표 전</span>
+      <div class="mma-wide-body">
+        <div class="mma-wide-header">
+          <div class="mma-wide-title-box">
+            <span class="mma-wide-channel">멜론 투표</span>
+            <div class="mma-wide-title">TOP10</div>
+            <div class="mma-wide-desc">올해의 아티스트 점수에도 반영! 🍈</div>
           </div>
-          <div class="mma-dual-title">모두의 스타상</div>
-          <div class="mma-dual-desc">리센느에게 매일 1표! 🪽</div>
+          <span class="status-check-badge mma-wide-badge" id="mmaMelonBadge" onclick="toggleMmaMelonStatus()">⚪ 투표 전</span>
         </div>
 
-        <div class="mma-dual-bullets">
-          <div class="mma-bullet-item">
-            <span>🗳</span>
-            <span><b class="highlight-val">매일 1회</b> 투표</span>
+        <div class="mma-info-box">
+          <div class="mma-info-item">
+            <span class="mma-info-icon">🗳</span>
+            <span class="mma-info-label">투표 방식</span>
+            <span class="mma-info-val highlight-green">매일 1회 (유료회원 3회)</span>
           </div>
-          <div class="mma-bullet-item">
-            <span>📅</span>
-            <span>~ 10.30 마감</span>
+          <div class="mma-info-item">
+            <span class="mma-info-icon">📅</span>
+            <span class="mma-info-label">투표 기간</span>
+            <span class="mma-info-val">2026. 10. 15 ~ 2026. 10. 29 23:59</span>
           </div>
-          <div class="mma-bullet-item">
-            <span>👤</span>
-            <span>만 14세+ 카뱅 계좌</span>
+          <div class="mma-info-item">
+            <span class="mma-info-icon">🏆</span>
+            <span class="mma-info-label">시상 부문</span>
+            <span class="mma-info-val">TOP10 (올해의 아티스트 반영)</span>
           </div>
-          <div class="mma-bullet-item">
-            <span>⚖️</span>
-            <span>투표 80% + 심사 20%</span>
+          <div class="mma-info-item">
+            <span class="mma-info-icon">⚖️</span>
+            <span class="mma-info-label">심사 기준</span>
+            <span class="mma-info-val">음원 60% + 심사 20% + 투표 20%</span>
+          </div>
+          <div class="mma-info-item">
+            <span class="mma-info-icon">👤</span>
+            <span class="mma-info-label">투표 자격</span>
+            <span class="mma-info-val">본인인증 완료 멜론 회원 (1인 1계정)</span>
           </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 6px;">
-          <a href="https://kakaobank.onelink.me/0qMi/p3ifhx4u" target="_blank" rel="noopener noreferrer" class="btn-mma-dual-vote btn-kakao" onclick="markMmaKakaoDone()">
-            카카오 투표 🗳
+        <div class="mma-wide-actions">
+          <a href="https://www.melon.com/mma/2026/vote/top10/" target="_blank" rel="noopener noreferrer" class="btn-mma-wide-vote btn-melon" onclick="markMmaMelonDone()">
+            멜론에서 TOP10 투표하기
           </a>
-          <button type="button" class="btn-mma-dual-copy" onclick="copyMmaKakaoLink()">링크 복사 📋</button>
+          <button type="button" class="btn-mma-wide-copy" onclick="copyMmaMelonLink()">링크 복사 📋</button>
         </div>
       </div>
     </div>
 
-    <!-- 🍈 2. 멜론 TOP10 -->
-    <div class="mma-dual-card melon" id="mmaMelonCard">
-      <div class="mma-dual-thumb-wrap">
-        <img src="images/mma_melon_banner.png" class="mma-dual-thumb" alt="멜론 TOP10 투표">
-        <div class="mma-dual-tag">🍈 멜론(Melon)</div>
+    <!-- 🟡 2. 카카오뱅크 특별상 -->
+    <div class="mma-wide-card kakao" id="mmaKakaoCard">
+      <div class="mma-wide-thumb-wrap">
+        <img src="images/mma_kakaobank.jpg" class="mma-wide-thumb" alt="카카오뱅크 특별상">
       </div>
-      <div class="mma-dual-body">
-        <div class="mma-dual-header">
-          <div class="mma-dual-top-row">
-            <span class="mma-dual-channel">TOP10 투표</span>
-            <span class="status-check-badge mma-mini-badge" id="mmaMelonBadge" onclick="toggleMmaMelonStatus()">⚪ 투표 전</span>
+      <div class="mma-wide-body">
+        <div class="mma-wide-header">
+          <div class="mma-wide-title-box">
+            <span class="mma-wide-channel">카카오뱅크 특별상 투표</span>
+            <div class="mma-wide-title">모두의 스타상</div>
+            <div class="mma-wide-desc">리센느에게 매일 1표 선물하기! 🪽</div>
           </div>
-          <div class="mma-dual-title">TOP10 본투표</div>
-          <div class="mma-dual-desc">올해의 아티스트 반영!</div>
+          <span class="status-check-badge mma-wide-badge" id="mmaKakaoBadge" onclick="toggleMmaKakaoStatus()">⚪ 투표 전</span>
         </div>
 
-        <div class="mma-dual-bullets">
-          <div class="mma-bullet-item">
-            <span>🗳</span>
-            <span><b class="highlight-val">매일 1회</b> (유료 3회)</span>
+        <div class="mma-info-box">
+          <div class="mma-info-item">
+            <span class="mma-info-icon">🗳</span>
+            <span class="mma-info-label">투표 방식</span>
+            <span class="mma-info-val highlight-yellow">매일 1회 투표</span>
           </div>
-          <div class="mma-bullet-item">
-            <span>📅</span>
-            <span>~ 10.29 23:59</span>
+          <div class="mma-info-item">
+            <span class="mma-info-icon">📅</span>
+            <span class="mma-info-label">투표 기간</span>
+            <span class="mma-info-val">2026. 10. 15 ~ 2026. 10. 30</span>
           </div>
-          <div class="mma-bullet-item">
-            <span>👤</span>
-            <span>본인인증 멜론 회원</span>
+          <div class="mma-info-item">
+            <span class="mma-info-icon">🏆</span>
+            <span class="mma-info-label">시상 부문</span>
+            <span class="mma-info-val">모두의 스타상</span>
           </div>
-          <div class="mma-bullet-item">
-            <span>⚖️</span>
-            <span>음원 60% + 심사 20% + 투표 20%</span>
+          <div class="mma-info-item">
+            <span class="mma-info-icon">⚖️</span>
+            <span class="mma-info-label">심사 기준</span>
+            <span class="mma-info-val">투표 80% + 심사 20%</span>
+          </div>
+          <div class="mma-info-item">
+            <span class="mma-info-icon">👤</span>
+            <span class="mma-info-label">투표 자격</span>
+            <span class="mma-info-val">만 14세 이상 카카오뱅크 계좌 보유자</span>
           </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 6px;">
-          <a href="https://www.melon.com/mma/2026/vote/top10/" target="_blank" rel="noopener noreferrer" class="btn-mma-dual-vote btn-melon" onclick="markMmaMelonDone()">
-            멜론 투표 🍈
+        <div class="mma-wide-actions">
+          <a href="https://kakaobank.onelink.me/0qMi/p3ifhx4u" target="_blank" rel="noopener noreferrer" class="btn-mma-wide-vote btn-kakao" onclick="markMmaKakaoDone()">
+            카카오뱅크에서 투표하기
           </a>
-          <button type="button" class="btn-mma-dual-copy" onclick="copyMmaMelonLink()">링크 복사 📋</button>
+          <button type="button" class="btn-mma-wide-copy" onclick="copyMmaKakaoLink()">링크 복사 📋</button>
         </div>
       </div>
     </div>
@@ -1948,7 +2093,7 @@
 
       <!-- 2. 멜론 TOP10 투표 중요 규칙 -->
       <div class="mma-guide-section">
-        <div class="mma-guide-sec-title" style="color: #00cd3c;">🍈 멜론 TOP10 본투표 규칙 (공식)</div>
+        <div class="mma-guide-sec-title" style="color: #00cd3c;">🍈 멜론 TOP10 투표 규칙 (공식)</div>
         <ul class="mma-guide-list">
           <li><b>투표 기간</b> : 2026. 10. 15(목) ~ 10. 29(목) 23:59 (KST)</li>
           <li><b>투표권</b> : <span style="color:#00cd3c; font-weight:800;">유료회원 1일 3표</span> / <span style="color:#fff; font-weight:700;">무료회원 1일 1표</span> (매일 00:00 KST 리셋)</li>
@@ -2314,6 +2459,43 @@
       if (icon) icon.textContent = '▲';
     }
   }
+
+  // 🚀 스무스 스크롤 & 상단 플로팅 네비게이션 스크롤스파이
+  function scrollToSection(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const yOffset = -58;
+    const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+    window.scrollTo({ top: y, behavior: 'smooth' });
+  }
+
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    const nav = document.getElementById('floatingNav');
+    if (!nav) return;
+
+    const jumpBar = document.querySelector('.quick-jump-bar');
+    const threshold = jumpBar ? (jumpBar.offsetTop + jumpBar.offsetHeight - 20) : 250;
+    if (scrollY > threshold) {
+      nav.classList.add('visible');
+    } else {
+      nav.classList.remove('visible');
+    }
+
+    const mmaSection = document.getElementById('mmaSection');
+    const mamaBtn = document.getElementById('floatMamaBtn');
+    const mmaBtn = document.getElementById('floatMmaBtn');
+    if (mmaSection && mamaBtn && mmaBtn) {
+      const rect = mmaSection.getBoundingClientRect();
+      if (rect.top <= 220) {
+        mmaBtn.classList.add('active', 'mma');
+        mamaBtn.classList.remove('active', 'mama');
+      } else {
+        mamaBtn.classList.add('active', 'mama');
+        mmaBtn.classList.remove('active', 'mma');
+      }
+    }
+  }, { passive: true });
 
   function loadTodayState() {
     initBabyMonsterCard();
