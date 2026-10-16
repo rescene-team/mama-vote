@@ -4,20 +4,38 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>2026 MAMA RESCENE 연합 인증 총공</title>
-  <meta name="theme-color" content="#0b0f17">
+  <meta name="theme-color" content="#d3e3ea">
   <style>
+    @font-face {
+      font-family: "Pretendard";
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+      src: url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/woff2/PretendardVariable.woff2") format("woff2");
+    }
+
     :root {
-      --primary: #ff5eb8;
-      --primary-hover: #f047a5;
-      --bg: #0b0f17;
-      --card-bg: #161e2e;
-      --card-border: #233044;
-      --text-main: #f8fafc;
-      --text-muted: #94a3b8;
-      --twitter-blue: #1d9bf0;
+      --primary: #426578;
+
+      --primary-hover: #36566a;
+
+      --bg: #d3e3ea;
+
+      --card-bg: #e2e5e7;
+
+      --card-border: #c6cdd2;
+
+      --text-main: #202a34;
+
+      --text-muted: #5a6874;
+      --twitter-blue: #c2dce7;
       --kakao-yellow: #fee500;
-      --success: #10b981;
-      --mama-purple: #7928ca;
+      --success: #62cda5;
+      --mama-purple: #a6c3d2;
+
+      color-scheme: light;
+
+      --surface-sunken: #e8ebed;
     }
 
     * {
@@ -25,7 +43,7 @@
       margin: 0;
       padding: 0;
       -webkit-tap-highlight-color: transparent;
-      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", "Segoe UI", Roboto, sans-serif;
+      font-family: "Pretendard", -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Segoe UI", sans-serif;
     }
 
     body {
@@ -34,37 +52,52 @@
       min-height: 100vh;
       display: flex;
       justify-content: center;
-      padding: 16px 12px 40px;
+
+      padding: 20px 10px calc(28px + env(safe-area-inset-bottom));
+      line-height: 1.5;
+      letter-spacing: -0.025em;
+      -webkit-font-smoothing: antialiased;
+
     }
 
     .container {
       width: 100%;
-      max-width: 440px;
+
+      max-width: 480px;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 0;
+
+      background: #f0f1f2;
+
+      padding: 24px 20px 0;
+
+      border-radius: 12px;
     }
 
-    /* 🪽 리센느 음원총공팀 프로필 카드 */
+    /*  리센느 음원총공팀 프로필 카드 */
     .stream-team-card {
-      background: rgba(22, 30, 46, 0.85);
-      border: 1px solid rgba(255, 94, 184, 0.25);
-      border-radius: 18px;
-      padding: 12px 14px;
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0 0 20px;
       display: flex;
       align-items: center;
       gap: 12px;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+      box-shadow: none;
+
+      border-bottom: 1px solid #ccd2d6;
     }
 
     .stream-team-logo {
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
       object-fit: cover;
-      border: 1.5px solid var(--primary);
+      border: none;
       flex-shrink: 0;
-      background: #1e293b;
+      background: #24262d;
+
     }
 
     .stream-team-info {
@@ -72,29 +105,34 @@
       min-width: 0;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 3px;
+
     }
 
     .stream-team-title {
-      font-size: 13.5px;
-      font-weight: 800;
-      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+
+      color: #26323c;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 2px 8px;
+      flex-wrap: wrap;
     }
 
     .stream-team-handle {
-      font-size: 11.5px;
-      color: var(--primary);
-      font-weight: 600;
+      font-size: 10px;
+
+      color: #697984;
+      font-weight: 400;
     }
 
     .stream-links {
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 0 12px;
       flex-wrap: wrap;
+
     }
 
     .stream-link-pill {
@@ -102,200 +140,230 @@
       align-items: center;
       gap: 4px;
       font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 6px;
+      padding: 5px 0;
+      border-radius: 0;
       text-decoration: none;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
       transition: all 0.15s ease;
       border: none;
+      min-height: 32px;
+
     }
 
     .stream-link-pill.x-link {
-      background: rgba(29, 155, 240, 0.15);
-      color: #38bdf8;
-      border: 1px solid rgba(29, 155, 240, 0.3);
+      background: transparent;
+
+      color: #4e6270;
+      border: none;
     }
 
     .stream-link-pill.kakao-link {
-      background: rgba(254, 229, 0, 0.15);
-      color: #fde047;
-      border: 1px solid rgba(254, 229, 0, 0.3);
+      background: transparent;
+
+      color: #4e6270;
+      border: none;
     }
 
     .stream-link-pill.web-link {
-      background: rgba(255, 94, 184, 0.15);
-      color: #ff5eb8;
-      border: 1px solid rgba(255, 94, 184, 0.3);
+      background: transparent;
+
+      color: #4e6270;
+      border: none;
     }
 
     .stream-link-pill.mail-link {
-      background: rgba(148, 163, 184, 0.15);
-      color: #cbd5e1;
-      border: 1px solid rgba(148, 163, 184, 0.3);
+      background: transparent;
+
+      color: #4e6270;
+      border: none;
     }
 
     .stream-link-pill:active {
-      transform: scale(0.96);
+      transform: scale(0.98);
       opacity: 0.8;
     }
 
     /* 상단 헤더 */
     header {
-      text-align: center;
-      padding: 6px 4px 2px;
+      text-align: left;
+      padding: 28px 0 26px;
+
     }
 
     .top-badge-row {
       display: flex;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       gap: 8px;
-      margin-bottom: 8px;
+      margin-bottom: 18px;
       flex-wrap: wrap;
+
     }
 
     .badge {
       display: inline-block;
-      background: rgba(255, 94, 184, 0.15);
-      color: var(--primary);
-      border: 1px solid rgba(255, 94, 184, 0.35);
-      padding: 4px 12px;
-      border-radius: 9999px;
-      font-size: 12px;
-      font-weight: 700;
+      background: transparent;
+
+      color: #426578;
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      font-size: 11px;
+      font-weight: 600;
     }
 
     .date-badge {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      background: rgba(56, 189, 248, 0.12);
-      color: #38bdf8;
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      padding: 4px 12px;
-      border-radius: 9999px;
-      font-size: 12px;
-      font-weight: 700;
+      background: transparent;
+
+      color: #5a6874;
+      border: none;
+      padding: 0;
+      border-radius: 0;
+      font-size: 11px;
+      font-weight: 400;
     }
 
     h1 {
-      font-size: 21px;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 6px;
+      font-size: 29px;
+      font-weight: 750;
+      letter-spacing: -0.045em;
+      margin-bottom: 12px;
+      line-height: 1.28;
+
+      color: #202a34;
     }
 
     .subtitle {
-      font-size: 13px;
-      color: var(--text-muted);
-      line-height: 1.4;
+      font-size: 14px;
+
+      color: #596b78;
+      line-height: 1.6;
+      word-break: keep-all;
     }
 
-    /* 🗳️ 1차 투표 바로가기 배너 */
+    /*  1차 투표 바로가기 배너 */
     .vote-banner-link {
       text-decoration: none;
       display: block;
     }
 
     .vote-banner {
-      background: linear-gradient(135deg, rgba(121, 40, 202, 0.35) 0%, rgba(255, 94, 184, 0.25) 100%);
-      border: 1.5px solid rgba(255, 94, 184, 0.45);
-      border-radius: 18px;
-      padding: 16px;
+      background: #bed5e0;
+
+      border: 1px solid #afc9d6;
+      border-radius: 10px;
+      padding: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 6px 20px rgba(121, 40, 202, 0.25);
-      transition: all 0.2s ease;
+      box-shadow: none;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      gap: 12px;
     }
 
     .vote-banner:active {
       transform: scale(0.98);
-      border-color: var(--primary);
-      background: linear-gradient(135deg, rgba(121, 40, 202, 0.5) 0%, rgba(255, 94, 184, 0.35) 100%);
+
+      border-color: #9dbbc9;
+
+      background: #b0ccd9;
     }
 
     .vote-banner-content {
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 6px;
+      min-width: 0;
+
     }
 
     .vote-period-tag {
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      background: #ff5eb8;
-      color: #fff;
-      font-size: 11px;
-      font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 9999px;
+      background: transparent;
+      color: #465d6b;
+      font-size: 12px;
+      font-weight: 600;
+      padding: 0;
+      border-radius: 0;
       width: fit-content;
       letter-spacing: -0.2px;
     }
 
     .vote-banner-title {
-      font-size: 15.5px;
-      font-weight: 800;
-      color: #ffffff;
+      font-size: 19px;
+      font-weight: 700;
+      color: #172b39;
       display: flex;
       align-items: center;
       gap: 6px;
+      letter-spacing: -0.035em;
     }
 
     .vote-banner-sub {
       font-size: 12px;
-      color: #cbd5e1;
+      color: #496271;
+      word-break: keep-all;
     }
 
     .vote-banner-arrow {
-      background: rgba(255, 255, 255, 0.15);
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
+      background: transparent;
+      width: 16px;
+      height: 24px;
+      border-radius: 0;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
-      font-size: 18px;
+      color: #496271;
+      font-size: 26px;
       font-weight: 700;
       flex-shrink: 0;
-      margin-left: 10px;
+      margin-left: 0;
+      border: none;
     }
 
     /* 진행도 카드 */
     .progress-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 16px;
-      padding: 14px 16px;
+      background: #dee5e9;
+
+      border: 1px solid #c5d0d7;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 14px;
     }
 
     .progress-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 8px;
-      font-size: 13px;
-      font-weight: 700;
+      margin-bottom: 16px;
+      font-size: 16px;
+      font-weight: 600;
+
     }
 
     .progress-count {
-      color: var(--primary);
-      font-size: 14px;
+      color: #355e74;
+      font-size: 22px;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      letter-spacing: -0.04em;
     }
 
     .progress-bar {
-      background: #0f1522;
-      height: 8px;
+      background: #bdcbd3;
+      height: 5px;
       border-radius: 9999px;
       overflow: hidden;
     }
 
     .progress-fill {
-      background: linear-gradient(90deg, var(--primary), #38bdf8);
+      background: #658da2;
       height: 100%;
       width: 0%;
       transition: width 0.3s ease;
@@ -307,46 +375,61 @@
       justify-content: space-between;
       align-items: center;
       margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px dashed rgba(255, 255, 255, 0.08);
-      font-size: 11.5px;
-      color: #64748b;
+      padding-top: 0;
+      border-top: none;
+      font-size: 11px;
+
+      color: #5c6e7b;
+      gap: 8px;
     }
 
     .btn-manual-reset {
       background: transparent;
-      border: 1px solid #334155;
-      color: #94a3b8;
-      padding: 2px 8px;
-      border-radius: 6px;
+      border: none;
+
+      color: #485f6e;
+      padding: 6px 0 6px 8px;
+      border-radius: 4px;
       font-size: 11px;
       cursor: pointer;
+      min-height: 36px;
+      flex-shrink: 0;
     }
 
     .btn-manual-reset:active {
-      background: #1e293b;
-      color: #fff;
+      background: #cdd8de;
+
+      color: #263f4e;
     }
 
     /* 안내 배너 */
     .notice-box {
-      background: rgba(29, 155, 240, 0.08);
-      border: 1px solid rgba(29, 155, 240, 0.25);
-      border-radius: 14px;
-      padding: 13px 14px;
-      font-size: 12.5px;
-      line-height: 1.5;
-      color: #bae6fd;
+      word-break: keep-all;
+      background: #e5e9ec;
+
+      border: 1px solid #cfd6db;
+      border-radius: 10px;
+      padding: 18px;
+      font-size: 13px;
+      line-height: 1.75;
+
+      color: #52616d;
+
+      border-top: 1px solid #cfd6db;
+
+      border-bottom: 1px solid #cfd6db;
     }
 
     .notice-box b {
-      color: #38bdf8;
+      color: #354b5a;
+      font-weight: 600;
     }
 
     .notice-box ol {
-      margin-top: 6px;
-      padding-left: 18px;
-      color: #e0f2fe;
+      margin-top: 10px;
+      padding-left: 20px;
+
+      color: #52616d;
     }
 
     .notice-box li {
@@ -354,65 +437,88 @@
     }
 
     .notice-tip {
-      margin-top: 8px;
-      padding-top: 8px;
-      border-top: 1px dashed rgba(56, 189, 248, 0.25);
-      font-size: 11.5px;
-      color: #94a3b8;
+      margin-top: 10px;
+      padding-top: 0;
+      border-top: none;
+      font-size: 12px;
+
+      color: #60717e;
     }
 
     /* 팀 리스트 */
     .team-list {
       display: flex;
       flex-direction: column;
-      gap: 12px;
+
+      gap: 0;
+      scroll-margin-top: 80px;
+      padding-top: 28px;
+
+      background: #e1e5e8;
+
+      border: 1px solid #c7d0d6;
+
+      border-radius: 10px;
+
+      padding: 20px 18px 0;
+
+      margin-top: 28px;
     }
 
     .team-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 18px;
-      padding: 14px;
+      background: transparent;
+
+      border: none;
+
+      border-radius: 0;
+
+      padding: 22px 0;
       display: flex;
       flex-direction: column;
-      gap: 12px;
-      transition: all 0.2s ease;
+
+      gap: 16px;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
       position: relative;
+
+      border-bottom: 1px solid #bbc7cf;
     }
 
     .team-card.done {
-      border-color: rgba(16, 185, 129, 0.5);
-      background: rgba(16, 185, 129, 0.06);
+      border-color: #bbc7cf;
+
+      background: transparent;
     }
 
     .team-card.locked {
-      border-color: #334155;
-      opacity: 0.65;
-      background: #111722;
+      border-color: #353842;
+      opacity: 0.8;
+
+      background: transparent;
     }
 
     .team-header-row {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 10px;
     }
 
     .team-poster-thumb {
-      width: 60px;
-      height: 60px;
-      border-radius: 12px;
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
       object-fit: cover;
       flex-shrink: 0;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.35);
-      background: #0f1522;
+      border: none;
+      box-shadow: none;
+      background: #121316;
+
     }
 
     .team-meta {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 4px;
+      gap: 5px;
       min-width: 0;
     }
 
@@ -424,23 +530,29 @@
     }
 
     .team-name {
-      font-size: 15px;
-      font-weight: 800;
+      font-size: 16px;
+      font-weight: 650;
       display: flex;
       align-items: center;
       gap: 5px;
-      white-space: nowrap;
-      overflow: hidden;
+      white-space: normal;
+      overflow: visible;
       text-overflow: ellipsis;
+      line-height: 1.4;
+      word-break: keep-all;
+      letter-spacing: -0.04em;
+
+      color: #253540;
     }
 
     .status-check-badge {
       font-size: 11px;
-      padding: 3px 8px;
-      border-radius: 9999px;
-      background: rgba(148, 163, 184, 0.15);
-      color: #94a3b8;
-      font-weight: 600;
+      padding: 6px 0 6px 6px;
+      border-radius: 4px;
+      background: transparent;
+
+      color: #5a6b77;
+      font-weight: 500;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
@@ -449,28 +561,32 @@
       flex-shrink: 0;
       min-width: 66px;
       text-align: center;
-      transition: all 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      min-height: 36px;
     }
 
     .team-card.done .status-check-badge {
-      background: rgba(16, 185, 129, 0.2);
-      color: var(--success);
-      font-weight: 700;
+      background: transparent;
+
+      color: #1d7249;
+      font-weight: 600;
     }
 
     .status-check-badge.locked-badge {
-      background: rgba(148, 163, 184, 0.1);
-      color: #64748b;
+      background: transparent;
+      color: #9499a6;
       cursor: not-allowed;
+
     }
 
     .tag-preview {
-      font-size: 11px;
-      color: var(--primary);
-      background: rgba(255, 94, 184, 0.1);
-      padding: 2px 8px;
-      border-radius: 6px;
-      font-weight: 600;
+      font-size: 12px;
+
+      color: #5e7482;
+      background: transparent;
+      padding: 0;
+      border-radius: 0;
+      font-weight: 400;
       width: fit-content;
       word-break: break-all;
     }
@@ -483,66 +599,75 @@
 
     .btn-main {
       flex: 1;
-      background: var(--twitter-blue);
-      color: #fff;
+
+      background: #3b5d70;
+
+      color: #ffffff;
       border: none;
-      padding: 12px 14px;
-      border-radius: 12px;
-      font-size: 13.5px;
-      font-weight: 700;
+      padding: 13px 10px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(29, 155, 240, 0.25);
+      box-shadow: none;
+      min-height: 48px;
     }
 
     .btn-main:active {
-      transform: scale(0.97);
-      background: #1a8cd8;
+      transform: scale(0.98);
+
+      background: #2d4e61;
     }
 
     .btn-main.btn-locked {
-      background: #252f40 !important;
-      color: #64748b !important;
-      box-shadow: none !important;
+      background: #292c34 !important;
+      color: #9499a6 !important;
+      box-shadow: none;
       cursor: not-allowed !important;
     }
 
     .btn-copy {
-      background: #1f2a3c;
-      color: #94a3b8;
-      border: 1px solid #334155;
+      background: #c9d4db;
+
+      color: #334e5f;
+      border: 1px solid transparent;
       padding: 0 14px;
-      border-radius: 12px;
+      border-radius: 8px;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 500;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       white-space: nowrap;
+      min-height: 48px;
     }
 
     .btn-copy:active {
-      background: #2a374d;
-      color: #fff;
+      background: #bacad4;
+
+      color: #263f4e;
     }
 
     .btn-copy.btn-locked {
-      background: #161e2b !important;
-      color: #475569 !important;
-      border-color: #233044 !important;
+      background: #181a20 !important;
+      color: #858b98 !important;
+      border-color: #2a2d35 !important;
       cursor: not-allowed !important;
     }
 
     /* ⚡ 상단 퀵 점프 네비게이션 바 (인라인) */
     .quick-jump-bar {
       display: flex;
-      gap: 8px;
-      margin-top: 2px;
-      margin-bottom: 2px;
+      gap: 0;
+      margin-top: 18px;
+      margin-bottom: 18px;
+
+      border-bottom: 1px solid #bdc8cf;
     }
 
     .quick-jump-btn {
@@ -551,28 +676,35 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      background: rgba(22, 30, 46, 0.85);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      color: #cbd5e1;
+      background: transparent;
+      border: none;
+
+      color: #263f4e;
       text-decoration: none;
-      font-size: 12px;
-      font-weight: 700;
-      padding: 9px 12px;
-      border-radius: 12px;
-      transition: all 0.2s ease;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 10px 8px;
+      border-radius: 0;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      box-shadow: none;
       cursor: pointer;
+      min-height: 48px;
+
+      border-bottom: 2px solid #456e83;
     }
 
     .quick-jump-btn:active {
-      transform: scale(0.97);
-      background: #1e293b;
+      transform: scale(0.98);
+
+      background: #dce5ea;
+
     }
 
     .quick-jump-btn.btn-jump-mma {
-      border-color: rgba(254, 229, 0, 0.35);
-      color: #ffd200;
-      background: rgba(254, 229, 0, 0.08);
+      border-color: transparent;
+
+      color: #5a6874;
+      background: transparent;
     }
 
     /* 🚀 스크롤 감지 상단 플로팅 네비게이션 바 */
@@ -581,30 +713,31 @@
       top: -70px;
       left: 50%;
       transform: translateX(-50%);
-      width: calc(100% - 24px);
+      width: calc(100% - 40px);
       max-width: 440px;
       z-index: 1000;
       transition: top 0.28s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.28s ease;
       opacity: 0;
       pointer-events: none;
+
     }
 
     .floating-nav-bar.visible {
-      top: 10px;
+      top: calc(10px + env(safe-area-inset-top));
       opacity: 1;
       pointer-events: auto;
     }
 
     .floating-nav-inner {
-      background: rgba(15, 23, 42, 0.9);
+      background: rgba(36, 43, 50, 0.98);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      border-radius: 9999px;
+      border: 1px solid #536370;
+      border-radius: 10px;
       padding: 4px;
       display: flex;
       gap: 6px;
-      box-shadow: 0 8px 26px rgba(0, 0, 0, 0.55), 0 2px 8px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
     }
 
     .floating-nav-btn {
@@ -613,33 +746,34 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 7px 12px;
-      border-radius: 9999px;
+      padding: 9px 8px;
+      border-radius: 6px;
       font-size: 12px;
-      font-weight: 700;
-      color: #94a3b8;
+      font-weight: 600;
+      color: #bac8d2;
       background: transparent;
       border: 1px solid transparent;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      min-height: 44px;
     }
 
     .floating-nav-btn:active {
-      transform: scale(0.97);
+      transform: scale(0.98);
     }
 
     .floating-nav-btn.active.mama {
-      background: rgba(255, 94, 184, 0.18);
-      color: #ff5eb8;
-      border-color: rgba(255, 94, 184, 0.45);
-      box-shadow: 0 2px 10px rgba(255, 94, 184, 0.25);
+      background: #435563;
+      color: #f0f7fa;
+      border-color: transparent;
+      box-shadow: none;
     }
 
     .floating-nav-btn.active.mma {
-      background: linear-gradient(135deg, rgba(254, 229, 0, 0.18), rgba(0, 205, 60, 0.18));
-      color: #ffd200;
-      border-color: rgba(254, 229, 0, 0.45);
-      box-shadow: 0 2px 10px rgba(254, 229, 0, 0.25);
+      background: #435563;
+      color: #f0f7fa;
+      border-color: transparent;
+      box-shadow: none;
     }
 
     .floating-nav-dot {
@@ -647,7 +781,7 @@
       height: 7px;
       border-radius: 50%;
       background: #ff3366;
-      box-shadow: 0 0 8px #ff3366;
+      box-shadow: none;
       display: inline-block;
       animation: pulseDot 1.8s infinite;
     }
@@ -661,62 +795,76 @@
     .extra-section-header {
       display: flex;
       align-items: center;
-      gap: 10px;
-      margin-top: 14px;
-      margin-bottom: 4px;
-      scroll-margin-top: 60px;
+      gap: 0;
+      margin-top: 36px;
+      margin-bottom: 20px;
+      scroll-margin-top: 80px;
+
     }
 
     .extra-divider-line {
       flex: 1;
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(254, 229, 0, 0.45), transparent);
+      background: var(--card-border);
     }
 
     .extra-section-badge {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      background: rgba(254, 229, 0, 0.12);
-      border: 1px solid rgba(254, 229, 0, 0.35);
-      color: #ffd200;
-      padding: 4px 12px;
-      border-radius: 9999px;
-      font-size: 11.5px;
-      font-weight: 800;
+      background: transparent;
+      border: none;
+      color: var(--text-main);
+      padding: 0;
+      border-radius: 0;
+      font-size: 20px;
+      font-weight: 700;
       letter-spacing: -0.3px;
+
     }
 
     /* 🌟 MMA 섹션: 가로 100% 와이드 카드 세로 스택 */
     .mma-stacked-list {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+
+      gap: 24px;
       width: 100%;
+
     }
 
     .mma-wide-card {
-      background: rgba(22, 30, 46, 0.95);
-      border-radius: 18px;
+      background: #e1e5e8;
+      border-radius: 10px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      border: 1.5px solid var(--card-border);
+
+      border: 1px solid #bdcbd2;
       transition: all 0.25s ease;
-      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+      box-shadow: none;
     }
 
     .mma-wide-card.kakao {
-      border-color: rgba(254, 229, 0, 0.35);
+      border-color: #d5c781;
+
+      background: #f2edcf;
+
+      border-top: 4px solid #dfbd23;
     }
 
     .mma-wide-card.melon {
-      border-color: rgba(0, 205, 60, 0.4);
+      border-color: #9ac7aa;
+
+      background: #dfeee4;
+
+      border-top: 4px solid #219653;
     }
 
     .mma-wide-card.done {
-      border-color: rgba(16, 185, 129, 0.6) !important;
-      background: rgba(16, 185, 129, 0.05);
+      border-color: var(--platform-border) !important;
+
+      background: var(--platform-bg);
     }
 
     .mma-wide-thumb-wrap {
@@ -726,6 +874,7 @@
       overflow: hidden;
       position: relative;
       line-height: 0;
+      border-radius: 0;
     }
 
     .mma-wide-thumb {
@@ -746,7 +895,7 @@
       border-radius: 6px;
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+      box-shadow: none;
     }
 
     .kakao .mma-wide-tag {
@@ -757,15 +906,15 @@
 
     .melon .mma-wide-tag {
       background: rgba(0, 0, 0, 0.78);
-      color: #00cd3c;
-      border: 1px solid rgba(0, 205, 60, 0.45);
+      color: #57d58a;
+      border: 1px solid rgba(87, 213, 138, 0.45);
     }
 
     .mma-wide-body {
-      padding: 12px 14px 14px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 20px;
     }
 
     .mma-wide-header {
@@ -782,96 +931,283 @@
     }
 
     .mma-wide-channel {
-      font-size: 11px;
-      font-weight: 700;
-      color: #94a3b8;
+      font-size: 12px;
+      font-weight: 500;
+
+      color: #53655d;
     }
 
     .mma-wide-title {
-      font-size: 16px;
-      font-weight: 800;
+      font-size: 25px;
+      font-weight: 700;
       color: #ffffff;
-      letter-spacing: -0.3px;
+      letter-spacing: -0.04em;
+      line-height: 1.3;
+
     }
 
     .mma-wide-desc {
-      font-size: 12px;
-      color: #cbd5e1;
+      font-size: 13px;
+
+      color: #53665c;
+      line-height: 1.6;
+      word-break: keep-all;
     }
 
     .mma-wide-badge {
       font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 9999px;
-      background: rgba(148, 163, 184, 0.15);
-      color: #94a3b8;
-      font-weight: 700;
+      padding: 6px 0 6px 6px;
+      border-radius: 4px;
+      background: transparent;
+
+      color: #596b61;
+      font-weight: 500;
       cursor: pointer;
       flex-shrink: 0;
       text-align: center;
-      border: 1px solid rgba(148, 163, 184, 0.25);
-      transition: all 0.2s ease;
+      border: none;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
     }
 
     .done .mma-wide-badge {
-      background: rgba(16, 185, 129, 0.22);
-      color: #10b981;
-      border-color: rgba(16, 185, 129, 0.5);
+      background: transparent;
+
+      color: #1d7249;
+      border-color: transparent;
       font-weight: 800;
+
+    }
+
+    /* 📊 멜론 TOP10 실시간 순위 & 표차이 위젯 */
+    .mma-live-rank-box {
+      background: #f2f8f3;
+
+      border: 1px solid #b5cfbd;
+      border-radius: 6px;
+
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      box-shadow: none;
+
+      border-top: 1px solid #b5cfbd;
+
+      border-bottom: 1px solid #b5cfbd;
+    }
+
+    .mma-live-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .mma-live-badge-group {
+      display: flex;
+      align-items: center;
+      gap: 4px 6px;
+      flex-wrap: wrap;
+    }
+
+    .mma-live-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #57d58a;
+      box-shadow: none;
+      animation: pulseDot 1.6s infinite ease-in-out;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.45; transform: scale(0.85); }
+    }
+
+    .mma-live-label {
+      font-size: 12px;
+      font-weight: 600;
+
+      color: #267447;
+      letter-spacing: -0.2px;
+    }
+
+    .mma-live-time {
+      font-size: 10.5px;
+
+      color: #5c7264;
+      font-weight: 600;
+    }
+
+    .mma-live-refresh-btn {
+      background: transparent;
+      border: none;
+
+      color: #38684a;
+      font-size: 11px;
+      font-weight: 500;
+      padding: 6px 0 6px 8px;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      transition: all 0.15s ease;
+      min-height: 36px;
+      flex-shrink: 0;
+    }
+
+    .mma-live-refresh-btn:active {
+      transform: scale(0.98);
+      background: rgba(87, 213, 138, 0.2);
+      border-color: rgba(87, 213, 138, 0.5);
+      color: #fff;
+    }
+
+    .mma-live-main-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 2px;
+    }
+
+    .mma-live-rank-title {
+      font-size: 16px;
+      font-weight: 600;
+
+      color: #2c4535;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+    }
+
+    .mma-live-rank-num {
+      color: #148044;
+      font-size: 28px;
+      font-weight: 700;
+      text-shadow: none;
+      font-variant-numeric: tabular-nums;
+
+    }
+
+    .mma-live-votes {
+      font-size: 12px;
+      font-weight: 500;
+
+      color: #486252;
+    }
+
+    .mma-live-gap-box {
+      background: transparent;
+      border: none;
+      border-radius: 0;
+      padding: 0;
+      font-size: 12px;
+      font-weight: 400;
+      color: #d8dbe2;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+    }
+
+    .mma-live-gap-text {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+      flex-wrap: wrap;
+      line-height: 1.4;
+
+      color: #51695a;
+    }
+
+    .mma-gap-highlight {
+      color: #34657e;
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    .mma-gap-highlight.is-first {
+      color: #148044;
+    }
+
+    .mma-live-progress-track {
+      width: 100%;
+      height: 6px;
+
+      background: #d4e4d8;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+
+    .mma-live-progress-fill {
+      height: 100%;
+      width: 0%;
+
+      background: #389f5f;
+      border-radius: 999px;
+      transition: width 0.4s ease;
     }
 
     .mma-info-box {
-      background: rgba(11, 15, 23, 0.65);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      border-radius: 12px;
-      padding: 11px 13px;
+      background: var(--platform-inset);
+
+      border: 1px solid var(--platform-border);
+
+      border-radius: 8px;
+
+      padding: 16px 14px;
       display: flex;
       flex-direction: column;
-      gap: 7px;
+
+      gap: 12px;
       font-size: 12px;
+
     }
 
     .mma-info-item {
       display: flex;
-      align-items: center;
-      gap: 8px;
-      color: #cbd5e1;
-      line-height: 1.4;
-    }
+      align-items: flex-start;
 
-    .mma-info-icon {
-      width: 20px;
-      min-width: 20px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13.5px;
-      flex-shrink: 0;
-      text-align: center;
+      gap: 10px;
+      color: #c3c6cf;
+      line-height: 1.4;
+
     }
 
     .mma-info-label {
-      color: #94a3b8;
-      font-weight: 600;
-      width: 58px;
-      min-width: 58px;
+      color: #5c6a62;
+      font-weight: 400;
+
+      width: 54px;
+
+      min-width: 54px;
       flex-shrink: 0;
-      font-size: 11.5px;
+      font-size: 12px;
+      line-height: 1.6;
     }
 
     .mma-info-val {
-      font-weight: 700;
-      color: #f8fafc;
+      font-weight: 500;
+
+      color: #2a4032;
       word-break: keep-all;
-      font-size: 12px;
+      font-size: 13px;
+      line-height: 1.6;
+      overflow-wrap: anywhere;
     }
 
     .mma-info-val.highlight-yellow {
-      color: #fee500;
+      color: #75600f;
     }
 
     .mma-info-val.highlight-green {
-      color: #00cd3c;
+      color: #177541;
     }
 
     .mma-wide-actions {
@@ -883,24 +1219,27 @@
     .btn-mma-wide-vote {
       flex: 1;
       text-decoration: none;
-      padding: 11px 14px;
-      border-radius: 12px;
-      font-size: 13.5px;
-      font-weight: 800;
+      padding: 13px 8px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 6px;
       border: none;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
       white-space: nowrap;
+      min-height: 48px;
+
     }
 
     .btn-mma-wide-vote.btn-kakao {
-      background: linear-gradient(135deg, #fee500, #facc15);
-      color: #191919;
-      box-shadow: 0 4px 14px rgba(254, 229, 0, 0.25);
+      background: #f1d447;
+
+      color: #3a310e;
+      box-shadow: none;
     }
 
     .btn-mma-wide-vote.btn-kakao:active {
@@ -909,9 +1248,10 @@
     }
 
     .btn-mma-wide-vote.btn-melon {
-      background: linear-gradient(135deg, #00cd3c, #00b334);
+      background: #168447;
+
       color: #ffffff;
-      box-shadow: 0 4px 14px rgba(0, 205, 60, 0.3);
+      box-shadow: none;
     }
 
     .btn-mma-wide-vote.btn-melon:active {
@@ -920,69 +1260,84 @@
     }
 
     .btn-mma-wide-copy {
-      background: rgba(30, 41, 59, 0.9);
-      color: #94a3b8;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 11px 14px;
-      border-radius: 12px;
+      background: var(--platform-copy);
+
+      color: var(--platform-text);
+      border: 1px solid transparent;
+      padding: 12px;
+      border-radius: 8px;
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 500;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 4px;
       white-space: nowrap;
-      transition: all 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      min-height: 48px;
     }
 
     .btn-mma-wide-copy:active {
-      background: rgba(51, 65, 85, 0.9);
+      background: rgba(52, 55, 65, 0.9);
       color: #fff;
-      transform: scale(0.97);
+      transform: scale(0.98);
     }
 
-    /* 📋 MMA 공식 안내 토글 아코디언 */
+    /*  MMA 공식 안내 토글 아코디언 */
     .mma-guide-accordion {
       width: 100%;
-      margin-top: 10px;
+      margin-top: 30px;
+
     }
 
     .mma-guide-toggle-btn {
       width: 100%;
-      background: rgba(22, 30, 46, 0.75);
-      border: 1px dashed rgba(255, 255, 255, 0.18);
-      color: #94a3b8;
-      border-radius: 12px;
-      padding: 10px 14px;
-      font-size: 12px;
-      font-weight: 700;
+
+      background: #e0e5e8;
+
+      border: 1px solid #c6cfd5;
+
+      color: #334d5d;
+      border-radius: 8px;
+      padding: 16px;
+      font-size: 13px;
+      font-weight: 500;
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      min-height: 50px;
+
+      border-top: 1px solid #c6cfd5;
+
+      border-bottom: 1px solid #c6cfd5;
     }
 
     .mma-guide-toggle-btn:active,
     .mma-guide-toggle-btn.active {
-      background: rgba(30, 41, 59, 0.95);
-      color: #f1f5f9;
-      border-color: rgba(0, 205, 60, 0.45);
+      background: rgba(39, 42, 50, 0.95);
+      color: #e8eaee;
+      border-color: rgba(87, 213, 138, 0.45);
     }
 
     .mma-guide-content {
       display: none;
-      background: rgba(15, 21, 33, 0.95);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+
+      background: #e7ecef;
+
+      border: 1px solid #c6cfd5;
       border-top: none;
-      border-radius: 0 0 14px 14px;
-      padding: 14px;
+      border-radius: 0 0 8px 8px;
+      padding: 18px;
       margin-top: -3px;
       flex-direction: column;
       gap: 12px;
-      font-size: 11.5px;
-      line-height: 1.5;
+      font-size: 12px;
+      line-height: 1.75;
+
+      color: #465c6b;
     }
 
     .mma-guide-section {
@@ -994,7 +1349,8 @@
     .mma-guide-sec-title {
       font-size: 12px;
       font-weight: 800;
-      color: #f8fafc;
+
+      color: #2d4656;
       display: flex;
       align-items: center;
       gap: 5px;
@@ -1006,7 +1362,8 @@
       display: flex;
       flex-direction: column;
       gap: 4px;
-      color: #cbd5e1;
+
+      color: #465c6b;
     }
 
     .mma-guide-list li {
@@ -1018,7 +1375,7 @@
       content: '•';
       position: absolute;
       left: 2px;
-      color: #00cd3c;
+      color: #57d58a;
       font-weight: bold;
     }
 
@@ -1027,7 +1384,7 @@
     }
 
     .mma-guide-link {
-      color: #38bdf8;
+      color: #355f78;
       text-decoration: none;
       font-weight: 700;
     }
@@ -1040,48 +1397,56 @@
     footer {
       text-align: center;
       font-size: 11px;
-      color: #64748b;
-      padding: 14px 6px 20px;
+
+      color: #5e717e;
+      padding: 24px 4px 20px;
       line-height: 1.6;
-      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       margin-top: 6px;
     }
 
     .footer-disclaimer {
-      color: #64748b;
+      color: #5e717e;
       margin-bottom: 6px;
     }
 
     .footer-support {
-      color: var(--primary);
+      color: #426578;
       font-weight: 700;
       font-size: 12px;
     }
 
     /* 토스트 알림 */
     .toast {
+      opacity: 0;
       position: fixed;
-      bottom: 24px;
+      bottom: calc(24px + env(safe-area-inset-bottom));
       left: 50%;
       transform: translateX(-50%) translateY(120px);
-      background: #0ea5e9;
-      color: white;
+      background: #30333d;
+      color: #f2f3f5;
       padding: 11px 20px;
-      border-radius: 9999px;
+      border-radius: 8px;
       font-size: 13px;
       font-weight: 700;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
-      transition: transform 0.25s ease;
+      box-shadow: none;
+      transition: transform 0.25s ease, opacity 0.25s ease;
       z-index: 9999;
       pointer-events: none;
-      white-space: nowrap;
+      white-space: normal;
+      width: max-content;
+      max-width: calc(100% - 32px);
+      text-align: center;
+      border: 1px solid #454954;
+
     }
 
     .toast.show {
+      opacity: 1;
       transform: translateX(-50%) translateY(0);
     }
 
-    /* 📢 최초 안내 팝업 모달 */
+    /*  최초 안내 팝업 모달 */
     .modal-backdrop {
       position: fixed;
       top: 0;
@@ -1107,84 +1472,80 @@
     }
 
     .modal-card {
-      background: #161e2e;
-      border: 1px solid rgba(255, 94, 184, 0.35);
-      border-radius: 20px;
+      background: #242b32;
+      border: 1px solid #536370;
+      border-radius: 12px;
       width: 100%;
       max-width: 360px;
-      padding: 24px 20px 18px;
-      text-align: center;
-      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.6), 0 0 24px rgba(255, 94, 184, 0.15);
-      transform: scale(0.92);
+      padding: 28px 20px 20px;
+      text-align: left;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+      transform: scale(0.98);
       transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+      max-height: calc(100dvh - 32px);
+      overflow-y: auto;
+      overscroll-behavior: contain;
+
+      color: #f4f7f9;
     }
 
     .modal-backdrop.show .modal-card {
       transform: scale(1);
     }
 
-    .modal-icon-badge {
-      width: 50px;
-      height: 50px;
-      margin: 0 auto 12px;
-      border-radius: 50%;
-      background: rgba(255, 94, 184, 0.12);
-      border: 1.5px solid rgba(255, 94, 184, 0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 24px;
-    }
-
     .modal-title {
-      font-size: 17px;
-      font-weight: 800;
+      font-size: 22px;
+      font-weight: 700;
       color: #fff;
-      margin-bottom: 12px;
+      margin-bottom: 16px;
       letter-spacing: -0.3px;
+
     }
 
     .modal-body {
-      font-size: 12.5px;
-      line-height: 1.6;
-      color: #cbd5e1;
+      font-size: 14px;
+      line-height: 1.75;
+      color: #c3c6cf;
       text-align: left;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 14px;
     }
 
     .modal-desc {
-      text-align: center;
-      color: #f1f5f9;
+      text-align: left;
+      color: #e8eaee;
       word-break: keep-all;
+
     }
 
     .modal-desc b {
-      color: var(--primary);
+      color: #c2dce7;
     }
 
     .modal-alert-box {
-      background: rgba(245, 158, 11, 0.1);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      border-radius: 12px;
-      padding: 10px 12px;
-      font-size: 11.5px;
+      background: #242321;
+      border: none;
+      border-radius: 6px;
+      padding: 14px;
+      font-size: 12px;
       line-height: 1.55;
-      color: #fef08a;
+      color: #c9c4b8;
       word-break: keep-all;
+
     }
 
     .modal-alert-box b {
-      color: #fde047;
+      color: #e9d89f;
     }
 
     .modal-subtext {
       font-size: 11.5px;
-      color: #94a3b8;
-      text-align: center;
+      color: #a2a6b1;
+      text-align: left;
       line-height: 1.5;
       word-break: keep-all;
+
     }
 
     .modal-actions {
@@ -1195,56 +1556,60 @@
 
     .btn-modal-hide {
       flex: 1.25;
-      background: #1f2a3c;
-      border: 1px solid #334155;
-      color: #94a3b8;
+      background: #37434f;
+      border: none;
+      color: #e0e9ef;
       padding: 11px 8px;
-      border-radius: 12px;
+      border-radius: 8px;
       font-size: 11.5px;
       font-weight: 600;
       cursor: pointer;
       transition: all 0.15s ease;
       white-space: nowrap;
+      min-height: 48px;
     }
 
     .btn-modal-hide:active {
       background: #28364d;
-      color: #e2e8f0;
+      color: #d8dbe2;
     }
 
     .btn-modal-close {
       flex: 1;
-      background: linear-gradient(135deg, #ff5eb8, #d946ef);
+      background: #c2dce7;
       border: none;
-      color: #fff;
+      color: #182c39;
       padding: 11px 12px;
-      border-radius: 12px;
+      border-radius: 8px;
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(255, 94, 184, 0.3);
+      box-shadow: none;
       transition: all 0.15s ease;
       white-space: nowrap;
+      min-height: 48px;
     }
 
     .btn-modal-close:active {
-      transform: scale(0.97);
+      transform: scale(0.98);
       opacity: 0.9;
     }
 
     /* 📊 실시간 트위터 인증 통계 배너 & 달력 */
     .stats-banner-card {
-      background: linear-gradient(135deg, rgba(121, 40, 202, 0.25), rgba(255, 94, 184, 0.16));
-      border: 1px solid rgba(255, 94, 184, 0.35);
-      border-radius: 16px;
-      padding: 12px 14px;
+      background: #d9e4eb;
+
+      border: 1px solid #b7cad5;
+      border-radius: 8px;
+      padding: 16px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 10px;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
-      transition: all 0.2s ease;
+      box-shadow: none;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+      margin-top: 20px;
     }
 
     .stats-banner-card:active {
@@ -1264,14 +1629,15 @@
       align-items: center;
       gap: 6px;
       font-size: 11px;
+      flex-wrap: wrap;
     }
 
     .live-dot {
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: #10b981;
-      box-shadow: 0 0 8px #10b981;
+      background: #62cda5;
+      box-shadow: none;
       animation: pulse-live 1.8s infinite;
       flex-shrink: 0;
     }
@@ -1282,34 +1648,37 @@
     }
 
     .stats-badge-text {
-      color: #cbd5e1;
+      color: #4a6271;
       font-weight: 700;
     }
 
     .stats-update-time {
-      color: #94a3b8;
+      color: #5e717e;
       font-size: 10.5px;
     }
 
     .stats-banner-title {
       font-size: 13.5px;
       font-weight: 800;
-      color: #fff;
+
+      color: #2b4656;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
     .highlight-count {
-      color: #ff5eb8;
+      color: #c4acf7;
       font-size: 15px;
       font-weight: 900;
     }
 
     .btn-open-calendar {
-      background: rgba(255, 94, 184, 0.2);
-      border: 1px solid rgba(255, 94, 184, 0.5);
-      color: #ff85cb;
+      background: #bdd0dc;
+
+      border: none;
+
+      color: #2c4c60;
       padding: 7px 11px;
       border-radius: 10px;
       font-size: 12px;
@@ -1334,9 +1703,9 @@
 
     .live-count-chip {
       font-size: 10.5px;
-      background: rgba(16, 185, 129, 0.15);
+      background: rgba(98, 205, 165, 0.15);
       color: #34d399;
-      border: 1px solid rgba(16, 185, 129, 0.3);
+      border: 1px solid rgba(98, 205, 165, 0.3);
       padding: 2px 7px;
       border-radius: 6px;
       font-weight: 700;
@@ -1345,39 +1714,45 @@
 
     /* 🔒 관리자 인증 버튼 및 모달 스타일 */
     .btn-admin-auth {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      color: #94a3b8;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 3px 10px;
-      border-radius: 9999px;
+      background: transparent;
+      border: none;
+
+      color: #63727e;
+      font-size: 10px;
+      font-weight: 400;
+      padding: 4px 0 4px 4px;
+      border-radius: 4px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 4px;
-      transition: all 0.2s ease;
+      transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
       font-family: inherit;
+      min-height: 32px;
+
+      margin-left: auto;
     }
 
     .btn-admin-auth:hover {
-      background: rgba(255, 255, 255, 0.15);
-      color: #f8fafc;
-      border-color: rgba(255, 255, 255, 0.35);
+      background: #e0e5e8;
+
+      color: #344855;
+
+      border-color: transparent;
     }
 
     .btn-admin-auth.is-logged-in {
-      background: rgba(56, 189, 248, 0.18);
-      border-color: rgba(56, 189, 248, 0.5);
-      color: #38bdf8;
+      background: rgba(196, 172, 247, 0.18);
+      border-color: rgba(196, 172, 247, 0.5);
+      color: #c4acf7;
     }
 
     .admin-password-input {
       width: 100%;
       padding: 11px 14px;
-      border-radius: 10px;
-      background: rgba(15, 23, 42, 0.85);
-      border: 1px solid rgba(255, 94, 184, 0.35);
+      border-radius: 6px;
+      background: rgba(18, 19, 22, 0.85);
+      border: 1px solid var(--card-border);
       color: #fff;
       font-size: 16px;
       font-weight: 700;
@@ -1386,11 +1761,13 @@
       outline: none;
       box-sizing: border-box;
       transition: all 0.2s;
+      min-height: 52px;
+
     }
 
     .admin-password-input:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 12px rgba(255, 94, 184, 0.45);
+      box-shadow: 0 0 0 3px rgba(196, 172, 247, 0.12);
     }
 
     .admin-error-text {
@@ -1418,7 +1795,7 @@
       color: #fff;
     }
 
-    /* 📅 달력 모달 세부 스타일 */
+    /* 달력 모달 세부 스타일 */
     .stats-modal-card {
       max-width: 400px !important;
       padding: 20px 18px 16px !important;
@@ -1430,6 +1807,8 @@
       align-items: center;
       justify-content: space-between;
       margin-bottom: 4px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .stats-modal-title {
@@ -1441,28 +1820,31 @@
     .stats-modal-close-btn {
       background: none;
       border: none;
-      color: #94a3b8;
+      color: #a2a6b1;
       font-size: 18px;
       font-weight: 700;
       cursor: pointer;
       padding: 2px 6px;
       line-height: 1;
+      min-width: 36px;
+      min-height: 36px;
     }
 
     .stats-modal-sub {
       font-size: 11px;
-      color: #94a3b8;
+      color: #a2a6b1;
       margin-bottom: 12px;
       line-height: 1.4;
     }
 
     /* 🗓️ 10월 월간 달력 그리드 */
     .cal-container {
-      background: #0f172a;
-      border: 1px solid #233044;
-      border-radius: 14px;
+      background: #121316;
+      border: 1px solid #2a2d35;
+      border-radius: 8px;
       padding: 12px 10px 10px;
       margin-bottom: 12px;
+
     }
 
     .cal-header {
@@ -1481,9 +1863,9 @@
 
     .cal-period-badge {
       font-size: 10.5px;
-      color: #ff85cb;
-      background: rgba(255, 94, 184, 0.15);
-      border: 1px solid rgba(255, 94, 184, 0.3);
+      color: #d8b8d3;
+      background: rgba(196, 172, 247, 0.15);
+      border: 1px solid rgba(196, 172, 247, 0.3);
       padding: 2px 7px;
       border-radius: 6px;
       font-weight: 700;
@@ -1495,7 +1877,7 @@
       text-align: center;
       font-size: 11px;
       font-weight: 700;
-      color: #64748b;
+      color: #9499a6;
       margin-bottom: 6px;
     }
 
@@ -1509,7 +1891,7 @@
     }
 
     .cal-day-cell {
-      height: 38px;
+      height: 40px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -1517,17 +1899,17 @@
       border-radius: 9px;
       font-size: 13px;
       font-weight: 700;
-      color: #94a3b8;
+      color: #a2a6b1;
       cursor: pointer;
       position: relative;
       transition: all 0.15s ease;
-      background: #161e2e;
-      border: 1px solid #1e293b;
+      background: #181a20;
+      border: 1px solid #24262d;
       user-select: none;
     }
 
     .cal-day-cell:active {
-      transform: scale(0.92);
+      transform: scale(0.98);
     }
 
     .cal-day-cell.empty {
@@ -1538,15 +1920,15 @@
     }
 
     .cal-day-cell.vote-period {
-      background: rgba(255, 94, 184, 0.08);
-      border-color: rgba(255, 94, 184, 0.25);
-      color: #f1f5f9;
+      background: rgba(196, 172, 247, 0.08);
+      border-color: rgba(196, 172, 247, 0.25);
+      color: #e8eaee;
     }
 
     .cal-day-cell.has-data {
       color: #fff;
       font-weight: 800;
-      border-color: rgba(255, 94, 184, 0.45);
+      border-color: rgba(196, 172, 247, 0.45);
     }
 
     .cal-day-cell.has-data::after {
@@ -1556,35 +1938,36 @@
       width: 5px;
       height: 5px;
       border-radius: 50%;
-      background: #ff5eb8;
-      box-shadow: 0 0 6px #ff5eb8;
+      background: #c4acf7;
+      box-shadow: none;
     }
 
     .cal-day-cell.today {
-      border: 1.5px solid #38bdf8 !important;
-      color: #38bdf8 !important;
+      border: 1px solid #c4acf7 !important;
+      color: #c4acf7 !important;
     }
 
     .cal-day-cell.selected {
-      background: linear-gradient(135deg, #ff5eb8, #d946ef) !important;
-      border-color: #ff5eb8 !important;
-      color: #fff !important;
+      background: var(--primary) !important;
+      border-color: #c4acf7 !important;
+      color: #21182f !important;
       font-weight: 900 !important;
-      box-shadow: 0 3px 12px rgba(255, 94, 184, 0.5) !important;
+      box-shadow: none !important;
     }
 
     .cal-day-cell.selected::after {
       background: #fff !important;
-      box-shadow: none !important;
+      box-shadow: none;
     }
 
-    /* 📋 선택 날짜 팀별 각각 상세 카드 */
+    /*  선택 날짜 팀별 각각 상세 카드 */
     .day-detail-box {
-      background: #0f172a;
-      border: 1px solid #233044;
-      border-radius: 14px;
+      background: #121316;
+      border: 1px solid #2a2d35;
+      border-radius: 8px;
       padding: 13px;
       margin-bottom: 10px;
+
     }
 
     .day-detail-header {
@@ -1594,6 +1977,8 @@
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       padding-bottom: 9px;
       margin-bottom: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
 
     .day-detail-date {
@@ -1605,8 +1990,8 @@
     .day-detail-summary-badge {
       font-size: 11px;
       color: var(--primary);
-      background: rgba(255, 94, 184, 0.15);
-      border: 1px solid rgba(255, 94, 184, 0.3);
+      background: rgba(196, 172, 247, 0.15);
+      border: 1px solid rgba(196, 172, 247, 0.3);
       padding: 2px 7px;
       border-radius: 6px;
       font-weight: 700;
@@ -1622,18 +2007,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: #161e2e;
-      border: 1px solid #1e293b;
-      border-radius: 10px;
+      background: #181a20;
+      border: 1px solid #24262d;
+      border-radius: 4px;
       padding: 9px 11px;
       gap: 10px;
       transition: all 0.15s ease;
+
     }
 
     .day-team-item.rescene-main-item {
-      background: linear-gradient(135deg, rgba(255, 94, 184, 0.18), rgba(121, 40, 202, 0.22));
-      border: 1.5px solid rgba(255, 94, 184, 0.5);
-      box-shadow: 0 2px 10px rgba(255, 94, 184, 0.15);
+      background: var(--card-bg);
+      border: 1px solid rgba(196, 172, 247, 0.5);
+      box-shadow: none;
     }
 
     .day-team-item.rescene-main-item .day-team-name {
@@ -1643,7 +2029,7 @@
     }
 
     .day-team-item.rescene-main-item .day-team-count {
-      color: #ff5eb8;
+      color: #c4acf7;
       font-size: 15px;
       font-weight: 900;
     }
@@ -1674,20 +2060,20 @@
     .day-team-name {
       font-size: 12.5px;
       font-weight: 700;
-      color: #f1f5f9;
+      color: #e8eaee;
       white-space: nowrap;
     }
 
     .day-team-tag {
       font-size: 10.5px;
-      color: #94a3b8;
+      color: #a2a6b1;
       white-space: nowrap;
     }
 
     .day-team-count {
       font-size: 14px;
       font-weight: 800;
-      color: #ff5eb8;
+      color: #c4acf7;
       white-space: nowrap;
       text-align: right;
     }
@@ -1695,25 +2081,308 @@
     .day-overall-row {
       margin-top: 10px;
       padding-top: 9px;
-      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-size: 11.5px;
-      color: #cbd5e1;
+      color: #c3c6cf;
     }
 
     .day-overall-val {
       font-weight: 800;
-      color: #38bdf8;
+      color: #c4acf7;
     }
 
     .stats-footer-note {
       text-align: center;
       font-size: 10.5px;
-      color: #64748b;
+      color: #9499a6;
     }
-  </style>
+
+    #adminModal .btn-modal-hide { color: #182c39 !important; }
+    #adminModal .btn-modal-close { background: #37434f; color: #e0e9ef; }
+
+    /* Preserve familiar placement while making touch and keyboard feedback consistent. */
+    button, a, [onclick] {
+      touch-action: manipulation;
+    }
+
+    button, a, .status-check-badge, .cal-day-cell {
+      transition: transform 0.2s cubic-bezier(0.2, 0.8, 0.2, 1),
+        background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    }
+
+    button:active, .stream-link-pill:active, .status-check-badge:active,
+    .team-card:active, .mma-wide-card:active {
+      transform: scale(0.98);
+    }
+
+    :focus-visible {
+      outline: 2px solid var(--primary);
+      outline-offset: 4px;
+    }
+
+    .mma-wide-title-box, .mma-live-badge-group { min-width: 0; }
+    .live-dot, .mma-live-dot, .floating-nav-dot { animation: none; }
+    .stats-update-time, .mma-live-time { font-variant-numeric: tabular-nums; }
+
+    @media (max-width: 380px) {
+      body { padding-left: 8px; padding-right: 8px; }
+      .container { padding: 20px 16px 0; }
+      .team-list { padding: 18px 14px 0; }
+      .stream-team-card { gap: 10px; }
+      .stream-links { gap: 0 10px; }
+      .stream-link-pill { font-size: 10px; }
+      .stream-team-handle { font-size: 9px; }
+      h1 { font-size: 27px; }
+      .team-name { font-size: 15px; }
+      .team-card { padding: 20px 0; }
+      .mma-wide-body { padding: 16px; }
+      .progress-card { padding: 18px; }
+      .quick-jump-btn { font-size: 12px; }
+      .status-check-badge { min-width: 64px; }
+      .stats-modal-card { padding: 20px 14px 16px !important; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+
+    /* Text and dividers establish sections; icons are reserved for actual actions/states. */
+    .team-card:active, .mma-wide-card:active { transform: none; }
+    .extra-divider-line, .live-dot, .mma-live-dot, .floating-nav-dot { display: none; }
+    .section-heading { font-size: 20px; font-weight: 700; letter-spacing: -0.035em; }
+    .section-caption { margin-top: 6px; margin-bottom: 0; color: #607582; font-size: 13px; }
+    .team-card:last-child { border-bottom: none; }
+    .team-card.done:last-child { border-bottom: none; }
+    .mma-live-refresh-btn:active { background: #24272d; border-color: transparent; }
+    .btn-mma-wide-vote.btn-melon:active { background: #106b38; }
+    .btn-mma-wide-vote.btn-kakao:active { background: #e2c43b; }
+
+    .melon {
+      --platform-bg: #dfeee4;
+      --platform-border: #9ac7aa;
+      --platform-inset: #f3f9f5;
+      --platform-copy: #c2dccb;
+      --platform-text: #24583a;
+    }
+    .kakao {
+      --platform-bg: #f2edcf;
+      --platform-border: #d5c781;
+      --platform-inset: #fffbec;
+      --platform-copy: #e4dbad;
+      --platform-text: #675513;
+    }
+    .melon .mma-wide-title, .melon .mma-wide-channel { color: #196a3b; }
+    .kakao .mma-wide-title, .kakao .mma-wide-channel { color: #796216; }
+    .kakao .mma-wide-desc, .kakao .mma-wide-badge, .kakao .mma-info-label { color: #756b42; }
+    .kakao .mma-info-val { color: #4c4323; }
+    .kakao .mma-info-val.highlight-yellow { color: #796216; }
+    .mma-live-refresh-btn:active { background: #dcece1; }
+    .mma-guide-sec-title[style] { color: #426578 !important; }
+    .mma-guide-list span[style] { color: #2c6743 !important; }
+    .mma-guide-toggle-btn:active, .mma-guide-toggle-btn.active { background: #d6e0e6; color: #263f4e; border-color: #9aadb9; }
+    .floating-nav-btn.active.mama { color: #f0f7fa; }
+
+    .modal-card { --primary: #c2dce7; --primary-hover: #d6e9f0; --text-main: #f4f7f9; }
+    .kakao.done .mma-wide-badge { color: #1d7249; }
+    /* Keep official contact links distinct without another card. */
+    .stream-links > .stream-link-pill { position: relative; }
+    .stream-links > .stream-link-pill + .stream-link-pill::before {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 50%;
+      width: 1px;
+      height: 10px;
+      background: #a9b8c2;
+      transform: translateY(-50%);
+      pointer-events: none;
+    }
+    @media (max-width: 380px) {
+      .stream-links > .stream-link-pill + .stream-link-pill::before { left: -5px; }
+    }
+
+    /* Compact status labels keep the state and its touch target together. */
+    .status-check-badge, .mma-wide-badge {
+      min-height: 28px;
+      min-width: 68px;
+      padding: 4px 8px;
+      border: 1px solid #b6c4ce;
+      border-radius: 5px;
+      background: #ced8df;
+      color: #465d6b;
+      font-size: 11px;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .melon .mma-wide-badge { background: #d0e5d7; border-color: #a5c9b2; color: #3c654b; }
+    .kakao .mma-wide-badge { background: #e9e0b3; border-color: #d1c582; color: #74601d; }
+    .team-card.done .status-check-badge, .done .mma-wide-badge,
+    .kakao.done .mma-wide-badge {
+      background: #c1dfcb;
+      border-color: #96bea3;
+      color: #245f3b;
+      font-weight: 600;
+    }
+    .status-check-badge.locked-badge { background: #d4d9dd; border-color: #c1c9cf; color: #6a7781; }
+
+    /* The script keeps its existing labels; the visible control is icon-only. */
+    #adminTopBtn, #adminTopBtn:hover, #adminTopBtn.is-logged-in {
+      width: 32px;
+      min-height: 32px;
+      padding: 0;
+      gap: 0;
+      justify-content: center;
+      font-size: 0;
+      background: transparent;
+      border: none;
+    }
+    #adminTopBtn::before { content: "🔒"; font-size: 15px; line-height: 1; }
+    #adminTopBtn.is-logged-in::before { content: "🔓"; }
+
+    /* Keep the campaign label and current date at opposite ends of the header. */
+    .container { position: relative; }
+    .stream-team-card { padding-right: 32px; }
+    .top-badge-row { justify-content: space-between; flex-wrap: nowrap; gap: 12px; }
+    .top-badge-row > .badge { font-size: 11px; font-weight: 650; letter-spacing: 0.01em; }
+    #currentDateBadge {
+      display: block;
+      padding: 6px 10px;
+      border: 1px solid #bfced8;
+      border-radius: 6px;
+      background: #dce6ec;
+      color: #314e61;
+      font-size: 13px;
+      font-weight: 650;
+      font-variant-numeric: tabular-nums;
+      line-height: 1.4;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    /* Hide only the leading calendar glyph; the existing live date text stays intact. */
+    #currentDateBadge::first-letter { font-size: 0; }
+    #adminTopBtn { position: absolute; top: 24px; right: 16px; color: #526b7d; }
+    #adminTopBtn::before {
+      content: "";
+      display: block;
+      width: 20px;
+      height: 20px;
+      background: currentColor;
+      mask: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%2211%22%20width%3D%2218%22%20height%3D%2210%22%20rx%3D%222%22%2F%3E%3Cpath%20d%3D%22M7%2011V7a5%205%200%200%201%2010%200v4%22%2F%3E%3Cpath%20d%3D%22M12%2015v2%22%2F%3E%3C%2Fsvg%3E") center / contain no-repeat;
+    }
+    #adminTopBtn.is-logged-in { color: #23794b; }
+    #adminTopBtn.is-logged-in::before {
+      content: "";
+      mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%221.8%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Crect%20x%3D%223%22%20y%3D%2211%22%20width%3D%2218%22%20height%3D%2210%22%20rx%3D%222%22%2F%3E%3Cpath%20d%3D%22M7%2011V7a5%205%200%200%201%209.9-1%22%2F%3E%3Cpath%20d%3D%22M12%2015v2%22%2F%3E%3C%2Fsvg%3E");
+    }
+    @media (max-width: 380px) {
+      #adminTopBtn { top: 20px; right: 12px; }
+      .top-badge-row { gap: 8px; }
+      #currentDateBadge { padding: 6px 8px; font-size: 12px; }
+      .top-badge-row > .badge { font-size: 10px; }
+    }
+
+    .notice-box .notice-tip {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border: 1px solid #c3cfd8;
+      border-radius: 6px;
+      background: #d8e1e7;
+      color: #506676;
+    }
+    .searchban-notice {
+      margin-top: 18px;
+      padding-top: 18px;
+      border-top: 1px solid #c1cdd5;
+      color: #506676;
+      font-size: 13px;
+      line-height: 1.75;
+    }
+    .searchban-title { margin-bottom: 8px; color: #304c5e; font-size: 14px; font-weight: 650; }
+    .searchban-notice p + p { margin-top: 8px; }
+    .searchban-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin-top: 10px; }
+    .searchban-links a, .searchban-callout a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+      color: #315d76;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .searchban-modal-card { background: #f0f1f2; color: #253540; word-break: keep-all; }
+    .searchban-modal-card .modal-title { color: #253540; font-size: 21px; }
+    .searchban-modal-card .modal-body { color: #506676; font-size: 14px; line-height: 1.75; }
+    .searchban-eyebrow { margin-bottom: 8px; color: #597486; font-size: 12px; font-weight: 600; }
+    .searchban-callout { padding: 14px; border: 1px solid #c1d0db; border-radius: 6px; background: #dfe8ee; }
+    .searchban-callout > b { color: #304f62; }
+    .searchban-callout p { margin-top: 6px; }
+    .searchban-callout a { margin-top: 4px; }
+    .searchban-check-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      padding: 12px;
+      border-radius: 8px;
+      background: #3b5d70;
+      color: #fff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .searchban-check-button:active { transform: scale(0.98); background: #2d4e61; }
+    .searchban-modal-card .btn-modal-hide { background: #dce4e9; color: #3d586a; }
+    .searchban-modal-card .btn-modal-close { background: #bfd4e0; color: #284b60; }
+
+    /* Give the pre-vote check a distinct, restrained attention color. */
+    .notice-box .searchban-notice {
+      margin-top: 18px;
+      padding: 16px;
+      border: 1px solid #ddc186;
+      border-left: 4px solid #ad7a2c;
+      border-radius: 8px;
+      background: #fff3d8;
+      color: #665639;
+    }
+    .searchban-important-label { margin-bottom: 6px; color: #8b641f; font-size: 11px; font-weight: 700; }
+    .notice-box .searchban-title { margin-bottom: 10px; color: #624719; font-size: 17px; font-weight: 750; }
+    .notice-box .searchban-notice b { color: #644719; font-weight: 700; }
+    .searchban-links { flex-direction: column; gap: 6px; margin-top: 14px; }
+    .searchban-links a:first-child {
+      justify-content: center;
+      min-height: 46px;
+      padding: 10px 12px;
+      border-radius: 6px;
+      background: #3b5d70;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    .searchban-links a:first-child:active { transform: scale(0.98); background: #2d4e61; }
+    .searchban-links a + a { align-self: center; color: #6b5527; }
+    .searchban-modal-card [hidden] { display: none !important; }
+    .searchban-confirm-summary { color: #506676; font-size: 14px; line-height: 1.8; }
+    .searchban-confirm-summary b { color: #304f62; font-weight: 650; }
+    .searchban-confirm-setting {
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 6px;
+      background: #dfe8ee;
+      color: #476578;
+      font-size: 12px;
+      line-height: 1.6;
+    }
+    .searchban-confirm-view .modal-title:focus { outline: none; }
+</style>
 </head>
 <body>
 
@@ -1721,10 +2390,10 @@
 <div class="floating-nav-bar" id="floatingNav">
   <div class="floating-nav-inner">
     <button type="button" class="floating-nav-btn active mama" id="floatMamaBtn" onclick="scrollToSection('mamaSection')">
-      <span>🌐 MAMA 5팀</span>
+      <span> MAMA 5팀</span>
     </button>
     <button type="button" class="floating-nav-btn mma" id="floatMmaBtn" onclick="scrollToSection('mmaSection')">
-      <span>🏆 MMA 2026(멜론, 카뱅)</span>
+      <span> MMA 2026(멜론, 카뱅)</span>
     </button>
   </div>
 </div>
@@ -1750,7 +2419,7 @@
           총공팀 사이트
         </a>
         <button class="stream-link-pill mail-link" onclick="copyStreamEmail()">
-          ✉️ 문의하기
+           문의하기
         </button>
       </div>
     </div>
@@ -1758,36 +2427,36 @@
 
   <header>
     <div class="top-badge-row">
-      <span class="badge">RESCENE 🪽 연합 총공</span>
+      <span class="badge">RESCENE · 연합 총공</span>
       <span class="date-badge" id="currentDateBadge">📅 2026.10.13 (화)</span>
-      <button type="button" class="btn-admin-auth" id="adminTopBtn" onclick="handleAdminClick()">🔒 admin</button>
+      <button type="button" class="btn-admin-auth" id="adminTopBtn" onclick="handleAdminClick()" aria-label="관리자 메뉴" title="관리자 메뉴">🔒</button>
     </div>
-    <h1>2026 MAMA X 인증 헬퍼</h1>
-    <p class="subtitle">터치 한 번으로 해시태그 완성된 트위터 창 열기</p>
+    <h1>2026 MAMA<br>X 인증 헬퍼</h1>
+    <p class="subtitle">팀별 해시태그가 담긴 X 작성창을 열어요.</p>
   </header>
 
   <!-- 🗳️ 1차 투표 바로가기 링크 배너 -->
-  <a href="https://mnetplus.world/event/ko/2026-mama?deeplink=mnetplus%3A%2F%2Fvote%2Ftemplates%2Fmama-fans-choice-vote-r1%2F6ab09532c314bb17315adc4e%3Furl_fallback_type%3Dupdate" 
-     target="_blank" 
-     rel="noopener noreferrer" 
+  <a href="https://mnetplus.world/event/ko/2026-mama?deeplink=mnetplus%3A%2F%2Fvote%2Ftemplates%2Fmama-fans-choice-vote-r1%2F6ab09532c314bb17315adc4e%3Furl_fallback_type%3Dupdate"
+     target="_blank"
+     rel="noopener noreferrer"
      class="vote-banner-link">
     <div class="vote-banner">
       <div class="vote-banner-content">
         <span class="vote-period-tag">10.12(월) ~ 10.22(목)</span>
-        <div class="vote-banner-title">🗳️ 1차 투표 바로가기</div>
-        <div class="vote-banner-sub">엠넷플러스(Mnet Plus) 공식 투표 페이지 이동</div>
+        <div class="vote-banner-title"> 1차 투표 바로가기</div>
+        <div class="vote-banner-sub">엠넷플러스 공식 투표 페이지</div>
       </div>
-      <div class="vote-banner-arrow">→</div>
+      <div class="vote-banner-arrow">›</div>
     </div>
   </a>
 
   <!-- ⚡ 빠른 스크롤 점프 바 -->
   <div class="quick-jump-bar">
     <button type="button" class="quick-jump-btn" onclick="scrollToSection('mamaSection')">
-      <span>🌐 MAMA 5팀</span>
+      <span> MAMA 5팀</span>
     </button>
     <button type="button" class="quick-jump-btn btn-jump-mma" onclick="scrollToSection('mmaSection')">
-      <span>🏆 MMA 2026(멜론, 카뱅)</span>
+      <span> MMA 2026(멜론, 카뱅)</span>
     </button>
   </div>
 
@@ -1801,20 +2470,31 @@
       <div class="progress-fill" id="progressFill"></div>
     </div>
     <div class="reset-bar">
-      <span>⏰ 매일 자정(00:00 KST) 자동 리셋</span>
+      <span> 매일 자정(00:00 KST) 자동 리셋</span>
       <button class="btn-manual-reset" onclick="resetTodayData(true)">수동 초기화</button>
     </div>
   </div>
 
   <!-- 모바일 팁 안내 -->
   <div class="notice-box">
-    <b>📱 모바일 인증 방법 (초간단 2스텝):</b>
+    <b>투표 인증하는 방법</b>
     <ol>
-      <li>아래 팀별 <b>[글쓰기]</b> 버튼을 누르면 트위터가 열립니다.</li>
-      <li>트위터 작성창에서 <b>사진(갤러리) 아이콘</b>을 눌러 인증서를 넣고 <b>[게시]</b> 누르면 끝!</li>
+      <li>팀별 <b>글쓰기</b> 버튼을 눌러 X 작성창을 열어요.</li>
+      <li><b>사진 아이콘</b>으로 인증서를 첨부하고 <b>게시</b>해 주세요.</li>
     </ol>
     <div class="notice-tip">
-      💡 <b>참고:</b> 카톡/인스타 등에서 X 로그인 창이 뜬다면 우측 상단 [···]을 눌러 'Safari/Chrome으로 열기'를 하시거나, <b>[태그 복사]</b> 버튼을 이용해 주세요.
+      카톡·인스타에서 로그인이 반복되면 메뉴 [···]에서 <b>Safari/Chrome으로 열기</b>를 선택해 주세요. 직접 인증하려면 <b>태그 복사</b>를 이용해 주세요.
+    </div>
+
+    <div class="searchban-notice">
+      <p class="searchban-important-label">인증 전 꼭 확인</p>
+      <h2 class="searchban-title">X 서치밴을 확인해 주세요</h2>
+      <p>아래 사이트에 본인의 X 사용자 이름(username)을 입력해 서치밴 여부를 확인해 주세요.</p>
+      <p><b>서치밴(검색 제한)이 확인되면</b>, 페이지 상단의 <b>리센느 음원총공팀 카카오톡</b>으로 투표 인증서를 보내주세요.</p>
+      <div class="searchban-links">
+        <a href="https://x-shadowban-checker.fia-s.com/en/" target="_blank" rel="noopener noreferrer">서치밴 확인하기 ›</a>
+        <a href="https://pf.kakao.com/_WxcxowX" target="_blank" rel="noopener noreferrer">음원총공팀 카카오톡 ›</a>
+      </div>
     </div>
   </div>
 
@@ -1831,12 +2511,14 @@
       </div>
     </div>
     <button type="button" class="btn-open-calendar">
-      📅 통계 달력
+      통계 달력
     </button>
   </div>
 
   <!-- 5개 팀 리스트 -->
   <div class="team-list" id="mamaSection">
+    <h2 class="section-heading">MAMA 연합 인증</h2>
+    <p class="section-caption">투표한 팀에 인증서를 올려주세요.</p>
 
     <!-- 1. 알파드라이브원 -->
     <div class="team-card" id="card-1">
@@ -1844,7 +2526,7 @@
         <img src="images/alphadriveone.png" class="team-poster-thumb" alt="알파드라이브원 포스터">
         <div class="team-meta">
           <div class="team-name-row">
-            <div class="team-name">🚗 알파드라이브원</div>
+            <div class="team-name"> 알파드라이브원</div>
             <span class="status-check-badge" onclick="toggleStatus('card-1')">⚪ 투표 전</span>
           </div>
           <div class="tag-row">
@@ -1869,7 +2551,7 @@
         <img src="images/andouble.png" class="team-poster-thumb" alt="앤더블 포스터">
         <div class="team-meta">
           <div class="team-name-row">
-            <div class="team-name">🍀 앤더블</div>
+            <div class="team-name"> 앤더블</div>
             <span class="status-check-badge" onclick="toggleStatus('card-2')">⚪ 투표 전</span>
           </div>
           <div class="tag-row">
@@ -1894,7 +2576,7 @@
         <img src="images/bigbang.png" class="team-poster-thumb" alt="빅뱅 포스터">
         <div class="team-meta">
           <div class="team-name-row">
-            <div class="team-name">👑 빅뱅</div>
+            <div class="team-name"> 빅뱅</div>
             <span class="status-check-badge" onclick="toggleStatus('card-3')">⚪ 투표 전</span>
           </div>
           <div class="tag-row">
@@ -1919,7 +2601,7 @@
         <img src="images/heartstohearts.png" class="team-poster-thumb" alt="하츠투하츠 포스터">
         <div class="team-meta">
           <div class="team-name-row">
-            <div class="team-name">💕 하츠투하츠</div>
+            <div class="team-name"> 하츠투하츠</div>
             <span class="status-check-badge" onclick="toggleStatus('card-4')">⚪ 투표 전</span>
           </div>
           <div class="tag-row">
@@ -1944,7 +2626,7 @@
         <img src="images/babymonster.png" class="team-poster-thumb" alt="베이비몬스터 포스터">
         <div class="team-meta">
           <div class="team-name-row">
-            <div class="team-name">😈 베이비몬스터</div>
+            <div class="team-name"> 베이비몬스터</div>
             <span class="status-check-badge" id="card-5-badge" onclick="toggleStatus('card-5')">⚪ 투표 전</span>
           </div>
           <div class="tag-row">
@@ -1963,7 +2645,7 @@
   <div class="extra-section-header" id="mmaSection">
     <div class="extra-divider-line"></div>
     <div class="extra-section-badge">
-      <span>🏆 MMA 2026 (멜론 · 카카오뱅크)</span>
+      <span> MMA 2026 (멜론 · 카카오뱅크)</span>
     </div>
     <div class="extra-divider-line"></div>
   </div>
@@ -1979,34 +2661,57 @@
           <div class="mma-wide-title-box">
             <span class="mma-wide-channel">멜론 투표</span>
             <div class="mma-wide-title">TOP10</div>
-            <div class="mma-wide-desc">올해의 아티스트 점수에도 반영! 🍈</div>
+            <div class="mma-wide-desc">올해의 아티스트 점수에도 반영돼요.</div>
           </div>
           <span class="status-check-badge mma-wide-badge" id="mmaMelonBadge" onclick="toggleMmaMelonStatus()">⚪ 투표 전</span>
         </div>
 
+        <!-- 📊 실시간 멜론 TOP10 리센느 순위 & 표차이 현황 -->
+        <div class="mma-live-rank-box" id="melonLiveRankBox">
+          <div class="mma-live-top-row">
+            <div class="mma-live-badge-group">
+              <span class="mma-live-dot"></span>
+              <span class="mma-live-label">실시간 순위 현황</span>
+              <span class="mma-live-time" id="melonLiveTime">집계 불러오는 중...</span>
+            </div>
+            <button type="button" class="mma-live-refresh-btn" onclick="fetchMelonLiveRank(true)">
+               새로고침
+            </button>
+          </div>
+          <div class="mma-live-main-row">
+            <div class="mma-live-rank-title" id="melonLiveRankTitle">
+              리센느 현재 <span class="mma-live-rank-num" id="melonLiveRankNum">-위</span>
+            </div>
+            <div class="mma-live-votes" id="melonLiveVotes">득표수 조회 중...</div>
+          </div>
+          <div class="mma-live-gap-box">
+            <div class="mma-live-gap-text" id="melonLiveGapText">
+              <span>멜론 실시간 투표 데이터를 불러오고 있습니다...</span>
+            </div>
+            <div class="mma-live-progress-track">
+              <div class="mma-live-progress-fill" id="melonLiveProgressFill"></div>
+            </div>
+          </div>
+        </div>
+
         <div class="mma-info-box">
           <div class="mma-info-item">
-            <span class="mma-info-icon">🗳</span>
             <span class="mma-info-label">투표 방식</span>
             <span class="mma-info-val highlight-green">매일 1회 (유료회원 3회)</span>
           </div>
           <div class="mma-info-item">
-            <span class="mma-info-icon">📅</span>
             <span class="mma-info-label">투표 기간</span>
             <span class="mma-info-val">2026. 10. 15 ~ 2026. 10. 29 23:59</span>
           </div>
           <div class="mma-info-item">
-            <span class="mma-info-icon">🏆</span>
             <span class="mma-info-label">시상 부문</span>
             <span class="mma-info-val">TOP10 (올해의 아티스트 반영)</span>
           </div>
           <div class="mma-info-item">
-            <span class="mma-info-icon">⚖️</span>
             <span class="mma-info-label">심사 기준</span>
             <span class="mma-info-val">음원 60% + 심사 20% + 투표 20%</span>
           </div>
           <div class="mma-info-item">
-            <span class="mma-info-icon">👤</span>
             <span class="mma-info-label">투표 자격</span>
             <span class="mma-info-val">본인인증 완료 멜론 회원 (1인 1계정)</span>
           </div>
@@ -2016,7 +2721,7 @@
           <a href="https://www.melon.com/mma/2026/vote/top10/?artist=3709231" target="_blank" rel="noopener noreferrer" class="btn-mma-wide-vote btn-melon" onclick="handleMelonVoteClick(event)">
             멜론에서 TOP10 투표하기
           </a>
-          <button type="button" class="btn-mma-wide-copy" onclick="copyMmaMelonLink()">링크 복사 📋</button>
+          <button type="button" class="btn-mma-wide-copy" onclick="copyMmaMelonLink()">링크 복사 </button>
         </div>
       </div>
     </div>
@@ -2031,34 +2736,29 @@
           <div class="mma-wide-title-box">
             <span class="mma-wide-channel">카카오뱅크 특별상 투표</span>
             <div class="mma-wide-title">모두의 스타상</div>
-            <div class="mma-wide-desc">리센느에게 매일 1표 선물하기! 🪽</div>
+            <div class="mma-wide-desc">리센느에게 매일 한 표를 보낼 수 있어요.</div>
           </div>
           <span class="status-check-badge mma-wide-badge" id="mmaKakaoBadge" onclick="toggleMmaKakaoStatus()">⚪ 투표 전</span>
         </div>
 
         <div class="mma-info-box">
           <div class="mma-info-item">
-            <span class="mma-info-icon">🗳</span>
             <span class="mma-info-label">투표 방식</span>
             <span class="mma-info-val highlight-yellow">매일 1회 투표</span>
           </div>
           <div class="mma-info-item">
-            <span class="mma-info-icon">📅</span>
             <span class="mma-info-label">투표 기간</span>
             <span class="mma-info-val">2026. 10. 15 ~ 2026. 10. 30</span>
           </div>
           <div class="mma-info-item">
-            <span class="mma-info-icon">🏆</span>
             <span class="mma-info-label">시상 부문</span>
             <span class="mma-info-val">모두의 스타상</span>
           </div>
           <div class="mma-info-item">
-            <span class="mma-info-icon">⚖️</span>
             <span class="mma-info-label">심사 기준</span>
             <span class="mma-info-val">투표 80% + 심사 20%</span>
           </div>
           <div class="mma-info-item">
-            <span class="mma-info-icon">👤</span>
             <span class="mma-info-label">투표 자격</span>
             <span class="mma-info-val">만 14세 이상 카카오뱅크 계좌 보유자</span>
           </div>
@@ -2068,7 +2768,7 @@
           <a href="https://kakaobank.onelink.me/0qMi/p3ifhx4u" target="_blank" rel="noopener noreferrer" class="btn-mma-wide-vote btn-kakao" onclick="markMmaKakaoDone()">
             카카오뱅크에서 투표하기
           </a>
-          <button type="button" class="btn-mma-wide-copy" onclick="copyMmaKakaoLink()">링크 복사 📋</button>
+          <button type="button" class="btn-mma-wide-copy" onclick="copyMmaKakaoLink()">링크 복사 </button>
         </div>
       </div>
     </div>
@@ -2077,13 +2777,13 @@
   <!-- 📋 MMA 공식 안내 토글 아코디언 -->
   <div class="mma-guide-accordion">
     <button type="button" class="mma-guide-toggle-btn" id="mmaGuideBtn" onclick="toggleMmaGuide()">
-      <span>📋 MMA 2026 & TOP10 공식 투표 중요 공지</span>
+      <span> MMA 2026 & TOP10 공식 투표 중요 공지</span>
       <span id="mmaGuideIcon" style="font-size: 10px;">▼</span>
     </button>
     <div class="mma-guide-content" id="mmaGuideContent">
       <!-- 1. MMA 2026 시상식 개요 -->
       <div class="mma-guide-section">
-        <div class="mma-guide-sec-title">🏆 The 18th MMA 2026 시상식 개요</div>
+        <div class="mma-guide-sec-title"> The 18th MMA 2026 시상식 개요</div>
         <ul class="mma-guide-list">
           <li><b>일시</b> : 2026년 11월 14일(토) ~ 15일(일) 18:00 (역대 최초 양일간 개최)</li>
           <li><b>장소</b> : 서울 고척 스카이돔</li>
@@ -2093,7 +2793,7 @@
 
       <!-- 2. 멜론 TOP10 투표 중요 규칙 -->
       <div class="mma-guide-section">
-        <div class="mma-guide-sec-title" style="color: #00cd3c;">🍈 멜론 TOP10 투표 규칙 (공식)</div>
+        <div class="mma-guide-sec-title" style="color: #00cd3c;"> 멜론 TOP10 투표 규칙 (공식)</div>
         <ul class="mma-guide-list">
           <li><b>투표 기간</b> : 2026. 10. 15(목) ~ 10. 29(목) 23:59 (KST)</li>
           <li><b>투표권</b> : <span style="color:#00cd3c; font-weight:800;">유료회원 1일 3표</span> / <span style="color:#fff; font-weight:700;">무료회원 1일 1표</span> (매일 00:00 KST 리셋)</li>
@@ -2105,7 +2805,7 @@
 
       <!-- 3. 카카오뱅크 특별상 투표 안내 -->
       <div class="mma-guide-section">
-        <div class="mma-guide-sec-title" style="color: #ffd200;">🟡 카카오뱅크 특별상 투표 규칙</div>
+        <div class="mma-guide-sec-title" style="color: #ffd200;"> 카카오뱅크 특별상 투표 규칙</div>
         <ul class="mma-guide-list kakao-bullet">
           <li><b>투표 기간</b> : 2026. 10. 15(목) ~ 10. 30(금) 마감</li>
           <li><b>투표 대상</b> : 만 14세 이상 카카오뱅크 입출금 계좌 또는 mini 보유 고객</li>
@@ -2116,7 +2816,7 @@
 
       <div style="border-top: 1px dashed rgba(255,255,255,0.12); padding-top: 8px; margin-top: 2px;">
         <a href="https://www.melon.com/mma/2026/info/" target="_blank" rel="noopener noreferrer" class="mma-guide-link">
-          멜론 MMA 공식 안내 페이지 바로가기 →
+          멜론 MMA 공식 안내 페이지 바로가기 ›
         </a>
       </div>
     </div>
@@ -2129,7 +2829,7 @@
       리센느 음원총공팀 및 소속사와 공식적인 관련이 없습니다.
     </div>
     <div class="footer-support">
-      RESCENE 4th Mini [PULSE] 대박 기원 🪽
+      RESCENE 4th Mini [PULSE] 대박 기원
     </div>
   </footer>
 </div>
@@ -2137,7 +2837,6 @@
 <!-- 📢 접속 시 첫 안내 팝업 모달 -->
 <div class="modal-backdrop" id="noticeModal" onclick="closeNoticeModal(false)">
   <div class="modal-card" onclick="event.stopPropagation()">
-    <div class="modal-icon-badge">📢</div>
     <div class="modal-title">서비스 이용 안내</div>
     <div class="modal-body">
       <p class="modal-desc">
@@ -2158,10 +2857,43 @@
   </div>
 </div>
 
+
+<!-- Search-ban notice follows the existing service notice. -->
+<div class="modal-backdrop" id="searchBanModal" role="dialog" aria-modal="true" aria-labelledby="searchBanModalTitle" aria-hidden="true" inert>
+  <div class="modal-card searchban-modal-card">
+    <div id="searchBanNoticeContent">
+    <p class="searchban-eyebrow">투표 인증 안내</p>
+    <h2 class="modal-title" id="searchBanModalTitle">X 서치밴을 확인해 주세요</h2>
+    <div class="modal-body">
+      <p>아래 사이트에 본인의 <b>X 사용자 이름(username)</b>을 입력해 서치밴 여부를 확인해 주세요.</p>
+      <div class="searchban-callout">
+        <b>서치밴(검색 제한)이 확인됐다면</b>
+        <p>페이지 상단의 <b>리센느 음원총공팀 카카오톡</b>으로 <b>투표 인증서</b>를 보내주세요.</p>
+        <a href="https://pf.kakao.com/_WxcxowX" target="_blank" rel="noopener noreferrer">음원총공팀 카카오톡 ›</a>
+      </div>
+      <a class="searchban-check-button" href="https://x-shadowban-checker.fia-s.com/en/" target="_blank" rel="noopener noreferrer">서치밴 확인하기</a>
+    </div>
+    <div class="modal-actions">
+      <button type="button" class="btn-modal-hide" id="searchBanHideToday">24시간 동안 안 보기</button>
+      <button type="button" class="btn-modal-close" id="searchBanClose">닫기</button>
+    </div>
+    </div>
+    <div class="searchban-confirm-view" id="searchBanConfirmContent" hidden>
+      <p class="searchban-eyebrow">닫기 전 확인해 주세요</p>
+      <h2 class="modal-title" id="searchBanConfirmTitle" tabindex="-1">공지를 읽으셨나요?</h2>
+      <p class="searchban-confirm-summary">서치밴이 확인되면 <b>음원총공팀 카카오톡</b>으로 <b>투표 인증서</b>를 보내주세요.</p>
+      <p class="searchban-confirm-setting" id="searchBanConfirmSetting"></p>
+      <div class="modal-actions">
+        <button type="button" class="btn-modal-hide" id="searchBanConfirmNo">아니오</button>
+        <button type="button" class="btn-modal-close" id="searchBanConfirmYes">예</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- 🔒 관리자 인증 모달 -->
 <div class="modal-backdrop" id="adminModal" onclick="closeAdminModal()">
   <div class="modal-card" style="max-width: 360px;" onclick="event.stopPropagation()">
-    <div class="modal-icon-badge">🔒</div>
     <div class="modal-title">관리자 인증</div>
     <div class="modal-body" style="text-align: center;">
       <p class="modal-desc" style="font-size: 13px; line-height: 1.5; color: #cbd5e1; margin-bottom: 14px;">
@@ -2185,7 +2917,7 @@
   <div class="modal-card stats-modal-card" onclick="event.stopPropagation()">
     <div class="stats-modal-header">
       <div class="stats-modal-title">
-        📅 2026 MAMA 투표 인증 통계
+        2026 MAMA 투표 인증 통계
       </div>
       <div style="display: flex; align-items: center; gap: 8px;">
         <button type="button" class="btn-admin-logout" onclick="logoutAdmin()">🔒 로그아웃</button>
@@ -2193,7 +2925,7 @@
       </div>
     </div>
     <div class="stats-modal-sub" id="statsModalSub">
-      ⏰ 공식 X(트위터) API를 통해 매시간 누락 없이 자동 집계됩니다.
+       공식 X(트위터) API를 통해 매시간 누락 없이 자동 집계됩니다.
     </div>
 
     <!-- 🗓️ 이번 달 달력 뷰 (2026년 10월) -->
@@ -2231,7 +2963,7 @@
   </div>
 </div>
 
-<div class="toast" id="toast">📋 해시태그가 복사되었습니다!</div>
+<div class="toast" id="toast"> 해시태그가 복사되었습니다!</div>
 
 <script src="scripts/crypto-js.min.js"></script>
 <script src="data/tweet_counts.enc.js"></script>
@@ -3041,9 +3773,222 @@
     }
   }
 
+  // 🍈 멜론 MMA 2026 TOP10 실시간 순위 & 표차이 조회 (무서버 브라우저 직접 호출)
+  async function fetchMelonLiveRank(isManual = false) {
+    const timeEl = document.getElementById('melonLiveTime');
+    const rankNumEl = document.getElementById('melonLiveRankNum');
+    const votesEl = document.getElementById('melonLiveVotes');
+    const gapTextEl = document.getElementById('melonLiveGapText');
+    const progressFillEl = document.getElementById('melonLiveProgressFill');
+
+    if (isManual && timeEl) {
+      timeEl.textContent = '갱신 중...';
+    }
+
+    try {
+      const ts = Math.floor(Date.now() / 1000);
+      const res = await fetch(`https://m2.melon.com/m6/mma/2026/vote/top10.json?lang=ko&t=${ts}`, {
+        cache: 'no-store'
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      const nominees = data && data.response && data.response.nominees;
+      if (!Array.isArray(nominees) || nominees.length === 0) {
+        throw new Error('Empty nominees');
+      }
+
+      // 득표수 내림차순 정렬
+      const sorted = [...nominees].sort((a, b) => (b.voteCount || 0) - (a.voteCount || 0));
+      const resceneIdx = sorted.findIndex(item =>
+        (item.content && String(item.content.id) === '3709231') ||
+        (item.content && item.content.name && item.content.name.includes('리센느'))
+      );
+
+      if (resceneIdx === -1) throw new Error('RESCENE not found');
+
+      const rescene = sorted[resceneIdx];
+      const rank = resceneIdx + 1;
+      const votes = rescene.voteCount || 0;
+      const pct = rescene.votePercent ?? 0;
+
+      if (rankNumEl) {
+        rankNumEl.textContent = `${rank}위`;
+      }
+      if (votesEl) {
+        votesEl.textContent = `총 ${votes.toLocaleString()}표 (${pct}%)`;
+      }
+
+      if (rank === 1) {
+        // 리센느가 1위일 때 -> 2위와의 표차이 표시
+        const second = sorted[1];
+        const secondName = (second && second.content && second.content.name) ? second.content.name : '2위';
+        const secondVotes = (second && second.voteCount) || 0;
+        const diff = Math.max(0, votes - secondVotes);
+
+        if (gapTextEl) {
+          gapTextEl.innerHTML = `
+            <span>👑 2위 <b>${secondName}</b>(${secondVotes.toLocaleString()}표)보다</span>
+            <span class="mma-gap-highlight is-first">+${diff.toLocaleString()}표 차이로 1위!</span>
+          `;
+        }
+        if (progressFillEl) {
+          progressFillEl.style.width = '100%';
+        }
+      } else {
+        // 리센느가 2위 이하일 때 -> 1위와의 표차이 표시
+        const first = sorted[0];
+        const firstName = (first && first.content && first.content.name) ? first.content.name : '1위';
+        const firstVotes = (first && first.voteCount) || 0;
+        const diff = Math.max(0, firstVotes - votes);
+        const ratio = firstVotes > 0 ? Math.min(100, Math.round((votes / firstVotes) * 1000) / 10) : 0;
+
+        if (gapTextEl) {
+          gapTextEl.innerHTML = `
+            <span>🔥 1위 <b>${firstName}</b>(${firstVotes.toLocaleString()}표)과</span>
+            <span class="mma-gap-highlight">${diff.toLocaleString()}표 차이!</span>
+          `;
+        }
+        if (progressFillEl) {
+          progressFillEl.style.width = `${ratio}%`;
+        }
+      }
+
+      const now = new Date();
+      const hh = String(now.getHours()).padStart(2, '0');
+      const mm = String(now.getMinutes()).padStart(2, '0');
+      const ss = String(now.getSeconds()).padStart(2, '0');
+      if (timeEl) {
+        timeEl.textContent = `${hh}:${mm}:${ss} 기준`;
+      }
+      if (isManual) {
+        showToast(`🍈 멜론 실시간 순위 갱신 완료! (현재 ${rank}위)`);
+      }
+    } catch (err) {
+      if (timeEl) timeEl.textContent = '조회 실패';
+      if (gapTextEl) {
+        gapTextEl.innerHTML = '<span>일시적으로 실시간 데이터를 불러오지 못했습니다. [새로고침]을 눌러주세요.</span>';
+      }
+    }
+  }
+
   loadTodayState();
   checkNoticeModal();
   checkSavedAdminSession();
+  fetchMelonLiveRank(false);
+  setInterval(() => fetchMelonLiveRank(false), 60000);
+</script>
+
+
+<script data-ui-notice="search-ban">
+(() => {
+  const modal = document.getElementById('searchBanModal');
+  const closeButton = document.getElementById('searchBanClose');
+  const hideButton = document.getElementById('searchBanHideToday');
+  const noticeContent = document.getElementById('searchBanNoticeContent');
+  const confirmContent = document.getElementById('searchBanConfirmContent');
+  const confirmTitle = document.getElementById('searchBanConfirmTitle');
+  const confirmSetting = document.getElementById('searchBanConfirmSetting');
+  let pendingHide24h = false;
+  const hideKey = 'rescene_hide_searchban_notice_until_v1';
+  let offered = false;
+  let timer;
+  let previousOverflow = '';
+  let returnFocus;
+
+  function isHiddenToday() {
+    try { return Number(localStorage.getItem(hideKey)) > Date.now(); }
+    catch { return false; }
+  }
+
+  function showWhenReady() {
+    if (offered || isHiddenToday() || document.querySelector('.modal-backdrop.show')) return;
+    offered = true;
+    const active = document.activeElement;
+    returnFocus = active && !active.closest('.modal-backdrop') && active !== document.body
+      ? active : document.querySelector('.stream-links a');
+    previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    modal.inert = false;
+    modal.setAttribute('aria-hidden', 'false');
+    modal.classList.add('show');
+    closeButton.focus({ preventScroll: true });
+  }
+
+  function queueNotice() {
+    clearTimeout(timer);
+    if (!offered && !isHiddenToday() && !document.querySelector('.modal-backdrop.show')) {
+      timer = setTimeout(showWhenReady, 280);
+    }
+  }
+
+  function finishClosing() {
+    if (!modal.classList.contains('show')) return;
+    if (pendingHide24h) {
+      try { localStorage.setItem(hideKey, String(Date.now() + 24 * 60 * 60 * 1000)); }
+      catch { /* Closing remains available when browser storage is unavailable. */ }
+    }
+    modal.classList.remove('show');
+    document.body.style.overflow = previousOverflow;
+    if (returnFocus && returnFocus.isConnected) returnFocus.focus({ preventScroll: true });
+    modal.setAttribute('aria-hidden', 'true');
+    modal.inert = true;
+  }
+
+  function requestClose(hide24h = false) {
+    if (!modal.classList.contains('show') || !confirmContent.hidden) return;
+    pendingHide24h = hide24h;
+    noticeContent.hidden = true;
+    confirmContent.hidden = false;
+    confirmSetting.textContent = hide24h
+      ? '‘예’를 누르면 24시간 동안 이 공지를 숨겨요.'
+      : '‘예’를 누르면 이번 공지만 닫아요.';
+    modal.setAttribute('aria-labelledby', 'searchBanConfirmTitle');
+    confirmTitle.focus({ preventScroll: true });
+  }
+
+  function returnToNotice() {
+    confirmContent.hidden = true;
+    noticeContent.hidden = false;
+    modal.setAttribute('aria-labelledby', 'searchBanModalTitle');
+    closeButton.focus({ preventScroll: true });
+  }
+
+  document.getElementById('searchBanConfirmYes').addEventListener('click', finishClosing);
+  document.getElementById('searchBanConfirmNo').addEventListener('click', returnToNotice);
+  closeButton.addEventListener('click', () => requestClose());
+  hideButton.addEventListener('click', () => requestClose(true));
+  modal.addEventListener('click', event => {
+    if (event.target !== modal) return;
+    if (confirmContent.hidden) requestClose();
+    else returnToNotice();
+  });
+  document.addEventListener('keydown', event => {
+    if (!modal.classList.contains('show')) return;
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      if (confirmContent.hidden) requestClose();
+      else returnToNotice();
+    } else if (event.key === 'Tab') {
+      const activeView = confirmContent.hidden ? noticeContent : confirmContent;
+      const controls = [...activeView.querySelectorAll('a[href], button')];
+      const first = controls[0];
+      const last = controls[controls.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  const observer = new MutationObserver(queueNotice);
+  document.querySelectorAll('.modal-backdrop').forEach(dialog => {
+    if (dialog !== modal) observer.observe(dialog, { attributes: true, attributeFilter: ['class'] });
+  });
+  queueNotice();
+})();
 </script>
 
 </body>
