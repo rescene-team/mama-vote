@@ -253,55 +253,53 @@
 
     .vote-banner {
       background: #bed5e0;
-
       border: 1px solid #afc9d6;
       border-radius: 10px;
-      padding: 20px;
+      padding: 13px 18px 15px;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
+      flex-direction: column;
+      gap: 10px;
       box-shadow: none;
       transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
-      gap: 12px;
     }
 
     .vote-banner:active {
       transform: scale(0.98);
-
       border-color: #9dbbc9;
-
       background: #b0ccd9;
     }
 
-    .vote-banner-content {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-      min-width: 0;
-
+    .vote-period-header {
+      padding-bottom: 9px;
+      border-bottom: 1px solid #a6c0ce;
     }
 
     .vote-period-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 4px;
-      background: transparent;
-      color: #465d6b;
-      font-size: 12px;
+      font-size: 11.5px;
       font-weight: 600;
-      padding: 0;
-      border-radius: 0;
-      width: fit-content;
+      color: #435e6f;
       letter-spacing: -0.2px;
+      display: block;
+    }
+
+    .vote-banner-body {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .vote-banner-text {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      min-width: 0;
     }
 
     .vote-banner-title {
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 700;
       color: #172b39;
-      display: flex;
-      align-items: center;
-      gap: 6px;
       letter-spacing: -0.035em;
     }
 
@@ -313,18 +311,12 @@
 
     .vote-banner-arrow {
       background: transparent;
-      width: 16px;
-      height: 24px;
-      border-radius: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
       color: #496271;
-      font-size: 26px;
+      font-size: 24px;
       font-weight: 700;
       flex-shrink: 0;
-      margin-left: 0;
       border: none;
+      line-height: 1;
     }
 
     /* 진행도 카드 */
@@ -1041,28 +1033,32 @@
     }
 
     .mma-live-refresh-btn {
-      background: transparent;
-      border: none;
-
-      color: #38684a;
+      background: #d8ecdf;
+      border: 1px solid #a3ceb4;
+      color: #1f6439;
       font-size: 11px;
-      font-weight: 500;
-      padding: 6px 0 6px 8px;
-      border-radius: 4px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 5px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 3px;
+      gap: 4px;
       transition: all 0.15s ease;
-      min-height: 36px;
+      min-height: 26px;
       flex-shrink: 0;
+      box-shadow: 0 1px 2px rgba(31, 100, 57, 0.08);
+    }
+
+    .mma-live-refresh-btn:hover {
+      background: #cce6d5;
+      border-color: #8dbf9f;
     }
 
     .mma-live-refresh-btn:active {
-      transform: scale(0.98);
-      background: rgba(87, 213, 138, 0.2);
-      border-color: rgba(87, 213, 138, 0.5);
-      color: #fff;
+      transform: scale(0.97);
+      background: #bedfc9;
+      border-color: #7ab38e;
     }
 
     .mma-live-main-row {
@@ -2141,7 +2137,6 @@
       .mma-wide-body { padding: 16px; }
       .progress-card { padding: 18px; }
       .quick-jump-btn { font-size: 12px; }
-      .status-check-badge { min-width: 64px; }
       .stats-modal-card { padding: 20px 14px 16px !important; }
     }
 
@@ -2160,7 +2155,6 @@
     .section-caption { margin-top: 6px; margin-bottom: 0; color: #607582; font-size: 13px; }
     .team-card:last-child { border-bottom: none; }
     .team-card.done:last-child { border-bottom: none; }
-    .mma-live-refresh-btn:active { background: #24272d; border-color: transparent; }
     .btn-mma-wide-vote.btn-melon:active { background: #106b38; }
     .btn-mma-wide-vote.btn-kakao:active { background: #e2c43b; }
 
@@ -2183,7 +2177,6 @@
     .kakao .mma-wide-desc, .kakao .mma-wide-badge, .kakao .mma-info-label { color: #756b42; }
     .kakao .mma-info-val { color: #4c4323; }
     .kakao .mma-info-val.highlight-yellow { color: #796216; }
-    .mma-live-refresh-btn:active { background: #dcece1; }
     .mma-guide-sec-title[style] { color: #426578 !important; }
     .mma-guide-list span[style] { color: #2c6743 !important; }
     .mma-guide-toggle-btn:active, .mma-guide-toggle-btn.active { background: #d6e0e6; color: #263f4e; border-color: #9aadb9; }
@@ -2210,9 +2203,15 @@
 
     /* Compact status labels keep the state and its touch target together. */
     .status-check-badge, .mma-wide-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 72px;
+      min-width: 72px;
+      max-width: 72px;
+      height: 28px;
       min-height: 28px;
-      min-width: 68px;
-      padding: 4px 8px;
+      padding: 0;
       border: 1px solid #b6c4ce;
       border-radius: 5px;
       background: #ced8df;
@@ -2220,14 +2219,21 @@
       font-size: 11px;
       font-weight: 500;
       white-space: nowrap;
+      text-align: center;
+      box-sizing: border-box;
+      flex-shrink: 0;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
     }
     .melon .mma-wide-badge { background: #d0e5d7; border-color: #a5c9b2; color: #3c654b; }
     .kakao .mma-wide-badge { background: #e9e0b3; border-color: #d1c582; color: #74601d; }
-    .team-card.done .status-check-badge, .done .mma-wide-badge,
-    .kakao.done .mma-wide-badge {
-      background: #c1dfcb;
-      border-color: #96bea3;
-      color: #245f3b;
+    .team-card.done .status-check-badge,
+    .special-alliance-card.done .status-check-badge,
+    .mma-wide-card.done .mma-wide-badge,
+    .done .status-check-badge,
+    .done .mma-wide-badge {
+      background: #c1dfcb !important;
+      border-color: #96bea3 !important;
+      color: #245f3b !important;
       font-weight: 600;
     }
     .status-check-badge.locked-badge { background: #d4d9dd; border-color: #c1c9cf; color: #6a7781; }
@@ -2382,6 +2388,312 @@
       line-height: 1.6;
     }
     .searchban-confirm-view .modal-title:focus { outline: none; }
+
+    /* 🤝 MMA 연합 (이세계아이돌) 아코디언 스타일 */
+    #card-5 {
+      padding-bottom: 20px;
+    }
+
+    .special-alliance-wrap {
+      width: 100%;
+      padding: 20px 0;
+      margin: 0;
+      border: none;
+    }
+
+    @media (max-width: 380px) {
+      #card-5 {
+        padding-bottom: 18px;
+      }
+      .special-alliance-wrap {
+        padding: 18px 0;
+      }
+    }
+
+    .btn-special-alliance-toggle {
+      width: 100%;
+      background: #e9edf0;
+      border: 1px solid #c7d1d7;
+      border-radius: 10px;
+      padding: 13px 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      text-align: left;
+    }
+
+    .btn-special-alliance-toggle:hover {
+      background: #e2e8ec;
+      border-color: #b0bfc8;
+    }
+
+    .btn-special-alliance-toggle:active {
+      transform: scale(0.99);
+    }
+
+    .btn-special-alliance-toggle.open {
+      background: #dce4e9;
+      border-color: #9eb1bd;
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+
+    .special-alliance-toggle-left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .special-alliance-pill {
+      font-size: 10.5px;
+      font-weight: 700;
+      background: #059669;
+      color: #fff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      letter-spacing: -0.2px;
+      flex-shrink: 0;
+    }
+
+    .special-alliance-toggle-title {
+      font-size: 13.5px;
+      font-weight: 650;
+      color: #253540;
+      letter-spacing: -0.03em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .special-alliance-toggle-arrow {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #5c6e7b;
+      flex-shrink: 0;
+      padding-left: 6px;
+    }
+
+    .special-alliance-card {
+      background: #e9edf0;
+      border: 1px solid #9eb1bd;
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      padding: 18px 16px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      animation: fadeInSlide 0.25s ease;
+    }
+
+    @keyframes fadeInSlide {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .special-alliance-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .special-alliance-meta {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      min-width: 0;
+    }
+
+    .special-alliance-name-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 6px;
+    }
+
+    .special-alliance-name {
+      font-size: 15.5px;
+      font-weight: 700;
+      color: #253540;
+      white-space: nowrap;
+    }
+
+    .special-alliance-guide-box {
+      background: #dde4e8;
+      border: 1px solid #cad4da;
+      border-radius: 8px;
+      padding: 12px 13px;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      font-size: 12px;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+
+    .special-alliance-guide-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .special-alliance-role-tag {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .special-alliance-role-tag.role-remine {
+      background: #fce7f3;
+      color: #be185d;
+    }
+
+    .special-alliance-role-tag.role-lepari {
+      background: #dcfce7;
+      color: #15803d;
+    }
+
+    .special-alliance-role-desc {
+      flex: 1;
+      min-width: 0;
+      color: #334155;
+      font-size: 12px;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+
+    .special-alliance-sub-desc {
+      font-size: 11.5px;
+      color: #506676;
+      font-weight: 500;
+      letter-spacing: -0.2px;
+    }
+
+    .special-alliance-period-alert {
+      background: #fdf2f8;
+      border: 1px solid #fbcfe8;
+      color: #9d174d;
+      padding: 7px 10px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      text-align: center;
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .special-alliance-guide-notice {
+      font-size: 11px;
+      color: #64748b;
+      padding-top: 1px;
+      word-break: keep-all;
+      line-height: 1.45;
+    }
+
+    .special-alliance-caution {
+      margin-top: 2px;
+      padding-top: 8px;
+      border-top: 1px dashed #cad4da;
+      font-size: 11.5px;
+      color: #475569;
+      line-height: 1.5;
+      word-break: keep-all;
+    }
+
+    .special-alliance-caution b {
+      color: #e11d48;
+    }
+
+    .special-alliance-caution a {
+      color: #0f172a;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    .special-alliance-pipeline {
+      background: #eef3f6;
+      border: 1px solid #cad6de;
+      border-radius: 7px;
+      padding: 9px 11px;
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 2px;
+    }
+
+    .pipeline-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: #355364;
+      letter-spacing: -0.2px;
+    }
+
+    .pipeline-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .pipeline-step-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: #2b3b46;
+      line-height: 1.4;
+      word-break: keep-all;
+    }
+
+    .pipeline-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: #3b5d70;
+      color: #ffffff;
+      font-size: 9.5px;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .pipeline-step-arrow {
+      padding-left: 5px;
+      font-size: 9.5px;
+      color: #7b919e;
+      line-height: 1;
+    }
+
+    .btn-special-main {
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: -0.3px;
+      padding: 13px 8px;
+      white-space: nowrap;
+      gap: 5px;
+    }
+
+    @media (max-width: 360px) {
+      .btn-special-main {
+        font-size: 12px;
+        padding: 13px 6px;
+      }
+    }
+
+    .special-alliance-card.done {
+      background: #e2e9ed;
+    }
 </style>
 </head>
 <body>
@@ -2441,12 +2753,16 @@
      rel="noopener noreferrer"
      class="vote-banner-link">
     <div class="vote-banner">
-      <div class="vote-banner-content">
+      <div class="vote-period-header">
         <span class="vote-period-tag">10.12(월) ~ 10.22(목)</span>
-        <div class="vote-banner-title"> 1차 투표 바로가기</div>
-        <div class="vote-banner-sub">엠넷플러스 공식 투표 페이지</div>
       </div>
-      <div class="vote-banner-arrow">›</div>
+      <div class="vote-banner-body">
+        <div class="vote-banner-text">
+          <div class="vote-banner-title">1차 투표 바로가기</div>
+          <div class="vote-banner-sub">엠넷플러스 공식 투표 페이지</div>
+        </div>
+        <div class="vote-banner-arrow">›</div>
+      </div>
     </div>
   </a>
 
@@ -2527,7 +2843,7 @@
         <div class="team-meta">
           <div class="team-name-row">
             <div class="team-name"> 알파드라이브원</div>
-            <span class="status-check-badge" onclick="toggleStatus('card-1')">⚪ 투표 전</span>
+            <span class="status-check-badge" onclick="toggleStatus('card-1')">⚪ 인증 전</span>
           </div>
           <div class="tag-row">
             <span class="tag-preview">#리마인X앨리즈</span>
@@ -2552,7 +2868,7 @@
         <div class="team-meta">
           <div class="team-name-row">
             <div class="team-name"> 앤더블</div>
-            <span class="status-check-badge" onclick="toggleStatus('card-2')">⚪ 투표 전</span>
+            <span class="status-check-badge" onclick="toggleStatus('card-2')">⚪ 인증 전</span>
           </div>
           <div class="tag-row">
             <span class="tag-preview">#리마인X앤클로</span>
@@ -2577,7 +2893,7 @@
         <div class="team-meta">
           <div class="team-name-row">
             <div class="team-name"> 빅뱅</div>
-            <span class="status-check-badge" onclick="toggleStatus('card-3')">⚪ 투표 전</span>
+            <span class="status-check-badge" onclick="toggleStatus('card-3')">⚪ 인증 전</span>
           </div>
           <div class="tag-row">
             <span class="tag-preview">#리마인과함께_븨아피</span>
@@ -2602,7 +2918,7 @@
         <div class="team-meta">
           <div class="team-name-row">
             <div class="team-name"> 하츠투하츠</div>
-            <span class="status-check-badge" onclick="toggleStatus('card-4')">⚪ 투표 전</span>
+            <span class="status-check-badge" onclick="toggleStatus('card-4')">⚪ 인증 전</span>
           </div>
           <div class="tag-row">
             <span class="tag-preview">#ReminexS2U</span>
@@ -2627,7 +2943,7 @@
         <div class="team-meta">
           <div class="team-name-row">
             <div class="team-name"> 베이비몬스터</div>
-            <span class="status-check-badge" id="card-5-badge" onclick="toggleStatus('card-5')">⚪ 투표 전</span>
+            <span class="status-check-badge" id="card-5-badge" onclick="toggleStatus('card-5')">⚪ 인증 전</span>
           </div>
           <div class="tag-row">
             <span class="tag-preview">#리마인X몬스티즈</span>
@@ -2636,6 +2952,89 @@
       </div>
       <div class="btn-group" id="card-5-btn-group">
         <!-- JS에서 날짜에 따라 동적으로 버튼 렌더링 -->
+      </div>
+    </div>
+
+    <!-- 🤝 MMA 연합 (이세계아이돌) 더보기 아코디언 -->
+    <div class="special-alliance-wrap">
+      <button type="button" class="btn-special-alliance-toggle" id="specialAllianceToggleBtn" onclick="toggleSpecialAlliance()">
+        <div class="special-alliance-toggle-left">
+          <span class="special-alliance-pill">MMA 연합</span>
+          <span class="special-alliance-toggle-title">2026 MMA 연합 인증</span>
+        </div>
+        <span class="special-alliance-toggle-arrow" id="specialAllianceArrow">더보기 ▾</span>
+      </button>
+
+      <div class="special-alliance-card" id="specialAllianceCard" style="display: none;">
+        <div class="special-alliance-header">
+          <img src="images/isegyeidol.png" class="team-poster-thumb" alt="이세계아이돌">
+          <div class="special-alliance-meta">
+            <div class="special-alliance-name-row">
+              <div class="special-alliance-name">이세계아이돌</div>
+              <span class="status-check-badge" id="specialAllianceBadge" onclick="toggleSpecialAllianceStatus()">⚪ 인증 전</span>
+            </div>
+            <div class="tag-row">
+              <span class="tag-preview">#리마인과_이파리_차원을_넘어</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="special-alliance-guide-box">
+          <div class="special-alliance-period-alert">
+            투표 인증 기간: ~11월 4일(수)
+          </div>
+          <div class="special-alliance-guide-row">
+            <span class="special-alliance-role-tag role-remine">리마인 투표</span>
+            <div class="special-alliance-role-desc">
+              2026 AAA 인기상 '여자 그룹 가수'<br>
+              ➔ <b>이세계아이돌</b><br>
+              <span class="special-alliance-sub-desc">(1일 1회~100회 자유 투표)</span>
+            </div>
+          </div>
+          <div class="special-alliance-guide-row">
+            <span class="special-alliance-role-tag role-lepari">이파리 투표</span>
+            <div class="special-alliance-role-desc">
+              2026 MMA 'GLOBAL TOP10'<br>
+              ➔ <b>리센느</b>
+            </div>
+          </div>
+          <!-- 📋 인증 파이프라인 안내 (주의 위에 배치) -->
+          <div class="special-alliance-pipeline">
+            <div class="pipeline-label">인증 방법</div>
+            <div class="pipeline-steps">
+              <div class="pipeline-step-row">
+                <span class="pipeline-num">1</span>
+                <span>태그 복사 후 투표 바로가기 클릭</span>
+              </div>
+              <div class="pipeline-step-arrow" aria-hidden="true">↓</div>
+              <div class="pipeline-step-row">
+                <span class="pipeline-num">2</span>
+                <span>투표 인증서 X 공유하기</span>
+              </div>
+              <div class="pipeline-step-arrow" aria-hidden="true">↓</div>
+              <div class="pipeline-step-row">
+                <span class="pipeline-num">3</span>
+                <span>복사한 태그 입력</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="special-alliance-caution">
+            <b>주의:</b> 서치밴인 경우 매일 해시태그 인증 대신, 11월 5일에 <a href="https://pf.kakao.com/_WxcxowX" target="_blank" rel="noopener noreferrer">리센느 음원 총공팀 카카오톡</a>으로 한꺼번에 매일 투표 인증서를 보내주시면 됩니다.
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <a href="https://promo-web.idolchamp.com/app_proxy.html?deeplink=https%3A%2F%2Fapp.idolchamp.com%2Fopen%2Fvote%2F01M4784X9DKK87B0J1GB669P3R" target="_blank" rel="noopener noreferrer" class="btn-main btn-special-main" onclick="openSpecialVote()">
+            <span>아이돌챔프 투표 바로가기</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+          <button type="button" class="btn-copy" onclick="copySpecialTags()">태그 복사</button>
+        </div>
       </div>
     </div>
 
@@ -2675,7 +3074,10 @@
               <span class="mma-live-time" id="melonLiveTime">집계 불러오는 중...</span>
             </div>
             <button type="button" class="mma-live-refresh-btn" onclick="fetchMelonLiveRank(true)">
-               새로고침
+              <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+              </svg>
+              새로고침
             </button>
           </div>
           <div class="mma-live-main-row">
@@ -3026,7 +3428,7 @@
     if (babyMonsterActive) {
       card5.classList.remove('locked');
       badge5.className = 'status-check-badge';
-      badge5.textContent = '⚪ 투표 전';
+      badge5.textContent = '⚪ 인증 전';
       btnGroup5.innerHTML = `
         <button class="btn-main" onclick="openTweet('리마인X몬스티즈', 'card-5')">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
@@ -3208,6 +3610,77 @@
     }
   }
 
+  // 🤝 특별 교차 연합 (AAA · MMA) 로직
+  const SPECIAL_ALLIANCE_KEY = 'rescene_special_alliance_';
+  const SPECIAL_ALLIANCE_TAG = '리마인과_이파리_차원을_넘어';
+
+  function toggleSpecialAlliance() {
+    const card = document.getElementById('specialAllianceCard');
+    const arrow = document.getElementById('specialAllianceArrow');
+    const btn = document.getElementById('specialAllianceToggleBtn');
+    if (!card || !arrow) return;
+
+    const isOpen = card.style.display !== 'none';
+    if (isOpen) {
+      card.style.display = 'none';
+      arrow.textContent = '더보기 ▾';
+      if (btn) btn.classList.remove('open');
+    } else {
+      card.style.display = 'flex';
+      arrow.textContent = '접기 ▴';
+      if (btn) btn.classList.add('open');
+    }
+  }
+
+  function loadSpecialAllianceState() {
+    const isDone = localStorage.getItem(SPECIAL_ALLIANCE_KEY + today.key) === 'true';
+    const card = document.getElementById('specialAllianceCard');
+    const badge = document.getElementById('specialAllianceBadge');
+    if (card && badge) {
+      if (isDone) {
+        card.classList.add('done');
+        badge.innerHTML = '🟢 완료';
+      } else {
+        card.classList.remove('done');
+        badge.innerHTML = '⚪ 인증 전';
+      }
+    }
+  }
+
+  function toggleSpecialAllianceStatus() {
+    const card = document.getElementById('specialAllianceCard');
+    const badge = document.getElementById('specialAllianceBadge');
+    if (!card || !badge) return;
+
+    card.classList.toggle('done');
+    const isDone = card.classList.contains('done');
+    if (isDone) {
+      badge.innerHTML = '🟢 완료';
+      localStorage.setItem(SPECIAL_ALLIANCE_KEY + today.key, 'true');
+      showToast('이세계아이돌 연합 인증이 완료되었습니다.');
+    } else {
+      badge.innerHTML = '⚪ 인증 전';
+      localStorage.removeItem(SPECIAL_ALLIANCE_KEY + today.key);
+      showToast('이세계아이돌 연합 인증이 미완료로 변경되었습니다.');
+    }
+  }
+
+  function openSpecialVote() {
+    const card = document.getElementById('specialAllianceCard');
+    const badge = document.getElementById('specialAllianceBadge');
+    if (card && badge && !card.classList.contains('done')) {
+      card.classList.add('done');
+      badge.innerHTML = '🟢 완료';
+      localStorage.setItem(SPECIAL_ALLIANCE_KEY + today.key, 'true');
+    }
+    showToast('아이돌챔프로 이동합니다! 투표 후 인증서를 X에 공유하세요.');
+  }
+
+  function copySpecialTags() {
+    const text = `#${SPECIAL_ALLIANCE_TAG}`;
+    copyTextToClipboard(text, '해시태그가 복사되었습니다! 📋');
+  }
+
   // 🚀 스무스 스크롤 & 상단 플로팅 네비게이션 스크롤스파이
   function scrollToSection(id) {
     const el = document.getElementById(id);
@@ -3248,6 +3721,7 @@
   function loadTodayState() {
     initBabyMonsterCard();
     loadMmaState();
+    loadSpecialAllianceState();
 
     for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
@@ -3258,6 +3732,9 @@
         localStorage.removeItem(k);
       }
       if (k && k.startsWith(MMA_MELON_KEY) && k !== MMA_MELON_KEY + today.key) {
+        localStorage.removeItem(k);
+      }
+      if (k && k.startsWith(SPECIAL_ALLIANCE_KEY) && k !== SPECIAL_ALLIANCE_KEY + today.key) {
         localStorage.removeItem(k);
       }
     }
@@ -3271,10 +3748,10 @@
       const checkEl = card.querySelector('.status-check-badge');
       if (doneList.includes(id)) {
         card.classList.add('done');
-        checkEl.innerHTML = '🟢 투표 완료';
+        checkEl.innerHTML = '🟢 완료';
       } else {
         card.classList.remove('done');
-        checkEl.innerHTML = '⚪ 투표 전';
+        checkEl.innerHTML = '⚪ 인증 전';
       }
     });
 
@@ -3283,10 +3760,10 @@
       const badge5 = document.getElementById('card-5-badge');
       if (doneList.includes('card-5')) {
         card5.classList.add('done');
-        badge5.innerHTML = '🟢 투표 완료';
+        badge5.innerHTML = '🟢 완료';
       } else {
         card5.classList.remove('done');
-        badge5.innerHTML = '⚪ 투표 전';
+        badge5.innerHTML = '⚪ 인증 전';
       }
     }
 
@@ -3305,14 +3782,16 @@
     localStorage.removeItem(STORAGE_PREFIX + today.key);
     localStorage.removeItem(MMA_KAKAO_KEY + today.key);
     localStorage.removeItem(MMA_MELON_KEY + today.key);
+    localStorage.removeItem(SPECIAL_ALLIANCE_KEY + today.key);
     loadMmaState();
+    loadSpecialAllianceState();
     activeCards.forEach(id => {
       const card = document.getElementById(id);
       if (!card) return;
       card.classList.remove('done');
       const badge = card.querySelector('.status-check-badge');
       if (badge && !card.classList.contains('locked')) {
-        badge.innerHTML = '⚪ 투표 전';
+        badge.innerHTML = '⚪ 인증 전';
       }
     });
     updateProgress();
@@ -3335,7 +3814,7 @@
     if (card && !card.classList.contains('done')) {
       card.classList.add('done');
       const badge = card.querySelector('.status-check-badge');
-      if (badge) badge.innerHTML = '🟢 투표 완료';
+      if (badge) badge.innerHTML = '🟢 완료';
       saveTodayState();
       updateProgress();
     }
@@ -3388,9 +3867,9 @@
     const checkEl = card.querySelector('.status-check-badge');
     card.classList.toggle('done');
     if (card.classList.contains('done')) {
-      checkEl.innerHTML = '🟢 투표 완료';
+      checkEl.innerHTML = '🟢 완료';
     } else {
-      checkEl.innerHTML = '⚪ 투표 전';
+      checkEl.innerHTML = '⚪ 인증 전';
     }
     saveTodayState();
     updateProgress();
@@ -3827,7 +4306,7 @@
 
         if (gapTextEl) {
           gapTextEl.innerHTML = `
-            <span>👑 2위 <b>${secondName}</b>(${secondVotes.toLocaleString()}표)보다</span>
+            <span>2위 <b>${secondName}</b>(${secondVotes.toLocaleString()}표)보다</span>
             <span class="mma-gap-highlight is-first">+${diff.toLocaleString()}표 차이로 1위!</span>
           `;
         }
@@ -3844,7 +4323,7 @@
 
         if (gapTextEl) {
           gapTextEl.innerHTML = `
-            <span>🔥 1위 <b>${firstName}</b>(${firstVotes.toLocaleString()}표)과</span>
+            <span>1위 <b>${firstName}</b>(${firstVotes.toLocaleString()}표)과</span>
             <span class="mma-gap-highlight">${diff.toLocaleString()}표 차이!</span>
           `;
         }
