@@ -2389,6 +2389,96 @@
     }
     .searchban-confirm-view .modal-title:focus { outline: none; }
 
+    /* 🏆 1차 MAMA 투표 완료/종료 감사 모달 스타일 */
+    .finish-modal-card {
+      background: #f4f7f9;
+      border: 1px solid #c4d1db;
+      color: #1c2b36;
+      text-align: center;
+      padding: 28px 20px 22px;
+      border-radius: 14px;
+      box-shadow: 0 16px 44px rgba(24, 38, 49, 0.28);
+    }
+    .finish-modal-icon {
+      font-size: 40px;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .finish-modal-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: #172b39;
+      margin-bottom: 14px;
+      text-align: center;
+      letter-spacing: -0.03em;
+    }
+    .finish-modal-body {
+      text-align: center;
+      gap: 12px;
+    }
+    .finish-modal-desc {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #3d5160;
+      word-break: keep-all;
+      margin: 0;
+    }
+    .finish-modal-desc b {
+      color: #172b39;
+      font-weight: 700;
+    }
+    .finish-modal-alert {
+      background: #e4edf2;
+      border: 1px solid #c2d5e0;
+      border-radius: 8px;
+      padding: 12px 14px;
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: #334d5e;
+      word-break: keep-all;
+      margin-top: 4px;
+      text-align: left;
+    }
+    .finish-modal-alert b {
+      color: #1c3d52;
+    }
+    .finish-modal-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 20px;
+    }
+    .btn-modal-mma-jump {
+      width: 100%;
+      background: #426578;
+      color: #ffffff;
+      border: none;
+      padding: 13px 16px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+    .btn-modal-mma-jump:active {
+      background: #36566a;
+    }
+    .btn-modal-close-simple {
+      width: 100%;
+      background: #e0e8ee;
+      color: #4a6170;
+      border: none;
+      padding: 11px 16px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+    .btn-modal-close-simple:active {
+      background: #d3dde5;
+    }
+
     /* 🤝 MMA 연합 (이세계아이돌) 아코디언 스타일 */
     #card-5 {
       padding-bottom: 20px;
@@ -3236,6 +3326,29 @@
   </footer>
 </div>
 
+<!-- 🏆 1차 MAMA 투표 완료/종료 감사 모달 -->
+<div class="modal-backdrop" id="mamaFinishModal" role="dialog" aria-modal="true" aria-labelledby="mamaFinishModalTitle" onclick="closeMamaFinishModal()">
+  <div class="modal-card finish-modal-card" onclick="event.stopPropagation()">
+    <div class="finish-modal-icon">🎉</div>
+    <div class="modal-title finish-modal-title" id="mamaFinishModalTitle">1차 MAMA 투표 종료</div>
+    <div class="modal-body finish-modal-body">
+      <p class="finish-modal-desc">
+        <b>2026 MAMA 1차 투표가 모두 종료되었습니다.</b><br>
+        그동안 리센느를 위해 매일 함께 달려와 주신<br>
+        모든 분들께 진심으로 감사드립니다! 🪽
+      </p>
+      <div class="finish-modal-alert">
+        🤝 <b>2026 MMA 연합 투표는 계속 진행 중입니다!</b><br>
+        멜론 TOP10 & 카카오뱅크 투표에도 많은 참여 부탁드립니다.
+      </div>
+    </div>
+    <div class="modal-actions finish-modal-actions">
+      <button type="button" class="btn-modal-mma-jump" onclick="goToMmaFromFinishModal()">MMA 투표하러 가기</button>
+      <button type="button" class="btn-modal-close-simple" onclick="closeMamaFinishModal()">닫기</button>
+    </div>
+  </div>
+</div>
+
 <!-- 📢 접속 시 첫 안내 팝업 모달 -->
 <div class="modal-backdrop" id="noticeModal" onclick="closeNoticeModal(false)">
   <div class="modal-card" onclick="event.stopPropagation()">
@@ -3875,7 +3988,40 @@
     updateProgress();
   }
 
-  function updateProgress() {
+  function isMamaFinalDay() {
+    const finalDayTime = new Date('2026-10-22T00:00:00+09:00').getTime();
+    const isFinalDate = Date.now() >= finalDayTime;
+    const isLocalDev = window.location.hostname === 'localhost' || 
+                       window.location.hostname === '127.0.0.1' || 
+                       window.location.hostname.startsWith('192.168.');
+    const hasTestParam = new URLSearchParams(window.location.search).has('test_finish');
+    return isFinalDate || isLocalDev || hasTestParam;
+  }
+
+  function showMamaFinishModal() {
+    const modal = document.getElementById('mamaFinishModal');
+    if (!modal) return;
+    modal.classList.add('show');
+    try {
+      localStorage.setItem('rescene_mama_finish_shown_' + today.key, 'true');
+    } catch (e) {}
+  }
+
+  function closeMamaFinishModal() {
+    const modal = document.getElementById('mamaFinishModal');
+    if (modal) {
+      modal.classList.remove('show');
+    }
+  }
+
+  function goToMmaFromFinishModal() {
+    closeMamaFinishModal();
+    setTimeout(() => {
+      scrollToSection('mmaSection');
+    }, 250);
+  }
+
+  function updateProgress(isInit = false) {
     const doneCount = document.querySelectorAll('.team-card.done').length;
     const pct = (doneCount / TOTAL_TEAMS) * 100;
     document.getElementById('progressFill').style.width = pct + '%';
@@ -3883,8 +4029,16 @@
 
     if (doneCount === TOTAL_TEAMS && TOTAL_TEAMS > 0) {
       setTimeout(() => {
-        showToast(`🎉 오늘 ${TOTAL_TEAMS}개 팀 인증 모두 완료! 고생하셨습니다! 🪽`);
-      }, 500);
+        if (isMamaFinalDay()) {
+          const alreadyShown = localStorage.getItem('rescene_mama_finish_shown_' + today.key);
+          if (!isInit || !alreadyShown) {
+            showMamaFinishModal();
+          }
+          showToast('🎉 2026 MAMA 1차 투표가 종료되었습니다. 감사합니다! 🪽');
+        } else {
+          showToast(`🎉 오늘 ${TOTAL_TEAMS}개 팀 인증 모두 완료! 고생하셨습니다! 🪽`);
+        }
+      }, 400);
     }
   }
 
@@ -3925,6 +4079,7 @@
   window.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeNoticeModal(false);
+      closeMamaFinishModal();
       closeStatsModal();
       closeAdminModal();
     }
