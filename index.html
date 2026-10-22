@@ -2479,6 +2479,86 @@
       background: #d3dde5;
     }
 
+    /* 🌙 MAMA 투표 종료 후 MMA 전용 뷰 스타일 */
+    body.mama-ended .vote-banner-link,
+    body.mama-ended .quick-jump-bar,
+    body.mama-ended #floatingNav,
+    body.mama-ended .progress-card,
+    body.mama-ended .notice-box,
+    body.mama-ended #statsBannerCard,
+    body.mama-ended #mamaSection > .section-heading,
+    body.mama-ended #mamaSection > .section-caption,
+    body.mama-ended #card-1,
+    body.mama-ended #card-2,
+    body.mama-ended #card-3,
+    body.mama-ended #card-4,
+    body.mama-ended #card-5 {
+      display: none !important;
+    }
+
+    body.mama-ended #mamaSection {
+      background: transparent !important;
+      border: none !important;
+      padding: 0 !important;
+      margin-top: 14px !important;
+      margin-bottom: 0 !important;
+      box-shadow: none !important;
+    }
+
+    body.mama-ended .special-alliance-wrap {
+      padding: 0 !important;
+      margin-bottom: 24px !important;
+    }
+
+    .mama-ended-banner {
+      display: none;
+      background: #d8e5ec;
+      border: 1px solid #b8ccd7;
+      border-radius: 9px;
+      padding: 13px 15px;
+      margin-top: 16px;
+      font-size: 13px;
+      color: #274050;
+      line-height: 1.55;
+      text-align: center;
+      word-break: keep-all;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    body.mama-ended .mama-ended-banner {
+      display: flex;
+    }
+
+    /* 로컬 개발 테스트용 토글 바 */
+    .dev-preview-bar {
+      display: none;
+      background: #2b3944;
+      color: #e4edf3;
+      padding: 8px 12px;
+      border-radius: 8px;
+      margin-bottom: 14px;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    .btn-dev-preview-toggle {
+      background: #476a80;
+      color: #ffffff;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+    .btn-dev-preview-toggle:active {
+      background: #365366;
+    }
+
     /* 🤝 MMA 연합 (이세계아이돌) 아코디언 스타일 */
     #card-5 {
       padding-bottom: 20px;
@@ -2802,6 +2882,14 @@
 
 <div class="container">
 
+  <!-- ⚡ 개발 및 테스트 전용: 12시 정각 자동 전환 미리보기 토글 바 -->
+  <div class="dev-preview-bar" id="devPreviewBar" style="display: none;">
+    <span class="dev-preview-label">⚡ 12시 정각 자동 전환 미리보기:</span>
+    <button type="button" class="btn-dev-preview-toggle" onclick="toggleDevMamaEnded()">
+      <span id="devToggleText">🌙 MMA 전용 모드로 보기</span>
+    </button>
+  </div>
+
   <!-- 🪽 리센느 음원총공팀 공식 프로필 카드 -->
   <div class="stream-team-card">
     <img src="images/rescene_stream_logo.png" class="stream-team-logo" alt="리센느 음원총공팀 로고">
@@ -2833,9 +2921,15 @@
       <span class="date-badge" id="currentDateBadge">📅 2026.10.13 (화)</span>
       <button type="button" class="btn-admin-auth" id="adminTopBtn" onclick="handleAdminClick()" aria-label="관리자 메뉴" title="관리자 메뉴">🔒</button>
     </div>
-    <h1>2026 MAMA<br>X 인증 헬퍼</h1>
-    <p class="subtitle">팀별 해시태그가 담긴 X 작성창을 열어요.</p>
+    <h1 id="mainTitle">2026 MAMA<br>X 인증 헬퍼</h1>
+    <p class="subtitle" id="mainSubtitle">팀별 해시태그가 담긴 X 작성창을 열어요.</p>
   </header>
+
+  <!-- 📢 1차 MAMA 투표 종료 감사 배너 (자정 이후 자동 표시) -->
+  <div class="mama-ended-banner" id="mamaEndedBanner">
+    <span>🎉</span>
+    <span><b>2026 MAMA 1차 투표가 종료되었습니다.</b><br>함께해 주신 모든 분들께 진심으로 감사드립니다! 🪽</span>
+  </div>
 
   <!-- 🗳️ 1차 투표 바로가기 링크 배너 -->
   <a href="https://mnetplus.world/event/ko/2026-mama?deeplink=mnetplus%3A%2F%2Fvote%2Ftemplates%2Fmama-fans-choice-vote-r1%2F6ab09532c314bb17315adc4e%3Furl_fallback_type%3Dupdate"
@@ -4505,6 +4599,63 @@
     }
   }
 
+  // 🌙 MAMA 투표 종료 및 MMA 전용 모드 전환 제어 (2026-10-23 00:00:00 KST 정각부터)
+  const MAMA_END_TIMESTAMP = new Date('2026-10-23T00:00:00+09:00').getTime();
+  let devPreviewOverride = null;
+
+  function isMamaEnded() {
+    if (devPreviewOverride !== null) return devPreviewOverride;
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('test_mma_only') || urlParams.has('mma_only')) return true;
+    if (urlParams.has('test_mama')) return false;
+    return Date.now() >= MAMA_END_TIMESTAMP;
+  }
+
+  function applyMamaEndedMode() {
+    const ended = isMamaEnded();
+    const title = document.getElementById('mainTitle');
+    const subtitle = document.getElementById('mainSubtitle');
+    const devToggleText = document.getElementById('devToggleText');
+
+    if (ended) {
+      document.body.classList.add('mama-ended');
+      if (title) title.innerHTML = '2026 MMA<br>투표 헬퍼';
+      if (subtitle) subtitle.textContent = '멜론 TOP10 · 카카오뱅크 · 연합 투표를 함께해요.';
+      document.title = '2026 MMA RESCENE 연합 투표 헬퍼';
+      if (devToggleText) devToggleText.textContent = '☀️ MAMA 투표 화면으로 복귀';
+    } else {
+      document.body.classList.remove('mama-ended');
+      if (title) title.innerHTML = '2026 MAMA<br>X 인증 헬퍼';
+      if (subtitle) subtitle.textContent = '팀별 해시태그가 담긴 X 작성창을 열어요.';
+      document.title = '2026 MAMA RESCENE 연합 인증 총공';
+      if (devToggleText) devToggleText.textContent = '🌙 MMA 전용 모드로 보기';
+
+      // 자정(정각)까지 남은 시간 계산 후 자동 전환 타이머 등록
+      const remaining = MAMA_END_TIMESTAMP - Date.now();
+      if (remaining > 0 && remaining < 86400000) {
+        setTimeout(applyMamaEndedMode, remaining + 100);
+      }
+    }
+  }
+
+  function toggleDevMamaEnded() {
+    devPreviewOverride = !isMamaEnded();
+    applyMamaEndedMode();
+    showToast(devPreviewOverride ? '🌙 MMA 전용 모드로 전환되었습니다.' : '☀️ 기존 MAMA 모드로 복귀되었습니다.');
+  }
+
+  function initDevPreview() {
+    const isLocalDev = window.location.hostname === 'localhost' || 
+                       window.location.hostname === '127.0.0.1' || 
+                       window.location.hostname.startsWith('192.168.');
+    const bar = document.getElementById('devPreviewBar');
+    if (isLocalDev && bar) {
+      bar.style.display = 'flex';
+    }
+  }
+
+  applyMamaEndedMode();
+  initDevPreview();
   loadTodayState();
   checkNoticeModal();
   checkSavedAdminSession();
