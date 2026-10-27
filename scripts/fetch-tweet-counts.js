@@ -2,11 +2,7 @@ const fs = require('fs');
 const path = require('path');
 
 const TEAMS = [
-  { id: 'card-1', name: '알파드라이브원', tag: '리마인X앨리즈' },
-  { id: 'card-2', name: '앤더블', tag: '리마인X앤클로' },
-  { id: 'card-3', name: '빅뱅', tag: '리마인과함께_븨아피' },
-  { id: 'card-4', name: '하츠투하츠', tag: 'ReminexS2U' },
-  { id: 'card-5', name: '베이비몬스터', tag: '리마인X몬스티즈' }
+  { id: 'card-1', name: '앤더블', tag: '리마인과_앤클로의_HappyBloom' }
 ];
 
 // 리센느 전체 MAMA 투표 (#2026MAMAVOTE #rescene)
@@ -78,12 +74,12 @@ async function main() {
 
   const todayKey = getTodayKSTKey();
   const sevenDaysAgo = new Date(Date.now() - (7 * 24 * 60 * 60 * 1000) + (60 * 1000));
-  const mamaStartUtc = new Date('2026-10-11T15:00:00Z');
+  const mamaStartUtc = new Date('2026-10-28T09:00:00Z'); // 2차 투표 시작: 10월 28일 18:00 KST
   const effectiveStart = mamaStartUtc > sevenDaysAgo ? mamaStartUtc : sevenDaysAgo;
   const startTimeIso = effectiveStart.toISOString();
 
   // 1️⃣ [0번 검색] 리센느 전체 MAMA 투표 (#2026MAMAVOTE #rescene)
-  console.log(`[0/6 전체 조회] 리센느 MAMA 전체 투표 (${OVERALL_QUERY})...`);
+  console.log(`[0/2 전체 조회] 리센느 MAMA 전체 투표 (${OVERALL_QUERY})...`);
   try {
     const overallResult = await fetchCountsForQuery(token, OVERALL_QUERY, startTimeIso);
     const overallHistory = currentData.overall?.history || {};
@@ -117,13 +113,13 @@ async function main() {
     console.error(`❌ 리센느 전체 조회 실패:`, err.message);
   }
 
-  // 2️⃣ [1~5번 검색] 5개 팀별 연합 해시태그 각각 조회 (#2026MAMAVOTE #rescene #팀연합태그)
+  // 2️⃣ [1번 검색] 앤더블 연합 해시태그 조회 (#2026MAMAVOTE #rescene #리마인과_앤클로의_HappyBloom)
   let grandTotalTeamsToday = 0;
 
   for (let i = 0; i < TEAMS.length; i++) {
     const team = TEAMS[i];
     const query = `#2026MAMAVOTE #rescene #${team.tag}`;
-    console.log(`[${i + 1}/6 팀별 조회] ${team.name} (${query})...`);
+    console.log(`[${i + 1}/2 팀별 조회] ${team.name} (${query})...`);
 
     try {
       const result = await fetchCountsForQuery(token, query, startTimeIso);
@@ -184,7 +180,7 @@ async function main() {
   const ciphertext = CryptoJS.AES.encrypt(JSON.stringify(currentData), adminSecret).toString();
   fs.writeFileSync(ENC_DATA_FILE, `// 자동 생성된 실시간 트위터 집계 암호화 데이터 (AES-256)\nwindow.ENCRYPTED_TWEET_DATA = "${ciphertext}";\n`, 'utf8');
   console.log(`🔒 암호화 데이터 생성 완료: ${ENC_DATA_FILE}`);
-  console.log(`🎉 6개 쿼리 완료! 연합 합계: ${grandTotalTeamsToday}건, 리센느 전체 MAMA: ${currentData.overall?.today || 0}건`);
+  console.log(`🎉 앤더블 2차 연합 조회 완료! 연합 합계: ${grandTotalTeamsToday}건, 리센느 전체 MAMA: ${currentData.overall?.today || 0}건`);
 }
 
 main().catch(err => {

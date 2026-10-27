@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>2026 MAMA RESCENE 연합 인증 총공</title>
+  <title>2026 MAMA 2차 RESCENE 연합 인증 총공</title>
   <meta name="theme-color" content="#d3e3ea">
   <style>
     @font-face {
@@ -521,6 +521,18 @@
       gap: 6px;
     }
 
+    .team-category-pill {
+      display: inline-block;
+      background: #3b5d70;
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 4px;
+      margin-left: 6px;
+      vertical-align: middle;
+      letter-spacing: -0.2px;
+    }
     .team-name {
       font-size: 16px;
       font-weight: 650;
@@ -2560,7 +2572,7 @@
     }
 
     /* 🤝 MMA 연합 (이세계아이돌) 아코디언 스타일 */
-    #card-5 {
+    #card-1 {
       padding-bottom: 20px;
     }
 
@@ -2572,7 +2584,7 @@
     }
 
     @media (max-width: 380px) {
-      #card-5 {
+      #card-1 {
         padding-bottom: 18px;
       }
       .special-alliance-wrap {
@@ -2872,23 +2884,15 @@
 <div class="floating-nav-bar" id="floatingNav">
   <div class="floating-nav-inner">
     <button type="button" class="floating-nav-btn active mama" id="floatMamaBtn" onclick="scrollToSection('mamaSection')">
-      <span> MAMA 5팀</span>
+      <span> MAMA 2차</span>
     </button>
     <button type="button" class="floating-nav-btn mma" id="floatMmaBtn" onclick="scrollToSection('mmaSection')">
-      <span> MMA 2026(멜론, 카뱅)</span>
+      <span> MMA 2026</span>
     </button>
   </div>
 </div>
 
 <div class="container">
-
-  <!-- ⚡ 개발 및 테스트 전용: 12시 정각 자동 전환 미리보기 토글 바 -->
-  <div class="dev-preview-bar" id="devPreviewBar" style="display: none;">
-    <span class="dev-preview-label">⚡ 12시 정각 자동 전환 미리보기:</span>
-    <button type="button" class="btn-dev-preview-toggle" onclick="toggleDevMamaEnded()">
-      <span id="devToggleText">🌙 MMA 전용 모드로 보기</span>
-    </button>
-  </div>
 
   <!-- 🪽 리센느 음원총공팀 공식 프로필 카드 -->
   <div class="stream-team-card">
@@ -2917,32 +2921,26 @@
 
   <header>
     <div class="top-badge-row">
-      <span class="badge">RESCENE · 연합 총공</span>
-      <span class="date-badge" id="currentDateBadge">📅 2026.10.13 (화)</span>
+      <span class="badge">RESCENE · 2차 연합 총공</span>
+      <span class="date-badge" id="currentDateBadge">📅 오늘 날짜</span>
       <button type="button" class="btn-admin-auth" id="adminTopBtn" onclick="handleAdminClick()" aria-label="관리자 메뉴" title="관리자 메뉴">🔒</button>
     </div>
-    <h1 id="mainTitle">2026 MAMA<br>X 인증 헬퍼</h1>
+    <h1 id="mainTitle">2026 MAMA 2차<br>X 인증 헬퍼</h1>
     <p class="subtitle" id="mainSubtitle">팀별 해시태그가 담긴 X 작성창을 열어요.</p>
   </header>
 
-  <!-- 📢 1차 MAMA 투표 종료 감사 배너 (자정 이후 자동 표시) -->
-  <div class="mama-ended-banner" id="mamaEndedBanner">
-    <span>🎉</span>
-    <span><b>2026 MAMA 1차 투표가 종료되었습니다.</b><br>함께해 주신 모든 분들께 진심으로 감사드립니다! 🪽</span>
-  </div>
-
-  <!-- 🗳️ 1차 투표 바로가기 링크 배너 -->
-  <a href="https://mnetplus.world/event/ko/2026-mama?deeplink=mnetplus%3A%2F%2Fvote%2Ftemplates%2Fmama-fans-choice-vote-r1%2F6ab09532c314bb17315adc4e%3Furl_fallback_type%3Dupdate"
-     target="_blank"
-     rel="noopener noreferrer"
-     class="vote-banner-link">
+  <!-- 🗳️ 2차 투표 바로가기 링크 배너 -->
+  <a href="javascript:void(0)"
+     onclick="handleVoteBannerClick(event)"
+     class="vote-banner-link"
+     id="voteBannerLink">
     <div class="vote-banner">
       <div class="vote-period-header">
-        <span class="vote-period-tag">10.12(월) ~ 10.22(목)</span>
+        <span class="vote-period-tag">10.28(수) 18:00 ~ 11.08(일) 23:59</span>
       </div>
       <div class="vote-banner-body">
         <div class="vote-banner-text">
-          <div class="vote-banner-title">1차 투표 바로가기</div>
+          <div class="vote-banner-title">2차 투표 바로가기</div>
           <div class="vote-banner-sub">엠넷플러스 공식 투표 페이지</div>
         </div>
         <div class="vote-banner-arrow">›</div>
@@ -2953,10 +2951,10 @@
   <!-- ⚡ 빠른 스크롤 점프 바 -->
   <div class="quick-jump-bar">
     <button type="button" class="quick-jump-btn" onclick="scrollToSection('mamaSection')">
-      <span> MAMA 5팀</span>
+      <span> MAMA 2차</span>
     </button>
     <button type="button" class="quick-jump-btn btn-jump-mma" onclick="scrollToSection('mmaSection')">
-      <span> MMA 2026(멜론, 카뱅)</span>
+      <span> MMA 2026</span>
     </button>
   </div>
 
@@ -2964,7 +2962,7 @@
   <div class="progress-card">
     <div class="progress-header">
       <span>오늘의 인증 진행도</span>
-      <span class="progress-count" id="progressCount">0 / 4 완료</span>
+      <span class="progress-count" id="progressCount">0 / 1 완료</span>
     </div>
     <div class="progress-bar">
       <div class="progress-fill" id="progressFill"></div>
@@ -3015,129 +3013,38 @@
     </button>
   </div>
 
-  <!-- 5개 팀 리스트 -->
+    <!-- MAMA 2차 연합 리스트 -->
   <div class="team-list" id="mamaSection">
-    <h2 class="section-heading">MAMA 연합 인증</h2>
+    <h2 class="section-heading">MAMA 2차 연합 인증</h2>
     <p class="section-caption">투표한 팀에 인증서를 올려주세요.</p>
-
-    <!-- 1. 알파드라이브원 -->
+    <!-- 1. 앤더블 (AND2BLE) -->
     <div class="team-card" id="card-1">
-      <div class="team-header-row">
-        <img src="images/alphadriveone.png" class="team-poster-thumb" alt="알파드라이브원 포스터">
-        <div class="team-meta">
-          <div class="team-name-row">
-            <div class="team-name"> 알파드라이브원</div>
-            <span class="status-check-badge" onclick="toggleStatus('card-1')">⚪ 인증 전</span>
-          </div>
-          <div class="tag-row">
-            <span class="tag-preview">#리마인X앨리즈</span>
-          </div>
-        </div>
-      </div>
-      <div class="btn-group">
-        <button class="btn-main" onclick="openTweet('리마인X앨리즈', 'card-1')">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
-          트위터에 글쓰기
-        </button>
-        <button class="btn-copy" onclick="copyTags('리마인X앨리즈')">태그 복사</button>
-      </div>
-    </div>
-
-    <!-- 2. 앤더블 -->
-    <div class="team-card" id="card-2">
       <div class="team-header-row">
         <img src="images/andouble.png" class="team-poster-thumb" alt="앤더블 포스터">
         <div class="team-meta">
           <div class="team-name-row">
-            <div class="team-name"> 앤더블</div>
-            <span class="status-check-badge" onclick="toggleStatus('card-2')">⚪ 인증 전</span>
+            <div class="team-name">
+              앤더블 (AND2BLE)
+              <span class="team-category-pill">남자 부문</span>
+            </div>
+            <span class="status-check-badge" onclick="toggleStatus('card-1')">⚪ 인증 전</span>
           </div>
           <div class="tag-row">
-            <span class="tag-preview">#리마인X앤클로</span>
+            <span class="tag-preview">#리마인과_앤클로의_HappyBloom</span>
           </div>
         </div>
       </div>
       <div class="btn-group">
-        <button class="btn-main" onclick="openTweet('리마인X앤클로', 'card-2')">
+        <button class="btn-main" onclick="openTweet('리마인과_앤클로의_HappyBloom', 'card-1')">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
           트위터에 글쓰기
         </button>
-        <button class="btn-copy" onclick="copyTags('리마인X앤클로')">태그 복사</button>
+        <button class="btn-copy" onclick="copyTags('리마인과_앤클로의_HappyBloom')">태그 복사</button>
       </div>
     </div>
 
-    <!-- 3. 빅뱅 -->
-    <div class="team-card" id="card-3">
-      <div class="team-header-row">
-        <img src="images/bigbang.png" class="team-poster-thumb" alt="빅뱅 포스터">
-        <div class="team-meta">
-          <div class="team-name-row">
-            <div class="team-name"> 빅뱅</div>
-            <span class="status-check-badge" onclick="toggleStatus('card-3')">⚪ 인증 전</span>
-          </div>
-          <div class="tag-row">
-            <span class="tag-preview">#리마인과함께_븨아피</span>
-          </div>
-        </div>
-      </div>
-      <div class="btn-group">
-        <button class="btn-main" onclick="openTweet('리마인과함께_븨아피', 'card-3')">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
-          트위터에 글쓰기
-        </button>
-        <button class="btn-copy" onclick="copyTags('리마인과함께_븨아피')">태그 복사</button>
-      </div>
-    </div>
-
-    <!-- 4. 하츠투하츠 -->
-    <div class="team-card" id="card-4">
-      <div class="team-header-row">
-        <img src="images/heartstohearts.png" class="team-poster-thumb" alt="하츠투하츠 포스터">
-        <div class="team-meta">
-          <div class="team-name-row">
-            <div class="team-name"> 하츠투하츠</div>
-            <span class="status-check-badge" onclick="toggleStatus('card-4')">⚪ 인증 전</span>
-          </div>
-          <div class="tag-row">
-            <span class="tag-preview">#ReminexS2U</span>
-          </div>
-        </div>
-      </div>
-      <div class="btn-group">
-        <button class="btn-main" onclick="openTweet('ReminexS2U', 'card-4')">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
-          트위터에 글쓰기
-        </button>
-        <button class="btn-copy" onclick="copyTags('ReminexS2U')">태그 복사</button>
-      </div>
-    </div>
-
-    <!-- 5. 베이비몬스터 (10/14 활성화 제어) -->
-    <div class="team-card" id="card-5">
-      <div class="team-header-row">
-        <img src="images/babymonster.png" class="team-poster-thumb" alt="베이비몬스터 포스터">
-        <div class="team-meta">
-          <div class="team-name-row">
-            <div class="team-name"> 베이비몬스터</div>
-            <span class="status-check-badge" id="card-5-badge" onclick="toggleStatus('card-5')">⚪ 인증 전</span>
-          </div>
-          <div class="tag-row">
-            <span class="tag-preview">#리마인X몬스티즈</span>
-          </div>
-        </div>
-      </div>
-      <div class="btn-group" id="card-5-btn-group">
-        <!-- JS에서 날짜에 따라 동적으로 버튼 렌더링 -->
-      </div>
-    </div>
 
     <!-- 🤝 MMA 연합 (이세계아이돌) 더보기 아코디언 -->
     <div class="special-alliance-wrap">
@@ -3228,7 +3135,7 @@
   <div class="extra-section-header" id="mmaSection">
     <div class="extra-divider-line"></div>
     <div class="extra-section-badge">
-      <span> MMA 2026 (멜론 · 카카오뱅크)</span>
+      <span> MMA 2026</span>
     </div>
     <div class="extra-divider-line"></div>
   </div>
@@ -3420,6 +3327,29 @@
   </footer>
 </div>
 
+<!-- ⏰ 2차 투표 오픈 대기 팝업 모달 -->
+<div class="modal-backdrop" id="voteWaitModal" role="dialog" aria-modal="true" aria-labelledby="voteWaitModalTitle" onclick="closeVoteWaitModal()">
+  <div class="modal-card finish-modal-card" onclick="event.stopPropagation()">
+    <div class="finish-modal-icon">⏰</div>
+    <div class="modal-title finish-modal-title" id="voteWaitModalTitle">2차 투표 오픈 안내</div>
+    <div class="modal-body finish-modal-body">
+      <p class="finish-modal-desc">
+        <b>2026 MAMA Fans’ Choice 2차 투표</b>는<br>
+        <b>오늘(10월 28일) 18:00 (KST)</b>에 공식 오픈됩니다!
+      </p>
+      <div class="finish-modal-alert">
+        📌 <b>2차 연합 투표 팀 안내</b><br>
+        • 남자 부문: <b>앤더블 (AND2BLE)</b><br>
+        • 여자 부문: <b>리센느 (RESCENE)</b><br><br>
+        18:00 오픈 직후 공식 투표 링크가 활성화됩니다.
+      </div>
+    </div>
+    <div class="modal-actions finish-modal-actions">
+      <button type="button" class="btn-modal-mma-jump" onclick="closeVoteWaitModal()">확인</button>
+    </div>
+  </div>
+</div>
+
 <!-- 🏆 1차 MAMA 투표 완료/종료 감사 모달 -->
 <div class="modal-backdrop" id="mamaFinishModal" role="dialog" aria-modal="true" aria-labelledby="mamaFinishModalTitle" onclick="closeMamaFinishModal()">
   <div class="modal-card finish-modal-card" onclick="event.stopPropagation()">
@@ -3579,7 +3509,6 @@
 <script>
   const common1 = "2026MAMAVOTE";
   const common2 = "rescene";
-  const STORAGE_PREFIX = "rescene_mama_done_";
 
   function getKSTDate() {
     const now = new Date();
@@ -3621,44 +3550,31 @@
     return Date.now() >= new Date('2026-10-14T00:00:00+09:00').getTime();
   }
 
-  const babyMonsterActive = isBabyMonsterActive();
-  const activeCards = babyMonsterActive 
-    ? ['card-1', 'card-2', 'card-3', 'card-4', 'card-5'] 
-    : ['card-1', 'card-2', 'card-3', 'card-4'];
+  const activeCards = ['card-1'];
   const TOTAL_TEAMS = activeCards.length;
+  const STORAGE_PREFIX = "rescene_mama2_done_";
 
-  function initBabyMonsterCard() {
-    const card5 = document.getElementById('card-5');
-    const badge5 = document.getElementById('card-5-badge');
-    const btnGroup5 = document.getElementById('card-5-btn-group');
+  const MAMA2_START_TIMESTAMP = new Date('2026-10-28T18:00:00+09:00').getTime();
 
-    if (babyMonsterActive) {
-      card5.classList.remove('locked');
-      badge5.className = 'status-check-badge';
-      badge5.textContent = '⚪ 인증 전';
-      btnGroup5.innerHTML = `
-        <button class="btn-main" onclick="openTweet('리마인X몬스티즈', 'card-5')">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-          </svg>
-          트위터에 글쓰기
-        </button>
-        <button class="btn-copy" onclick="copyTags('리마인X몬스티즈')">태그 복사</button>
-      `;
+  function handleVoteBannerClick(e) {
+    if (e) e.preventDefault();
+    const isTestOpen = new URLSearchParams(window.location.search).has('test_open');
+    if (Date.now() < MAMA2_START_TIMESTAMP && !isTestOpen) {
+      showVoteWaitModal();
     } else {
-      card5.classList.add('locked');
-      badge5.className = 'status-check-badge locked-badge';
-      badge5.textContent = '🔒 10/14 오픈';
-      badge5.onclick = () => showToast('🔒 베이비몬스터 부문은 10월 14일부터 오픈됩니다!');
-      btnGroup5.innerHTML = `
-        <button class="btn-main btn-locked" onclick="showToast('🔒 10월 14일(내일)부터 활성화됩니다!')">
-          🔒 10/14부터 활성화
-        </button>
-        <button class="btn-copy btn-locked" onclick="showToast('🔒 10월 14일(내일)부터 활성화됩니다!')">
-          태그 복사
-        </button>
-      `;
+      window.open('https://mnetplus.world/', '_blank', 'noopener,noreferrer');
     }
+  }
+
+  function showVoteWaitModal() {
+    const modal = document.getElementById('voteWaitModal');
+    if (modal) modal.classList.add('show');
+    showToast('⏰ 2차 투표는 10월 28일 18:00에 오픈됩니다!');
+  }
+
+  function closeVoteWaitModal() {
+    const modal = document.getElementById('voteWaitModal');
+    if (modal) modal.classList.remove('show');
   }
 
   // 🌟 [번외] MMA 2026 특별상 & TOP10 로직
@@ -3926,7 +3842,6 @@
   }, { passive: true });
 
   function loadTodayState() {
-    initBabyMonsterCard();
     loadMmaState();
     loadSpecialAllianceState();
 
@@ -3949,30 +3864,18 @@
     const saved = localStorage.getItem(STORAGE_PREFIX + today.key);
     const doneList = saved ? JSON.parse(saved) : [];
 
-    ['card-1', 'card-2', 'card-3', 'card-4'].forEach(id => {
+    activeCards.forEach(id => {
       const card = document.getElementById(id);
       if (!card) return;
       const checkEl = card.querySelector('.status-check-badge');
       if (doneList.includes(id)) {
         card.classList.add('done');
-        checkEl.innerHTML = '🟢 완료';
+        if (checkEl) checkEl.innerHTML = '🟢 완료';
       } else {
         card.classList.remove('done');
-        checkEl.innerHTML = '⚪ 인증 전';
+        if (checkEl) checkEl.innerHTML = '⚪ 인증 전';
       }
     });
-
-    if (babyMonsterActive) {
-      const card5 = document.getElementById('card-5');
-      const badge5 = document.getElementById('card-5-badge');
-      if (doneList.includes('card-5')) {
-        card5.classList.add('done');
-        badge5.innerHTML = '🟢 완료';
-      } else {
-        card5.classList.remove('done');
-        badge5.innerHTML = '⚪ 인증 전';
-      }
-    }
 
     updateProgress();
   }
@@ -4065,10 +3968,6 @@
   }
 
   function toggleStatus(cardId) {
-    if (cardId === 'card-5' && !babyMonsterActive) {
-      showToast('🔒 10월 14일부터 진행되는 투표입니다!');
-      return;
-    }
     const card = document.getElementById(cardId);
     if (!card) return;
     const checkEl = card.querySelector('.status-check-badge');
@@ -4110,6 +4009,7 @@
 
   function goToMmaFromFinishModal() {
     closeMamaFinishModal();
+      closeVoteWaitModal();
     setTimeout(() => {
       scrollToSection('mmaSection');
     }, 250);
@@ -4123,15 +4023,7 @@
 
     if (doneCount === TOTAL_TEAMS && TOTAL_TEAMS > 0) {
       setTimeout(() => {
-        if (isMamaFinalDay()) {
-          const alreadyShown = localStorage.getItem('rescene_mama_finish_shown_' + today.key);
-          if (!isInit || !alreadyShown) {
-            showMamaFinishModal();
-          }
-          showToast('🎉 2026 MAMA 1차 투표가 종료되었습니다. 감사합니다! 🪽');
-        } else {
-          showToast(`🎉 오늘 ${TOTAL_TEAMS}개 팀 인증 모두 완료! 고생하셨습니다! 🪽`);
-        }
+        showToast('🎉 오늘 MAMA 2차 연합 인증 완료! 고생하셨습니다! 🪽');
       }, 400);
     }
   }
@@ -4502,7 +4394,65 @@
   }
 
   // 🍈 멜론 MMA 2026 TOP10 실시간 순위 & 표차이 조회 (무서버 브라우저 직접 호출)
-  async function fetchMelonLiveRank(isManual = false) {
+  // ⏰ 멜론 TOP10 & 카카오뱅크 마감 시간 설정 (각각 10/30, 10/31 00:00 KST)
+  const MELON_END_TIMESTAMP = new Date('2026-10-30T00:00:00+09:00').getTime();
+  const KAKAO_END_TIMESTAMP = new Date('2026-10-31T00:00:00+09:00').getTime();
+
+  function checkMmaExpiration() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const now = Date.now();
+    
+    const isMelonEnded = (now >= MELON_END_TIMESTAMP || urlParams.has('test_melon_ended') || urlParams.has('test_all_mma_ended')) && !urlParams.has('test_melon_live');
+    const isKakaoEnded = (now >= KAKAO_END_TIMESTAMP || urlParams.has('test_kakao_ended') || urlParams.has('test_all_mma_ended')) && !urlParams.has('test_kakao_live');
+
+    const melonCard = document.getElementById('mmaMelonCard');
+    const kakaoCard = document.getElementById('mmaKakaoCard');
+    const mmaSection = document.getElementById('mmaSection');
+    const mmaGuide = document.querySelector('.mma-guide-accordion');
+
+    if (melonCard) {
+      melonCard.style.display = isMelonEnded ? 'none' : '';
+    }
+    if (kakaoCard) {
+      kakaoCard.style.display = isKakaoEnded ? 'none' : '';
+    }
+
+    // 둘 다 마감된 경우 MMA 2026 헤더와 가이드도 함께 숨김 처리
+    if (isMelonEnded && isKakaoEnded) {
+      if (mmaSection) mmaSection.style.display = 'none';
+      if (mmaGuide) mmaGuide.style.display = 'none';
+
+      const jumpMma = document.querySelector('.btn-jump-mma');
+      if (jumpMma) {
+        jumpMma.innerHTML = '<span> MMA 연합(이세계아이돌)</span>';
+        jumpMma.onclick = () => scrollToSection('specialAllianceToggleBtn');
+      }
+      const floatMma = document.getElementById('floatMmaBtn');
+      if (floatMma) {
+        floatMma.innerHTML = '<span> MMA 연합</span>';
+        floatMma.onclick = () => scrollToSection('specialAllianceToggleBtn');
+      }
+    } else {
+      if (mmaSection) mmaSection.style.display = '';
+      if (mmaGuide) mmaGuide.style.display = '';
+    }
+
+    // 정각 자동 숨김을 위한 타이머 등록
+    if (!isMelonEnded) {
+      const remMelon = MELON_END_TIMESTAMP - now;
+      if (remMelon > 0 && remMelon < 86400000 * 3) {
+        setTimeout(checkMmaExpiration, remMelon + 100);
+      }
+    }
+    if (!isKakaoEnded) {
+      const remKakao = KAKAO_END_TIMESTAMP - now;
+      if (remKakao > 0 && remKakao < 86400000 * 4) {
+        setTimeout(checkMmaExpiration, remKakao + 100);
+      }
+    }
+  }
+
+    async function fetchMelonLiveRank(isManual = false) {
     const timeEl = document.getElementById('melonLiveTime');
     const rankNumEl = document.getElementById('melonLiveRankNum');
     const votesEl = document.getElementById('melonLiveVotes');
@@ -4600,7 +4550,7 @@
   }
 
   // 🌙 MAMA 투표 종료 및 MMA 전용 모드 전환 제어 (2026-10-23 00:00:00 KST 정각부터)
-  const MAMA_END_TIMESTAMP = new Date('2026-10-23T00:00:00+09:00').getTime();
+  const MAMA_END_TIMESTAMP = new Date('2026-11-08T23:59:59+09:00').getTime();
   let devPreviewOverride = null;
 
   function isMamaEnded() {
@@ -4625,9 +4575,9 @@
       if (devToggleText) devToggleText.textContent = '☀️ MAMA 투표 화면으로 복귀';
     } else {
       document.body.classList.remove('mama-ended');
-      if (title) title.innerHTML = '2026 MAMA<br>X 인증 헬퍼';
+      if (title) title.innerHTML = '2026 MAMA 2차<br>X 인증 헬퍼';
       if (subtitle) subtitle.textContent = '팀별 해시태그가 담긴 X 작성창을 열어요.';
-      document.title = '2026 MAMA RESCENE 연합 인증 총공';
+      document.title = '2026 MAMA 2차 RESCENE 연합 인증 총공';
       if (devToggleText) devToggleText.textContent = '🌙 MMA 전용 모드로 보기';
 
       // 자정(정각)까지 남은 시간 계산 후 자동 전환 타이머 등록
@@ -4656,6 +4606,7 @@
 
   applyMamaEndedMode();
   initDevPreview();
+  checkMmaExpiration();
   loadTodayState();
   checkNoticeModal();
   checkSavedAdminSession();
