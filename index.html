@@ -2545,6 +2545,313 @@
       border-color: #ebd767;
     }
 
+    /* 📷 인증샷 워터마크 추가 트리거 버튼 */
+    .watermark-trigger-wrap {
+      margin-top: 8px;
+    }
+    .btn-watermark-trigger {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      padding: 10px 12px;
+      background: #ffffff;
+      border: 1px solid #cad6de;
+      border-radius: 8px;
+      color: #2b4557;
+      font-size: 13px;
+      font-weight: 650;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.03);
+    }
+    .btn-watermark-trigger:hover {
+      background: #f4f8fa;
+      border-color: #b0c2ce;
+      color: #172d3b;
+    }
+    .btn-watermark-trigger:active {
+      transform: scale(0.985);
+    }
+    .btn-watermark-trigger svg {
+      color: #3b5d70;
+      flex-shrink: 0;
+    }
+    .badge-wm-protect {
+      font-size: 10.5px;
+      font-weight: 700;
+      background: #e5eff5;
+      color: #2c5167;
+      padding: 2px 7px;
+      border-radius: 4px;
+      letter-spacing: -0.2px;
+    }
+
+    /* 📷 워터마크 생성기 모달 */
+    .watermark-modal-card {
+      background: #ffffff !important;
+      color: #20313d !important;
+      max-width: 440px !important;
+      padding: 22px 20px 20px !important;
+      border-radius: 14px !important;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      word-break: keep-all;
+    }
+    .wm-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      margin-bottom: 12px;
+      border-bottom: 1px solid #eef2f5;
+      padding-bottom: 12px;
+    }
+    .wm-header-title-group {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .wm-eyebrow {
+      font-size: 11px;
+      font-weight: 700;
+      color: #3b5d70;
+      letter-spacing: 0.3px;
+      text-transform: uppercase;
+    }
+    .wm-title {
+      font-size: 19px;
+      font-weight: 750;
+      color: #172b39;
+      letter-spacing: -0.4px;
+      margin: 0;
+    }
+    .wm-close-btn {
+      background: #f0f3f6;
+      border: none;
+      color: #536b7c;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.15s ease;
+      line-height: 1;
+    }
+    .wm-close-btn:hover {
+      background: #e2e8ec;
+      color: #172b39;
+    }
+
+    .wm-intro-box {
+      background: #f4f8fa;
+      border: 1px solid #dce7ee;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 12.5px;
+      line-height: 1.55;
+      color: #425c6e;
+      margin-bottom: 14px;
+    }
+    .wm-intro-box b {
+      color: #172b39;
+    }
+
+    .wm-form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 13px;
+    }
+    .wm-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 13px;
+      font-weight: 700;
+      color: #253948;
+    }
+    .wm-label-sub {
+      font-size: 11px;
+      font-weight: 500;
+      color: #7b91a0;
+    }
+    .wm-input {
+      width: 100%;
+      padding: 11px 13px;
+      border: 1px solid #ccd7df;
+      border-radius: 8px;
+      font-size: 14px;
+      color: #172b39;
+      background: #fafbfc;
+      outline: none;
+      box-sizing: border-box;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .wm-input:focus {
+      border-color: #3b5d70;
+      background: #ffffff;
+      box-shadow: 0 0 0 3px rgba(59, 93, 112, 0.12);
+    }
+
+    /* 드롭존 */
+    .wm-dropzone {
+      border: 2px dashed #b9cbd6;
+      border-radius: 10px;
+      background: #f8fafb;
+      padding: 20px 16px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .wm-dropzone:hover, .wm-dropzone.dragover {
+      background: #eef5f9;
+      border-color: #3b5d70;
+    }
+    .wm-dropzone-inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 7px;
+      color: #3b5d70;
+    }
+    .wm-dropzone-icon {
+      width: 36px;
+      height: 36px;
+      background: #e7eff3;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .wm-dropzone-main {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #203544;
+    }
+    .wm-dropzone-sub {
+      font-size: 11.5px;
+      color: #778e9e;
+    }
+
+    /* 옵션 바 */
+    .wm-options-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #f4f7f9;
+      padding: 9px 12px;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      gap: 12px;
+    }
+    .wm-opt-label {
+      font-size: 12px;
+      font-weight: 650;
+      color: #3e5667;
+      white-space: nowrap;
+    }
+    .wm-range-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+      max-width: 200px;
+    }
+    .wm-range {
+      flex: 1;
+      accent-color: #3b5d70;
+      cursor: pointer;
+    }
+    .wm-opt-val {
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #2b4557;
+      min-width: 30px;
+      text-align: right;
+    }
+
+    /* 미리보기 & 캔버스 */
+    .wm-preview-section {
+      margin-top: 6px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .wm-canvas-container {
+      position: relative;
+      background: #141b20;
+      border-radius: 8px;
+      overflow: hidden;
+      max-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 0 10px rgba(0,0,0,0.25);
+    }
+    .wm-canvas-container canvas {
+      display: block;
+      max-width: 100%;
+      max-height: 280px;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .wm-action-btns {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .btn-wm-save {
+      width: 100%;
+      background: #3b5d70;
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px;
+      font-size: 14.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      box-shadow: 0 2px 6px rgba(59, 93, 112, 0.25);
+      transition: background 0.15s ease, transform 0.1s ease;
+    }
+    .btn-wm-save:active {
+      background: #2d4e61;
+      transform: scale(0.985);
+    }
+    .wm-sub-actions {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .btn-wm-sub {
+      background: #eef2f5;
+      color: #3b5465;
+      border: 1px solid #d4dfe6;
+      border-radius: 8px;
+      padding: 9px 10px;
+      font-size: 12.5px;
+      font-weight: 650;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      transition: background 0.15s ease;
+    }
+    .btn-wm-sub:hover {
+      background: #e3ebf0;
+      color: #1f3544;
+    }
+
     .modal-searchban-btns {
       display: flex;
       flex-direction: column;
@@ -3248,6 +3555,19 @@
         <button class="btn-copy" onclick="copyTags('리마인과_앤클로의_HappyBloom')">태그 복사</button>
       </div>
 
+      <!-- 📷 인증샷 워터마크 추가 트리거 버튼 -->
+      <div class="watermark-trigger-wrap">
+        <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <polyline points="21 15 16 10 5 21"/>
+          </svg>
+          <span>인증샷 워터마크 추가</span>
+          <span class="badge-wm-protect">도용 방지</span>
+        </button>
+      </div>
+
       <!-- 서치밴 대체 인증 바로가기 (구글 폼 & 카카오톡 채널) -->
       <div class="alt-auth-wrap">
         <span class="alt-auth-caption">서치밴 또는 X 작성이 어려운 경우 (둘 중 택1):</span>
@@ -3652,6 +3972,101 @@
         <button type="button" class="btn-modal-hide" id="searchBanConfirmNo">아니오</button>
         <button type="button" class="btn-modal-close" id="searchBanConfirmYes">예</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<!-- 📷 인증샷 워터마크 생성기 모달 -->
+<div class="modal-backdrop" id="watermarkModal" onclick="closeWatermarkModal()" role="dialog" aria-modal="true" aria-labelledby="wmModalTitle">
+  <div class="modal-card watermark-modal-card" onclick="event.stopPropagation()">
+    <div class="wm-header">
+      <div class="wm-header-title-group">
+        <span class="wm-eyebrow">투표 인증 도용 방지</span>
+        <h2 class="wm-title" id="wmModalTitle">인증샷 워터마크 추가</h2>
+      </div>
+      <button type="button" class="wm-close-btn" onclick="closeWatermarkModal()" aria-label="닫기">✕</button>
+    </div>
+
+    <div class="wm-intro-box">
+      투표 인증 사진에 내 닉네임을 <b>30° 대각선 지그재그 패턴</b>으로 새겨 무단 도용을 방지합니다. (기기 내 즉시 처리 / 서버 전송 없음)
+    </div>
+
+    <!-- 1. 닉네임 입력 -->
+    <div class="wm-form-group">
+      <label for="wmNickname" class="wm-label">
+        <span>내 닉네임 또는 X 아이디</span>
+        <span class="wm-label-sub">자동 저장</span>
+      </label>
+      <input type="text" id="wmNickname" class="wm-input" placeholder="예: @내아이디 또는 닉네임" maxlength="25" oninput="handleNicknameInput()">
+    </div>
+
+    <!-- 2. 사진 업로드 영역 -->
+    <div class="wm-form-group">
+      <label class="wm-label">
+        <span>인증샷 사진 선택</span>
+        <span class="wm-label-sub" id="wmFileStatusText">PNG, JPG 지원</span>
+      </label>
+      <div class="wm-dropzone" id="wmDropzone" onclick="document.getElementById('wmFileInput').click()">
+        <input type="file" id="wmFileInput" accept="image/*" style="display: none;" onchange="handleWatermarkFile(this.files[0])">
+        <div class="wm-dropzone-inner" id="wmDropzoneInner">
+          <div class="wm-dropzone-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+          </div>
+          <span class="wm-dropzone-main">사진을 탭하여 선택하기</span>
+          <span class="wm-dropzone-sub">또는 클립보드 이미지 붙여넣기 (Ctrl+V)</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. 워터마크 미리보기 & 옵션 (사진 선택 시 활성화) -->
+    <div id="wmPreviewSection" class="wm-preview-section" style="display: none;">
+      <div class="wm-options-bar">
+        <span class="wm-opt-label">워터마크 진하기</span>
+        <div class="wm-range-wrap">
+          <input type="range" id="wmOpacity" class="wm-range" min="0.15" max="0.75" step="0.05" value="0.38" oninput="updateWatermarkLive()">
+          <span class="wm-opt-val" id="wmOpacityVal">38%</span>
+        </div>
+      </div>
+
+      <div class="wm-canvas-container">
+        <canvas id="wmCanvas"></canvas>
+      </div>
+
+      <div class="wm-action-btns">
+        <button type="button" class="btn-wm-save" onclick="downloadWatermarkedImage()">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7 10 12 15 17 10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+          </svg>
+          워터마크 사진 저장 (다운로드)
+        </button>
+        <div class="wm-sub-actions">
+          <button type="button" class="btn-wm-sub" onclick="copyWatermarkedImage()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+            </svg>
+            <span id="wmCopyBtnText">클립보드 복사</span>
+          </button>
+          <button type="button" class="btn-wm-sub" onclick="document.getElementById('wmFileInput').click()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="1 4 1 10 7 10"></polyline>
+              <polyline points="23 20 23 14 17 14"></polyline>
+              <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"></path>
+            </svg>
+            다른 사진 선택
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-actions" style="margin-top: 14px;">
+      <button type="button" class="btn-modal-close" style="width: 100%; background: #e2e8ec; color: #284b60;" onclick="closeWatermarkModal()">닫기</button>
     </div>
   </div>
 </div>
@@ -4952,5 +5367,282 @@
 })();
 </script>
 
+
+<!-- 📷 인증샷 워터마크 생성기 스크립트 -->
+<script>
+// ==========================================
+// 📷 인증샷 워터마크 생성기 로직
+// ==========================================
+let currentWatermarkImage = null;
+let currentWatermarkFileName = 'mama_vote_watermarked.png';
+const WM_STORAGE_KEY = 'rescene_vote_wm_nickname';
+
+function openWatermarkModal() {
+  const modal = document.getElementById('watermarkModal');
+  if (!modal) return;
+  
+  // Nickname load
+  const savedNick = localStorage.getItem(WM_STORAGE_KEY) || '';
+  const nickInput = document.getElementById('wmNickname');
+  if (nickInput) {
+    if (!nickInput.value && savedNick) {
+      nickInput.value = savedNick;
+    }
+  }
+
+  modal.classList.add('show');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+
+  if (currentWatermarkImage) {
+    renderWatermark();
+  }
+}
+
+function closeWatermarkModal() {
+  const modal = document.getElementById('watermarkModal');
+  if (!modal) return;
+  modal.classList.remove('show');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+function handleNicknameInput() {
+  const nickInput = document.getElementById('wmNickname');
+  if (!nickInput) return;
+  const val = nickInput.value.trim();
+  try {
+    if (val) localStorage.setItem(WM_STORAGE_KEY, val);
+  } catch(e) {}
+  if (currentWatermarkImage) {
+    renderWatermark();
+  }
+}
+
+function updateWatermarkLive() {
+  const range = document.getElementById('wmOpacity');
+  const valSpan = document.getElementById('wmOpacityVal');
+  if (range && valSpan) {
+    valSpan.textContent = Math.round(parseFloat(range.value) * 100) + '%';
+  }
+  if (currentWatermarkImage) {
+    renderWatermark();
+  }
+}
+
+function handleWatermarkFile(file) {
+  if (!file || !file.type.startsWith('image/')) {
+    alert('이미지 파일(PNG, JPG 등)을 선택해 주세요.');
+    return;
+  }
+  currentWatermarkFileName = (file.name ? file.name.replace(/\.[^/.]+$/, "") : 'vote') + '_watermarked.png';
+  
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const img = new Image();
+    img.onload = function() {
+      currentWatermarkImage = img;
+      const previewSec = document.getElementById('wmPreviewSection');
+      if (previewSec) previewSec.style.display = 'flex';
+      const dropzoneInner = document.getElementById('wmDropzoneInner');
+      if (dropzoneInner) {
+        dropzoneInner.innerHTML = `
+          <div class="wm-dropzone-icon" style="background:#d4edda; color:#155724;">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+          </div>
+          <span class="wm-dropzone-main" style="color:#155724;">사진 등록 완료 (${img.naturalWidth}×${img.naturalHeight})</span>
+          <span class="wm-dropzone-sub">탭하여 다른 사진으로 변경하기</span>
+        `;
+      }
+      renderWatermark();
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function renderWatermark() {
+  if (!currentWatermarkImage) return;
+  const canvas = document.getElementById('wmCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  
+  const img = currentWatermarkImage;
+  const w = img.naturalWidth || img.width;
+  const h = img.naturalHeight || img.height;
+  
+  canvas.width = w;
+  canvas.height = h;
+  
+  // 1. Draw base photo
+  ctx.drawImage(img, 0, 0, w, h);
+  
+  // 2. Nickname
+  const nickInput = document.getElementById('wmNickname');
+  const rawNick = (nickInput ? nickInput.value : '').trim();
+  const nickname = rawNick || '2026 MAMA 투표인증';
+  
+  const range = document.getElementById('wmOpacity');
+  const opacity = range ? parseFloat(range.value) : 0.38;
+  
+  // 3. Diagonal 30-degree rotation (-30 deg)
+  const angle = -30 * Math.PI / 180;
+  
+  // Font size responsive to image width (typical mobile screenshot is ~1080px to 1440px wide)
+  const fontSize = Math.max(16, Math.round(w / 24));
+  ctx.font = `bold ${fontSize}px -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, "Noto Sans KR", sans-serif`;
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'center';
+  
+  const metrics = ctx.measureText(nickname);
+  const textWidth = Math.max(metrics.width, fontSize * 2.5);
+  
+  // Spacing: horizontal step and vertical step
+  const stepX = textWidth + fontSize * 2.8;
+  const stepY = fontSize * 3.4;
+  
+  const diagonal = Math.hypot(w, h);
+  
+  ctx.save();
+  ctx.translate(w / 2, h / 2);
+  ctx.rotate(angle);
+  
+  let row = 0;
+  for (let y = -diagonal; y <= diagonal; y += stepY) {
+    // Zigzag (staggered) offset
+    const offsetX = (row % 2 === 0) ? 0 : (stepX / 2);
+    for (let x = -diagonal; x <= diagonal; x += stepX) {
+      const drawX = x + offsetX;
+      const drawY = y;
+      
+      // Dual-tone outline and fill for visibility on any background
+      ctx.lineWidth = Math.max(2, fontSize * 0.08);
+      ctx.strokeStyle = `rgba(0, 0, 0, ${opacity * 0.75})`;
+      ctx.strokeText(nickname, drawX, drawY);
+      
+      ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+      ctx.fillText(nickname, drawX, drawY);
+    }
+    row++;
+  }
+  
+  ctx.restore();
+}
+
+function downloadWatermarkedImage() {
+  const canvas = document.getElementById('wmCanvas');
+  if (!canvas) return;
+  
+  try {
+    canvas.toBlob(function(blob) {
+      if (!blob) return;
+      const file = new File([blob], currentWatermarkFileName, { type: 'image/png' });
+      
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({
+          files: [file],
+          title: '투표 인증샷',
+          text: '2026 MAMA 투표 인증'
+        }).catch(err => {
+          if (err.name !== 'AbortError') {
+            triggerFileDownload(blob);
+          }
+        });
+      } else {
+        triggerFileDownload(blob);
+      }
+    }, 'image/png');
+  } catch(e) {
+    const link = document.createElement('a');
+    link.download = currentWatermarkFileName;
+    link.href = canvas.toDataURL('image/png');
+    link.click();
+  }
+}
+
+function triggerFileDownload(blob) {
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = currentWatermarkFileName;
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => {
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }, 100);
+}
+
+function copyWatermarkedImage() {
+  const canvas = document.getElementById('wmCanvas');
+  const btnText = document.getElementById('wmCopyBtnText');
+  if (!canvas) return;
+  
+  if (navigator.clipboard && window.ClipboardItem) {
+    canvas.toBlob(function(blob) {
+      if (!blob) return;
+      navigator.clipboard.write([
+        new ClipboardItem({ 'image/png': blob })
+      ]).then(() => {
+        if (btnText) {
+          const original = btnText.textContent;
+          btnText.textContent = '✅ 복사 완료!';
+          setTimeout(() => { btnText.textContent = original; }, 2000);
+        }
+      }).catch(() => {
+        alert('이 브라우저에서는 클립보드 이미지 복사를 지원하지 않습니다. 사진 저장 버튼을 이용해 주세요.');
+      });
+    }, 'image/png');
+  } else {
+    alert('이 브라우저에서는 클립보드 이미지 복사를 지원하지 않습니다. 사진 저장 버튼을 이용해 주세요.');
+  }
+}
+
+function initWatermarkListeners() {
+  const dropzone = document.getElementById('wmDropzone');
+  if (dropzone) {
+    ['dragenter', 'dragover'].forEach(name => {
+      dropzone.addEventListener(name, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.add('dragover');
+      });
+    });
+    ['dragleave', 'drop'].forEach(name => {
+      dropzone.addEventListener(name, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        dropzone.classList.remove('dragover');
+      });
+    });
+    dropzone.addEventListener('drop', (e) => {
+      if (e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length > 0) {
+        handleWatermarkFile(e.dataTransfer.files[0]);
+      }
+    });
+  }
+  
+  window.addEventListener('paste', function(e) {
+    const modal = document.getElementById('watermarkModal');
+    if (!modal || !modal.classList.contains('show')) return;
+    if (document.activeElement === document.getElementById('wmNickname') && e.clipboardData && e.clipboardData.types.includes('text/plain') && !e.clipboardData.types.includes('Files')) {
+      return;
+    }
+    const items = (e.clipboardData || (e.originalEvent && e.originalEvent.clipboardData))?.items;
+    if (!items) return;
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].kind === 'file' && items[i].type.startsWith('image/')) {
+        handleWatermarkFile(items[i].getAsFile());
+        break;
+      }
+    }
+  });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initWatermarkListeners);
+} else {
+  initWatermarkListeners();
+}
+</script>
 </body>
 </html>
