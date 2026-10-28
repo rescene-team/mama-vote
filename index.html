@@ -495,15 +495,14 @@
     }
 
     .team-poster-thumb {
-      width: 48px;
-      height: 48px;
-      border-radius: 8px;
+      width: 64px;
+      height: 64px;
+      border-radius: 10px;
       object-fit: cover;
       flex-shrink: 0;
       border: none;
-      box-shadow: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
       background: #121316;
-
     }
 
     .team-meta {
@@ -2867,6 +2866,14 @@
     }
 
     @media (max-width: 360px) {
+      .team-poster-thumb {
+        width: 58px;
+        height: 58px;
+        border-radius: 8px;
+      }
+      .team-name {
+        font-size: 15px;
+      }
       .btn-special-main {
         font-size: 12px;
         padding: 13px 6px;
@@ -3023,10 +3030,7 @@
         <img src="images/andouble.png" class="team-poster-thumb" alt="앤더블 포스터">
         <div class="team-meta">
           <div class="team-name-row">
-            <div class="team-name">
-              앤더블 (AND2BLE)
-              <span class="team-category-pill">남자 부문</span>
-            </div>
+            <div class="team-name">앤더블 (AND2BLE)</div>
             <span class="status-check-badge" onclick="toggleStatus('card-1')">⚪ 인증 전</span>
           </div>
           <div class="tag-row">
