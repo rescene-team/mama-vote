@@ -2937,7 +2937,9 @@
   </header>
 
   <!-- 🗳️ 2차 투표 바로가기 링크 배너 -->
-  <a href="javascript:void(0)"
+  <a href="https://link24.kr/CWx9dUm"
+     target="_blank"
+     rel="noopener noreferrer"
      onclick="handleVoteBannerClick(event)"
      class="vote-banner-link"
      id="voteBannerLink">
@@ -3558,15 +3560,14 @@
   const TOTAL_TEAMS = activeCards.length;
   const STORAGE_PREFIX = "rescene_mama2_done_";
 
+  const MAMA2_VOTE_LINK = "https://link24.kr/CWx9dUm";
   const MAMA2_START_TIMESTAMP = new Date('2026-10-28T18:00:00+09:00').getTime();
 
   function handleVoteBannerClick(e) {
-    if (e) e.preventDefault();
-    const isTestOpen = new URLSearchParams(window.location.search).has('test_open');
-    if (Date.now() < MAMA2_START_TIMESTAMP && !isTestOpen) {
+    const isTestWait = new URLSearchParams(window.location.search).has('test_wait');
+    if (Date.now() < MAMA2_START_TIMESTAMP || isTestWait) {
+      if (e) e.preventDefault();
       showVoteWaitModal();
-    } else {
-      window.open('https://mnetplus.world/', '_blank', 'noopener,noreferrer');
     }
   }
 
