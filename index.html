@@ -2390,234 +2390,159 @@
     .searchban-confirm-summary { color: #506676; font-size: 14px; line-height: 1.8; }
     .searchban-confirm-summary b { color: #304f62; font-weight: 650; }
 
-    /* 📋 3가지 투표 인증 안내 및 우선순위 가이드 스타일 */
-    .auth-guide-header {
-      margin-bottom: 14px;
-    }
-    .auth-guide-badge-row {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      margin-bottom: 6px;
-    }
-    .auth-guide-badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      color: #3b5d70;
-      background: #cedde5;
-      padding: 3px 8px;
-      border-radius: 4px;
-      letter-spacing: -0.2px;
-    }
-    .auth-guide-sub {
-      font-size: 12px;
-      font-weight: 700;
-      color: #4a687a;
-    }
-    .auth-guide-title {
-      font-size: 16px;
-      font-weight: 700;
-      color: #253540;
-      margin: 0 0 4px 0;
-      line-height: 1.35;
-    }
-    .auth-guide-desc {
-      font-size: 12px;
-      color: #60717e;
-      margin: 0;
-      line-height: 1.5;
-    }
-
-    .auth-methods-list {
+/* 🔍 상단 서치밴 안내 박스 스타일 */
+    .searchban-guide-box {
       display: flex;
       flex-direction: column;
       gap: 10px;
-      margin-top: 12px;
     }
-
-    .auth-method-card {
-      background: #fdfefe;
-      border: 1px solid #d4dde3;
-      border-radius: 8px;
-      padding: 12px 14px;
-      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    .searchban-guide-title-row {
+      display: flex;
+      align-items: center;
+      gap: 7px;
     }
-    .auth-method-card.priority-1 {
-      border-left: 4px solid #1d9bf0;
+    .searchban-guide-icon {
+      font-size: 16px;
+    }
+    .searchban-guide-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: #253540;
+      letter-spacing: -0.3px;
+    }
+    .searchban-guide-desc {
+      font-size: 12.5px;
+      color: #556775;
+      line-height: 1.55;
+      margin: 0;
+      word-break: keep-all;
+    }
+    .searchban-choice-list {
       background: #ffffff;
-      box-shadow: 0 2px 6px rgba(29, 155, 240, 0.06);
+      border: 1px solid #d5dfe6;
+      border-radius: 8px;
+      padding: 11px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 2px;
     }
-    .auth-method-card.priority-2 {
-      border-left: 4px solid #724ae8;
-      box-shadow: 0 2px 6px rgba(114, 74, 232, 0.06);
-    }
-    .auth-method-card.priority-3 {
-      border-left: 4px solid #f5ba18;
-    }
-
-    .auth-method-top {
+    .searchban-choice-item {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 6px;
-      flex-wrap: wrap;
+      font-size: 12.5px;
+      color: #354754;
+      line-height: 1.45;
+      word-break: keep-all;
     }
-    .auth-priority-tag {
-      font-size: 10.5px;
+    .choice-pill {
+      display: inline-block;
+      font-size: 11px;
       font-weight: 700;
       padding: 2px 7px;
       border-radius: 4px;
-      letter-spacing: -0.2px;
       flex-shrink: 0;
+      letter-spacing: -0.2px;
     }
-    .auth-priority-tag.tag-x {
+    .choice-pill.choice-x {
       background: #0f1419;
       color: #ffffff;
     }
-    .auth-priority-tag.tag-form {
-      background: #724ae8;
+    .choice-pill.choice-alt {
+      background: #6a44d6;
       color: #ffffff;
     }
-    .auth-priority-tag.tag-kakao {
-      background: #fee500;
-      color: #381e1e;
-    }
 
-    .auth-method-name {
-      font-size: 14px;
-      font-weight: 700;
-      color: #253540;
-    }
-
-    .auth-method-info {
+    .searchban-rt-note {
       font-size: 12px;
-      color: #556775;
+      color: #1e5a78;
+      background: #e3f2f7;
+      border-left: 3px solid #1d9bf0;
+      border-radius: 0 6px 6px 0;
+      padding: 8px 11px;
       line-height: 1.55;
-      margin: 0 0 8px 0;
       word-break: keep-all;
     }
+    .searchban-rt-note b {
+      color: #0b3e58;
+    }
 
-    .auth-method-detail {
+    .btn-check-searchban {
       display: flex;
-      flex-wrap: wrap;
-      gap: 5px;
-      margin-bottom: 6px;
-    }
-    .auth-tag-pill {
-      font-size: 11px;
-      font-weight: 600;
-      color: #2b5168;
-      background: #e2edf2;
-      padding: 2px 7px;
-      border-radius: 4px;
-      font-family: inherit;
-    }
-
-    .auth-tip-msg {
-      font-size: 11.5px;
-      color: #1a6b99;
-      background: #e8f4fa;
-      border-radius: 5px;
-      padding: 7px 10px;
-      line-height: 1.5;
-      margin-top: 4px;
-      word-break: keep-all;
-    }
-
-    .btn-auth-link {
-      display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      width: 100%;
-      box-sizing: border-box;
-      min-height: 40px;
-      padding: 9px 12px;
-      border-radius: 6px;
+      min-height: 42px;
+      padding: 10px 14px;
+      border-radius: 7px;
+      background: #3b5d70;
+      color: #ffffff;
       font-size: 13px;
       font-weight: 700;
       text-decoration: none !important;
       transition: background 0.15s ease, transform 0.1s ease;
       cursor: pointer;
     }
-    .btn-auth-link:active {
+    .btn-check-searchban:hover {
+      background: #2e4d5f;
+    }
+    .btn-check-searchban:active {
       transform: scale(0.98);
     }
-    .btn-auth-link.btn-form {
-      background: #724ae8;
-      color: #ffffff;
-    }
-    .btn-auth-link.btn-form:hover {
-      background: #623ccf;
-    }
-    .btn-auth-link.btn-kakao-chat {
-      background: #fee500;
-      color: #381e1e;
-    }
-    .btn-auth-link.btn-kakao-chat:hover {
-      background: #fad600;
-    }
 
-    /* 🔁 RT 독려 박스 */
-    .rt-encourage-box {
-      margin-top: 14px;
-      padding: 13px 14px;
-      background: #edf6f9;
-      border: 1px solid #b7dae5;
-      border-left: 4px solid #1d9bf0;
-      border-radius: 8px;
-      word-break: keep-all;
-    }
-    .rt-encourage-title {
-      font-size: 13px;
-      font-weight: 700;
-      color: #174b63;
-      margin-bottom: 5px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-    }
-    .rt-encourage-desc {
-      font-size: 12px;
-      color: #356277;
-      line-height: 1.6;
-      margin: 0;
-    }
-    .rt-encourage-desc b {
-      color: #0f3d53;
-      font-weight: 700;
-    }
-
-    /* 서치밴 우선순위 가이드 라인 */
-    .searchban-priority-guide {
-      margin-top: 10px;
+    /* 📎 카드 내 서치밴 대체 인증 버튼 (구글 폼 & 카카오톡) */
+    .alt-auth-wrap {
+      margin-top: 12px;
+      padding-top: 11px;
+      border-top: 1px dashed #cfd8de;
       display: flex;
       flex-direction: column;
       gap: 7px;
     }
-    .searchban-priority-guide .guide-item {
-      display: flex;
-      align-items: center;
+    .alt-auth-caption {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: #627685;
+      letter-spacing: -0.2px;
+    }
+    .alt-auth-btn-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       gap: 8px;
-      font-size: 12.5px;
-      line-height: 1.5;
     }
-    .guide-badge-pill {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      padding: 2px 7px;
-      border-radius: 4px;
-      flex-shrink: 0;
+    .btn-alt-auth {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      padding: 9px 8px;
+      border-radius: 7px;
+      font-size: 12px;
+      font-weight: 650;
+      text-decoration: none !important;
+      transition: background 0.15s ease, transform 0.1s ease, border-color 0.15s ease;
+      white-space: nowrap;
     }
-    .pill-ok {
-      background: #2b7a4b;
-      color: #ffffff;
+    .btn-alt-auth:active {
+      transform: scale(0.98);
     }
-    .pill-warn {
-      background: #b56c00;
-      color: #ffffff;
+    .btn-alt-auth.btn-alt-form {
+      background: #f4f0fd;
+      border: 1px solid #d8ccf6;
+      color: #633ecf;
+    }
+    .btn-alt-auth.btn-alt-form:hover {
+      background: #eae2fb;
+      border-color: #c4b0f0;
+    }
+    .btn-alt-auth.btn-alt-kakao {
+      background: #fffde6;
+      border: 1px solid #f2e58c;
+      color: #574300;
+    }
+    .btn-alt-auth.btn-alt-kakao:hover {
+      background: #fff9c4;
+      border-color: #ebd767;
     }
 
     .modal-searchban-btns {
@@ -3130,6 +3055,11 @@
       .team-name {
         font-size: 15px;
       }
+      .btn-alt-auth {
+        font-size: 11.5px;
+        padding: 8px 4px;
+        gap: 4px;
+      }
       .btn-special-main {
         font-size: 12px;
         padding: 13px 6px;
@@ -3238,101 +3168,41 @@
     </div>
   </div>
 
-  <!-- 📋 투표 인증 안내 및 서치밴 가이드 -->
+  <!-- 🔍 서치밴 및 투표 인증 안내 -->
   <div class="notice-box">
-    <div class="auth-guide-header">
-      <div class="auth-guide-badge-row">
-        <span class="auth-guide-badge">공식 안내</span>
-        <span class="auth-guide-sub">아래 방법 중 택1</span>
+    <div class="searchban-guide-box">
+      <div class="searchban-guide-title-row">
+        <span class="searchban-guide-icon">🔍</span>
+        <b class="searchban-guide-title">투표 인증 전 X 서치밴을 꼭 확인해 주세요</b>
       </div>
-      <h3 class="auth-guide-title">투표 인증 방법 안내</h3>
-      <p class="auth-guide-desc">소중한 한 표가 온전히 반영되도록 투표 후 꼭 인증을 완료해 주세요!</p>
-    </div>
-
-    <div class="auth-methods-list">
-      <!-- 1순위: X(트위터) 인증 -->
-      <div class="auth-method-card priority-1">
-        <div class="auth-method-top">
-          <span class="auth-priority-tag tag-x">1순위 권장</span>
-          <span class="auth-method-name">X(트위터)에 인증 게시물 작성</span>
-        </div>
-        <p class="auth-method-info">
-          연합 인증 해시태그와 MAMA 투표 해시태그를 함께 사용하여 X에 인증샷을 첨부해 올려주세요.
-        </p>
-        <div class="auth-method-detail">
-          <span class="auth-tag-pill">#리마인과_앤클로의_HappyBloom</span>
-          <span class="auth-tag-pill">#2026MAMAVOTE</span>
-          <span class="auth-tag-pill">#rescene</span>
-        </div>
-        <div class="auth-tip-msg">
-          ✨ <b>X 서치밴이 아닌 경우 X 인증을 가장 권장합니다!</b> (아래 앤더블 카드의 <b>트위터에 글쓰기</b> 버튼으로 바로 작성 가능)
-        </div>
-      </div>
-
-      <!-- 2순위: 구글 폼 인증 -->
-      <div class="auth-method-card priority-2">
-        <div class="auth-method-top">
-          <span class="auth-priority-tag tag-form">2순위 (서치밴 시 권장)</span>
-          <span class="auth-method-name">구글 폼에 인증샷 업로드</span>
-        </div>
-        <p class="auth-method-info">
-          X 서치밴에 걸렸거나 X 인증이 어려운 경우, 공식 구글 폼으로 투표 완료 캡처를 제출해 주세요.
-        </p>
-        <a href="https://forms.gle/ekTvyeHxYqSaAX4j8" target="_blank" rel="noopener noreferrer" class="btn-auth-link btn-form">
-          <span>구글 폼으로 인증샷 제출하기</span>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-        </a>
-      </div>
-
-      <!-- 3순위: 카카오채널 채팅 전송 -->
-      <div class="auth-method-card priority-3">
-        <div class="auth-method-top">
-          <span class="auth-priority-tag tag-kakao">3순위 대안</span>
-          <span class="auth-method-name">음원총공팀 카카오채널 채팅 전송</span>
-        </div>
-        <p class="auth-method-info">
-          구글 폼 이용이 어려운 경우, 음원총공팀 카카오채널 1:1 채팅으로 인증샷을 전송해 주세요.
-        </p>
-        <a href="http://pf.kakao.com/_WxcxowX" target="_blank" rel="noopener noreferrer" class="btn-auth-link btn-kakao-chat">
-          <span>카카오톡 채널로 인증샷 전송하기</span>
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-        </a>
-      </div>
-    </div>
-
-    <!-- 🔁 서치밴 미해당자 RT 독려 안내 박스 -->
-    <div class="rt-encourage-box">
-      <div class="rt-encourage-title">🔁 X 인증이 어려운 경우 리트윗(RT) 부탁드립니다!</div>
-      <p class="rt-encourage-desc">
-        서치밴이 아닌데도 사정상 X 게시물 작성이 어려워 <b>구글 폼이나 카카오톡</b>으로 인증하셨다면,
-        다른 분들의 <b>#2026MAMAVOTE #RESCENE</b> 태그 게시물을 꼭 <b>리트윗(RT)</b>해 총공 화력에 힘을 보태주세요!
+      <p class="searchban-guide-desc">
+        서치밴에 걸리면 해시태그가 검색에 노출되지 않아 실시간 집계에서 누락될 수 있습니다.
       </p>
-    </div>
 
-    <!-- 🔍 서치밴 확인 가이드 -->
-    <div class="searchban-notice">
-      <p class="searchban-important-label">인증 전 꼭 확인</p>
-      <h4 class="searchban-title" style="font-size: 15px; margin-bottom: 8px;">X 서치밴을 확인해 주세요</h4>
-      <p>본인의 X 사용자 이름(username)을 입력해 서치밴 여부를 확인해 주세요. 서치밴에 걸리면 X 검색에 노출되지 않아 실시간 집계에서 누락될 수 있습니다.</p>
-      
-      <div class="searchban-priority-guide">
-        <div class="guide-item">
-          <span class="guide-badge-pill pill-ok">서치밴 정상</span>
-          <span>➔ <b>1순위 X 인증</b>을 가장 권장합니다.</span>
+      <div class="searchban-choice-list">
+        <div class="searchban-choice-item">
+          <span class="choice-pill choice-x">서치밴 정상</span>
+          <span>➔ <b>X(트위터) 인증 (권장)</b>으로 진행해 주세요.</span>
         </div>
-        <div class="guide-item">
-          <span class="guide-badge-pill pill-warn">서치밴 확인됨</span>
-          <span>➔ <b>2순위 구글 폼(권장)</b> 또는 <b>카카오톡</b>으로 인증해 주세요.</span>
+        <div class="searchban-choice-item">
+          <span class="choice-pill choice-alt">서치밴 확인됨</span>
+          <span>➔ <b>구글 폼</b> 또는 <b>음원총공팀 카카오톡</b>으로 인증해 주세요.</span>
         </div>
       </div>
 
-      <div class="searchban-links">
-        <a href="https://x-shadowban-checker.fia-s.com/en/" target="_blank" rel="noopener noreferrer">내 계정 서치밴 확인하기 ›</a>
+      <div class="searchban-rt-note">
+        💡 <b>서치밴이 아닌데도</b> X 게시가 어려운 경우, 구글 폼/카카오톡으로 인증 후 <b>#2026MAMAVOTE #RESCENE</b> 태그 게시물을 <b>리트윗(RT)</b>해 주세요!
+      </div>
+
+      <div class="searchban-btn-row">
+        <a href="https://x-shadowban-checker.fia-s.com/en/" target="_blank" rel="noopener noreferrer" class="btn-check-searchban">
+          내 계정 서치밴 확인하기 ›
+        </a>
       </div>
     </div>
 
     <div class="notice-tip" style="margin-top: 12px;">
-      💡 카톡·인스타 인앱 브라우저에서 X 로그인이 반복되면 메뉴 [···]에서 <b>Safari/Chrome으로 열기</b>를 선택해 주세요. 직접 인증하려면 <b>태그 복사</b>를 이용해 주세요.
+      카톡·인스타 인앱 브라우저에서 X 로그인이 반복되면 메뉴 [···]에서 <b>Safari/Chrome으로 열기</b>를 선택해 주세요.
     </div>
   </div>
 
@@ -3376,9 +3246,24 @@
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
-          트위터에 글쓰기
+          X 글쓰기 (권장)
         </button>
         <button class="btn-copy" onclick="copyTags('리마인과_앤클로의_HappyBloom')">태그 복사</button>
+      </div>
+
+      <!-- 서치밴 대체 인증 바로가기 (구글 폼 & 카카오톡 채널) -->
+      <div class="alt-auth-wrap">
+        <span class="alt-auth-caption">서치밴 또는 X 작성이 어려운 경우:</span>
+        <div class="alt-auth-btn-row">
+          <a href="https://forms.gle/ekTvyeHxYqSaAX4j8" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-form">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+            <span>구글 폼으로 인증</span>
+          </a>
+          <a href="http://pf.kakao.com/_WxcxowX" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-kakao">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682 2.545-.78 2.94-.122.49.18.483.378.351.156-.104 2.477-1.684 3.483-2.37.53.078 1.08.12 1.649.12 4.97 0 9-3.185 9-7.115S16.97 3 12 3z"/></svg>
+            <span>음원총공팀 카톡</span>
+          </a>
+        </div>
       </div>
     </div>
 
