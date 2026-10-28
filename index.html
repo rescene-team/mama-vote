@@ -5535,29 +5535,26 @@ function downloadWatermarkedImage() {
   
   try {
     canvas.toBlob(function(blob) {
-      if (!blob) return;
-      const file = new File([blob], currentWatermarkFileName, { type: 'image/png' });
-      
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        navigator.share({
-          files: [file],
-          title: '투표 인증샷',
-          text: '2026 MAMA 투표 인증'
-        }).catch(err => {
-          if (err.name !== 'AbortError') {
-            triggerFileDownload(blob);
-          }
-        });
-      } else {
-        triggerFileDownload(blob);
+      if (!blob) {
+        fallbackDataUrlDownload(canvas);
+        return;
       }
+      triggerFileDownload(blob);
     }, 'image/png');
   } catch(e) {
-    const link = document.createElement('a');
-    link.download = currentWatermarkFileName;
-    link.href = canvas.toDataURL('image/png');
-    link.click();
+    fallbackDataUrlDownload(canvas);
   }
+}
+
+function fallbackDataUrlDownload(canvas) {
+  const link = document.createElement('a');
+  link.download = currentWatermarkFileName;
+  link.href = canvas.toDataURL('image/png');
+  document.body.appendChild(link);
+  link.click();
+  setTimeout(() => {
+    document.body.removeChild(link);
+  }, 100);
 }
 
 function triggerFileDownload(blob) {
