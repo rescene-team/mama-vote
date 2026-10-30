@@ -2823,6 +2823,60 @@
     }
 
     /* 미리보기 & 캔버스 */
+    .wm-autocrop-loading {
+      background: #0f172a;
+      border: 1px solid #1e293b;
+      border-radius: 8px;
+      padding: 24px 16px;
+      text-align: center;
+      margin-bottom: 12px;
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+    }
+    .wm-autocrop-spinner {
+      width: 32px;
+      height: 32px;
+      border: 3.5px solid #0284c7;
+      border-top-color: #38bdf8;
+      border-radius: 50%;
+      margin: 0 auto 12px;
+      animation: wmSpin 0.75s linear infinite;
+    }
+    @keyframes wmSpin {
+      to { transform: rotate(360deg); }
+    }
+    .wm-autocrop-title {
+      font-size: 13.5px;
+      font-weight: 750;
+      color: #f1f5f9;
+      margin-bottom: 4px;
+    }
+    .wm-autocrop-sub {
+      font-size: 11.5px;
+      color: #94a3b8;
+      margin-bottom: 14px;
+    }
+    .wm-autocrop-bar-track {
+      width: 100%;
+      max-width: 260px;
+      height: 6px;
+      background: #1e293b;
+      border-radius: 999px;
+      margin: 0 auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .wm-autocrop-bar-fill {
+      width: 45%;
+      height: 100%;
+      background: linear-gradient(90deg, #0284c7, #38bdf8);
+      border-radius: 999px;
+      animation: wmBarIndeterminate 1.4s infinite cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    @keyframes wmBarIndeterminate {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(250%); }
+    }
+
     .wm-preview-section {
       margin-top: 6px;
       display: flex;
@@ -3971,6 +4025,9 @@
       gap: 5px;
     }
     .btn-crop-apply { background: #16a34a; color: #ffffff; }
+    .btn-crop-autodate { background: #0d9488; color: #ffffff; }
+    .btn-crop-autodate:hover { background: #0f766e; }
+    .btn-restore-orig:hover { background: #e2e8f0 !important; }
     .btn-crop-apply:hover { background: #15803d; }
     .btn-crop-reset { background: #334155; color: #cbd5e1; }
     .btn-crop-reset:hover { background: #1e293b; color: #ffffff; }
@@ -4004,6 +4061,8 @@
   <!-- ✂️ Cropper.js for Image Cropping -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+
 </head>
 <body>
 
@@ -4085,20 +4144,6 @@
     <button type="button" class="quick-jump-btn btn-jump-mma" onclick="scrollToSection('mmaSection')">
       <span>MMA</span>
     </button>
-  </div>
-
-  <!-- 진행 상황 카드 -->
-  <div class="progress-card">
-    <div class="progress-header">
-      <span>오늘의 인증 진행도</span>
-      <span class="progress-count" id="progressCount">0 / 1 완료</span>
-    </div>
-    <div class="progress-bar">
-      <div class="progress-fill" id="progressFill"></div>
-    </div>
-    <div class="reset-bar">
-      <span> 매일 자정(00:00 KST) 자동 리셋</span>
-    </div>
   </div>
 
   <!-- 🔍 서치밴 및 투표 인증 안내 -->
@@ -4184,7 +4229,7 @@
 
       <!-- 📷 인증샷 워터마크 추가 트리거 버튼 -->
       <div class="watermark-trigger-wrap">
-        <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal()">
+        <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal({ includeDate: false, autoCrop: false, allowCrop: false, title: 'MAMA 인증샷 워터마크 추가' })">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
             <circle cx="8.5" cy="8.5" r="1.5"/>
@@ -4291,7 +4336,7 @@
         </div>
         <!-- 📷 인증샷 워터마크 추가 트리거 버튼 (제로베이스원) -->
         <div class="watermark-trigger-wrap" style="margin-top: 6px;">
-          <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal()">
+          <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal({ includeDate: false, autoCrop: false, allowCrop: false, title: '연합 인증샷 워터마크 추가' })">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
               <circle cx="8.5" cy="8.5" r="1.5"/>
@@ -4579,7 +4624,7 @@
 
     <!-- 📷 인증샷 제작소 트리거 버튼 -->
     <div class="watermark-trigger-wrap" style="margin-top: 14px;">
-      <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal()">
+      <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal({ includeDate: true, autoCrop: true, allowCrop: true, title: 'MMA 인증샷 제작소' })">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
           <circle cx="8.5" cy="8.5" r="1.5"/>
@@ -4793,7 +4838,7 @@
         <span>내 닉네임 또는 X 아이디</span>
         <span class="wm-label-sub">자동 저장</span>
       </label>
-      <input type="text" id="wmNickname" class="wm-input" placeholder="예: @내아이디 (미입력시 '리센느음원총공팀')" maxlength="25" oninput="handleNicknameInput()">
+      <input type="text" id="wmNickname" class="wm-input" placeholder="예: @내아이디 (미입력시 'RESCENE')" maxlength="25" oninput="handleNicknameInput()">
     </div>
 
     <!-- 2. 사진 업로드 영역 -->
@@ -4823,16 +4868,38 @@
     <div id="wmPreviewSection" class="wm-preview-section" style="display: none;">
       <!-- ✂️ 원하는 영역 크롭 트리거 버튼 (1장일 때만 활성화) -->
       <div id="wmCropTriggerArea" style="display: none; width: 100%;">
-        <button type="button" class="btn-crop-trigger" id="btnStartCrop" onclick="startCropping()">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="6" cy="6" r="3"></circle>
-            <circle cx="6" cy="18" r="3"></circle>
-            <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
-            <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
-            <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
-          </svg>
-          <span id="btnStartCropText">✂️ 원하는 영역만 자르기 (오늘 날짜 부분 크롭)</span>
-        </button>
+        <div id="wmCropTriggerNormal" style="width: 100%;">
+          <button type="button" class="btn-crop-trigger" id="btnStartCrop" onclick="startCropping()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="6" cy="6" r="3"></circle>
+              <circle cx="6" cy="18" r="3"></circle>
+              <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+              <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+              <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+            </svg>
+            <span id="btnStartCropText">✂️ 원하는 영역만 직접 자르기 (수동 크롭)</span>
+          </button>
+        </div>
+        <div id="wmCropTriggerAuto" style="display: none; width: 100%;">
+          <div style="display: flex; gap: 8px; width: 100%; box-sizing: border-box;">
+            <button type="button" class="btn-crop-trigger" onclick="startCropping()" style="flex: 1; min-width: 0; width: auto; margin-bottom: 0; padding: 9px 8px; font-size: 11.5px;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink: 0;">
+                <circle cx="6" cy="6" r="3"></circle>
+                <circle cx="6" cy="18" r="3"></circle>
+                <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+                <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+                <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+              </svg>
+              <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">✂️ 수동으로 영역 직접 수정</span>
+            </button>
+            <button type="button" class="btn-crop-trigger btn-restore-orig" onclick="restoreOriginalImage()" style="flex: 0 0 auto; width: auto; margin-bottom: 0; padding: 9px 12px; font-size: 11.5px; background: #f1f5f9; border-color: #cbd5e1; color: #475569; white-space: nowrap;" title="자르지 않은 원본 사진으로 되돌리기">
+              <span>↺ 원본 복원</span>
+            </button>
+          </div>
+          <div style="font-size: 11px; color: #0284c7; margin-top: 6px; margin-bottom: 10px; text-align: left; line-height: 1.45; background: #f0f9ff; padding: 6px 10px; border-radius: 6px; border: 1px solid #bae6fd;">
+            ✨ <b>오늘 날짜 영역으로 자동 잘렸습니다.</b> 자른 영역이 어색하거나 수정하고 싶다면 <b>[직접 수동으로 자르기]</b>를 눌러 원본에서 원하는 대로 조절하세요.
+          </div>
+        </div>
       </div>
 
       <!-- ✂️ Cropper.js 활성화 영역 (자르기 모드일 때 표시) -->
@@ -4846,6 +4913,7 @@
         <div class="wm-crop-action-bar">
           <button type="button" class="btn-crop-action btn-crop-cancel" onclick="cancelCropping()">✕ 취소</button>
           <button type="button" class="btn-crop-action btn-crop-reset" onclick="resetCropBox()" title="자르기 영역 초기화">↺ 초기화</button>
+          <button type="button" class="btn-crop-action btn-crop-autodate" onclick="snapCropBoxToDate()" title="오늘 날짜 영역으로 맞춤">🤖 날짜 맞춤</button>
           <button type="button" class="btn-crop-action btn-crop-apply" onclick="applyCropping()">✓ 자르기 적용</button>
         </div>
       </div>
@@ -4860,16 +4928,34 @@
         </div>
       </div>
 
-      <!-- ✂️ 3장 합성 시 상단 4.5% 자르기 옵션 바 -->
+      <div class="wm-options-bar" id="wmDateOptBar" style="margin-top: -4px;">
+        <label class="wm-checkbox-label" title="인증샷 하단 좌측에 오늘 날짜 캡슐(YYYY-MM-DD)을 표기합니다.">
+          <input type="checkbox" id="wmEnableDate" checked onchange="updateWatermarkLive()">
+          <span>📅 오늘 날짜 표기 (하단 캡슐)</span>
+        </label>
+        <span class="wm-opt-val" id="wmDateOptStatus" style="font-size: 11px; color: #64748b; font-weight: normal;">ON</span>
+      </div>
+
+      <!-- ✂️ 3장 합성 시 상단 5.5% 자르기 옵션 바 -->
       <div class="wm-options-bar wm-extra-opt-bar" id="wmCutTopBar" style="display: none;">
-        <label class="wm-checkbox-label" title="모바일 팝업 3장 합성 시 상단바(시계, 배터리) 4.5% 영역을 깔끔하게 잘라냅니다.">
+        <label class="wm-checkbox-label" title="모바일 팝업 3장 합성 시 상단바(아이폰 다이나믹 아일랜드, 갤럭시 시계/배터리) 5.5% 영역을 깔끔하게 잘라냅니다.">
           <input type="checkbox" id="wmCutTop45" checked onchange="renderWatermark()">
-          <span style="font-weight: 750; color: #0369a1;">✂️ 상단 4.5% 자르기 (상단바 제거)</span>
+          <span style="font-weight: 750; color: #0369a1;">✂️ 상단 5.5% 자르기 (상단바 제거)</span>
         </label>
         <span style="font-size: 10px; color: #0284c7; background: #e0f2fe; padding: 2px 6px; border-radius: 4px; font-weight: 700;">추천</span>
       </div>
 
-      <div class="wm-canvas-container">
+      <!-- ⏳ 사진 자동 자르는 중 로딩 상태 바 -->
+      <div id="wmAutoCropLoading" class="wm-autocrop-loading" style="display: none;">
+        <div class="wm-autocrop-spinner"></div>
+        <div class="wm-autocrop-title">🔍 오늘 투표 날짜 영역 자동 자르는 중...</div>
+        <div class="wm-autocrop-sub">화면의 투표 날짜를 찾아 자동으로 잘라냅니다.</div>
+        <div class="wm-autocrop-bar-track">
+          <div class="wm-autocrop-bar-fill"></div>
+        </div>
+      </div>
+
+      <div class="wm-canvas-container" id="wmCanvasContainer">
         <canvas id="wmCanvas"></canvas>
       </div>
 
@@ -5535,10 +5621,13 @@
     if (!card) return;
     const checkEl = card.querySelector('.status-check-badge');
     card.classList.toggle('done');
-    if (card.classList.contains('done')) {
-      checkEl.innerHTML = '🟢 완료';
+    const isDone = card.classList.contains('done');
+    if (isDone) {
+      if (checkEl) checkEl.innerHTML = '🟢 완료';
+      showToast('🎉 오늘 MAMA 2차 연합 인증 완료로 체크되었습니다! 🪽');
     } else {
-      checkEl.innerHTML = '⚪ 인증 전';
+      if (checkEl) checkEl.innerHTML = '⚪ 인증 전';
+      showToast('⚪ MAMA 2차 연합 인증 완료 체크가 해제되었습니다.');
     }
     saveTodayState();
     updateProgress();
@@ -5579,16 +5668,13 @@
   }
 
   function updateProgress(isInit = false) {
-    const doneCount = document.querySelectorAll('.team-card.done').length;
-    const pct = (doneCount / TOTAL_TEAMS) * 100;
-    document.getElementById('progressFill').style.width = pct + '%';
-    document.getElementById('progressCount').textContent = `${doneCount} / ${TOTAL_TEAMS} 완료`;
-
-    if (doneCount === TOTAL_TEAMS && TOTAL_TEAMS > 0) {
-      setTimeout(() => {
-        showToast('🎉 오늘 MAMA 2차 연합 인증 완료! 고생하셨습니다! 🪽');
-      }, 400);
-    }
+    const fillEl = document.getElementById('progressFill');
+    const countEl = document.getElementById('progressCount');
+    if (!fillEl && !countEl) return;
+    const doneCount = document.querySelectorAll('#card-1.done').length;
+    const pct = TOTAL_TEAMS > 0 ? (doneCount / TOTAL_TEAMS) * 100 : 0;
+    if (fillEl) fillEl.style.width = pct + '%';
+    if (countEl) countEl.textContent = `${doneCount} / ${TOTAL_TEAMS} 완료`;
   }
 
   function showToast(msg) {
@@ -6288,10 +6374,100 @@
 var currentWatermarkImage = null;
 let currentWatermarkFileName = 'mama_vote_watermarked.png';
 const WM_STORAGE_KEY = 'rescene_vote_wm_nickname';
+const WM_OPACITY_STORAGE_KEY = 'rescene_vote_wm_opacity';
 
-function openWatermarkModal() {
+let currentWatermarkConfig = {
+  includeDate: true,
+  autoCrop: true,
+  allowCrop: true,
+  title: '인증샷 제작소'
+};
+
+function resetWatermarkImages() {
+  if (typeof cancelCropping === 'function') cancelCropping();
+  currentWatermarkImages = [];
+  currentWatermarkImage = null;
+  rawWatermarkOriginalImage = null;
+  isAutoCropped = false;
+  lastDetectedCropBox = null;
+
+  const fileInput = document.getElementById('wmFileInput');
+  if (fileInput) fileInput.value = '';
+
+  const previewSec = document.getElementById('wmPreviewSection');
+  if (previewSec) previewSec.style.display = 'none';
+
+  const dropzoneInner = document.getElementById('wmDropzoneInner');
+  if (dropzoneInner) {
+    dropzoneInner.innerHTML = `
+      <div class="wm-dropzone-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+      </div>
+      <span class="wm-dropzone-main">사진 탭하여 선택하기 (1장 ~ 3장)</span>
+      <span class="wm-dropzone-sub">또는 클립보드 이미지 붙여넣기 (Ctrl+V)</span>
+    `;
+  }
+
+  const canvas = document.getElementById('wmCanvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+    canvas.width = 0;
+    canvas.height = 0;
+  }
+
+  const autoLoading = document.getElementById('wmAutoCropLoading');
+  if (autoLoading) autoLoading.style.display = 'none';
+
+  const cutTopBar = document.getElementById('wmCutTopBar');
+  if (cutTopBar) cutTopBar.style.display = 'none';
+
+  const cropTriggerArea = document.getElementById('wmCropTriggerArea');
+  if (cropTriggerArea) cropTriggerArea.style.display = 'none';
+
+  const cropSection = document.getElementById('wmCropSection');
+  if (cropSection) cropSection.style.display = 'none';
+}
+
+function openWatermarkModal(options = {}) {
+  resetWatermarkImages();
+  preloadTesseract();
   const modal = document.getElementById('watermarkModal');
   if (!modal) return;
+  
+  if (typeof options === 'boolean') {
+    currentWatermarkConfig = {
+      includeDate: options,
+      autoCrop: options,
+      allowCrop: options,
+      title: options ? 'MMA 인증샷 제작소' : '인증샷 워터마크 추가'
+    };
+  } else if (typeof options === 'object' && options !== null) {
+    currentWatermarkConfig = {
+      includeDate: (options.includeDate !== undefined) ? !!options.includeDate : true,
+      autoCrop: (options.autoCrop !== undefined) ? !!options.autoCrop : true,
+      allowCrop: (options.allowCrop !== undefined) ? !!options.allowCrop : true,
+      title: options.title || '인증샷 제작소'
+    };
+  } else {
+    currentWatermarkConfig = { includeDate: true, autoCrop: true, allowCrop: true, title: '인증샷 제작소' };
+  }
+
+  const titleEl = document.getElementById('wmModalTitle');
+  if (titleEl) {
+    titleEl.textContent = currentWatermarkConfig.title;
+  }
+
+  const dateCheckbox = document.getElementById('wmEnableDate');
+  const dateStatus = document.getElementById('wmDateOptStatus');
+  if (dateCheckbox) {
+    dateCheckbox.checked = currentWatermarkConfig.includeDate;
+    if (dateStatus) dateStatus.textContent = currentWatermarkConfig.includeDate ? 'ON' : 'OFF';
+  }
   
   // Nickname load
   const savedNick = localStorage.getItem(WM_STORAGE_KEY) || '';
@@ -6302,17 +6478,26 @@ function openWatermarkModal() {
     }
   }
 
+  // Opacity load
+  try {
+    const savedOpacity = localStorage.getItem(WM_OPACITY_STORAGE_KEY);
+    const range = document.getElementById('wmOpacity');
+    const valSpan = document.getElementById('wmOpacityVal');
+    if (range && savedOpacity) {
+      range.value = savedOpacity;
+      if (valSpan) {
+        valSpan.textContent = Math.round(parseFloat(savedOpacity) * 100) + '%';
+      }
+    }
+  } catch(e) {}
+
   modal.classList.add('show');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
-
-  if (currentWatermarkImage) {
-    renderWatermark();
-  }
 }
 
 function closeWatermarkModal() {
-  if (typeof cancelCropping === 'function') cancelCropping();
+  resetWatermarkImages();
   const modal = document.getElementById('watermarkModal');
   if (!modal) return;
   modal.classList.remove('show');
@@ -6337,6 +6522,14 @@ function updateWatermarkLive() {
   const valSpan = document.getElementById('wmOpacityVal');
   if (range && valSpan) {
     valSpan.textContent = Math.round(parseFloat(range.value) * 100) + '%';
+    try {
+      localStorage.setItem(WM_OPACITY_STORAGE_KEY, range.value);
+    } catch(e) {}
+  }
+  const dateCheckbox = document.getElementById('wmEnableDate');
+  const dateStatus = document.getElementById('wmDateOptStatus');
+  if (dateCheckbox && dateStatus) {
+    dateStatus.textContent = dateCheckbox.checked ? 'ON' : 'OFF';
   }
   if (currentWatermarkImage) {
     renderWatermark();
@@ -6345,6 +6538,286 @@ function updateWatermarkLive() {
 
 var currentWatermarkImages = [];
 var currentWatermarkImage = null;
+var rawWatermarkOriginalImage = null;
+var isAutoCropped = false;
+var lastDetectedCropBox = null;
+var cachedTesseractWorker = null;
+
+async function getTesseractWorker() {
+  if (!cachedTesseractWorker) {
+    if (typeof Tesseract === 'undefined') {
+      throw new Error('Tesseract.js not loaded');
+    }
+    cachedTesseractWorker = await Tesseract.createWorker('eng');
+    await cachedTesseractWorker.setParameters({
+      tessedit_char_whitelist: '0123456789.- ',
+    });
+  }
+  return cachedTesseractWorker;
+}
+
+function preloadTesseract() {
+  try {
+    getTesseractWorker().catch(e => console.warn('Tesseract preload notice:', e));
+  } catch(e) {}
+}
+
+function findHeaderTop(img, firstDateY) {
+  try {
+    const w = img.naturalWidth || img.width;
+    const h = img.naturalHeight || img.height;
+    const sampleW = Math.round(w * 0.50);
+    const startX = Math.round(w * 0.25);
+    
+    const canvas = document.createElement('canvas');
+    canvas.width = sampleW;
+    canvas.height = firstDateY;
+    const ctx = canvas.getContext('2d');
+    ctx.drawImage(img, startX, 0, sampleW, firstDateY, 0, 0, sampleW, firstDateY);
+    
+    const imgData = ctx.getImageData(0, 0, sampleW, firstDateY).data;
+    const bgR = imgData[0], bgG = imgData[1], bgB = imgData[2];
+    
+    let headerTop = null;
+    let headerBottom = null;
+    
+    const minY = Math.round(h * 0.035);
+    for (let y = firstDateY - 20; y >= minY; y--) {
+      let hasBright = false;
+      for (let x = 0; x < sampleW; x += 4) {
+        const idx = (y * sampleW + x) * 4;
+        const diff = Math.abs(imgData[idx] - bgR) + Math.abs(imgData[idx+1] - bgG) + Math.abs(imgData[idx+2] - bgB);
+        if (diff > 80) {
+          hasBright = true;
+          break;
+        }
+      }
+      if (hasBright) {
+        if (headerBottom === null) headerBottom = y;
+        headerTop = y;
+      } else if (headerTop !== null && !hasBright) {
+        break;
+      }
+    }
+    
+    if (headerTop !== null) {
+      // '내 투표이력' 글자 위로 너무 딱 잘리지 않게 자연스러운 여백(약 12~14px) 확보
+      const pad = Math.max(10, Math.round(h * 0.014));
+      return Math.max(0, headerTop - pad);
+    }
+  } catch(e) {
+    console.warn('findHeaderTop notice:', e);
+  }
+  return Math.round((img.naturalHeight || img.height) * 0.052);
+}
+
+async function detectDateCropBox(img) {
+  try {
+    const worker = await getTesseractWorker();
+    
+    // Scale canvas for fast OCR (max width 600px)
+    const maxW = 600;
+    const scale = Math.min(1, maxW / (img.naturalWidth || img.width || 600));
+    const sw = Math.round((img.naturalWidth || img.width) * scale);
+    const sh = Math.round((img.naturalHeight || img.height) * scale);
+    
+    const offCanvas = document.createElement('canvas');
+    offCanvas.width = sw;
+    offCanvas.height = sh;
+    const ctx = offCanvas.getContext('2d');
+    ctx.drawImage(img, 0, 0, sw, sh);
+    
+    const ret = await worker.recognize(offCanvas);
+    const lines = (ret && ret.data && ret.data.lines) || [];
+    
+    const dateRegex = /\d{4}[.-]\d{1,2}[.-]\d{1,2}/;
+    const dateMatches = [];
+    lines.forEach(l => {
+      const clean = (l.text || '').replace(/\s+/g, '');
+      if (dateRegex.test(clean)) {
+        dateMatches.push({
+          text: clean,
+          bbox: {
+            x0: Math.round(l.bbox.x0 / scale),
+            y0: Math.round(l.bbox.y0 / scale),
+            x1: Math.round(l.bbox.x1 / scale),
+            y1: Math.round(l.bbox.y1 / scale)
+          }
+        });
+      }
+    });
+    
+    dateMatches.sort((a, b) => a.bbox.y0 - b.bbox.y0);
+    
+    const fullW = img.naturalWidth || img.width;
+    const fullH = img.naturalHeight || img.height;
+    
+    if (dateMatches.length >= 1) {
+      const firstDate = dateMatches[0];
+      // '내 투표이력' 헤더 위치를 정밀 감지하여 글자 위로 자연스러운 여백을 두고 자름
+      const yStart = findHeaderTop(img, firstDate.bbox.y0);
+      
+      let yEnd;
+      if (dateMatches.length >= 2) {
+        // 두 번째 날짜(이전 날짜) 바로 직전에서 종료
+        const secondDate = dateMatches[1];
+        const padBottom = Math.max(10, Math.round(fullH * 0.015));
+        yEnd = Math.max(yStart + 80, secondDate.bbox.y0 - padBottom);
+      } else {
+        // 날짜가 1개만 발견된 경우 첫 번째 날짜 아래 3개 부문 비율로 컷
+        yEnd = Math.min(fullH, yStart + Math.round(fullW * 1.05));
+      }
+      
+      return {
+        x: 0,
+        y: yStart,
+        width: fullW,
+        height: yEnd - yStart
+      };
+    }
+    return null;
+  } catch(e) {
+    console.error('OCR detection error:', e);
+    return null;
+  }
+}
+
+function setAutoCropLoading(isLoading) {
+  const loadingEl = document.getElementById('wmAutoCropLoading');
+  const canvasContainer = document.getElementById('wmCanvasContainer') || document.querySelector('.wm-canvas-container');
+  const saveBtn = document.querySelector('.btn-wm-save');
+  const copyBtn = document.querySelector('button[onclick*="copyCanvasToClipboard"]');
+  const triggerArea = document.getElementById('wmCropTriggerArea');
+  
+  if (loadingEl) {
+    loadingEl.style.display = isLoading ? 'block' : 'none';
+  }
+  
+  if (canvasContainer) {
+    canvasContainer.style.display = isLoading ? 'none' : 'flex';
+  }
+  
+  if (triggerArea) {
+    if (isLoading) triggerArea.style.display = 'none';
+    else updateCropTriggerVisibility();
+  }
+  
+  if (saveBtn) {
+    if (isLoading) {
+      saveBtn.disabled = true;
+      saveBtn.style.opacity = '0.55';
+      saveBtn.style.pointerEvents = 'none';
+      saveBtn.innerHTML = '<span>⏳ 사진 자동 자르는 중...</span>';
+    } else {
+      saveBtn.disabled = false;
+      saveBtn.style.opacity = '';
+      saveBtn.style.pointerEvents = '';
+      saveBtn.innerHTML = `
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>워터마크 사진 저장 (다운로드)</span>
+      `;
+    }
+  }
+  
+  if (copyBtn) {
+    copyBtn.disabled = isLoading;
+    copyBtn.style.opacity = isLoading ? '0.55' : '';
+    copyBtn.style.pointerEvents = isLoading ? 'none' : '';
+  }
+}
+
+async function autoCutoffSingleImage(img) {
+  setAutoCropLoading(true);
+  
+  const previewSec = document.getElementById('wmPreviewSection');
+  if (previewSec) {
+    previewSec.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  const timeoutPromise = new Promise((_, reject) => {
+    setTimeout(() => reject(new Error('TIMEOUT')), 6000);
+  });
+
+  try {
+    const cropBox = await Promise.race([
+      detectDateCropBox(img),
+      timeoutPromise
+    ]);
+
+    if (!cropBox) {
+      showToast('💡 날짜를 자동 감지하지 못했습니다. 수동으로 자를 수 있습니다.');
+      isAutoCropped = false;
+      setAutoCropLoading(false);
+      renderWatermark();
+      updateCropTriggerVisibility();
+      return;
+    }
+
+    lastDetectedCropBox = cropBox;
+
+    const offCanvas = document.createElement('canvas');
+    offCanvas.width = cropBox.width;
+    offCanvas.height = cropBox.height;
+    const ctx = offCanvas.getContext('2d');
+    ctx.drawImage(img, cropBox.x, cropBox.y, cropBox.width, cropBox.height, 0, 0, cropBox.width, cropBox.height);
+
+    const croppedImg = new Image();
+    croppedImg.onload = function() {
+      currentWatermarkImages[0] = croppedImg;
+      currentWatermarkImage = croppedImg;
+      isAutoCropped = true;
+      setAutoCropLoading(false);
+      renderWatermark();
+      updateCropTriggerVisibility();
+      showToast('✨ 오늘 투표 날짜 영역으로 자동 잘랐습니다!');
+    };
+    croppedImg.onerror = function() {
+      setAutoCropLoading(false);
+      renderWatermark();
+      updateCropTriggerVisibility();
+    };
+    croppedImg.src = offCanvas.toDataURL('image/png');
+
+  } catch(e) {
+    console.warn('Auto cutoff notice:', e);
+    showToast('💡 날짜를 감지하지 못해 원본을 유지합니다.');
+    isAutoCropped = false;
+    setAutoCropLoading(false);
+    renderWatermark();
+    updateCropTriggerVisibility();
+  }
+}
+
+function restoreOriginalImage() {
+  if (!rawWatermarkOriginalImage) return;
+  currentWatermarkImages[0] = rawWatermarkOriginalImage;
+  currentWatermarkImage = rawWatermarkOriginalImage;
+  isAutoCropped = false;
+  lastDetectedCropBox = null;
+  renderWatermark();
+  updateCropTriggerVisibility();
+  showToast('↺ 원본 사진으로 복원되었습니다.');
+}
+
+async function snapCropBoxToDate() {
+  if (!currentCropper) return;
+  const targetImg = rawWatermarkOriginalImage || currentWatermarkImages[0];
+  if (!targetImg) return;
+  
+  showToast('🔍 오늘 투표 날짜 감지 중...');
+  const box = await detectDateCropBox(targetImg);
+  if (box) {
+    lastDetectedCropBox = box;
+    currentCropper.setData(box);
+    showToast('✨ 오늘 날짜 영역으로 맞췄습니다!');
+  } else {
+    showToast('날짜를 찾지 못했습니다.');
+  }
+}
 
 function handleWatermarkFiles(fileList) {
   if (!fileList || fileList.length === 0) return;
@@ -6380,6 +6853,10 @@ function handleWatermarkFiles(fileList) {
         if (loadedCount === files.length) {
           currentWatermarkImages = loadedImages;
           currentWatermarkImage = loadedImages[0];
+          rawWatermarkOriginalImage = loadedImages[0];
+          isAutoCropped = false;
+          lastDetectedCropBox = null;
+          
           const previewSec = document.getElementById('wmPreviewSection');
           if (previewSec) previewSec.style.display = 'flex';
           
@@ -6387,6 +6864,20 @@ function handleWatermarkFiles(fileList) {
             updateCropTriggerVisibility();
           }
           renderWatermark();
+          
+          // 1장 업로드 시: MMA 모드(autoCrop=true)일 때만 날짜 자동 컷오프 실행
+          if (files.length === 1) {
+            if (currentWatermarkConfig.autoCrop) {
+              autoCutoffSingleImage(loadedImages[0]);
+            } else {
+              // MAMA 2차 / ZB1 모드: 날짜 자동 컷오프 없이 원본 사진에 워터마크 바로 적용
+              setAutoCropLoading(false);
+              renderWatermark();
+              if (typeof updateCropTriggerVisibility === 'function') {
+                updateCropTriggerVisibility();
+              }
+            }
+          }
         }
       };
       img.src = e.target.result;
@@ -6407,7 +6898,8 @@ function renderWatermark() {
   
   const images = currentWatermarkImages;
   const isCutTop = (images.length === 3) && document.getElementById('wmCutTop45') && document.getElementById('wmCutTop45').checked;
-  const topCutRatio = isCutTop ? 0.045 : 0; // 3장일 때 상단 4.5% 자르기
+  const allowCrop = (currentWatermarkConfig && currentWatermarkConfig.allowCrop !== false);
+  const topCutRatio = (allowCrop && isCutTop) ? 0.055 : 0; // 3장일 때 상단 5.5% 자르기 (아이폰/갤럭시 공통)
   
   let totalW = 0;
   let baseTargetH = images[0].naturalHeight || images[0].height || 1000;
@@ -6451,7 +6943,7 @@ function renderWatermark() {
   if (enablePattern) {
     const nickInput = document.getElementById('wmNickname');
     const rawNick = (nickInput ? nickInput.value : '').trim();
-    const nickname = rawNick || '리센느음원총공팀';
+    const nickname = rawNick || 'RESCENE';
     
     const range = document.getElementById('wmOpacity');
     const opacity = range ? parseFloat(range.value) : 0.38;
@@ -6490,45 +6982,49 @@ function renderWatermark() {
     ctx.restore();
   }
   
-  // 3. Date Capsule Pill (하단 좌측 오늘 날짜 캡슐)
-  const now = new Date();
-  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
-  const kst = new Date(utc + (9 * 60 * 60 * 1000));
-  const yyyy = kst.getFullYear();
-  const mm = String(kst.getMonth() + 1).padStart(2, '0');
-  const dd = String(kst.getDate()).padStart(2, '0');
-  const dateStr = `${yyyy}-${mm}-${dd}`;
-  
-  const dateFontSize = Math.max(14, Math.round(targetH * 0.024));
-  ctx.font = `bold ${dateFontSize}px -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", sans-serif`;
-  const textMetrics = ctx.measureText(dateStr);
-  const pillPadX = Math.round(dateFontSize * 0.85);
-  const pillH = Math.round(dateFontSize * 1.7);
-  const pillW = Math.round(textMetrics.width + pillPadX * 2);
-  const pillRadius = pillH / 2;
-  const posX = Math.round(targetH * 0.04);
-  const posY = targetH - Math.round(targetH * 0.04) - pillH;
-  
-  ctx.save();
-  ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
-  ctx.shadowBlur = 14;
-  ctx.shadowOffsetY = 4;
-  
-  ctx.beginPath();
-  ctx.roundRect(posX, posY, pillW, pillH, pillRadius);
-  ctx.fillStyle = '#ffffff';
-  ctx.fill();
-  
-  ctx.shadowColor = 'transparent';
-  ctx.lineWidth = 1.5;
-  ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
-  ctx.stroke();
-  
-  ctx.fillStyle = '#111827';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText(dateStr, posX + pillW / 2, posY + pillH / 2 + 1);
-  ctx.restore();
+  // 3. Date Capsule Pill (하단 좌측 오늘 날짜 캡슐 - 옵션 활성화 시에만 렌더링)
+  const dateCheckbox = document.getElementById('wmEnableDate');
+  const enableDate = dateCheckbox ? dateCheckbox.checked : (currentWatermarkConfig ? currentWatermarkConfig.includeDate : true);
+  if (enableDate) {
+    const now = new Date();
+    const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+    const kst = new Date(utc + (9 * 60 * 60 * 1000));
+    const yyyy = kst.getFullYear();
+    const mm = String(kst.getMonth() + 1).padStart(2, '0');
+    const dd = String(kst.getDate()).padStart(2, '0');
+    const dateStr = `${yyyy}-${mm}-${dd}`;
+    
+    const dateFontSize = Math.max(14, Math.round(targetH * 0.024));
+    ctx.font = `bold ${dateFontSize}px -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", sans-serif`;
+    const textMetrics = ctx.measureText(dateStr);
+    const pillPadX = Math.round(dateFontSize * 0.85);
+    const pillH = Math.round(dateFontSize * 1.7);
+    const pillW = Math.round(textMetrics.width + pillPadX * 2);
+    const pillRadius = pillH / 2;
+    const posX = Math.round(targetH * 0.04);
+    const posY = targetH - Math.round(targetH * 0.04) - pillH;
+    
+    ctx.save();
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
+    ctx.shadowBlur = 14;
+    ctx.shadowOffsetY = 4;
+    
+    ctx.beginPath();
+    ctx.roundRect(posX, posY, pillW, pillH, pillRadius);
+    ctx.fillStyle = '#ffffff';
+    ctx.fill();
+    
+    ctx.shadowColor = 'transparent';
+    ctx.lineWidth = 1.5;
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+    ctx.stroke();
+    
+    ctx.fillStyle = '#111827';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(dateStr, posX + pillW / 2, posY + pillH / 2 + 1);
+    ctx.restore();
+  }
 }
 
 function downloadWatermarkedImage() {
@@ -6812,10 +7308,33 @@ let currentCropper = null;
 const CROP_RATIO_KEY = 'rescene_mma_last_crop_ratio';
 
 function updateCropTriggerVisibility() {
+  // 앤더블, 제베원 등 크롭 기능이 비활성화된 모드(allowCrop=false)에서는 모든 자르기 UI 완전 숨김!
+  if (currentWatermarkConfig && currentWatermarkConfig.allowCrop === false) {
+    const triggerArea = document.getElementById('wmCropTriggerArea');
+    const cutTopBar = document.getElementById('wmCutTopBar');
+    if (triggerArea) triggerArea.style.display = 'none';
+    if (cutTopBar) cutTopBar.style.display = 'none';
+    return;
+  }
   const triggerArea = document.getElementById('wmCropTriggerArea');
+  const triggerNormal = document.getElementById('wmCropTriggerNormal');
+  const triggerAuto = document.getElementById('wmCropTriggerAuto');
+  
+  const isSingle = (currentWatermarkImages && currentWatermarkImages.length === 1);
   if (triggerArea) {
-    // 1장 업로드 시에만 크롭 트리거 노출!
-    triggerArea.style.display = (currentWatermarkImages && currentWatermarkImages.length === 1) ? 'block' : 'none';
+    triggerArea.style.display = isSingle ? 'block' : 'none';
+  }
+  
+  if (isSingle) {
+    if (triggerNormal && triggerAuto) {
+      if (isAutoCropped) {
+        triggerNormal.style.display = 'none';
+        triggerAuto.style.display = 'block';
+      } else {
+        triggerNormal.style.display = 'block';
+        triggerAuto.style.display = 'none';
+      }
+    }
   }
   
   const cutTopBar = document.getElementById('wmCutTopBar');
@@ -6831,12 +7350,13 @@ function startCropping() {
     return;
   }
   
-  const targetImg = currentWatermarkImages[0];
+  // 수동 자르기 시에는 항상 자르지 않은 원본 사진(rawWatermarkOriginalImage)을 기준으로 편집!
+  const targetImg = rawWatermarkOriginalImage || currentWatermarkImages[0];
   if (!targetImg || !targetImg.src) return;
 
   const cropImgEl = document.getElementById('wmCropImage');
   const cropSection = document.getElementById('wmCropSection');
-  const canvasContainer = document.getElementById('wmCanvasContainer');
+  const canvasContainer = document.querySelector('.wm-canvas-container');
   const triggerArea = document.getElementById('wmCropTriggerArea');
   const actionBtns = document.querySelector('.wm-action-btns');
 
@@ -6861,24 +7381,28 @@ function startCropping() {
       rotatable: false,
       scalable: false,
       ready: function() {
-        // 이전 저장된 크롭 비율이 있다면 자동 복원
-        try {
-          const saved = localStorage.getItem(CROP_RATIO_KEY);
-          if (saved) {
-            const r = JSON.parse(saved);
-            const imgData = this.cropper.getImageData();
-            if (imgData && imgData.naturalWidth && imgData.naturalHeight && r.w && r.h) {
-              this.cropper.setData({
-                x: Math.round(r.x * imgData.naturalWidth),
-                y: Math.round(r.y * imgData.naturalHeight),
-                width: Math.round(r.w * imgData.naturalWidth),
-                height: Math.round(r.h * imgData.naturalHeight)
-              });
-              showToast('📌 이전 자르기 영역을 불러왔습니다.');
+        if (lastDetectedCropBox) {
+          this.cropper.setData(lastDetectedCropBox);
+          showToast('🤖 감지된 날짜 영역에 크롭 박스를 맞췄습니다.');
+        } else {
+          try {
+            const saved = localStorage.getItem(CROP_RATIO_KEY);
+            if (saved) {
+              const r = JSON.parse(saved);
+              const imgData = this.cropper.getImageData();
+              if (imgData && imgData.naturalWidth && imgData.naturalHeight && r.w && r.h) {
+                this.cropper.setData({
+                  x: Math.round(r.x * imgData.naturalWidth),
+                  y: Math.round(r.y * imgData.naturalHeight),
+                  width: Math.round(r.w * imgData.naturalWidth),
+                  height: Math.round(r.h * imgData.naturalHeight)
+                });
+                showToast('📌 이전 자르기 영역을 불러왔습니다.');
+              }
             }
+          } catch(e) {
+            console.error('Failed to restore crop ratio:', e);
           }
-        } catch(e) {
-          console.error('Failed to restore crop ratio:', e);
         }
       }
     });
@@ -6893,6 +7417,7 @@ function resetCropBox() {
   try {
     localStorage.removeItem(CROP_RATIO_KEY);
   } catch(e) {}
+  lastDetectedCropBox = null;
   currentCropper.reset();
   showToast('자르기 영역이 초기화되었습니다.');
 }
@@ -6930,9 +7455,11 @@ function applyCropping() {
   const updatedImg = new Image();
   updatedImg.onload = function() {
     currentWatermarkImages[0] = updatedImg;
+    currentWatermarkImage = updatedImg;
+    isAutoCropped = true;
     endCroppingUI();
     renderWatermark();
-    showToast('✂️ 자르기가 적용되었습니다! (영역 저장됨)');
+    showToast('✂️ 자르기가 적용되었습니다!');
   };
   updatedImg.src = croppedDataUrl;
 }
@@ -6947,12 +7474,12 @@ function endCroppingUI() {
     currentCropper = null;
   }
   const cropSection = document.getElementById('wmCropSection');
-  const canvasContainer = document.getElementById('wmCanvasContainer');
+  const canvasContainer = document.getElementById('wmCanvasContainer') || document.querySelector('.wm-canvas-container');
   const triggerArea = document.getElementById('wmCropTriggerArea');
   const actionBtns = document.querySelector('.wm-action-btns');
 
   if (cropSection) cropSection.style.display = 'none';
-  if (canvasContainer) canvasContainer.style.display = 'block';
+  if (canvasContainer) canvasContainer.style.display = 'flex';
   if (triggerArea) {
     triggerArea.style.display = (currentWatermarkImages && currentWatermarkImages.length === 1) ? 'block' : 'none';
   }
