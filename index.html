@@ -3376,7 +3376,571 @@
     .special-alliance-card.done {
       background: #e2e9ed;
     }
+
+    /* 🍈 MMA 부문별 공식 단일 투표 버튼 & 안내 스타일 */
+    .mma-quick-vote-wrap {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+    .mma-quick-vote-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-radius: 10px;
+      text-decoration: none !important;
+      font-weight: 700;
+      transition: all 0.15s ease;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .mma-quick-vote-btn:active {
+      transform: scale(0.985);
+    }
+    .mma-quick-vote-btn.melon-single {
+      background: #00cd3c;
+      color: #000000 !important;
+      padding: 13px 16px;
+    }
+    .mma-quick-vote-btn.melon-single:hover {
+      background: #00b836;
+    }
+    .mma-quick-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+    }
+    .mma-quick-pill {
+      font-size: 11px;
+      font-weight: 800;
+      background: rgba(0, 0, 0, 0.15);
+      color: inherit;
+      padding: 3px 7px;
+      border-radius: 4px;
+    }
+    .mma-quick-title {
+      font-size: 13.5px;
+      letter-spacing: -0.3px;
+      white-space: nowrap;
+    }
+    .mma-quick-arrow {
+      font-size: 12.5px;
+      font-weight: 700;
+      opacity: 0.9;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-left: 6px;
+    }
+    .mma-quick-sub-note {
+      font-size: 11.5px;
+      color: #556c7d;
+      line-height: 1.5;
+      padding: 2px 4px 0;
+    }
+    .mma-quick-sub-note a {
+      color: #2563eb;
+      text-decoration: underline;
+      font-weight: 600;
+    }
+
+    /* 🎯 MMA 2026 리센느 & 연합 3대 부문 목표 박스 */
+    .mma-targets-summary-box {
+      background: #ffffff;
+      border: 1px solid #d4e0e8;
+      border-radius: 10px;
+      padding: 14px 15px;
+      margin-bottom: 14px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    }
+    .targets-summary-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 10px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid #edf2f5;
+    }
+    .targets-title-left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+    .target-title-badge {
+      font-size: 10.5px;
+      font-weight: 800;
+      background: #2b4c60;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+    .targets-title {
+      font-size: 13.5px;
+      font-weight: 800;
+      color: #1a2a36;
+      margin: 0;
+    }
+    .target-period-badge {
+      font-size: 11px;
+      color: #0369a1;
+      font-weight: 700;
+      background: #e0f2fe;
+      padding: 3px 8px;
+      border-radius: 9999px;
+    }
+    .targets-summary-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .target-summary-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 10px;
+      background: #f8fafc;
+      border-radius: 6px;
+      border-left: 3px solid #cbd5e1;
+      font-size: 12px;
+    }
+    .target-summary-item.target-rescene {
+      border-left-color: #0284c7;
+      background: #f0f9ff;
+    }
+    .target-summary-item.target-alpha {
+      border-left-color: #ec4899;
+      background: #fdf2f8;
+    }
+    .target-summary-item.target-cortis {
+      border-left-color: #10b981;
+      background: #f0fdf4;
+    }
+    .target-item-left {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      min-width: 0;
+    }
+    .target-cat-pill {
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 5px;
+      border-radius: 3px;
+      white-space: nowrap;
+    }
+    .pill-rescene { background: #e0f2fe; color: #0369a1; }
+    .pill-alpha { background: #fce7f3; color: #be185d; }
+    .pill-cortis { background: #dcfce7; color: #15803d; }
+    .target-artist-name {
+      font-size: 12.5px;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .target-status-tag {
+      font-size: 10.5px;
+      font-weight: 750;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .target-status-tag.tag-primary { background: #0284c7; color: #ffffff; }
+    .target-status-tag.tag-partner { background: #e2e8f0; color: #334155; }
+
+    /* 📸 투표 인증 가이드 카드 */
+    .mma-proof-guide-card {
+      background: #ffffff;
+      border: 1px solid #d4e0e8;
+      border-radius: 10px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
+    }
+    .proof-guide-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .proof-guide-title-row {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      min-width: 0;
+    }
+    .proof-guide-badge {
+      font-size: 10.5px;
+      font-weight: 800;
+      background: #0284c7;
+      color: #ffffff;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      display: inline-block;
+    }
+    .proof-guide-title {
+      font-size: 13px;
+      font-weight: 800;
+      color: #1e293b;
+      white-space: nowrap;
+    }
+    .btn-proof-help-q {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      background: #e0f2fe;
+      border: 1px solid #7dd3fc;
+      border-radius: 9999px;
+      color: #0369a1;
+      font-size: 11px;
+      font-weight: 750;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .btn-proof-help-q:hover {
+      background: #bae6fd;
+      border-color: #38bdf8;
+    }
+    .proof-help-q-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #0284c7;
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 900;
+      line-height: 1;
+    }
+    .proof-guide-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .proof-method-box {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 8px 10px;
+      background: #f8fafc;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      user-select: none;
+    }
+    .proof-method-box:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    }
+    .proof-method-box.method-recommended {
+      border-color: #7dd3fc;
+      background: #f0f9ff;
+    }
+    .proof-method-badge-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .proof-method-tag {
+      font-size: 10px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    .proof-method-tag.tag-rec { background: #0284c7; color: #ffffff; }
+    .proof-method-tag.tag-stitch { background: #64748b; color: #ffffff; }
+    .proof-method-simple-text {
+      font-size: 11.5px;
+      font-weight: 750;
+      color: #0f172a;
+      line-height: 1.35;
+      word-break: keep-all;
+    }
+    .proof-method-click-hint {
+      font-size: 9.5px;
+      color: #0284c7;
+      font-weight: 600;
+    }
+    .proof-method-box.method-stitch .proof-method-click-hint {
+      color: #64748b;
+    }
+
+    /* 🍈 멜론 앱 투표 보조 영역 */
+    .mma-quick-actions-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 6px;
+      padding: 0 4px;
+    }
+    .mma-quick-app-hint {
+      color: #0369a1;
+      font-size: 11px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .mma-web-fallback-link {
+      color: #64748b;
+      font-size: 11px;
+      font-weight: 600;
+      text-decoration: underline;
+      white-space: nowrap;
+      flex-shrink: 0;
+      transition: color 0.15s ease;
+    }
+    .mma-web-fallback-link:hover {
+      color: #0f172a;
+    }
+
+    /* 워터마크 옵션 체크박스 */
+    .wm-checkbox-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: #334155;
+      cursor: pointer;
+      user-select: none;
+    }
+    .wm-checkbox-label input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      accent-color: #0284c7;
+      cursor: pointer;
+    }
+
+    /* 🤝 MMA 연합 상세 박스 */
+    .mma-alliance-box {
+      background: #f4f8fa;
+      border: 1px solid #dbe6ec;
+      border-radius: 8px;
+      padding: 10px 12px;
+      margin: 10px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .mma-alliance-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .mma-alliance-tag-pill {
+      font-size: 10.5px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      line-height: 1.3;
+    }
+    .pill-vote-remine {
+      background: #eef2ff;
+      color: #4338ca;
+      border: 1px solid #c7d2fe;
+    }
+    .pill-vote-partner {
+      background: #fdf2f8;
+      color: #be185d;
+      border: 1px solid #fbcfe8;
+    }
+    .pill-vote-period {
+      background: #f1f5f9;
+      color: #475569;
+      border: 1px solid #cbd5e1;
+    }
+
+    /* 📸 MMA 인증 예시 사진 팝업 모달 */
+    .mma-example-modal-card {
+      background: #ffffff !important;
+      color: #1e293b !important;
+      max-width: 440px !important;
+      width: 92% !important;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 18px 16px !important;
+      border-radius: 14px !important;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+      word-break: keep-all;
+    }
+    .example-tabs-row {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+      background: #f1f5f9;
+      padding: 4px;
+      border-radius: 8px;
+    }
+    .btn-example-tab {
+      flex: 1;
+      padding: 8px 10px;
+      border: none;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 750;
+      background: transparent;
+      color: #64748b;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: center;
+    }
+    .btn-example-tab.active {
+      background: #ffffff;
+      color: #0f172a;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+    .example-img-wrap {
+      width: 100%;
+      background: #0f172a;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid #e2e8f0;
+    }
+    .example-img {
+      width: 100%;
+      height: auto;
+      max-height: 380px;
+      object-fit: contain;
+      display: block;
+    }
+    .example-caption-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 11.5px;
+      line-height: 1.5;
+      color: #334155;
+    }
+    .example-caption-box b {
+      color: #0f172a;
+      display: block;
+      margin-bottom: 4px;
+    }
+    .example-caption-box p {
+      margin: 0;
+    }
+
+    /* ✂️ 워터마크 모달 내 크롭 (1장일 때만 활성화) */
+    .btn-crop-trigger {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      width: 100%;
+      padding: 9px 12px;
+      background: #f0fdf4;
+      border: 1px dashed #86efac;
+      border-radius: 7px;
+      color: #15803d;
+      font-size: 12px;
+      font-weight: 750;
+      cursor: pointer;
+      margin-bottom: 10px;
+      transition: all 0.15s ease;
+    }
+    .btn-crop-trigger:hover {
+      background: #dcfce7;
+      border-color: #4ade80;
+    }
+    .wm-crop-section {
+      background: #0f172a;
+      border-radius: 8px;
+      padding: 10px;
+      margin-bottom: 12px;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2);
+    }
+    .wm-crop-header-note {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      color: #e2e8f0;
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+    .wm-crop-img-container {
+      width: 100%;
+      max-height: 380px;
+      min-height: 200px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: #020617;
+      border-radius: 6px;
+    }
+    .wm-crop-img-container img {
+      max-width: 100%;
+      display: block;
+    }
+    .wm-crop-action-bar {
+      display: flex;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .btn-crop-action {
+      flex: 1;
+      padding: 9px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 750;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+    .btn-crop-apply { background: #16a34a; color: #ffffff; }
+    .btn-crop-apply:hover { background: #15803d; }
+    .btn-crop-cancel { background: #475569; color: #ffffff; }
+    .btn-crop-cancel:hover { background: #334155; }
+
+    /* 서치밴 대체 인증 3열 배치 및 카카오뱅크 간격 */
+    .alt-auth-btn-row.mma-3col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px;
+    }
+    .alt-auth-btn-row.mma-3col .btn-alt-kakao {
+      grid-column: span 2;
+    }
+    .alt-auth-wrap.mma-alt-wrap {
+      margin-top: 12px;
+      margin-bottom: 24px;
+    }
+    .mma-stacked-list {
+      margin-top: 20px !important;
+    }
 </style>
+  <!-- ✂️ Cropper.js for Image Cropping -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.6.2/cropper.min.js"></script>
 </head>
 <body>
 
@@ -3670,14 +4234,219 @@
 
   </div>
 
-  <!-- 🏆 MMA 2026 X 멜론 & 카카오뱅크 투표 섹션 -->
+  <!-- 🏆 MMA 2026 부문별 & GLOBAL TOP10 섹션 -->
   <div class="extra-section-header" id="mmaSection">
     <div class="extra-divider-line"></div>
     <div class="extra-section-badge">
-      <span> MMA 2026</span>
+      <span>🏆 MMA 2026 부문별 & GLOBAL TOP10</span>
     </div>
     <div class="extra-divider-line"></div>
   </div>
+
+  <!-- 🗳️ MMA 부문별 공식 단일 투표 바로가기 -->
+  <div class="mma-quick-vote-wrap">
+    <a href="https://www.melon.com/mma/2026/vote/category" target="_blank" rel="noopener noreferrer" class="mma-quick-vote-btn melon-single" id="btnMelonVote" onclick="handleMelonVoteClick(event)">
+      <div class="mma-quick-left">
+        <span class="mma-quick-pill">🍈 멜론 앱 바로실행</span>
+        <span class="mma-quick-title">MMA 2026 부문별 투표</span>
+      </div>
+      <span class="mma-quick-arrow">투표하기 ›</span>
+    </a>
+    <div class="mma-quick-actions-row">
+      <span class="mma-quick-app-hint">💡 스마트폰에서는 <b>멜론 앱</b>이 열려 자동 로그인 상태로 투표됩니다.</span>
+      <a href="https://m2.melon.com/mma/2026/vote/category" target="_blank" rel="noopener noreferrer" class="mma-web-fallback-link">
+        웹으로 열기 ↗
+      </a>
+    </div>
+
+  </div>
+
+  <!-- 🎯 MMA 2026 리센느 & 연합 3대 부문 투표 목표 -->
+  <div class="mma-targets-summary-box">
+    <div class="targets-summary-header">
+      <div class="targets-title-left">
+        <span class="target-title-badge">투표 안내</span>
+        <h3 class="targets-title">MMA 2026 필수 3개 부문 투표</h3>
+      </div>
+      <span class="target-period-badge">~11/13(금) 23:59 KST</span>
+    </div>
+    
+    <div class="targets-summary-list">
+      <div class="target-summary-item target-rescene">
+        <div class="target-item-left">
+          <span class="target-cat-pill pill-rescene">글로벌 TOP10</span>
+          <b class="target-artist-name">리센느 (RESCENE)</b>
+        </div>
+        <span class="target-status-tag tag-primary">👑 리센느</span>
+      </div>
+      <div class="target-summary-item target-alpha">
+        <div class="target-item-left">
+          <span class="target-cat-pill pill-alpha">올해의 신인</span>
+          <b class="target-artist-name">알파드라이브원</b>
+        </div>
+        <span class="target-status-tag tag-partner">🤝 연합</span>
+      </div>
+      <div class="target-summary-item target-cortis">
+        <div class="target-item-left">
+          <span class="target-cat-pill pill-cortis">올해의 베스트송</span>
+          <b class="target-artist-name">코르티스 REDRED</b>
+        </div>
+        <span class="target-status-tag tag-partner">🤝 연합</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 📸 투표 인증 가이드 -->
+  <div class="mma-proof-guide-card">
+    <div class="proof-guide-header">
+      <div class="proof-guide-title-row">
+        <span class="proof-guide-badge">인증 가이드</span>
+        <b class="proof-guide-title">투표 인증 방법</b>
+      </div>
+      <button type="button" class="btn-proof-help-q" onclick="openMmaExampleModal()" title="인증 예시 사진 보기">
+        <span class="proof-help-q-mark">?</span>
+        <span>예시 사진</span>
+      </button>
+    </div>
+    <div class="proof-guide-grid">
+      <div class="proof-method-box method-recommended" onclick="openMmaExampleModal(); switchExampleTab('history');" role="button" tabindex="0" title="내 투표이력 예시 사진 보기">
+        <div class="proof-method-badge-row">
+          <span class="proof-method-tag tag-rec">방법 1 (추천)</span>
+          <span class="proof-method-click-hint">예시 보기 ›</span>
+        </div>
+        <div class="proof-method-simple-text">멜론 내 투표 이력 캡처 (1장)</div>
+      </div>
+      <div class="proof-method-box method-stitch" onclick="openMmaExampleModal(); switchExampleTab('stitched');" role="button" tabindex="0" title="팝업 3장 합성 예시 사진 보기">
+        <div class="proof-method-badge-row">
+          <span class="proof-method-tag tag-stitch">방법 2</span>
+          <span class="proof-method-click-hint">예시 보기 ›</span>
+        </div>
+        <div class="proof-method-simple-text">부문별 투표 완료 팝업 3장</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🤝 MMA 2026 부문별 연합 리스트 -->
+  <div class="team-list" id="mmaAllianceSection">
+    <div style="margin-bottom: 10px;">
+      <h2 class="section-heading" style="margin-bottom: 2px;">MMA 2026 부문별 연합 인증</h2>
+      <p class="section-caption">연합 팀에 투표하고 인증서를 올려주세요.</p>
+    </div>
+
+    <!-- 1. 알파드라이브원 (ALPHADRIVEONE) -->
+    <div class="team-card mma-team-card" id="mmaCardAlphadriveone">
+      <div class="team-header-row">
+        <img src="images/alphadriveone.png" class="team-poster-thumb" alt="알파드라이브원 포스터">
+        <div class="team-meta">
+          <div class="team-name-row">
+            <div class="team-name">알파드라이브원</div>
+            <span class="status-check-badge" onclick="toggleMmaCardStatus('mmaCardAlphadriveone')">⚪ 인증 전</span>
+          </div>
+          <div class="tag-row">
+            <span class="tag-preview">#2026MMA #리마인_앨리즈_함께달려 #RESCENE #리센느</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mma-alliance-box">
+        <div class="mma-alliance-row">
+          <span class="mma-alliance-tag-pill pill-vote-remine">리마인 투표</span>
+          <div>MMA <b>올해의 신인</b> ➔ <b>알파드라이브원</b> 투표</div>
+        </div>
+        <div class="mma-alliance-row">
+          <span class="mma-alliance-tag-pill pill-vote-partner">앨리즈 투표</span>
+          <div>MMA <b>GLOBAL TOP10</b> ➔ <b>리센느</b> 투표</div>
+        </div>
+        <div class="mma-alliance-row">
+          <span class="mma-alliance-tag-pill pill-vote-period">연합 기간</span>
+          <div>10/30(금) ~ 11/13(금) 23:59 (KST)</div>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn-main" onclick="openMmaTweet('알파드라이브원', '#리마인_앨리즈_함께달려', 'mmaCardAlphadriveone')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          트위터에 글쓰기
+        </button>
+        <button class="btn-copy" onclick="copyMmaTags('#리마인_앨리즈_함께달려')">태그 복사</button>
+      </div>
+    </div>
+
+    <!-- 2. 코르티스 (CORTIS) -->
+    <div class="team-card mma-team-card" id="mmaCardCortis">
+      <div class="team-header-row">
+        <img src="images/cortis.png" class="team-poster-thumb" alt="코르티스 포스터">
+        <div class="team-meta">
+          <div class="team-name-row">
+            <div class="team-name">코르티스 (CORTIS)</div>
+            <span class="status-check-badge" onclick="toggleMmaCardStatus('mmaCardCortis')">⚪ 인증 전</span>
+          </div>
+          <div class="tag-row">
+            <span class="tag-preview">#2026MMA #리마인_with_코어 #RESCENE #리센느</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="mma-alliance-box">
+        <div class="mma-alliance-row">
+          <span class="mma-alliance-tag-pill pill-vote-remine">리마인 투표</span>
+          <div>MMA <b>올해의 베스트송</b> ➔ <b>코르티스 REDRED</b> 투표</div>
+        </div>
+        <div class="mma-alliance-row">
+          <span class="mma-alliance-tag-pill pill-vote-partner">코어 지원</span>
+          <div><b>리센느 컴백 시 지원</b> (11/3 컴백 이후 협의)</div>
+        </div>
+        <div class="mma-alliance-row">
+          <span class="mma-alliance-tag-pill pill-vote-period">연합 기간</span>
+          <div>10/30(금) ~ 11/13(금) 23:59 (KST)</div>
+        </div>
+      </div>
+
+      <div class="btn-group">
+        <button class="btn-main" onclick="openMmaTweet('코르티스', '#리마인_with_코어', 'mmaCardCortis')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          트위터에 글쓰기
+        </button>
+        <button class="btn-copy" onclick="copyMmaTags('#리마인_with_코어')">태그 복사</button>
+      </div>
+    </div>
+
+    <!-- 📷 인증샷 제작소 트리거 버튼 -->
+    <div class="watermark-trigger-wrap" style="margin-top: 14px;">
+      <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>인증샷 제작소</span>
+      </button>
+    </div>
+
+    <!-- 서치밴 대체 인증 바로가기 (구글 폼 & 카카오톡 채널) -->
+    <div class="alt-auth-wrap mma-alt-wrap">
+      <span class="alt-auth-caption">서치밴 또는 X 작성이 어려운 경우 (대체 인증):</span>
+      <div class="alt-auth-btn-row mma-3col">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSe4XMEiTzzhZ_-JxmNGcWTlGo1Bjoy-ZRYm2IupJbUbtWdRHg/viewform" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-form" title="알파드라이브원 연합 구글 폼">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span>알파드라이브원</span>
+        </a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeZs5mNgePY1_1KsAL7oEkBdDDKrpZ3ZYs465WzTWkiVTHfZg/viewform" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-form" title="코르티스 연합 구글 폼">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span>코르티스</span>
+        </a>
+        <a href="http://pf.kakao.com/_WxcxowX/chat" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-kakao">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682 2.545-.78 2.94-.122.49.18.483.378.351.156-.104 2.477-1.684 3.483-2.37.53.078 1.08.12 1.649.12 4.97 0 9-3.185 9-7.115S16.97 3 12 3z"/></svg>
+          <span>음원총공팀 카톡</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
 
   <div class="mma-stacked-list">
     <!-- 🍈 1. 멜론 TOP10 -->
@@ -3946,15 +4715,7 @@
       <p>아래 사이트에 본인의 <b>X 사용자 이름(username)</b>을 입력해 서치밴 여부를 확인해 주세요.</p>
       <div class="searchban-callout">
         <b>서치밴(검색 제한)이 확인됐다면?</b>
-        <p>집계 누락 방지를 위해 <b>구글 폼(권장)</b> 또는 <b>음원총공팀 카카오톡</b>으로 투표 인증샷을 제출해 주세요.</p>
-        <div class="modal-searchban-btns">
-          <a href="https://forms.gle/ekTvyeHxYqSaAX4j8" target="_blank" rel="noopener noreferrer" class="btn-modal-link btn-modal-form">
-            📝 구글 폼으로 인증샷 제출 (권장) ›
-          </a>
-          <a href="http://pf.kakao.com/_WxcxowX" target="_blank" rel="noopener noreferrer" class="btn-modal-link btn-modal-kakao">
-            💬 음원총공팀 카카오톡으로 전송하기 ›
-          </a>
-        </div>
+        <p>집계 누락 방지를 위해 메인 페이지 하단에 안내된 <b>각 연합별 구글 폼</b> 또는 <b>음원총공팀 카카오톡</b>으로 투표 인증샷을 제출해 주세요.</p>
       </div>
       <a class="searchban-check-button" href="https://x-shadowban-checker.fia-s.com/en/" target="_blank" rel="noopener noreferrer">서치밴 확인하기</a>
     </div>
@@ -3966,7 +4727,7 @@
     <div class="searchban-confirm-view" id="searchBanConfirmContent" hidden>
       <p class="searchban-eyebrow">닫기 전 확인해 주세요</p>
       <h2 class="modal-title" id="searchBanConfirmTitle" tabindex="-1">공지를 읽으셨나요?</h2>
-      <p class="searchban-confirm-summary">서치밴이 확인되면 <b>구글 폼(권장)</b> 또는 <b>음원총공팀 카카오톡</b>으로 <b>투표 인증샷</b>을 보내주세요.</p>
+      <p class="searchban-confirm-summary">서치밴이 확인되면 메인 페이지 하단에 안내된 <b>각 연합별 구글 폼</b> 또는 <b>음원총공팀 카카오톡</b>으로 <b>투표 인증샷</b>을 보내주세요.</p>
       <p class="searchban-confirm-setting" id="searchBanConfirmSetting"></p>
       <div class="modal-actions">
         <button type="button" class="btn-modal-hide" id="searchBanConfirmNo">아니오</button>
@@ -3977,12 +4738,60 @@
 </div>
 
 <!-- 📷 인증샷 워터마크 생성기 모달 -->
+<!-- 📸 MMA 2026 투표 인증 예시 팝업 모달 -->
+<div class="modal-backdrop" id="mmaExampleModal" onclick="closeMmaExampleModal()" role="dialog" aria-modal="true" aria-labelledby="mmaExampleModalTitle">
+  <div class="modal-card mma-example-modal-card" onclick="event.stopPropagation()">
+    <div class="wm-header">
+      <div class="wm-header-title-group">
+        <span class="wm-eyebrow">투표 인증 캡처 예시</span>
+        <h2 class="wm-title" id="mmaExampleModalTitle">MMA 인증 예시 사진</h2>
+      </div>
+      <button type="button" class="wm-close-btn" onclick="closeMmaExampleModal()" aria-label="닫기">✕</button>
+    </div>
+
+    <!-- 탭 전환 버튼 -->
+    <div class="example-tabs-row">
+      <button type="button" class="btn-example-tab active" id="tabExHistory" onclick="switchExampleTab('history')">
+        방법 ① 내 투표이력 (1장)
+      </button>
+      <button type="button" class="btn-example-tab" id="tabExStitched" onclick="switchExampleTab('stitched')">
+        방법 ② 팝업 3장 합성
+      </button>
+    </div>
+
+    <!-- 탭 1: 내 투표이력 (추천 1장) -->
+    <div id="exampleTabContentHistory" class="example-tab-content">
+      <div class="example-img-wrap">
+        <img src="images/mma_example_history.png" alt="내 투표이력 캡처 예시" class="example-img">
+      </div>
+      <div class="example-caption-box">
+        <b>💡 방법 1 (초간편 추천): [내 투표이력] 화면 1장 캡처</b>
+        <p>멜론 MMA 투표 페이지 우측 상단의 <b>[내 투표이력]</b> 메뉴를 누르면, 오늘 날짜 아래에 <b>신인, 글로벌TOP10, 베스트송</b> 3개 투표 내역이 한 번에 나옵니다. 이 화면 1장만 캡처하여 올리시면 됩니다.<br>(과거 내역이 많은 경우 아래 <b>[인증샷 제작소] 크롭 기능</b>으로 오늘 날짜 목록만 자를 수 있습니다.)</p>
+      </div>
+    </div>
+
+    <!-- 탭 2: 팝업 3장 합성 -->
+    <div id="exampleTabContentStitched" class="example-tab-content" style="display: none;">
+      <div class="example-img-wrap">
+        <img src="images/mma_example_stitched.png" alt="3장 팝업 가로 합성 예시" class="example-img">
+      </div>
+      <div class="example-caption-box">
+        <b>💡 방법 2: 부문별 완료 팝업 3장 가로 합성</b>
+        <p>각 부문별(신인, 리센느, 베스트송) 투표 완료 모달 팝업 3장을 각각 캡처한 뒤, <b>[인증샷 제작소]</b>에 3장을 올리면 위 예시처럼 <b>가로로 자동 합성 & 오늘 날짜 스탬프</b>가 생성됩니다.</p>
+      </div>
+    </div>
+
+    <div class="modal-actions" style="margin-top: 14px;">
+      <button type="button" class="btn-modal-close" style="width: 100%; background: #e2e8ec; color: #284b60;" onclick="closeMmaExampleModal()">닫기</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-backdrop" id="watermarkModal" onclick="closeWatermarkModal()" role="dialog" aria-modal="true" aria-labelledby="wmModalTitle">
   <div class="modal-card watermark-modal-card" onclick="event.stopPropagation()">
     <div class="wm-header">
       <div class="wm-header-title-group">
-        <span class="wm-eyebrow">투표 인증 도용 방지</span>
-        <h2 class="wm-title" id="wmModalTitle">인증샷 워터마크 추가</h2>
+        <h2 class="wm-title" id="wmModalTitle">인증샷 제작소</h2>
       </div>
       <button type="button" class="wm-close-btn" onclick="closeWatermarkModal()" aria-label="닫기">✕</button>
     </div>
@@ -3997,7 +4806,7 @@
         <span>내 닉네임 또는 X 아이디</span>
         <span class="wm-label-sub">자동 저장</span>
       </label>
-      <input type="text" id="wmNickname" class="wm-input" placeholder="예: @내아이디 또는 닉네임" maxlength="25" oninput="handleNicknameInput()">
+      <input type="text" id="wmNickname" class="wm-input" placeholder="예: @내아이디 (미입력시 '리센느음원총공팀')" maxlength="25" oninput="handleNicknameInput()">
     </div>
 
     <!-- 2. 사진 업로드 영역 -->
@@ -4007,7 +4816,7 @@
         <span class="wm-label-sub" id="wmFileStatusText">PNG, JPG 지원</span>
       </label>
       <div class="wm-dropzone" id="wmDropzone" onclick="document.getElementById('wmFileInput').click()">
-        <input type="file" id="wmFileInput" accept="image/*" style="display: none;" onchange="handleWatermarkFile(this.files[0])">
+        <input type="file" id="wmFileInput" accept="image/*" multiple style="display: none;" onchange="handleWatermarkFiles(this.files)">
         <div class="wm-dropzone-inner" id="wmDropzoneInner">
           <div class="wm-dropzone-icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -4016,17 +4825,48 @@
               <polyline points="21 15 16 10 5 21"/>
             </svg>
           </div>
-          <span class="wm-dropzone-main">사진을 탭하여 선택하기</span>
+          <span class="wm-dropzone-main">사진 탭하여 선택하기 (1장 ~ 3장)</span>
           <span class="wm-dropzone-sub">또는 클립보드 이미지 붙여넣기 (Ctrl+V)</span>
         </div>
       </div>
     </div>
 
     <!-- 3. 워터마크 미리보기 & 옵션 (사진 선택 시 활성화) -->
+    <!-- 3. 워터마크 미리보기 & 저장 (사진 선택 시 활성화) -->
     <div id="wmPreviewSection" class="wm-preview-section" style="display: none;">
+      <!-- ✂️ 원하는 영역 크롭 트리거 버튼 (1장일 때만 활성화) -->
+      <div id="wmCropTriggerArea" style="display: none; width: 100%;">
+        <button type="button" class="btn-crop-trigger" id="btnStartCrop" onclick="startCropping()">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="6" cy="6" r="3"></circle>
+            <circle cx="6" cy="18" r="3"></circle>
+            <line x1="20" y1="4" x2="8.12" y2="15.88"></line>
+            <line x1="14.47" y1="14.48" x2="20" y2="20"></line>
+            <line x1="8.12" y1="8.12" x2="12" y2="12"></line>
+          </svg>
+          <span id="btnStartCropText">✂️ 원하는 영역만 자르기 (오늘 날짜 부분 크롭)</span>
+        </button>
+      </div>
+
+      <!-- ✂️ Cropper.js 활성화 영역 (자르기 모드일 때 표시) -->
+      <div id="wmCropSection" class="wm-crop-section" style="display: none; width: 100%;">
+        <div class="wm-crop-header-note">
+          <span>✂️ 원하는 영역의 모서리를 드래그하여 조절한 뒤 <b>[자르기 적용]</b>을 눌러주세요.</span>
+        </div>
+        <div class="wm-crop-img-container">
+          <img id="wmCropImage" src="" alt="크롭 대상 이미지">
+        </div>
+        <div class="wm-crop-action-bar">
+          <button type="button" class="btn-crop-action btn-crop-cancel" onclick="cancelCropping()">✕ 취소</button>
+          <button type="button" class="btn-crop-action btn-crop-apply" onclick="applyCropping()">✓ 자르기 적용</button>
+        </div>
+      </div>
       <div class="wm-options-bar">
-        <span class="wm-opt-label">워터마크 진하기</span>
-        <div class="wm-range-wrap">
+        <label class="wm-checkbox-label">
+          <input type="checkbox" id="wmEnablePattern" checked onchange="updateWatermarkLive()">
+          <span>도용방지 워터마크</span>
+        </label>
+        <div class="wm-range-wrap" id="wmOpacityWrap">
           <input type="range" id="wmOpacity" class="wm-range" min="0.15" max="0.75" step="0.05" value="0.38" oninput="updateWatermarkLive()">
           <span class="wm-opt-val" id="wmOpacityVal">38%</span>
         </div>
@@ -4669,10 +5509,17 @@
   }
 
   function showToast(msg) {
-    const toast = document.getElementById('toast');
+    let toast = document.getElementById('toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'toast';
+      toast.className = 'toast';
+      document.body.appendChild(toast);
+    }
     toast.textContent = msg;
     toast.classList.add('show');
-    setTimeout(() => toast.classList.remove('show'), 3000);
+    clearTimeout(toast._timeout);
+    toast._timeout = setTimeout(() => toast.classList.remove('show'), 3000);
   }
 
   // 📢 첫 접속 안내 팝업 제어
@@ -5373,7 +6220,7 @@
 // ==========================================
 // 📷 인증샷 워터마크 생성기 로직
 // ==========================================
-let currentWatermarkImage = null;
+var currentWatermarkImage = null;
 let currentWatermarkFileName = 'mama_vote_watermarked.png';
 const WM_STORAGE_KEY = 'rescene_vote_wm_nickname';
 
@@ -5400,6 +6247,7 @@ function openWatermarkModal() {
 }
 
 function closeWatermarkModal() {
+  if (typeof cancelCropping === 'function') cancelCropping();
   const modal = document.getElementById('watermarkModal');
   if (!modal) return;
   modal.classList.remove('show');
@@ -5430,102 +6278,181 @@ function updateWatermarkLive() {
   }
 }
 
-function handleWatermarkFile(file) {
-  if (!file || !file.type.startsWith('image/')) {
+var currentWatermarkImages = [];
+var currentWatermarkImage = null;
+
+function handleWatermarkFiles(fileList) {
+  if (!fileList || fileList.length === 0) return;
+  
+  const files = Array.from(fileList).filter(f => f.type.startsWith('image/')).slice(0, 3);
+  if (files.length === 0) {
     alert('이미지 파일(PNG, JPG 등)을 선택해 주세요.');
     return;
   }
-  currentWatermarkFileName = (file.name ? file.name.replace(/\.[^/.]+$/, "") : 'vote') + '_watermarked.png';
+
+  const dropzoneInner = document.getElementById('wmDropzoneInner');
+  if (dropzoneInner) {
+    const isMulti = files.length > 1;
+    dropzoneInner.innerHTML = `
+      <div class="wm-dropzone-icon" style="background:#d4edda; color:#155724;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <span class="wm-dropzone-main" style="color:#155724;">${files.length}장 사진 등록 완료 ${isMulti ? '(가로 자동 합성)' : ''}</span>
+      <span class="wm-dropzone-sub">탭하여 사진 다시 변경하기</span>
+    `;
+  }
   
-  const reader = new FileReader();
-  reader.onload = function(e) {
-    const img = new Image();
-    img.onload = function() {
-      currentWatermarkImage = img;
-      const previewSec = document.getElementById('wmPreviewSection');
-      if (previewSec) previewSec.style.display = 'flex';
-      const dropzoneInner = document.getElementById('wmDropzoneInner');
-      if (dropzoneInner) {
-        dropzoneInner.innerHTML = `
-          <div class="wm-dropzone-icon" style="background:#d4edda; color:#155724;">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
-          </div>
-          <span class="wm-dropzone-main" style="color:#155724;">사진 등록 완료 (${img.naturalWidth}×${img.naturalHeight})</span>
-          <span class="wm-dropzone-sub">탭하여 다른 사진으로 변경하기</span>
-        `;
-      }
-      renderWatermark();
+  let loadedImages = [];
+  let loadedCount = 0;
+  
+  files.forEach((file, index) => {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const img = new Image();
+      img.onload = function() {
+        loadedImages[index] = img;
+        loadedCount++;
+        if (loadedCount === files.length) {
+          currentWatermarkImages = loadedImages;
+          currentWatermarkImage = loadedImages[0];
+          const previewSec = document.getElementById('wmPreviewSection');
+          if (previewSec) previewSec.style.display = 'flex';
+          
+          if (typeof updateCropTriggerVisibility === 'function') {
+            updateCropTriggerVisibility();
+          }
+          renderWatermark();
+        }
+      };
+      img.src = e.target.result;
     };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
+    reader.readAsDataURL(file);
+  });
+}
+
+function handleWatermarkFile(file) {
+  if (file) handleWatermarkFiles([file]);
 }
 
 function renderWatermark() {
-  if (!currentWatermarkImage) return;
+  if (!currentWatermarkImages || currentWatermarkImages.length === 0) return;
   const canvas = document.getElementById('wmCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   
-  const img = currentWatermarkImage;
-  const w = img.naturalWidth || img.width;
-  const h = img.naturalHeight || img.height;
+  const images = currentWatermarkImages;
+  let totalW = 0;
+  let targetH = images[0].naturalHeight || images[0].height || 1000;
   
-  canvas.width = w;
-  canvas.height = h;
+  // Equalize heights for horizontal stitching if multiple
+  const scaledWidths = images.map(img => {
+    const imgH = img.naturalHeight || img.height || 1;
+    const imgW = img.naturalWidth || img.width || 1;
+    const scale = targetH / imgH;
+    return Math.round(imgW * scale);
+  });
   
-  // 1. Draw base photo
-  ctx.drawImage(img, 0, 0, w, h);
+  totalW = scaledWidths.reduce((a, b) => a + b, 0);
   
-  // 2. Nickname
-  const nickInput = document.getElementById('wmNickname');
-  const rawNick = (nickInput ? nickInput.value : '').trim();
-  const nickname = rawNick || '2026 MAMA 투표인증';
+  canvas.width = totalW;
+  canvas.height = targetH;
   
-  const range = document.getElementById('wmOpacity');
-  const opacity = range ? parseFloat(range.value) : 0.38;
-  
-  // 3. Diagonal 30-degree rotation (-30 deg)
-  const angle = -30 * Math.PI / 180;
-  
-  // Font size responsive to image width (typical mobile screenshot is ~1080px to 1440px wide)
-  const fontSize = Math.max(16, Math.round(w / 24));
-  ctx.font = `bold ${fontSize}px -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, "Noto Sans KR", sans-serif`;
-  ctx.textBaseline = 'middle';
-  ctx.textAlign = 'center';
-  
-  const metrics = ctx.measureText(nickname);
-  const textWidth = Math.max(metrics.width, fontSize * 2.5);
-  
-  // Spacing: horizontal step and vertical step
-  const stepX = textWidth + fontSize * 2.8;
-  const stepY = fontSize * 3.4;
-  
-  const diagonal = Math.hypot(w, h);
-  
-  ctx.save();
-  ctx.translate(w / 2, h / 2);
-  ctx.rotate(angle);
-  
-  let row = 0;
-  for (let y = -diagonal; y <= diagonal; y += stepY) {
-    // Zigzag (staggered) offset
-    const offsetX = (row % 2 === 0) ? 0 : (stepX / 2);
-    for (let x = -diagonal; x <= diagonal; x += stepX) {
-      const drawX = x + offsetX;
-      const drawY = y;
-      
-      // Dual-tone outline and fill for visibility on any background
-      ctx.lineWidth = Math.max(2, fontSize * 0.08);
-      ctx.strokeStyle = `rgba(0, 0, 0, ${opacity * 0.75})`;
-      ctx.strokeText(nickname, drawX, drawY);
-      
-      ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
-      ctx.fillText(nickname, drawX, drawY);
+  // 1. Draw base photo(s)
+  let currentX = 0;
+  images.forEach((img, i) => {
+    ctx.drawImage(img, currentX, 0, scaledWidths[i], targetH);
+    currentX += scaledWidths[i];
+    if (i < images.length - 1) {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
+      ctx.fillRect(currentX - 1, 0, 2, targetH);
     }
-    row++;
+  });
+  
+  // 2. Diagonal 30-degree watermark pattern (선택적 활성화)
+  const enablePattern = document.getElementById('wmEnablePattern') ? document.getElementById('wmEnablePattern').checked : true;
+  const opacityWrap = document.getElementById('wmOpacityWrap');
+  if (opacityWrap) opacityWrap.style.opacity = enablePattern ? '1' : '0.4';
+
+  if (enablePattern) {
+    const nickInput = document.getElementById('wmNickname');
+    const rawNick = (nickInput ? nickInput.value : '').trim();
+    const nickname = rawNick || '리센느음원총공팀';
+    
+    const range = document.getElementById('wmOpacity');
+    const opacity = range ? parseFloat(range.value) : 0.38;
+    const angle = -30 * Math.PI / 180;
+    
+    const fontSize = Math.max(16, Math.round(totalW / (images.length > 1 ? 36 : 24)));
+    ctx.font = `bold ${fontSize}px -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif`;
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'center';
+    
+    const metrics = ctx.measureText(nickname);
+    const textWidth = Math.max(metrics.width, fontSize * 2.5);
+    const stepX = textWidth + fontSize * 2.8;
+    const stepY = fontSize * 3.4;
+    const diagonal = Math.hypot(totalW, targetH);
+    
+    ctx.save();
+    ctx.translate(totalW / 2, targetH / 2);
+    ctx.rotate(angle);
+    
+    let row = 0;
+    for (let y = -diagonal; y <= diagonal; y += stepY) {
+      const offsetX = (row % 2 === 0) ? 0 : (stepX / 2);
+      for (let x = -diagonal; x <= diagonal; x += stepX) {
+        const drawX = x + offsetX;
+        const drawY = y;
+        ctx.lineWidth = Math.max(2, fontSize * 0.08);
+        ctx.strokeStyle = `rgba(0, 0, 0, ${opacity * 0.75})`;
+        ctx.strokeText(nickname, drawX, drawY);
+        
+        ctx.fillStyle = `rgba(255, 255, 255, ${opacity})`;
+        ctx.fillText(nickname, drawX, drawY);
+      }
+      row++;
+    }
+    ctx.restore();
   }
   
+  // 3. Date Capsule Pill (하단 좌측 오늘 날짜 캡슐)
+  const now = new Date();
+  const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+  const kst = new Date(utc + (9 * 60 * 60 * 1000));
+  const yyyy = kst.getFullYear();
+  const mm = String(kst.getMonth() + 1).padStart(2, '0');
+  const dd = String(kst.getDate()).padStart(2, '0');
+  const dateStr = `${yyyy}-${mm}-${dd}`;
+  
+  const dateFontSize = Math.max(14, Math.round(targetH * 0.024));
+  ctx.font = `bold ${dateFontSize}px -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", sans-serif`;
+  const textMetrics = ctx.measureText(dateStr);
+  const pillPadX = Math.round(dateFontSize * 0.85);
+  const pillH = Math.round(dateFontSize * 1.7);
+  const pillW = Math.round(textMetrics.width + pillPadX * 2);
+  const pillRadius = pillH / 2;
+  const posX = Math.round(targetH * 0.04);
+  const posY = targetH - Math.round(targetH * 0.04) - pillH;
+  
+  ctx.save();
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.45)';
+  ctx.shadowBlur = 14;
+  ctx.shadowOffsetY = 4;
+  
+  ctx.beginPath();
+  ctx.roundRect(posX, posY, pillW, pillH, pillRadius);
+  ctx.fillStyle = '#ffffff';
+  ctx.fill();
+  
+  ctx.shadowColor = 'transparent';
+  ctx.lineWidth = 1.5;
+  ctx.strokeStyle = 'rgba(0, 0, 0, 0.1)';
+  ctx.stroke();
+  
+  ctx.fillStyle = '#111827';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.fillText(dateStr, posX + pillW / 2, posY + pillH / 2 + 1);
   ctx.restore();
 }
 
@@ -5650,11 +6577,15 @@ function initWatermarkListeners() {
     }
     const items = (e.clipboardData || (e.originalEvent && e.originalEvent.clipboardData))?.items;
     if (!items) return;
+    const imageFiles = [];
     for (let i = 0; i < items.length; i++) {
-      if (items[i].kind === 'file' && items[i].type.startsWith('image/')) {
-        handleWatermarkFile(items[i].getAsFile());
-        break;
+      if (items[i].type.startsWith('image/')) {
+        const file = items[i].getAsFile();
+        if (file) imageFiles.push(file);
       }
+    }
+    if (imageFiles.length > 0) {
+      handleWatermarkFiles(imageFiles);
     }
   });
 }
@@ -5663,6 +6594,245 @@ if (document.readyState === 'loading') {
 } else {
   initWatermarkListeners();
 }
+
+// 📸 MMA 투표 인증 예시 모달 제어 함수
+function openMmaExampleModal() {
+  const modal = document.getElementById('mmaExampleModal');
+  if (modal) {
+    modal.classList.add('show');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+}
+
+function closeMmaExampleModal() {
+  const modal = document.getElementById('mmaExampleModal');
+  if (modal) {
+    modal.classList.remove('show');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+}
+
+function switchExampleTab(tab) {
+  const tabHist = document.getElementById('tabExHistory');
+  const tabStitch = document.getElementById('tabExStitched');
+  const contentHist = document.getElementById('exampleTabContentHistory');
+  const contentStitch = document.getElementById('exampleTabContentStitched');
+
+  if (tab === 'history') {
+    if (tabHist) tabHist.classList.add('active');
+    if (tabStitch) tabStitch.classList.remove('active');
+    if (contentHist) contentHist.style.display = 'block';
+    if (contentStitch) contentStitch.style.display = 'none';
+  } else {
+    if (tabStitch) tabStitch.classList.add('active');
+    if (tabHist) tabHist.classList.remove('active');
+    if (contentStitch) contentStitch.style.display = 'block';
+    if (contentHist) contentHist.style.display = 'none';
+  }
+}
+
+// 🍈 멜론 앱 직접 실행 (모바일 딥링크/인텐트 처리)
+function handleMelonVoteClick(e) {
+  const ua = (navigator.userAgent || navigator.vendor || window.opera || '').toLowerCase();
+  const isAndroid = /android/i.test(ua);
+  const isIOS = /iphone|ipad|ipod/i.test(ua);
+  const targetWebUrl = 'https://m2.melon.com/mma/2026/vote/category';
+  const encodedUrl = encodeURIComponent(targetWebUrl);
+
+  if (isAndroid) {
+    if (e && e.preventDefault) e.preventDefault();
+    // Android Chrome / Samsung Browser Intent: 직접 멜론 앱 내 투표 웹뷰 호출
+    const intentUrl = 'intent://webview?url=' + encodedUrl + '&type=SA#Intent;scheme=melonapp;package=com.iloen.melon;S.browser_fallback_url=' + encodeURIComponent(targetWebUrl) + ';end;';
+    window.location.href = intentUrl;
+    return false;
+  } else if (isIOS) {
+    if (e && e.preventDefault) e.preventDefault();
+    // iOS Safari / WebKit melonapp 스킴 호출
+    const schemeUrl = 'melonapp://webview?url=' + encodedUrl;
+    const start = Date.now();
+    window.location.href = schemeUrl;
+    
+    // 미설치 시 모바일 웹으로 폴백
+    setTimeout(function() {
+      if (Date.now() - start < 1800) {
+        window.location.href = targetWebUrl;
+      }
+    }, 1500);
+    return false;
+  }
+
+  // 데스크톱 PC 브라우저 환경에서는 기본 동작(새 탭 열기)
+  return true;
+}
+
+// 🏷️ MMA 연합 트윗 및 해시태그 복사 (각 연합별 독립 분리, #2026MMA 기본 포함)
+function openMmaTweet(teamName, tag, cardId) {
+  const mainTag = tag.startsWith('#') ? tag : ('#' + tag);
+  const tweetText = `#2026MMA\n${mainTag}\n#RESCENE #리센느`;
+  const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+  window.open(intentUrl, '_blank');
+  
+  const card = document.getElementById(cardId);
+  if (card && !card.classList.contains('done')) {
+    card.classList.add('done');
+    const badge = card.querySelector('.status-check-badge');
+    if (badge) badge.innerHTML = '🟢 완료';
+    try {
+      localStorage.setItem(`rescene_mma_${cardId}_${today.key}`, 'true');
+    } catch(e) {}
+  }
+  showToast(`트위터가 열렸습니다! ${teamName} 연합 인증샷을 첨부하세요 📸`);
+}
+
+function copyMmaTags(tag) {
+  const mainTag = tag.startsWith('#') ? tag : ('#' + tag);
+  const textToCopy = `#2026MMA\n${mainTag}\n#RESCENE #리센느`;
+  copyTextToClipboard(textToCopy, `해시태그가 복사되었습니다! (#2026MMA) 📋`);
+}
+
+function toggleMmaCardStatus(cardId) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  card.classList.toggle('done');
+  const isDone = card.classList.contains('done');
+  const badge = card.querySelector('.status-check-badge');
+  if (badge) {
+    badge.innerHTML = isDone ? '🟢 완료' : '⚪ 인증 전';
+  }
+  try {
+    if (isDone) {
+      localStorage.setItem(`rescene_mma_${cardId}_${today.key}`, 'true');
+      showToast('🎉 오늘 연합 인증 완료로 체크되었습니다!');
+    } else {
+      localStorage.removeItem(`rescene_mma_${cardId}_${today.key}`);
+      showToast('⚪ 연합 인증 완료 체크가 해제되었습니다.');
+    }
+  } catch(e) {}
+}
+
+function loadMmaAllianceStates() {
+  ['mmaCardAlphadriveone', 'mmaCardCortis'].forEach(cardId => {
+    const card = document.getElementById(cardId);
+    if (!card) return;
+    try {
+      const saved = localStorage.getItem(`rescene_mma_${cardId}_${today.key}`);
+      if (saved === 'true') {
+        card.classList.add('done');
+        const badge = card.querySelector('.status-check-badge');
+        if (badge) badge.innerHTML = '🟢 완료';
+      }
+    } catch(e) {}
+  });
+}
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', loadMmaAllianceStates);
+} else {
+  loadMmaAllianceStates();
+}
+
+// ✂️ Cropper.js 이미지 자르기 (1장일 때만 활성화)
+let currentCropper = null;
+
+function updateCropTriggerVisibility() {
+  const triggerArea = document.getElementById('wmCropTriggerArea');
+  if (!triggerArea) return;
+  
+  // 1장 업로드 시에만 크롭 트리거 노출! 2장 이상(합성)일 때는 미노출
+  if (currentWatermarkImages && currentWatermarkImages.length === 1) {
+    triggerArea.style.display = 'block';
+  } else {
+    triggerArea.style.display = 'none';
+  }
+}
+
+function startCropping() {
+  if (!currentWatermarkImages || currentWatermarkImages.length === 0) {
+    showToast('먼저 사진을 등록해 주세요.');
+    return;
+  }
+  
+  const targetImg = currentWatermarkImages[0];
+  if (!targetImg || !targetImg.src) return;
+
+  const cropImgEl = document.getElementById('wmCropImage');
+  const cropSection = document.getElementById('wmCropSection');
+  const canvasContainer = document.getElementById('wmCanvasContainer');
+  const triggerArea = document.getElementById('wmCropTriggerArea');
+  const actionBtns = document.querySelector('.wm-action-btns');
+
+  if (currentCropper) {
+    currentCropper.destroy();
+    currentCropper = null;
+  }
+
+  cropImgEl.src = targetImg.src;
+  cropSection.style.display = 'block';
+  if (canvasContainer) canvasContainer.style.display = 'none';
+  if (triggerArea) triggerArea.style.display = 'none';
+  if (actionBtns) actionBtns.style.display = 'none';
+
+  if (typeof Cropper !== 'undefined') {
+    currentCropper = new Cropper(cropImgEl, {
+      viewMode: 1,
+      responsive: true,
+      autoCropArea: 0.9,
+      movable: true,
+      zoomable: true,
+      rotatable: false,
+      scalable: false
+    });
+  } else {
+    showToast('크롭 라이브러리를 불러오는 중입니다. 잠시 후 다시 시도해 주세요.');
+    cancelCropping();
+  }
+}
+
+function applyCropping() {
+  if (!currentCropper) return;
+  const croppedCanvas = currentCropper.getCroppedCanvas({
+    imageSmoothingEnabled: true,
+    imageSmoothingQuality: 'high'
+  });
+  if (!croppedCanvas) {
+    showToast('자르기 영역을 설정해 주세요.');
+    return;
+  }
+
+  const croppedDataUrl = croppedCanvas.toDataURL('image/png');
+  const updatedImg = new Image();
+  updatedImg.onload = function() {
+    currentWatermarkImages[0] = updatedImg;
+    endCroppingUI();
+    renderWatermark();
+    showToast('✂️ 자르기가 적용되었습니다!');
+  };
+  updatedImg.src = croppedDataUrl;
+}
+
+function cancelCropping() {
+  endCroppingUI();
+}
+
+function endCroppingUI() {
+  if (currentCropper) {
+    currentCropper.destroy();
+    currentCropper = null;
+  }
+  const cropSection = document.getElementById('wmCropSection');
+  const canvasContainer = document.getElementById('wmCanvasContainer');
+  const triggerArea = document.getElementById('wmCropTriggerArea');
+  const actionBtns = document.querySelector('.wm-action-btns');
+
+  if (cropSection) cropSection.style.display = 'none';
+  if (canvasContainer) canvasContainer.style.display = 'block';
+  if (triggerArea) {
+    triggerArea.style.display = (currentWatermarkImages && currentWatermarkImages.length === 1) ? 'block' : 'none';
+  }
+  if (actionBtns) actionBtns.style.display = 'flex';
+}
+
 </script>
 </body>
 </html>
