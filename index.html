@@ -452,7 +452,7 @@
 
       border-radius: 10px;
 
-      padding: 20px 18px 0;
+      padding: 20px 18px 24px;
 
       margin-top: 28px;
     }
@@ -795,6 +795,55 @@
     }
 
     /* 🌟 [번외] MMA 2026 섹션 헤더 */
+    
+    /* ━━━ MAMA / MMA 확실한 분리 구분선 (---- MMA2026 ----) ━━━ */
+    .mma-section-divider {
+      width: 100%;
+      margin: 44px 0 22px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      scroll-margin-top: 75px;
+    }
+    .divider-solid-line {
+      flex: 1;
+      height: 1.5px;
+      background: #8ea4b4;
+    }
+    .divider-solid-text {
+      font-size: 13.5px;
+      font-weight: 850;
+      color: #3b5365;
+      letter-spacing: 0.08em;
+      white-space: nowrap;
+    }
+
+    /* 🍈 멜론 부문별 투표 배너 (MAMA 투표 바로가기 스타일 & 톤다운 멜론 파스텔) */
+    .vote-banner.vote-banner-melon {
+      background: #cce3d4;
+      border: 1px solid #b3d1bc;
+    }
+    .vote-banner.vote-banner-melon:active {
+      background: #bfdbc8;
+      border-color: #a0c4ab;
+    }
+    .melon-period-header {
+      border-bottom: 1px solid #adcbb4;
+    }
+    .melon-period-tag {
+      color: #215132;
+      font-weight: 700;
+    }
+    .melon-banner-title {
+      color: #0f301b;
+    }
+    .melon-banner-sub {
+      color: #2c563b;
+    }
+    .melon-banner-arrow {
+      color: #2c563b;
+    }
+
     .extra-section-header {
       display: flex;
       align-items: center;
@@ -2137,7 +2186,7 @@
     @media (max-width: 380px) {
       body { padding-left: 8px; padding-right: 8px; }
       .container { padding: 20px 16px 0; }
-      .team-list { padding: 18px 14px 0; }
+      .team-list { padding: 18px 14px 20px; }
       .stream-team-card { gap: 10px; }
       .stream-links { gap: 0 10px; }
       .stream-link-pill { font-size: 10px; }
@@ -3962,10 +4011,10 @@
 <div class="floating-nav-bar" id="floatingNav">
   <div class="floating-nav-inner">
     <button type="button" class="floating-nav-btn active mama" id="floatMamaBtn" onclick="scrollToSection('mamaSection')">
-      <span> MAMA 2차</span>
+      <span>MAMA 2차</span>
     </button>
     <button type="button" class="floating-nav-btn mma" id="floatMmaBtn" onclick="scrollToSection('mmaSection')">
-      <span> MMA 2026</span>
+      <span>MMA</span>
     </button>
   </div>
 </div>
@@ -4031,10 +4080,10 @@
   <!-- ⚡ 빠른 스크롤 점프 바 -->
   <div class="quick-jump-bar">
     <button type="button" class="quick-jump-btn" onclick="scrollToSection('mamaSection')">
-      <span> MAMA 2차</span>
+      <span>MAMA 2차</span>
     </button>
     <button type="button" class="quick-jump-btn btn-jump-mma" onclick="scrollToSection('mmaSection')">
-      <span> MMA 2026</span>
+      <span>MMA</span>
     </button>
   </div>
 
@@ -4338,31 +4387,40 @@
 
   </div>
 
-  <!-- 🏆 MMA 2026 부문별 & GLOBAL TOP10 섹션 -->
-  <div class="extra-section-header" id="mmaSection">
-    <div class="extra-divider-line"></div>
-    <div class="extra-section-badge">
-      <span>🏆 MMA 2026 부문별 & GLOBAL TOP10</span>
-    </div>
-    <div class="extra-divider-line"></div>
+  <!-- ━━━ ✂️ MAMA / MMA 확실한 분리 구분선 (---- MMA2026 ----) ━━━ -->
+  <div class="mma-section-divider" id="mmaSection">
+    <div class="divider-solid-line"></div>
+    <span class="divider-solid-text">MMA2026</span>
+    <div class="divider-solid-line"></div>
   </div>
 
-  <!-- 🗳️ MMA 부문별 공식 단일 투표 바로가기 -->
-  <div class="mma-quick-vote-wrap">
-    <a href="https://www.melon.com/mma/2026/vote/category" target="_blank" rel="noopener noreferrer" class="mma-quick-vote-btn melon-single" id="btnMelonVote" onclick="handleMelonVoteClick(event)">
-      <div class="mma-quick-left">
-        <span class="mma-quick-pill">🍈 멜론 앱 바로실행</span>
-        <span class="mma-quick-title">MMA 2026 부문별 투표</span>
+  <!-- 🗳️ 멜론 부문별 투표 바로가기 링크 배너 (MAMA 투표 바로가기 스타일 & 톤다운 멜론) -->
+  <div class="mma-quick-vote-wrap" style="margin-bottom: 14px;">
+    <a href="https://www.melon.com/mma/2026/vote/category"
+       target="_blank"
+       rel="noopener noreferrer"
+       onclick="handleMelonVoteClick(event)"
+       class="vote-banner-link melon-vote-banner-link"
+       id="btnMelonVote">
+      <div class="vote-banner vote-banner-melon">
+        <div class="vote-period-header melon-period-header">
+          <span class="vote-period-tag melon-period-tag">10.30(금) 10:00 ~ 11.13(금) 23:59</span>
+        </div>
+        <div class="vote-banner-body">
+          <div class="vote-banner-text">
+            <div class="vote-banner-title melon-banner-title">멜론 부문별 투표 바로가기</div>
+            <div class="vote-banner-sub melon-banner-sub">멜론 앱 투표 페이지</div>
+          </div>
+          <div class="vote-banner-arrow melon-banner-arrow">›</div>
+        </div>
       </div>
-      <span class="mma-quick-arrow">투표하기 ›</span>
     </a>
-    <div class="mma-quick-actions-row">
+    <div class="mma-quick-actions-row" style="margin-top: 6px;">
       <span class="mma-quick-app-hint">💡 스마트폰에서는 <b>멜론 앱</b>이 열려 자동 로그인 상태로 투표됩니다.</span>
       <a href="https://m2.melon.com/mma/2026/vote/category" target="_blank" rel="noopener noreferrer" class="mma-web-fallback-link">
         웹으로 열기 ↗
       </a>
     </div>
-
   </div>
 
   <!-- 🎯 MMA 2026 리센느 & 연합 3대 부문 투표 목표 -->
@@ -5440,7 +5498,7 @@
   function scrollToSection(id) {
     const el = document.getElementById(id);
     if (!el) return;
-    const yOffset = -58;
+    const yOffset = id === 'mmaSection' ? -78 : -58;
     const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
     window.scrollTo({ top: y, behavior: 'smooth' });
   }
@@ -6034,20 +6092,19 @@
 
   // 🍈 멜론 MMA 2026 TOP10 실시간 순위 & 표차이 조회 (무서버 브라우저 직접 호출)
   // ⏰ 멜론 TOP10 & 카카오뱅크 마감 시간 설정 (각각 10/30, 10/31 00:00 KST)
-  const MELON_END_TIMESTAMP = new Date('2026-10-30T00:00:00+09:00').getTime();
+  const MELON_END_TIMESTAMP = new Date('2026-11-13T23:59:59+09:00').getTime();
   const KAKAO_END_TIMESTAMP = new Date('2026-10-31T00:00:00+09:00').getTime();
 
   function checkMmaExpiration() {
     const urlParams = new URLSearchParams(window.location.search);
     const now = Date.now();
     
-    const isMelonEnded = (now >= MELON_END_TIMESTAMP || urlParams.has('test_melon_ended') || urlParams.has('test_all_mma_ended')) && !urlParams.has('test_melon_live');
-    const isKakaoEnded = (now >= KAKAO_END_TIMESTAMP || urlParams.has('test_kakao_ended') || urlParams.has('test_all_mma_ended')) && !urlParams.has('test_kakao_live');
+    const isMelonEnded = (now >= MELON_END_TIMESTAMP || urlParams.has('test_melon_ended')) && !urlParams.has('test_melon_live');
+    const isKakaoEnded = (now >= KAKAO_END_TIMESTAMP || urlParams.has('test_kakao_ended')) && !urlParams.has('test_kakao_live');
 
     const melonCard = document.getElementById('mmaMelonCard');
     const kakaoCard = document.getElementById('mmaKakaoCard');
     const mmaSection = document.getElementById('mmaSection');
-    const mmaGuide = document.querySelector('.mma-guide-accordion');
 
     if (melonCard) {
       melonCard.style.display = isMelonEnded ? 'none' : '';
@@ -6056,24 +6113,9 @@
       kakaoCard.style.display = isKakaoEnded ? 'none' : '';
     }
 
-    // 둘 다 마감된 경우 MMA 2026 헤더와 가이드도 함께 숨김 처리
-    if (isMelonEnded && isKakaoEnded) {
-      if (mmaSection) mmaSection.style.display = 'none';
-      if (mmaGuide) mmaGuide.style.display = 'none';
-
-      const jumpMma = document.querySelector('.btn-jump-mma');
-      if (jumpMma) {
-        jumpMma.innerHTML = '<span> MMA 연합(이세계아이돌)</span>';
-        jumpMma.onclick = () => scrollToSection('specialAllianceToggleBtn');
-      }
-      const floatMma = document.getElementById('floatMmaBtn');
-      if (floatMma) {
-        floatMma.innerHTML = '<span> MMA 연합</span>';
-        floatMma.onclick = () => scrollToSection('specialAllianceToggleBtn');
-      }
-    } else {
-      if (mmaSection) mmaSection.style.display = '';
-      if (mmaGuide) mmaGuide.style.display = '';
+    // MMA 본 투표 및 연합은 11/13까지 상시 유지되므로 mmaSection은 항상 노출
+    if (mmaSection) {
+      mmaSection.style.display = '';
     }
 
     // 정각 자동 숨김을 위한 타이머 등록
