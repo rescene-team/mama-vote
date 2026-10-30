@@ -3229,6 +3229,11 @@
       color: #15803d;
     }
 
+    .special-alliance-role-tag.role-zerose {
+      background: #e0f2fe;
+      color: #0369a1;
+    }
+
     .special-alliance-role-desc {
       flex: 1;
       min-width: 0;
@@ -3918,8 +3923,17 @@
     }
     .btn-crop-apply { background: #16a34a; color: #ffffff; }
     .btn-crop-apply:hover { background: #15803d; }
+    .btn-crop-reset { background: #334155; color: #cbd5e1; }
+    .btn-crop-reset:hover { background: #1e293b; color: #ffffff; }
     .btn-crop-cancel { background: #475569; color: #ffffff; }
     .btn-crop-cancel:hover { background: #334155; }
+
+    .wm-options-bar.wm-extra-opt-bar {
+      margin-top: -6px;
+      margin-bottom: 12px;
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+    }
 
     /* 서치밴 대체 인증 3열 배치 및 카카오뱅크 간격 */
     .alt-auth-btn-row.mma-3col {
@@ -4149,12 +4163,102 @@
     </div>
 
 
-    <!-- 🤝 MMA 연합 (이세계아이돌) 더보기 아코디언 -->
+    <!-- 🤝 MMA 연합 더보기 아코디언 (제로베이스원 & 이세계아이돌) -->
     <div class="special-alliance-wrap">
+      <!-- 1. 제로베이스원 (ZEROBASEONE) -->
+      <button type="button" class="btn-special-alliance-toggle" id="zb1AllianceToggleBtn" onclick="toggleZb1Alliance()">
+        <div class="special-alliance-toggle-left">
+          <span class="special-alliance-pill">MMA 연합</span>
+          <span class="special-alliance-toggle-title">제로베이스원 (ZEROBASEONE)</span>
+        </div>
+        <span class="special-alliance-toggle-arrow" id="zb1AllianceArrow">더보기 ▾</span>
+      </button>
+
+      <div class="special-alliance-card" id="zb1AllianceCard" style="display: none; margin-bottom: 10px;">
+        <div class="special-alliance-header">
+          <img src="images/zerobaseone.png" class="team-poster-thumb" alt="제로베이스원">
+          <div class="special-alliance-meta">
+            <div style="display: flex; justify-content: flex-end; margin-bottom: 2px;">
+              <span class="status-check-badge" id="zb1AllianceBadge" onclick="toggleZb1AllianceStatus()">⚪ 인증 전</span>
+            </div>
+            <div class="special-alliance-name" style="font-size: 15px; font-weight: 700; color: #253540; margin-bottom: 3px; word-break: keep-all; white-space: normal;">제로베이스원 (ZEROBASEONE)</div>
+            <div class="tag-row">
+              <span class="tag-preview">#리마인_AND_제로즈 #RESCENE #리센느</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="special-alliance-guide-box">
+          <div class="special-alliance-period-alert">
+            투표 기간: ~ 11/8(일) 23:59 (KST)
+          </div>
+          <div class="special-alliance-guide-row">
+            <span class="special-alliance-role-tag role-remine">리마인 투표</span>
+            <div class="special-alliance-role-desc">
+              MAMA <b>KCONERS' CHOICE</b><br>➔ <b>제로베이스원 'Customise'</b> 투표
+            </div>
+          </div>
+          <div class="special-alliance-guide-row">
+            <span class="special-alliance-role-tag role-zerose">제로즈 투표</span>
+            <div class="special-alliance-role-desc">
+              MMA <b>GLOBAL TOP10</b><br>➔ <b>리센느</b> 투표
+            </div>
+          </div>
+
+          <!-- 대체 인증 안내 (구글 폼 & 카카오톡 채널) -->
+          <div style="margin-top: 6px; padding-top: 8px; border-top: 1px dashed #cad4da;">
+            <div style="font-size: 11px; color: #506676; margin-bottom: 6px;">서치밴 또는 X 작성이 어려운 경우 (대체 인증):</div>
+            <div style="display: flex; gap: 6px;">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfBj0k5albAUXthfXK3ObktFJYdZI0OjjNJpt2ceb1ww03Ucg/viewform" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-form" style="flex: 1; padding: 7px 8px; font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+                <span>구글 폼 제출</span>
+              </a>
+              <a href="http://pf.kakao.com/_WxcxowX/chat" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-kakao" style="flex: 1; padding: 7px 8px; font-size: 11px; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 4px;">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682 2.545-.78 2.94-.122.49.18.483.378.351.156-.104 2.477-1.684 3.483-2.37.53.078 1.08.12 1.649.12 4.97 0 9-3.185 9-7.115S16.97 3 12 3z"/></svg>
+                <span>총공팀 카톡</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-group">
+          <a href="https://mnetplus.onelink.me/TRa8/0ew6w81u?custom_link_value=vote%2Ftemplates%2Fmama-worldwide-kconers-choice%2F6abcc3c9fb8eaa1ef57c3ca3%3Furl_fallback_type%3Dupdate" target="_blank" rel="noopener noreferrer" class="btn-main btn-special-main" onclick="openZb1Vote()">
+            <span>엠넷플러스 투표 바로가기</span>
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+              <polyline points="15 3 21 3 21 9"></polyline>
+              <line x1="10" y1="14" x2="21" y2="3"></line>
+            </svg>
+          </a>
+          <button type="button" class="btn-copy" onclick="copyZb1Tags()">태그 복사</button>
+        </div>
+        <div style="margin-top: 6px;">
+          <button type="button" class="btn-main" style="width: 100%; background: #0284c7;" onclick="openZb1Tweet()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>트위터에 인증글 쓰기</span>
+          </button>
+        </div>
+        <!-- 📷 인증샷 워터마크 추가 트리거 버튼 (제로베이스원) -->
+        <div class="watermark-trigger-wrap" style="margin-top: 6px;">
+          <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal()">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <circle cx="8.5" cy="8.5" r="1.5"/>
+              <polyline points="21 15 16 10 5 21"/>
+            </svg>
+            <span>인증샷 워터마크 추가</span>
+            <span class="badge-wm-protect">도용 방지</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- 2. 이세계아이돌 (ISEGYE IDOL) -->
       <button type="button" class="btn-special-alliance-toggle" id="specialAllianceToggleBtn" onclick="toggleSpecialAlliance()">
         <div class="special-alliance-toggle-left">
           <span class="special-alliance-pill">MMA 연합</span>
-          <span class="special-alliance-toggle-title">2026 MMA 연합 인증</span>
+          <span class="special-alliance-toggle-title">이세계아이돌 (2026 AAA 인기상)</span>
         </div>
         <span class="special-alliance-toggle-arrow" id="specialAllianceArrow">더보기 ▾</span>
       </button>
@@ -4289,7 +4393,7 @@
       <div class="target-summary-item target-cortis">
         <div class="target-item-left">
           <span class="target-cat-pill pill-cortis">올해의 베스트송</span>
-          <b class="target-artist-name">코르티스 REDRED</b>
+          <b class="target-artist-name">코르티스 RED RED</b>
         </div>
         <span class="target-status-tag tag-partner">🤝 연합</span>
       </div>
@@ -4392,7 +4496,7 @@
       <div class="mma-alliance-box">
         <div class="mma-alliance-row">
           <span class="mma-alliance-tag-pill pill-vote-remine">리마인 투표</span>
-          <div>MMA <b>올해의 베스트송</b> ➔ <b>코르티스 REDRED</b> 투표</div>
+          <div>MMA <b>올해의 베스트송</b><br>➔ <b>코르티스 RED RED</b> 투표</div>
         </div>
         <div class="mma-alliance-row">
           <span class="mma-alliance-tag-pill pill-vote-partner">코어 지원</span>
@@ -4571,54 +4675,6 @@
           </a>
           <button type="button" class="btn-mma-wide-copy" onclick="copyMmaKakaoLink()">링크 복사 </button>
         </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- 📋 MMA 공식 안내 토글 아코디언 -->
-  <div class="mma-guide-accordion">
-    <button type="button" class="mma-guide-toggle-btn" id="mmaGuideBtn" onclick="toggleMmaGuide()">
-      <span> MMA 2026 & TOP10 공식 투표 중요 공지</span>
-      <span id="mmaGuideIcon" style="font-size: 10px;">▼</span>
-    </button>
-    <div class="mma-guide-content" id="mmaGuideContent">
-      <!-- 1. MMA 2026 시상식 개요 -->
-      <div class="mma-guide-section">
-        <div class="mma-guide-sec-title"> The 18th MMA 2026 시상식 개요</div>
-        <ul class="mma-guide-list">
-          <li><b>일시</b> : 2026년 11월 14일(토) ~ 15일(일) 18:00 (역대 최초 양일간 개최)</li>
-          <li><b>장소</b> : 서울 고척 스카이돔</li>
-          <li><b>중계</b> : Melon, Wavve, YouTube(멜론/1theK)</li>
-        </ul>
-      </div>
-
-      <!-- 2. 멜론 TOP10 투표 중요 규칙 -->
-      <div class="mma-guide-section">
-        <div class="mma-guide-sec-title" style="color: #00cd3c;"> 멜론 TOP10 투표 규칙 (공식)</div>
-        <ul class="mma-guide-list">
-          <li><b>투표 기간</b> : 2026. 10. 15(목) ~ 10. 29(목) 23:59 (KST)</li>
-          <li><b>투표권</b> : <span style="color:#00cd3c; font-weight:800;">유료회원 1일 3표</span> / <span style="color:#fff; font-weight:700;">무료회원 1일 1표</span> (매일 00:00 KST 리셋)</li>
-          <li><b>참여 제한</b> : 본인인증 완료 ID 필수, 여러 ID 보유 시에도 <b>하루 1개 ID로만 참여 가능</b></li>
-          <li><b>심사 기준</b> : <b>음원 60% + 심사 20% + 투표 20%</b> (올해의 아티스트 점수에도 동시 반영)</li>
-          <li><b>집계 주기</b> : <b>1분마다 실시간 집계 및 반영</b></li>
-        </ul>
-      </div>
-
-      <!-- 3. 카카오뱅크 특별상 투표 안내 -->
-      <div class="mma-guide-section">
-        <div class="mma-guide-sec-title" style="color: #ffd200;"> 카카오뱅크 특별상 투표 규칙</div>
-        <ul class="mma-guide-list kakao-bullet">
-          <li><b>투표 기간</b> : 2026. 10. 15(목) ~ 10. 30(금) 마감</li>
-          <li><b>투표 대상</b> : 만 14세 이상 카카오뱅크 입출금 계좌 또는 mini 보유 고객</li>
-          <li><b>투표권</b> : 1인 매일 1회 투표 가능</li>
-          <li><b>심사 기준</b> : <b>투표 80% + 심사 20%</b></li>
-        </ul>
-      </div>
-
-      <div style="border-top: 1px dashed rgba(255,255,255,0.12); padding-top: 8px; margin-top: 2px;">
-        <a href="https://www.melon.com/mma/2026/info/" target="_blank" rel="noopener noreferrer" class="mma-guide-link">
-          멜론 MMA 공식 안내 페이지 바로가기 ›
-        </a>
       </div>
     </div>
   </div>
@@ -4858,6 +4914,7 @@
         </div>
         <div class="wm-crop-action-bar">
           <button type="button" class="btn-crop-action btn-crop-cancel" onclick="cancelCropping()">✕ 취소</button>
+          <button type="button" class="btn-crop-action btn-crop-reset" onclick="resetCropBox()" title="자르기 영역 초기화">↺ 초기화</button>
           <button type="button" class="btn-crop-action btn-crop-apply" onclick="applyCropping()">✓ 자르기 적용</button>
         </div>
       </div>
@@ -4870,6 +4927,15 @@
           <input type="range" id="wmOpacity" class="wm-range" min="0.15" max="0.75" step="0.05" value="0.38" oninput="updateWatermarkLive()">
           <span class="wm-opt-val" id="wmOpacityVal">38%</span>
         </div>
+      </div>
+
+      <!-- ✂️ 3장 합성 시 상단 4.5% 자르기 옵션 바 -->
+      <div class="wm-options-bar wm-extra-opt-bar" id="wmCutTopBar" style="display: none;">
+        <label class="wm-checkbox-label" title="모바일 팝업 3장 합성 시 상단바(시계, 배터리) 4.5% 영역을 깔끔하게 잘라냅니다.">
+          <input type="checkbox" id="wmCutTop45" checked onchange="renderWatermark()">
+          <span style="font-weight: 750; color: #0369a1;">✂️ 상단 4.5% 자르기 (상단바 제거)</span>
+        </label>
+        <span style="font-size: 10px; color: #0284c7; background: #e0f2fe; padding: 2px 6px; border-radius: 4px; font-weight: 700;">추천</span>
       </div>
 
       <div class="wm-canvas-container">
@@ -5213,6 +5279,92 @@
     }
   }
 
+  // 🤝 특별 교차 연합 (ZEROBASEONE · MAMA × MMA) 로직
+  const ZB1_ALLIANCE_KEY = 'rescene_zb1_alliance_';
+  const ZB1_ALLIANCE_TAG = '리마인_AND_제로즈';
+
+  function toggleZb1Alliance() {
+    const card = document.getElementById('zb1AllianceCard');
+    const arrow = document.getElementById('zb1AllianceArrow');
+    const btn = document.getElementById('zb1AllianceToggleBtn');
+    if (!card || !arrow) return;
+
+    const isOpen = card.style.display !== 'none';
+    if (isOpen) {
+      card.style.display = 'none';
+      arrow.textContent = '더보기 ▾';
+      if (btn) btn.classList.remove('open');
+    } else {
+      card.style.display = 'flex';
+      arrow.textContent = '접기 ▴';
+      if (btn) btn.classList.add('open');
+    }
+  }
+
+  function loadZb1AllianceState() {
+    const isDone = localStorage.getItem(ZB1_ALLIANCE_KEY + today.key) === 'true';
+    const card = document.getElementById('zb1AllianceCard');
+    const badge = document.getElementById('zb1AllianceBadge');
+    if (card && badge) {
+      if (isDone) {
+        card.classList.add('done');
+        badge.innerHTML = '🟢 완료';
+      } else {
+        card.classList.remove('done');
+        badge.innerHTML = '⚪ 인증 전';
+      }
+    }
+  }
+
+  function toggleZb1AllianceStatus() {
+    const card = document.getElementById('zb1AllianceCard');
+    const badge = document.getElementById('zb1AllianceBadge');
+    if (!card || !badge) return;
+
+    card.classList.toggle('done');
+    const isDone = card.classList.contains('done');
+    if (isDone) {
+      badge.innerHTML = '🟢 완료';
+      localStorage.setItem(ZB1_ALLIANCE_KEY + today.key, 'true');
+      showToast('제로베이스원 연합 인증이 완료되었습니다.');
+    } else {
+      badge.innerHTML = '⚪ 인증 전';
+      localStorage.removeItem(ZB1_ALLIANCE_KEY + today.key);
+      showToast('제로베이스원 연합 인증이 미완료로 변경되었습니다.');
+    }
+  }
+
+  function openZb1Vote() {
+    const card = document.getElementById('zb1AllianceCard');
+    const badge = document.getElementById('zb1AllianceBadge');
+    if (card && badge && !card.classList.contains('done')) {
+      card.classList.add('done');
+      badge.innerHTML = '🟢 완료';
+      localStorage.setItem(ZB1_ALLIANCE_KEY + today.key, 'true');
+    }
+    showToast('엠넷플러스로 이동합니다! 제로베이스원에 투표해 주세요.');
+  }
+
+  function openZb1Tweet() {
+    const tweetText = `#${ZB1_ALLIANCE_TAG}\n#RESCENE #리센느`;
+    const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
+    window.open(intentUrl, '_blank');
+
+    const card = document.getElementById('zb1AllianceCard');
+    const badge = document.getElementById('zb1AllianceBadge');
+    if (card && badge && !card.classList.contains('done')) {
+      card.classList.add('done');
+      badge.innerHTML = '🟢 완료';
+      localStorage.setItem(ZB1_ALLIANCE_KEY + today.key, 'true');
+    }
+    showToast('트위터가 열렸습니다! 제로베이스원 연합 인증샷을 첨부하세요 📸');
+  }
+
+  function copyZb1Tags() {
+    const text = `#${ZB1_ALLIANCE_TAG}\n#RESCENE #리센느`;
+    copyTextToClipboard(text, '해시태그가 복사되었습니다! (#리마인_AND_제로즈) 📋');
+  }
+
   // 🤝 특별 교차 연합 (AAA · MMA) 로직
   const SPECIAL_ALLIANCE_KEY = 'rescene_special_alliance_';
   const SPECIAL_ALLIANCE_TAG = '리마인과_이파리_차원을_넘어';
@@ -5323,7 +5475,7 @@
 
   function loadTodayState() {
     loadMmaState();
-    loadSpecialAllianceState();
+    loadSpecialAllianceState(); if (typeof loadZb1AllianceState === 'function') loadZb1AllianceState();
 
     for (let i = 0; i < localStorage.length; i++) {
       const k = localStorage.key(i);
@@ -6341,14 +6493,19 @@ function renderWatermark() {
   const ctx = canvas.getContext('2d');
   
   const images = currentWatermarkImages;
+  const isCutTop = (images.length === 3) && document.getElementById('wmCutTop45') && document.getElementById('wmCutTop45').checked;
+  const topCutRatio = isCutTop ? 0.045 : 0; // 3장일 때 상단 4.5% 자르기
+  
   let totalW = 0;
-  let targetH = images[0].naturalHeight || images[0].height || 1000;
+  let baseTargetH = images[0].naturalHeight || images[0].height || 1000;
+  let targetH = Math.round(baseTargetH * (1 - topCutRatio));
   
   // Equalize heights for horizontal stitching if multiple
   const scaledWidths = images.map(img => {
     const imgH = img.naturalHeight || img.height || 1;
     const imgW = img.naturalWidth || img.width || 1;
-    const scale = targetH / imgH;
+    const sh = imgH * (1 - topCutRatio);
+    const scale = targetH / sh;
     return Math.round(imgW * scale);
   });
   
@@ -6360,7 +6517,12 @@ function renderWatermark() {
   // 1. Draw base photo(s)
   let currentX = 0;
   images.forEach((img, i) => {
-    ctx.drawImage(img, currentX, 0, scaledWidths[i], targetH);
+    const imgH = img.naturalHeight || img.height || 1;
+    const imgW = img.naturalWidth || img.width || 1;
+    const sy = imgH * topCutRatio;
+    const sh = imgH * (1 - topCutRatio);
+    
+    ctx.drawImage(img, 0, sy, imgW, sh, currentX, 0, scaledWidths[i], targetH);
     currentX += scaledWidths[i];
     if (i < images.length - 1) {
       ctx.fillStyle = 'rgba(0, 0, 0, 0.4)';
@@ -6732,18 +6894,21 @@ if (document.readyState === 'loading') {
   loadMmaAllianceStates();
 }
 
-// ✂️ Cropper.js 이미지 자르기 (1장일 때만 활성화)
+// ✂️ Cropper.js 이미지 자르기 (1장일 때만 활성화 & 이전 영역 기억)
 let currentCropper = null;
+const CROP_RATIO_KEY = 'rescene_mma_last_crop_ratio';
 
 function updateCropTriggerVisibility() {
   const triggerArea = document.getElementById('wmCropTriggerArea');
-  if (!triggerArea) return;
+  if (triggerArea) {
+    // 1장 업로드 시에만 크롭 트리거 노출!
+    triggerArea.style.display = (currentWatermarkImages && currentWatermarkImages.length === 1) ? 'block' : 'none';
+  }
   
-  // 1장 업로드 시에만 크롭 트리거 노출! 2장 이상(합성)일 때는 미노출
-  if (currentWatermarkImages && currentWatermarkImages.length === 1) {
-    triggerArea.style.display = 'block';
-  } else {
-    triggerArea.style.display = 'none';
+  const cutTopBar = document.getElementById('wmCutTopBar');
+  if (cutTopBar) {
+    // 3장 업로드 시에만 상단 4.5% 자르기 체크박스 활성화 노출!
+    cutTopBar.style.display = (currentWatermarkImages && currentWatermarkImages.length === 3) ? 'flex' : 'none';
   }
 }
 
@@ -6781,7 +6946,28 @@ function startCropping() {
       movable: true,
       zoomable: true,
       rotatable: false,
-      scalable: false
+      scalable: false,
+      ready: function() {
+        // 이전 저장된 크롭 비율이 있다면 자동 복원
+        try {
+          const saved = localStorage.getItem(CROP_RATIO_KEY);
+          if (saved) {
+            const r = JSON.parse(saved);
+            const imgData = this.cropper.getImageData();
+            if (imgData && imgData.naturalWidth && imgData.naturalHeight && r.w && r.h) {
+              this.cropper.setData({
+                x: Math.round(r.x * imgData.naturalWidth),
+                y: Math.round(r.y * imgData.naturalHeight),
+                width: Math.round(r.w * imgData.naturalWidth),
+                height: Math.round(r.h * imgData.naturalHeight)
+              });
+              showToast('📌 이전 자르기 영역을 불러왔습니다.');
+            }
+          }
+        } catch(e) {
+          console.error('Failed to restore crop ratio:', e);
+        }
+      }
     });
   } else {
     showToast('크롭 라이브러리를 불러오는 중입니다. 잠시 후 다시 시도해 주세요.');
@@ -6789,8 +6975,35 @@ function startCropping() {
   }
 }
 
+function resetCropBox() {
+  if (!currentCropper) return;
+  try {
+    localStorage.removeItem(CROP_RATIO_KEY);
+  } catch(e) {}
+  currentCropper.reset();
+  showToast('자르기 영역이 초기화되었습니다.');
+}
+
 function applyCropping() {
   if (!currentCropper) return;
+  
+  // 다음번 크롭을 위해 현재 크롭 비율(x, y, w, h 비율) 저장
+  try {
+    const cropData = currentCropper.getData();
+    const imgData = currentCropper.getImageData();
+    if (cropData && imgData && imgData.naturalWidth && imgData.naturalHeight) {
+      const ratioData = {
+        x: cropData.x / imgData.naturalWidth,
+        y: cropData.y / imgData.naturalHeight,
+        w: cropData.width / imgData.naturalWidth,
+        h: cropData.height / imgData.naturalHeight
+      };
+      localStorage.setItem(CROP_RATIO_KEY, JSON.stringify(ratioData));
+    }
+  } catch(e) {
+    console.error('Failed to save crop ratio:', e);
+  }
+
   const croppedCanvas = currentCropper.getCroppedCanvas({
     imageSmoothingEnabled: true,
     imageSmoothingQuality: 'high'
@@ -6806,7 +7019,7 @@ function applyCropping() {
     currentWatermarkImages[0] = updatedImg;
     endCroppingUI();
     renderWatermark();
-    showToast('✂️ 자르기가 적용되었습니다!');
+    showToast('✂️ 자르기가 적용되었습니다! (영역 저장됨)');
   };
   updatedImg.src = croppedDataUrl;
 }

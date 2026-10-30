@@ -1,6 +1,7 @@
 # Local Environment & Secrets
 .env
 node_modules/
+fast_server.py
 
 # Plaintext data files (보안: 평문 집계 데이터는 깃허브에 커밋하지 않고 암호화된 파일만 업로드)
 data/tweet_counts.json
