@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>2026 MAMA 2차 RESCENE 연합 인증 총공</title>
+  <title>RESCENE 투표 인증 도우미</title>
   <meta name="theme-color" content="#d3e3ea">
   <style>
     @font-face {
@@ -187,8 +187,14 @@
     /* 상단 헤더 */
     header {
       text-align: left;
-      padding: 28px 0 26px;
+      padding: 20px 0 22px;
+    }
 
+    .header-main-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
     }
 
     .top-badge-row {
@@ -231,7 +237,7 @@
       font-size: 29px;
       font-weight: 750;
       letter-spacing: -0.045em;
-      margin-bottom: 12px;
+      margin-bottom: 0;
       line-height: 1.28;
 
       color: #202a34;
@@ -2318,7 +2324,9 @@
     .top-badge-row { justify-content: space-between; flex-wrap: nowrap; gap: 12px; }
     .top-badge-row > .badge { font-size: 11px; font-weight: 650; letter-spacing: 0.01em; }
     #currentDateBadge {
-      display: block;
+      display: inline-flex;
+      align-items: center;
+      margin-top: 3px;
       padding: 6px 10px;
       border: 1px solid #bfced8;
       border-radius: 6px;
@@ -2331,8 +2339,7 @@
       white-space: nowrap;
       flex-shrink: 0;
     }
-    /* Hide only the leading calendar glyph; the existing live date text stays intact. */
-    #currentDateBadge::first-letter { font-size: 0; }
+
     #adminTopBtn { position: absolute; top: 24px; right: 16px; color: #526b7d; }
     #adminTopBtn::before {
       content: "";
@@ -4070,7 +4077,7 @@
 <div class="floating-nav-bar" id="floatingNav">
   <div class="floating-nav-inner">
     <button type="button" class="floating-nav-btn active mama" id="floatMamaBtn" onclick="scrollToSection('mamaSection')">
-      <span>MAMA 2차</span>
+      <span>MAMA</span>
     </button>
     <button type="button" class="floating-nav-btn mma" id="floatMmaBtn" onclick="scrollToSection('mmaSection')">
       <span>MMA</span>
@@ -4106,45 +4113,12 @@
   </div>
 
   <header>
-    <div class="top-badge-row">
-      <span class="badge">RESCENE · 2차 연합 총공</span>
-      <span class="date-badge" id="currentDateBadge">📅 오늘 날짜</span>
-      <button type="button" class="btn-admin-auth" id="adminTopBtn" onclick="handleAdminClick()" aria-label="관리자 메뉴" title="관리자 메뉴">🔒</button>
+    <div class="header-main-row">
+      <h1 id="mainTitle">RESCENE<br>투표 인증 도우미</h1>
+      <span class="date-badge" id="currentDateBadge">오늘 날짜</span>
     </div>
-    <h1 id="mainTitle">2026 MAMA 2차<br>X 인증 헬퍼</h1>
-    <p class="subtitle" id="mainSubtitle">팀별 해시태그가 담긴 X 작성창을 열어요.</p>
+    <button type="button" class="btn-admin-auth" id="adminTopBtn" onclick="handleAdminClick()" aria-label="관리자 메뉴" title="관리자 메뉴">🔒</button>
   </header>
-
-  <!-- 🗳️ 2차 투표 바로가기 링크 배너 -->
-  <a href="https://link24.kr/CWx9dUm"
-     target="_blank"
-     rel="noopener noreferrer"
-     onclick="handleVoteBannerClick(event)"
-     class="vote-banner-link"
-     id="voteBannerLink">
-    <div class="vote-banner">
-      <div class="vote-period-header">
-        <span class="vote-period-tag">10.28(수) 18:00 ~ 11.08(일) 23:59</span>
-      </div>
-      <div class="vote-banner-body">
-        <div class="vote-banner-text">
-          <div class="vote-banner-title">2차 투표 바로가기</div>
-          <div class="vote-banner-sub">엠넷플러스 공식 투표 페이지</div>
-        </div>
-        <div class="vote-banner-arrow">›</div>
-      </div>
-    </div>
-  </a>
-
-  <!-- ⚡ 빠른 스크롤 점프 바 -->
-  <div class="quick-jump-bar">
-    <button type="button" class="quick-jump-btn" onclick="scrollToSection('mamaSection')">
-      <span>MAMA 2차</span>
-    </button>
-    <button type="button" class="quick-jump-btn btn-jump-mma" onclick="scrollToSection('mmaSection')">
-      <span>MMA</span>
-    </button>
-  </div>
 
   <!-- 🔍 서치밴 및 투표 인증 안내 -->
   <div class="notice-box">
@@ -4168,18 +4142,22 @@
         </div>
       </div>
 
-      <div class="searchban-rt-note">
-        💡 <b>서치밴이 아닌데도</b> X 게시가 어려운 경우, 구글 폼/카카오톡으로 인증 후 <b>#2026MAMAVOTE #RESCENE</b> 태그 게시물을 <b>리트윗(RT)</b>해 주세요!
-      </div>
-
       <div class="searchban-btn-row">
         <a href="https://x-shadowban-checker.fia-s.com/en/" target="_blank" rel="noopener noreferrer" class="btn-check-searchban">
-          내 계정 서치밴 확인하기 ›
+          내 계정 서치밴 확인하기 (외부) ›
         </a>
       </div>
     </div>
+  </div>
 
-
+  <!-- ⚡ 빠른 스크롤 점프 바 -->
+  <div class="quick-jump-bar">
+    <button type="button" class="quick-jump-btn" onclick="scrollToSection('mamaSection')">
+      <span>MAMA</span>
+    </button>
+    <button type="button" class="quick-jump-btn btn-jump-mma" onclick="scrollToSection('mmaSection')">
+      <span>MMA</span>
+    </button>
   </div>
 
   <!-- 📊 실시간 트위터 인증 통계 & 달력 배너 (관리자 인증 시에만 표시) -->
@@ -4199,9 +4177,31 @@
     </button>
   </div>
 
-    <!-- MAMA 2차 연합 리스트 -->
+  <!-- MAMA 연합 리스트 -->
   <div class="team-list" id="mamaSection">
-    <h2 class="section-heading">MAMA 2차 연합 인증</h2>
+    <!-- 🗳️ MAMA 투표 바로가기 링크 배너 -->
+    <a href="https://mnetplus.world/event/ko/2026-mama?deeplink=mnetplus%3A%2F%2Fvote%2Ftemplates%2Fmama-fans-choice-vote-r2-v2%2F6acecda6f3778e1b06f5170b%3Furl_fallback_type%3Dupdate&missionType=MAMA_2026_FANS_CHOICE_VOTE_2ND_SHARE&refererCode=69TC2WZM"
+       target="_blank"
+       rel="noopener noreferrer"
+       onclick="handleVoteBannerClick(event)"
+       class="vote-banner-link"
+       id="voteBannerLink"
+       style="margin-bottom: 16px;">
+      <div class="vote-banner">
+        <div class="vote-period-header">
+          <span class="vote-period-tag">10.28(수) 18:00 ~ 11.08(일) 23:59</span>
+        </div>
+        <div class="vote-banner-body">
+          <div class="vote-banner-text">
+            <div class="vote-banner-title">MAMA 투표 바로가기</div>
+            <div class="vote-banner-sub">엠넷플러스 공식 투표 페이지</div>
+          </div>
+          <div class="vote-banner-arrow">›</div>
+        </div>
+      </div>
+    </a>
+
+    <h2 class="section-heading">MAMA 연합 인증</h2>
     <p class="section-caption">투표한 팀에 인증서를 올려주세요.</p>
     <!-- 1. 앤더블 (AND2BLE) -->
     <div class="team-card" id="card-1">
@@ -4229,7 +4229,7 @@
 
       <!-- 📷 인증샷 워터마크 추가 트리거 버튼 -->
       <div class="watermark-trigger-wrap">
-        <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal({ includeDate: false, autoCrop: false, allowCrop: false, title: 'MAMA 인증샷 워터마크 추가' })">
+        <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal({ includeDate: false, autoCrop: false, allowCrop: false, maxFiles: 1, title: 'MAMA 인증샷 워터마크 추가' })">
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
             <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
             <circle cx="8.5" cy="8.5" r="1.5"/>
@@ -4242,6 +4242,9 @@
 
       <!-- 서치밴 대체 인증 바로가기 (구글 폼 & 카카오톡 채널) -->
       <div class="alt-auth-wrap">
+        <div class="searchban-rt-note" style="margin-bottom: 8px;">
+          💡 <b>서치밴이 아닌데도</b> X 게시가 어려운 경우, 구글 폼/카카오톡으로 인증 후 <b>#2026MAMAVOTE #RESCENE</b> 태그 게시물을 <b>리트윗(RT)</b>해 주세요!
+        </div>
         <span class="alt-auth-caption">서치밴 또는 X 작성이 어려운 경우 (둘 중 택1):</span>
         <div class="alt-auth-btn-row">
           <a href="https://forms.gle/ekTvyeHxYqSaAX4j8" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-form">
@@ -4316,27 +4319,27 @@
         </div>
 
         <div class="btn-group">
-          <a href="https://mnetplus.onelink.me/TRa8/0ew6w81u?custom_link_value=vote%2Ftemplates%2Fmama-worldwide-kconers-choice%2F6abcc3c9fb8eaa1ef57c3ca3%3Furl_fallback_type%3Dupdate" target="_blank" rel="noopener noreferrer" class="btn-main btn-special-main" onclick="openZb1Vote()">
+          <button type="button" class="btn-main" onclick="openZb1Tweet()">
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+            <span>트위터에 글쓰기</span>
+          </button>
+          <button type="button" class="btn-copy" onclick="copyZb1Tags()">태그 복사</button>
+        </div>
+        <div style="margin-top: 6px;">
+          <a href="https://mnetplus.onelink.me/TRa8/0ew6w81u?custom_link_value=vote%2Ftemplates%2Fmama-worldwide-kconers-choice%2F6abcc3c9fb8eaa1ef57c3ca3%3Furl_fallback_type%3Dupdate" target="_blank" rel="noopener noreferrer" class="btn-main btn-special-main" style="width: 100%; background: #0284c7; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 13.5px; padding: 11px 12px;" onclick="openZb1Vote()">
             <span>엠넷플러스 투표 바로가기</span>
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
               <polyline points="15 3 21 3 21 9"></polyline>
               <line x1="10" y1="14" x2="21" y2="3"></line>
             </svg>
           </a>
-          <button type="button" class="btn-copy" onclick="copyZb1Tags()">태그 복사</button>
-        </div>
-        <div style="margin-top: 6px;">
-          <button type="button" class="btn-main" style="width: 100%; background: #0284c7;" onclick="openZb1Tweet()">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-            <span>트위터에 인증글 쓰기</span>
-          </button>
         </div>
         <!-- 📷 인증샷 워터마크 추가 트리거 버튼 (제로베이스원) -->
         <div class="watermark-trigger-wrap" style="margin-top: 6px;">
-          <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal({ includeDate: false, autoCrop: false, allowCrop: false, title: '연합 인증샷 워터마크 추가' })">
+          <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal({ includeDate: false, autoCrop: false, allowCrop: false, maxFiles: 1, title: '연합 인증샷 워터마크 추가' })">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
               <circle cx="8.5" cy="8.5" r="1.5"/>
@@ -4460,8 +4463,7 @@
         </div>
       </div>
     </a>
-    <div class="mma-quick-actions-row" style="margin-top: 6px;">
-      <span class="mma-quick-app-hint">💡 스마트폰에서는 <b>멜론 앱</b>이 열려 자동 로그인 상태로 투표됩니다.</span>
+    <div class="mma-quick-actions-row" style="margin-top: 6px; justify-content: flex-end;">
       <a href="https://m2.melon.com/mma/2026/vote/category" target="_blank" rel="noopener noreferrer" class="mma-web-fallback-link">
         웹으로 열기 ↗
       </a>
@@ -4472,10 +4474,8 @@
   <div class="mma-targets-summary-box">
     <div class="targets-summary-header">
       <div class="targets-title-left">
-        <span class="target-title-badge">투표 안내</span>
-        <h3 class="targets-title">MMA 2026 필수 3개 부문 투표</h3>
+        <h3 class="targets-title">MMA 2026 투표</h3>
       </div>
-      <span class="target-period-badge">~11/13(금) 23:59 KST</span>
     </div>
     
     <div class="targets-summary-list">
@@ -4484,21 +4484,21 @@
           <span class="target-cat-pill pill-rescene">글로벌 TOP10</span>
           <b class="target-artist-name">리센느 (RESCENE)</b>
         </div>
-        <span class="target-status-tag tag-primary">👑 리센느</span>
+        <span class="target-status-tag tag-primary">리센느</span>
       </div>
       <div class="target-summary-item target-alpha">
         <div class="target-item-left">
           <span class="target-cat-pill pill-alpha">올해의 신인</span>
           <b class="target-artist-name">알파드라이브원</b>
         </div>
-        <span class="target-status-tag tag-partner">🤝 연합</span>
+        <span class="target-status-tag tag-partner">연합</span>
       </div>
       <div class="target-summary-item target-cortis">
         <div class="target-item-left">
           <span class="target-cat-pill pill-cortis">올해의 베스트송</span>
           <b class="target-artist-name">코르티스 RED RED</b>
         </div>
-        <span class="target-status-tag tag-partner">🤝 연합</span>
+        <span class="target-status-tag tag-partner">연합</span>
       </div>
     </div>
   </div>
@@ -4624,7 +4624,7 @@
 
     <!-- 📷 인증샷 제작소 트리거 버튼 -->
     <div class="watermark-trigger-wrap" style="margin-top: 14px;">
-      <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal({ includeDate: true, autoCrop: true, allowCrop: true, title: 'MMA 인증샷 제작소' })">
+      <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal({ includeDate: true, autoCrop: true, allowCrop: true, maxFiles: 3, title: 'MMA 투표 인증샷 제작소' })">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
           <circle cx="8.5" cy="8.5" r="1.5"/>
@@ -4749,7 +4749,8 @@
         <b>서치밴(검색 제한)이 확인됐다면?</b>
         <p>집계 누락 방지를 위해 메인 페이지 하단에 안내된 <b>각 연합별 구글 폼</b> 또는 <b>음원총공팀 카카오톡</b>으로 투표 인증샷을 제출해 주세요.</p>
       </div>
-      <a class="searchban-check-button" href="https://x-shadowban-checker.fia-s.com/en/" target="_blank" rel="noopener noreferrer">서치밴 확인하기</a>
+
+      <a class="searchban-check-button" href="https://x-shadowban-checker.fia-s.com/en/" target="_blank" rel="noopener noreferrer">내 계정 서치밴 확인하기 (외부) ›</a>
     </div>
     <div class="modal-actions">
       <button type="button" class="btn-modal-hide" id="searchBanHideToday">24시간 동안 안 보기</button>
@@ -5091,7 +5092,7 @@
       const dayName = parts.find(p => p.type === 'weekday').value;
       return {
         key: `${y}-${m}-${d}`,
-        display: `📅 ${y}.${m}.${d} (${dayName})`
+        display: `${y}.${m}.${d} (${dayName})`
       };
     } catch (e) {
       const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
@@ -5102,7 +5103,7 @@
       const dayNames = ['일', '월', '화', '수', '목', '금', '토'];
       return {
         key: `${y}-${m}-${d}`,
-        display: `📅 ${y}.${m}.${d} (${dayNames[kst.getDay()]})`
+        display: `${y}.${m}.${d} (${dayNames[kst.getDay()]})`
       };
     }
   }
@@ -5118,7 +5119,7 @@
   const TOTAL_TEAMS = activeCards.length;
   const STORAGE_PREFIX = "rescene_mama2_done_";
 
-  const MAMA2_VOTE_LINK = "https://link24.kr/CWx9dUm";
+  const MAMA2_VOTE_LINK = "https://mnetplus.world/event/ko/2026-mama?deeplink=mnetplus%3A%2F%2Fvote%2Ftemplates%2Fmama-fans-choice-vote-r2-v2%2F6acecda6f3778e1b06f5170b%3Furl_fallback_type%3Dupdate&missionType=MAMA_2026_FANS_CHOICE_VOTE_2ND_SHARE&refererCode=69TC2WZM";
   const MAMA2_START_TIMESTAMP = new Date('2026-10-28T18:00:00+09:00').getTime();
 
   function handleVoteBannerClick(e) {
@@ -5624,10 +5625,10 @@
     const isDone = card.classList.contains('done');
     if (isDone) {
       if (checkEl) checkEl.innerHTML = '🟢 완료';
-      showToast('🎉 오늘 MAMA 2차 연합 인증 완료로 체크되었습니다! 🪽');
+      showToast('🎉 오늘 MAMA 연합 인증 완료로 체크되었습니다! 🪽');
     } else {
       if (checkEl) checkEl.innerHTML = '⚪ 인증 전';
-      showToast('⚪ MAMA 2차 연합 인증 완료 체크가 해제되었습니다.');
+      showToast('⚪ MAMA 연합 인증 완료 체크가 해제되었습니다.');
     }
     saveTodayState();
     updateProgress();
@@ -6215,9 +6216,9 @@
       if (devToggleText) devToggleText.textContent = '☀️ MAMA 투표 화면으로 복귀';
     } else {
       document.body.classList.remove('mama-ended');
-      if (title) title.innerHTML = '2026 MAMA 2차<br>X 인증 헬퍼';
-      if (subtitle) subtitle.textContent = '팀별 해시태그가 담긴 X 작성창을 열어요.';
-      document.title = '2026 MAMA 2차 RESCENE 연합 인증 총공';
+      if (title) title.innerHTML = 'RESCENE<br>투표 인증 도우미';
+      if (subtitle) subtitle.textContent = '';
+      document.title = 'RESCENE 투표 인증 도우미';
       if (devToggleText) devToggleText.textContent = '🌙 MMA 전용 모드로 보기';
 
       // 자정(정각)까지 남은 시간 계산 후 자동 전환 타이머 등록
@@ -6383,6 +6384,26 @@ let currentWatermarkConfig = {
   title: '인증샷 제작소'
 };
 
+function updateDropzonePrompt() {
+  const dropzoneInner = document.getElementById('wmDropzoneInner');
+  if (!dropzoneInner) return;
+  const isSingle = (currentWatermarkConfig && currentWatermarkConfig.maxFiles === 1);
+  const mainText = isSingle ? '사진 탭하여 선택하기 (1장)' : '사진 탭하여 선택하기 (1장 ~ 최대 3장)';
+  const subText = isSingle ? 'MAMA 인증샷 1장을 등록해 주세요 (Ctrl+V 지원)' : '또는 클립보드 이미지 붙여넣기 (Ctrl+V)';
+
+  dropzoneInner.innerHTML = `
+    <div class="wm-dropzone-icon">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+        <circle cx="8.5" cy="8.5" r="1.5"/>
+        <polyline points="21 15 16 10 5 21"/>
+      </svg>
+    </div>
+    <span class="wm-dropzone-main">${mainText}</span>
+    <span class="wm-dropzone-sub">${subText}</span>
+  `;
+}
+
 function resetWatermarkImages() {
   if (typeof cancelCropping === 'function') cancelCropping();
   currentWatermarkImages = [];
@@ -6397,20 +6418,7 @@ function resetWatermarkImages() {
   const previewSec = document.getElementById('wmPreviewSection');
   if (previewSec) previewSec.style.display = 'none';
 
-  const dropzoneInner = document.getElementById('wmDropzoneInner');
-  if (dropzoneInner) {
-    dropzoneInner.innerHTML = `
-      <div class="wm-dropzone-icon">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-          <circle cx="8.5" cy="8.5" r="1.5"/>
-          <polyline points="21 15 16 10 5 21"/>
-        </svg>
-      </div>
-      <span class="wm-dropzone-main">사진 탭하여 선택하기 (1장 ~ 3장)</span>
-      <span class="wm-dropzone-sub">또는 클립보드 이미지 붙여넣기 (Ctrl+V)</span>
-    `;
-  }
+  updateDropzonePrompt();
 
   const canvas = document.getElementById('wmCanvas');
   if (canvas) {
@@ -6434,39 +6442,66 @@ function resetWatermarkImages() {
 }
 
 function openWatermarkModal(options = {}) {
-  resetWatermarkImages();
-  preloadTesseract();
-  const modal = document.getElementById('watermarkModal');
-  if (!modal) return;
-  
+  // 모드별 설정 먼저 확정 (MAMA는 1장 전용, MMA는 3장 전용)
   if (typeof options === 'boolean') {
     currentWatermarkConfig = {
       includeDate: options,
       autoCrop: options,
       allowCrop: options,
-      title: options ? 'MMA 인증샷 제작소' : '인증샷 워터마크 추가'
+      maxFiles: options ? 3 : 1,
+      title: options ? 'MMA 투표 인증샷 제작소' : '인증샷 워터마크 추가'
     };
   } else if (typeof options === 'object' && options !== null) {
+    const isSingle = (options.maxFiles === 1) || (options.autoCrop === false && options.allowCrop === false);
     currentWatermarkConfig = {
-      includeDate: (options.includeDate !== undefined) ? !!options.includeDate : true,
-      autoCrop: (options.autoCrop !== undefined) ? !!options.autoCrop : true,
-      allowCrop: (options.allowCrop !== undefined) ? !!options.allowCrop : true,
+      includeDate: (options.includeDate !== undefined) ? !!options.includeDate : !isSingle,
+      autoCrop: (options.autoCrop !== undefined) ? !!options.autoCrop : !isSingle,
+      allowCrop: (options.allowCrop !== undefined) ? !!options.allowCrop : !isSingle,
+      maxFiles: options.maxFiles || (isSingle ? 1 : 3),
       title: options.title || '인증샷 제작소'
     };
   } else {
-    currentWatermarkConfig = { includeDate: true, autoCrop: true, allowCrop: true, title: '인증샷 제작소' };
+    currentWatermarkConfig = { includeDate: true, autoCrop: true, allowCrop: true, maxFiles: 3, title: 'MMA 투표 인증샷 제작소' };
   }
+
+  resetWatermarkImages();
+  preloadTesseract();
+  const modal = document.getElementById('watermarkModal');
+  if (!modal) return;
 
   const titleEl = document.getElementById('wmModalTitle');
   if (titleEl) {
     titleEl.textContent = currentWatermarkConfig.title;
   }
 
+  // 파일 인풋의 multiple 속성을 모드에 따라 완전히 분리 (MAMA는 단일 사진만 선택)
+  const fileInput = document.getElementById('wmFileInput');
+  if (fileInput) {
+    if (currentWatermarkConfig.maxFiles === 1) {
+      fileInput.removeAttribute('multiple');
+    } else {
+      fileInput.setAttribute('multiple', '');
+    }
+  }
+
+  // 오늘 날짜 표기 옵션 바: MAMA는 아예 숨김, MMA에서만 표시
+  const dateOptBar = document.getElementById('wmDateOptBar');
   const dateCheckbox = document.getElementById('wmEnableDate');
   const dateStatus = document.getElementById('wmDateOptStatus');
   if (dateCheckbox) {
     dateCheckbox.checked = currentWatermarkConfig.includeDate;
     if (dateStatus) dateStatus.textContent = currentWatermarkConfig.includeDate ? 'ON' : 'OFF';
+  }
+  if (dateOptBar) {
+    dateOptBar.style.display = currentWatermarkConfig.includeDate ? 'flex' : 'none';
+  }
+
+  // 크롭 UI 완전 숨김 (MAMA/ZB1)
+  if (currentWatermarkConfig.allowCrop === false) {
+    const cropTriggerArea = document.getElementById('wmCropTriggerArea');
+    const cutTopBar = document.getElementById('wmCutTopBar');
+    if (cropTriggerArea) cropTriggerArea.style.display = 'none';
+    if (cutTopBar) cutTopBar.style.display = 'none';
   }
   
   // Nickname load
@@ -6491,6 +6526,7 @@ function openWatermarkModal(options = {}) {
     }
   } catch(e) {}
 
+  modal.style.display = '';
   modal.classList.add('show');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
@@ -6822,7 +6858,14 @@ async function snapCropBoxToDate() {
 function handleWatermarkFiles(fileList) {
   if (!fileList || fileList.length === 0) return;
   
-  const files = Array.from(fileList).filter(f => f.type.startsWith('image/')).slice(0, 3);
+  const isSingle = (currentWatermarkConfig && currentWatermarkConfig.maxFiles === 1);
+  const maxLimit = isSingle ? 1 : 3;
+
+  if (isSingle && fileList.length > 1) {
+    showToast('ℹ️ MAMA 인증샷은 1장만 등록됩니다. (첫 번째 사진 적용)');
+  }
+
+  const files = Array.from(fileList).filter(f => f.type.startsWith('image/')).slice(0, maxLimit);
   if (files.length === 0) {
     alert('이미지 파일(PNG, JPG 등)을 선택해 주세요.');
     return;
@@ -6870,7 +6913,7 @@ function handleWatermarkFiles(fileList) {
             if (currentWatermarkConfig.autoCrop) {
               autoCutoffSingleImage(loadedImages[0]);
             } else {
-              // MAMA 2차 / ZB1 모드: 날짜 자동 컷오프 없이 원본 사진에 워터마크 바로 적용
+              // MAMA / ZB1 모드: 날짜 자동 컷오프 없이 원본 사진에 워터마크 바로 적용
               setAutoCropLoading(false);
               renderWatermark();
               if (typeof updateCropTriggerVisibility === 'function') {
@@ -7486,6 +7529,8 @@ function endCroppingUI() {
   if (actionBtns) actionBtns.style.display = 'flex';
 }
 
+
 </script>
+
 </body>
 </html>
