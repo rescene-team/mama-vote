@@ -3090,22 +3090,26 @@
 
     /* 🌙 MAMA 투표 종료 후 MMA 전용 뷰 스타일 */
     body.mama-ended .vote-banner-link,
+    body.mama-ended .targets-summary-box,
     body.mama-ended .quick-jump-bar,
     body.mama-ended #floatingNav,
     body.mama-ended .progress-card,
     body.mama-ended .notice-box,
     body.mama-ended #statsBannerCard,
-    body.mama-ended #mamaSection > .section-heading,
-    body.mama-ended #mamaSection > .section-caption,
+    body.mama-ended #mamaSection,
+    body.mama-ended #mamaAllianceSection > div:first-child,
     body.mama-ended #card-1,
     body.mama-ended #card-2,
     body.mama-ended #card-3,
     body.mama-ended #card-4,
-    body.mama-ended #card-5 {
+    body.mama-ended #card-5,
+    body.mama-ended #card-enhypen,
+    body.mama-ended .mama-common-action-area {
       display: none !important;
     }
 
-    body.mama-ended #mamaSection {
+    body.mama-ended #mamaSection,
+    body.mama-ended #mamaAllianceSection {
       background: transparent !important;
       border: none !important;
       padding: 0 !important;
@@ -3560,7 +3564,8 @@
       font-weight: 600;
     }
 
-    /* 🎯 MMA 2026 리센느 & 연합 3대 부문 목표 박스 */
+    /* 🎯 MAMA / MMA 리센느 & 연합 부문 목표 박스 공통 */
+    .targets-summary-box,
     .mma-targets-summary-box {
       background: #ffffff;
       border: 1px solid #d4e0e8;
@@ -3621,9 +3626,22 @@
       border-left: 3px solid #cbd5e1;
       font-size: 12px;
     }
+    .target-summary-item.target-andouble {
+      border-left-color: #3b82f6;
+      background: #eff6ff;
+    }
     .target-summary-item.target-rescene {
       border-left-color: #0284c7;
       background: #f0f9ff;
+    }
+    /* MAMA 팬스 초이스 (여) 리센느 핑크 테마 */
+    .targets-summary-box .target-summary-item.target-rescene {
+      border-left-color: #f43f5e;
+      background: #fff1f2;
+    }
+    .target-summary-item.target-enhypen {
+      border-left-color: #f59e0b;
+      background: #fffbeb;
     }
     .target-summary-item.target-alpha {
       border-left-color: #ec4899;
@@ -3646,7 +3664,10 @@
       border-radius: 3px;
       white-space: nowrap;
     }
+    .pill-andouble { background: #dbeafe; color: #1d4ed8; }
     .pill-rescene { background: #e0f2fe; color: #0369a1; }
+    .targets-summary-box .pill-rescene { background: #ffe4e6; color: #e11d48; }
+    .pill-enhypen { background: #fef3c7; color: #b45309; }
     .pill-alpha { background: #fce7f3; color: #be185d; }
     .pill-cortis { background: #dcfce7; color: #15803d; }
     .target-artist-name {
@@ -3665,6 +3686,7 @@
       flex-shrink: 0;
     }
     .target-status-tag.tag-primary { background: #0284c7; color: #ffffff; }
+    .targets-summary-box .target-status-tag.tag-primary { background: #f43f5e; color: #ffffff; }
     .target-status-tag.tag-partner { background: #e2e8f0; color: #334155; }
 
     /* 📸 투표 인증 가이드 카드 */
@@ -4177,16 +4199,14 @@
     </button>
   </div>
 
-  <!-- MAMA 연합 리스트 -->
-  <div class="team-list" id="mamaSection">
-    <!-- 🗳️ MAMA 투표 바로가기 링크 배너 -->
+  <!-- 🗳️ MAMA 투표 바로가기 링크 배너 (카드 바깥) -->
+  <div class="mama-quick-vote-wrap" id="mamaSection" style="margin-bottom: 14px; scroll-margin-top: 80px;">
     <a href="https://mnetplus.world/event/ko/2026-mama?deeplink=mnetplus%3A%2F%2Fvote%2Ftemplates%2Fmama-fans-choice-vote-r2-v2%2F6acecda6f3778e1b06f5170b%3Furl_fallback_type%3Dupdate&missionType=MAMA_2026_FANS_CHOICE_VOTE_2ND_SHARE&refererCode=69TC2WZM"
        target="_blank"
        rel="noopener noreferrer"
        onclick="handleVoteBannerClick(event)"
        class="vote-banner-link"
-       id="voteBannerLink"
-       style="margin-bottom: 16px;">
+       id="voteBannerLink">
       <div class="vote-banner">
         <div class="vote-period-header">
           <span class="vote-period-tag">10.28(수) 18:00 ~ 11.08(일) 23:59</span>
@@ -4200,9 +4220,47 @@
         </div>
       </div>
     </a>
+  </div>
 
-    <h2 class="section-heading">MAMA 연합 인증</h2>
-    <p class="section-caption">투표한 팀에 인증서를 올려주세요.</p>
+  <!-- 🎯 MAMA 2026 투표 부문 목표 요약 (카드 바깥) -->
+  <div class="targets-summary-box" style="margin-bottom: 14px;">
+    <div class="targets-summary-header">
+      <div class="targets-title-left">
+        <h3 class="targets-title">MAMA 2026 투표</h3>
+      </div>
+    </div>
+    
+    <div class="targets-summary-list">
+      <div class="target-summary-item target-andouble">
+        <div class="target-item-left">
+          <span class="target-cat-pill pill-andouble">팬스 초이스 (남)</span>
+          <b class="target-artist-name">앤더블</b>
+        </div>
+        <span class="target-status-tag tag-partner">연합</span>
+      </div>
+      <div class="target-summary-item target-rescene">
+        <div class="target-item-left">
+          <span class="target-cat-pill pill-rescene">팬스 초이스 (여)</span>
+          <b class="target-artist-name">리센느</b>
+        </div>
+        <span class="target-status-tag tag-primary">리센느</span>
+      </div>
+      <div class="target-summary-item target-enhypen">
+        <div class="target-item-left">
+          <span class="target-cat-pill pill-enhypen">올해의 팬스 초이스 with VISA</span>
+          <b class="target-artist-name">엔하이픈</b>
+        </div>
+        <span class="target-status-tag tag-partner">연합</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🤝 MAMA 2026 연합 리스트 (카드 영역) -->
+  <div class="team-list" id="mamaAllianceSection" style="margin-top: 0;">
+    <div style="margin-bottom: 10px;">
+      <h2 class="section-heading" style="margin-bottom: 2px;">MAMA 연합 인증</h2>
+      <p class="section-caption">투표한 팀에 인증서를 올려주세요.</p>
+    </div>
     <!-- 1. 앤더블 (AND2BLE) -->
     <div class="team-card" id="card-1">
       <div class="team-header-row">
@@ -4226,39 +4284,63 @@
         </button>
         <button class="btn-copy" onclick="copyTags('리마인과_앤클로의_HappyBloom')">태그 복사</button>
       </div>
+    </div>
 
-      <!-- 📷 인증샷 워터마크 추가 트리거 버튼 -->
-      <div class="watermark-trigger-wrap">
-        <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal({ includeDate: false, autoCrop: false, allowCrop: false, maxFiles: 1, title: 'MAMA 인증샷 워터마크 추가' })">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
-            <circle cx="8.5" cy="8.5" r="1.5"/>
-            <polyline points="21 15 16 10 5 21"/>
-          </svg>
-          <span>인증샷 워터마크 추가</span>
-          <span class="badge-wm-protect">도용 방지</span>
-        </button>
+    <!-- 2. 엔하이픈 (ENHYPEN) -->
+    <div class="team-card" id="card-enhypen" style="margin-top: 14px;">
+      <div class="team-header-row">
+        <img src="images/enhypen.png" class="team-poster-thumb" alt="엔하이픈 포스터">
+        <div class="team-meta">
+          <div class="team-name-row">
+            <div class="team-name">엔하이픈 (ENHYPEN)</div>
+            <span class="status-check-badge" onclick="toggleStatus('card-enhypen')">⚪ 인증 전</span>
+          </div>
+          <div class="tag-row">
+            <span class="tag-preview">#ENHYPENXRESCENE</span>
+          </div>
+        </div>
       </div>
-
-      <!-- 서치밴 대체 인증 바로가기 (구글 폼 & 카카오톡 채널) -->
-      <div class="alt-auth-wrap">
-        <div class="searchban-rt-note" style="margin-bottom: 8px;">
-          💡 <b>서치밴이 아닌데도</b> X 게시가 어려운 경우, 구글 폼/카카오톡으로 인증 후 <b>#2026MAMAVOTE #RESCENE</b> 태그 게시물을 <b>리트윗(RT)</b>해 주세요!
-        </div>
-        <span class="alt-auth-caption">서치밴 또는 X 작성이 어려운 경우 (둘 중 택1):</span>
-        <div class="alt-auth-btn-row">
-          <a href="https://forms.gle/ekTvyeHxYqSaAX4j8" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-form">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
-            <span>구글 폼으로 인증</span>
-          </a>
-          <a href="http://pf.kakao.com/_WxcxowX" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-kakao">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682 2.545-.78 2.94-.122.49.18.483.378.351.156-.104 2.477-1.684 3.483-2.37.53.078 1.08.12 1.649.12 4.97 0 9-3.185 9-7.115S16.97 3 12 3z"/></svg>
-            <span>음원총공팀 카톡</span>
-          </a>
-        </div>
+      <div class="btn-group">
+        <button class="btn-main" onclick="openTweet('ENHYPENXRESCENE', 'card-enhypen')">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+          </svg>
+          트위터에 글쓰기
+        </button>
+        <button class="btn-copy" onclick="copyTags('ENHYPENXRESCENE')">태그 복사</button>
       </div>
     </div>
 
+    <!-- 📷 MAMA 인증샷 워터마크 추가 (공통 1개) -->
+    <div class="watermark-trigger-wrap" style="margin-top: 14px;">
+      <button type="button" class="btn-watermark-trigger" onclick="openWatermarkModal({ includeDate: false, autoCrop: false, allowCrop: false, maxFiles: 1, title: 'MAMA 인증샷 워터마크 추가' })">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+          <circle cx="8.5" cy="8.5" r="1.5"/>
+          <polyline points="21 15 16 10 5 21"/>
+        </svg>
+        <span>MAMA 인증샷 워터마크 추가</span>
+        <span class="badge-wm-protect">도용 방지</span>
+      </button>
+    </div>
+
+    <!-- 서치밴 대체 인증 바로가기 (MAMA 공통: 구글 폼 & 카카오톡 채널) -->
+    <div class="alt-auth-wrap" style="margin-top: 10px;">
+      <div class="searchban-rt-note" style="margin-bottom: 8px;">
+        💡 <b>서치밴이 아닌데도</b> X 게시가 어려운 경우, 구글 폼/카카오톡으로 인증 후 <b>#2026MAMAVOTE #RESCENE</b> 태그 게시물을 <b>리트윗(RT)</b>해 주세요!
+      </div>
+      <span class="alt-auth-caption">서치밴 또는 X 작성이 어려운 경우 (둘 중 택1):</span>
+      <div class="alt-auth-btn-row">
+        <a href="https://forms.gle/ekTvyeHxYqSaAX4j8" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-form">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line></svg>
+          <span>구글 폼으로 인증</span>
+        </a>
+        <a href="http://pf.kakao.com/_WxcxowX" target="_blank" rel="noopener noreferrer" class="btn-alt-auth btn-alt-kakao">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.27 6.054-.188.702-.682 2.545-.78 2.94-.122.49.18.483.378.351.156-.104 2.477-1.684 3.483-2.37.53.078 1.08.12 1.649.12 4.97 0 9-3.185 9-7.115S16.97 3 12 3z"/></svg>
+          <span>음원총공팀 카톡</span>
+        </a>
+      </div>
+    </div>
 
     <!-- 🤝 MMA 연합 더보기 아코디언 (제로베이스원 & 이세계아이돌) -->
     <div class="special-alliance-wrap">
@@ -4482,7 +4564,7 @@
       <div class="target-summary-item target-rescene">
         <div class="target-item-left">
           <span class="target-cat-pill pill-rescene">글로벌 TOP10</span>
-          <b class="target-artist-name">리센느 (RESCENE)</b>
+          <b class="target-artist-name">리센느</b>
         </div>
         <span class="target-status-tag tag-primary">리센느</span>
       </div>
@@ -5115,7 +5197,7 @@
     return Date.now() >= new Date('2026-10-14T00:00:00+09:00').getTime();
   }
 
-  const activeCards = ['card-1'];
+  const activeCards = ['card-1', 'card-enhypen'];
   const TOTAL_TEAMS = activeCards.length;
   const STORAGE_PREFIX = "rescene_mama2_done_";
 
@@ -5672,7 +5754,7 @@
     const fillEl = document.getElementById('progressFill');
     const countEl = document.getElementById('progressCount');
     if (!fillEl && !countEl) return;
-    const doneCount = document.querySelectorAll('#card-1.done').length;
+    const doneCount = activeCards.filter(id => document.getElementById(id)?.classList.contains('done')).length;
     const pct = TOTAL_TEAMS > 0 ? (doneCount / TOTAL_TEAMS) * 100 : 0;
     if (fillEl) fillEl.style.width = pct + '%';
     if (countEl) countEl.textContent = `${doneCount} / ${TOTAL_TEAMS} 완료`;
