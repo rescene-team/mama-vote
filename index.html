@@ -4420,7 +4420,7 @@
         </div>
 
         <div class="btn-group">
-          <a href="https://promo-web.idolchamp.com/app_proxy.html?deeplink=https%3A%2F%2Fapp.idolchamp.com%2Fopen%2Fvote%2F01M4784X9DKK87B0J1GB669P3R" target="_blank" rel="noopener noreferrer" class="btn-main btn-special-main" onclick="openSpecialVote()">
+          <a href="https://promo-web.idolchamp.com/app_proxy.html?deeplink=https%3A%2F%2Fapp.idolchamp.com%2Fopen%2Fvote%2F01M4784X9DKK87B0J1GB669P3R" target="_blank" rel="noopener noreferrer" class="btn-main btn-special-main" style="background: #0284c7;" onclick="openSpecialVote()">
             <span>아이돌챔프 투표 바로가기</span>
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -6054,6 +6054,28 @@
   // ⏰ 멜론 TOP10 & 카카오뱅크 마감 시간 설정 (각각 10/30, 10/31 00:00 KST)
   const MELON_END_TIMESTAMP = new Date('2026-11-13T23:59:59+09:00').getTime();
   const KAKAO_END_TIMESTAMP = new Date('2026-10-31T00:00:00+09:00').getTime();
+  // ⏰ 아이돌챔프(이세계아이돌) 마감 시간 (11/05 00:00 KST부터 자동 숨김)
+  const IDOLCHAMP_END_TIMESTAMP = new Date('2026-11-05T00:00:00+09:00').getTime();
+
+  function checkIdolchampExpiration() {
+    const urlParams = new URLSearchParams(window.location.search);
+    const now = Date.now();
+    const isEnded = (now >= IDOLCHAMP_END_TIMESTAMP || urlParams.has('test_idolchamp_ended')) && !urlParams.has('test_idolchamp_live');
+    const toggleBtn = document.getElementById('specialAllianceToggleBtn');
+    const card = document.getElementById('specialAllianceCard');
+    if (isEnded) {
+      if (toggleBtn) toggleBtn.style.display = 'none';
+      if (card) card.style.display = 'none';
+    } else {
+      if (toggleBtn) toggleBtn.style.display = '';
+    }
+    if (!isEnded) {
+      const rem = IDOLCHAMP_END_TIMESTAMP - now;
+      if (rem > 0 && rem < 86400000 * 4) {
+        setTimeout(checkIdolchampExpiration, rem + 100);
+      }
+    }
+  }
 
   function checkMmaExpiration() {
     const urlParams = new URLSearchParams(window.location.search);
@@ -6248,6 +6270,7 @@
   applyMamaEndedMode();
   initDevPreview();
   checkMmaExpiration();
+  checkIdolchampExpiration();
   loadTodayState();
   checkNoticeModal();
   checkSavedAdminSession();
