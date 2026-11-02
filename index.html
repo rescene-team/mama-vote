@@ -4550,7 +4550,7 @@
             <span class="status-check-badge" onclick="toggleMmaCardStatus('mmaCardAlphadriveone')">⚪ 인증 전</span>
           </div>
           <div class="tag-row">
-            <span class="tag-preview">#리마인_앨리즈_함께달려 #RESCENE #리센느</span>
+            <span class="tag-preview">#리마인_앨리즈_함께달려</span>
           </div>
         </div>
       </div>
@@ -4591,7 +4591,7 @@
             <span class="status-check-badge" onclick="toggleMmaCardStatus('mmaCardCortis')">⚪ 인증 전</span>
           </div>
           <div class="tag-row">
-            <span class="tag-preview">#리마인_with_코어 #RESCENE #리센느</span>
+            <span class="tag-preview">#리마인_with_코어</span>
           </div>
         </div>
       </div>
@@ -7304,10 +7304,10 @@ function handleMelonVoteClick(e) {
   return true;
 }
 
-// 🏷️ MMA 연합 트윗 및 해시태그 복사 (각 연합별 독립 분리: 연합태그 + #RESCENE #리센느 총 3개)
+// 🏷️ MMA 연합 트윗 및 해시태그 복사 (단일 연합 해시태그만 사용)
 function openMmaTweet(teamName, tag, cardId) {
   const mainTag = tag.startsWith('#') ? tag : ('#' + tag);
-  const tweetText = `${mainTag}\n#RESCENE #리센느`;
+  const tweetText = `${mainTag}`;
   const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
   window.open(intentUrl, '_blank');
   
@@ -7325,7 +7325,7 @@ function openMmaTweet(teamName, tag, cardId) {
 
 function copyMmaTags(tag) {
   const mainTag = tag.startsWith('#') ? tag : ('#' + tag);
-  const textToCopy = `${mainTag}\n#RESCENE #리센느`;
+  const textToCopy = `${mainTag}`;
   copyTextToClipboard(textToCopy, `해시태그가 복사되었습니다! (${mainTag}) 📋`);
 }
 
