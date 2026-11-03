@@ -4303,6 +4303,28 @@
           </div>
         </div>
       </div>
+
+      <!-- 📋 엔하이픈 답글 인증 파이프라인 안내 -->
+      <div class="special-alliance-pipeline" style="margin: 8px 0 10px;">
+        <div class="pipeline-label">인증 방법</div>
+        <div class="pipeline-steps">
+          <div class="pipeline-step-row">
+            <span class="pipeline-num">1</span>
+            <span>워터마크(낙관) 사진 준비</span>
+          </div>
+          <div class="pipeline-step-arrow" aria-hidden="true">↓</div>
+          <div class="pipeline-step-row">
+            <span class="pipeline-num">2</span>
+            <span>'트위터에 답글 쓰기' 클릭 (태그 복사)</span>
+          </div>
+          <div class="pipeline-step-arrow" aria-hidden="true">↓</div>
+          <div class="pipeline-step-row">
+            <span class="pipeline-num">3</span>
+            <span>댓글 누르고 사진 업로드 후 태그 붙여넣기</span>
+          </div>
+        </div>
+      </div>
+
       <div class="btn-group">
         <button class="btn-main" onclick="openTweet('ENHYPENXRESCENE', 'card-enhypen')">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
@@ -5656,7 +5678,19 @@
     const text = getFullText(teamTag);
     let intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
     if (teamTag === 'ENHYPENXRESCENE') {
-      intentUrl = `https://twitter.com/intent/tweet?in_reply_to=2117441513538093176&text=${encodeURIComponent(text)}`;
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text);
+        } else {
+          const ta = document.createElement('textarea');
+          ta.value = text;
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+        }
+      } catch (err) {}
+      intentUrl = 'https://x.com/ResceneStream/status/2117441513538093176';
     }
 
     window.open(intentUrl, '_blank');
@@ -5671,7 +5705,7 @@
     }
 
     if (teamTag === 'ENHYPENXRESCENE') {
-      showToast('공식 트윗 답글창이 열렸습니다! 사진을 첨부하세요 📸');
+      showToast('태그 복사 완료! 사진 첨부 후 붙여넣으세요 💬');
     } else {
       showToast('트위터가 열렸습니다! 갤러리에서 사진을 첨부하세요 📸');
     }
