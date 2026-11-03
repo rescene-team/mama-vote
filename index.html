@@ -4308,7 +4308,7 @@
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
-          트위터에 글쓰기
+          트위터에 답글 쓰기
         </button>
         <button class="btn-copy" onclick="copyTags('ENHYPENXRESCENE')">태그 복사</button>
       </div>
@@ -5646,12 +5646,18 @@
   }
 
   function getFullText(teamTag) {
+    if (teamTag === 'ENHYPENXRESCENE') {
+      return '#ENHYPENXRESCENE';
+    }
     return `#${common1}\n#${common2}\n#${teamTag}`.trim();
   }
 
   function openTweet(teamTag, cardId) {
     const text = getFullText(teamTag);
-    const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+    let intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+    if (teamTag === 'ENHYPENXRESCENE') {
+      intentUrl = `https://twitter.com/intent/tweet?in_reply_to=2117441513538093176&text=${encodeURIComponent(text)}`;
+    }
 
     window.open(intentUrl, '_blank');
 
@@ -5664,7 +5670,11 @@
       updateProgress();
     }
 
-    showToast('트위터가 열렸습니다! 갤러리에서 사진을 첨부하세요 📸');
+    if (teamTag === 'ENHYPENXRESCENE') {
+      showToast('공식 트윗 답글창이 열렸습니다! 사진을 첨부하세요 📸');
+    } else {
+      showToast('트위터가 열렸습니다! 갤러리에서 사진을 첨부하세요 📸');
+    }
   }
 
   function copyTags(teamTag) {
