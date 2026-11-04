@@ -4382,12 +4382,14 @@
         <div class="special-alliance-header">
           <img src="images/zerobaseone.png" class="team-poster-thumb" alt="제로베이스원">
           <div class="special-alliance-meta">
-            <div style="display: flex; justify-content: flex-end; margin-bottom: 2px;">
+            <div class="special-alliance-name-row" style="align-items: flex-start;">
+              <div class="special-alliance-name" style="font-size: 13.5px; font-weight: 700; color: #253540; line-height: 1.25; white-space: normal;">
+                제로베이스원 <span style="font-size: 11px; font-weight: 600; color: #5a6b77; display: block; margin-top: 1px;">(ZEROBASEONE)</span>
+              </div>
               <span class="status-check-badge" id="zb1AllianceBadge" onclick="toggleZb1AllianceStatus()">⚪ 인증 전</span>
             </div>
-            <div class="special-alliance-name" style="font-size: 15px; font-weight: 700; color: #253540; margin-bottom: 3px; word-break: keep-all; white-space: normal;">제로베이스원 (ZEROBASEONE)</div>
             <div class="tag-row">
-              <span class="tag-preview">#리마인_AND_제로즈 #RESCENE #리센느</span>
+              <span class="tag-preview">#리마인_AND_제로즈</span>
             </div>
           </div>
         </div>
@@ -5471,7 +5473,7 @@
   }
 
   function openZb1Tweet() {
-    const tweetText = `#${ZB1_ALLIANCE_TAG}\n#RESCENE #리센느`;
+    const tweetText = `#${ZB1_ALLIANCE_TAG}`;
     const intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(tweetText)}`;
     window.open(intentUrl, '_blank');
 
@@ -5486,7 +5488,7 @@
   }
 
   function copyZb1Tags() {
-    const text = `#${ZB1_ALLIANCE_TAG}\n#RESCENE #리센느`;
+    const text = `#${ZB1_ALLIANCE_TAG}`;
     copyTextToClipboard(text, '해시태그가 복사되었습니다! (#리마인_AND_제로즈) 📋');
   }
 
