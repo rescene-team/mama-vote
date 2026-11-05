@@ -4299,7 +4299,7 @@
             <span class="status-check-badge" onclick="toggleStatus('card-enhypen')">⚪ 인증 전</span>
           </div>
           <div class="tag-row">
-            <span class="tag-preview">#ENHYPENXRESCENE</span>
+            <span class="tag-preview">#RESCENEXENHYPEN</span>
           </div>
         </div>
       </div>
@@ -4326,13 +4326,13 @@
       </div>
 
       <div class="btn-group">
-        <button class="btn-main" onclick="openTweet('ENHYPENXRESCENE', 'card-enhypen')">
+        <button class="btn-main" onclick="openTweet('RESCENEXENHYPEN', 'card-enhypen')">
           <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
           </svg>
           트위터에 답글 쓰기
         </button>
-        <button class="btn-copy" onclick="copyTags('ENHYPENXRESCENE')">태그 복사</button>
+        <button class="btn-copy" onclick="copyTags('RESCENEXENHYPEN')">태그 복사</button>
       </div>
     </div>
 
@@ -5670,8 +5670,8 @@
   }
 
   function getFullText(teamTag) {
-    if (teamTag === 'ENHYPENXRESCENE') {
-      return '#ENHYPENXRESCENE';
+    if (teamTag === 'RESCENEXENHYPEN') {
+      return '#RESCENEXENHYPEN';
     }
     return `#${common1}\n#${common2}\n#${teamTag}`.trim();
   }
@@ -5679,7 +5679,7 @@
   function openTweet(teamTag, cardId) {
     const text = getFullText(teamTag);
     let intentUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
-    if (teamTag === 'ENHYPENXRESCENE') {
+    if (teamTag === 'RESCENEXENHYPEN') {
       try {
         if (navigator.clipboard && navigator.clipboard.writeText) {
           navigator.clipboard.writeText(text);
@@ -5706,7 +5706,7 @@
       updateProgress();
     }
 
-    if (teamTag === 'ENHYPENXRESCENE') {
+    if (teamTag === 'RESCENEXENHYPEN') {
       showToast('태그 복사 완료! 사진 첨부 후 붙여넣으세요 💬');
     } else {
       showToast('트위터가 열렸습니다! 갤러리에서 사진을 첨부하세요 📸');
