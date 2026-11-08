@@ -3092,47 +3092,26 @@
     }
 
     /* 🌙 MAMA 투표 종료 후 MMA 전용 뷰 스타일 */
-    body.mama-ended .vote-banner-link,
+    body.mama-ended .mama-quick-vote-wrap,
     body.mama-ended .targets-summary-box,
     body.mama-ended .quick-jump-bar,
     body.mama-ended #floatingNav,
     body.mama-ended .progress-card,
     body.mama-ended .notice-box,
     body.mama-ended #statsBannerCard,
-    body.mama-ended #mamaSection,
-    body.mama-ended #mamaAllianceSection > div:first-child,
-    body.mama-ended #card-1,
-    body.mama-ended #card-2,
-    body.mama-ended #card-3,
-    body.mama-ended #card-4,
-    body.mama-ended #card-5,
-    body.mama-ended #card-enhypen,
-    body.mama-ended .mama-common-action-area {
+    body.mama-ended #mamaAllianceSection,
+    body.mama-ended .special-alliance-wrap,
+    body.mama-ended .mma-section-divider {
       display: none !important;
-    }
-
-    body.mama-ended #mamaSection,
-    body.mama-ended #mamaAllianceSection {
-      background: transparent !important;
-      border: none !important;
-      padding: 0 !important;
-      margin-top: 14px !important;
-      margin-bottom: 0 !important;
-      box-shadow: none !important;
-    }
-
-    body.mama-ended .special-alliance-wrap {
-      padding: 0 !important;
-      margin-bottom: 24px !important;
     }
 
     .mama-ended-banner {
       display: none;
       background: #d8e5ec;
       border: 1px solid #b8ccd7;
-      border-radius: 9px;
-      padding: 13px 15px;
-      margin-top: 16px;
+      border-radius: 10px;
+      padding: 14px 16px;
+      margin: 0 0 16px;
       font-size: 13px;
       color: #274050;
       line-height: 1.55;
@@ -3140,7 +3119,8 @@
       word-break: keep-all;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
     }
 
     body.mama-ended .mama-ended-banner {
@@ -4142,8 +4122,15 @@
       <h1 id="mainTitle">RESCENE<br>투표 인증 도우미</h1>
       <span class="date-badge" id="currentDateBadge">오늘 날짜</span>
     </div>
+    <p class="subtitle" id="mainSubtitle" style="margin-top: 6px; font-size: 13px; color: #506676; display: none;"></p>
     <button type="button" class="btn-admin-auth" id="adminTopBtn" onclick="handleAdminClick()" aria-label="관리자 메뉴" title="관리자 메뉴">🔒</button>
   </header>
+
+  <!-- 📢 2차 MAMA 투표 종료 감사 배너 (11월 9일 00시 KST 이후 자동 표시) -->
+  <div class="mama-ended-banner" id="mamaEndedBanner">
+    <span style="font-size: 20px;">🎉</span>
+    <span><b>2026 MAMA 2차 투표가 종료되었습니다.</b><br>MAMA 2차 투표에 함께해 주신 모든 분들 정말 고생 많으셨습니다! 🪽</span>
+  </div>
 
   <!-- 🔍 서치밴 및 투표 인증 안내 -->
   <div class="notice-box">
@@ -6343,8 +6330,8 @@
     }
   }
 
-  // 🌙 MAMA 투표 종료 및 MMA 전용 모드 전환 제어 (2026-10-23 00:00:00 KST 정각부터)
-  const MAMA_END_TIMESTAMP = new Date('2026-11-08T23:59:59+09:00').getTime();
+  // 🌙 MAMA 2차 투표 종료 및 MMA 전용 모드 전환 제어 (2026-11-09 00:00:00 KST 정각부터)
+  const MAMA_END_TIMESTAMP = new Date('2026-11-09T00:00:00+09:00').getTime();
   let devPreviewOverride = null;
 
   function isMamaEnded() {
@@ -6364,13 +6351,19 @@
     if (ended) {
       document.body.classList.add('mama-ended');
       if (title) title.innerHTML = '2026 MMA<br>투표 헬퍼';
-      if (subtitle) subtitle.textContent = '멜론 TOP10 · 카카오뱅크 · 연합 투표를 함께해요.';
+      if (subtitle) {
+        subtitle.textContent = '멜론 부문별 투표 · 부문별 연합 투표를 함께해요.';
+        subtitle.style.display = 'block';
+      }
       document.title = '2026 MMA RESCENE 연합 투표 헬퍼';
       if (devToggleText) devToggleText.textContent = '☀️ MAMA 투표 화면으로 복귀';
     } else {
       document.body.classList.remove('mama-ended');
       if (title) title.innerHTML = 'RESCENE<br>투표 인증 도우미';
-      if (subtitle) subtitle.textContent = '';
+      if (subtitle) {
+        subtitle.textContent = '';
+        subtitle.style.display = 'none';
+      }
       document.title = 'RESCENE 투표 인증 도우미';
       if (devToggleText) devToggleText.textContent = '🌙 MMA 전용 모드로 보기';
 
