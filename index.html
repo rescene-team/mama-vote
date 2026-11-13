@@ -3127,6 +3127,85 @@
       display: flex;
     }
 
+    /* 🕊️ MAMA · MMA 모든 투표 종료 후 감사 카드 전용 뷰 (2026-11-14 00:00 KST~) */
+    body.all-voting-ended {
+      align-items: center;
+    }
+
+    body.all-voting-ended .container {
+      background: transparent;
+      padding: 16px 12px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    body.all-voting-ended .container > *:not(#allEndedCard),
+    body.all-voting-ended #floatingNav,
+    body.all-voting-ended .modal-backdrop {
+      display: none !important;
+    }
+
+    .all-ended-card {
+      display: none;
+      width: 100%;
+      max-width: 400px;
+      background: #ffffff;
+      border: 1px solid #d4e0e8;
+      border-radius: 18px;
+      padding: 36px 24px 30px;
+      box-shadow: 0 10px 30px rgba(37, 53, 64, 0.08);
+      text-align: center;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+      word-break: keep-all;
+    }
+
+    body.all-voting-ended .all-ended-card {
+      display: flex;
+    }
+
+    .all-ended-pill {
+      display: inline-block;
+      background: #eef4f8;
+      color: #466275;
+      border: 1px solid #d4e0e8;
+      border-radius: 999px;
+      padding: 5px 12px;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .all-ended-emoji {
+      font-size: 36px;
+      line-height: 1.1;
+      margin-top: 4px;
+    }
+
+    .all-ended-title {
+      font-size: 19px;
+      font-weight: 800;
+      color: #1e2d38;
+      line-height: 1.4;
+    }
+
+    .all-ended-desc {
+      font-size: 13.5px;
+      color: #4b6170;
+      line-height: 1.68;
+    }
+
+    .all-ended-footer {
+      width: 100%;
+      margin-top: 8px;
+      padding-top: 16px;
+      border-top: 1px dashed #d6e0e7;
+      font-size: 12px;
+      font-weight: 600;
+      color: #6b7f8d;
+    }
+
     /* 로컬 개발 테스트용 토글 바 */
     .dev-preview-bar {
       display: none;
@@ -4091,6 +4170,22 @@
 </div>
 
 <div class="container">
+
+  <!-- 🕊️ 모든 투표 종료 감사 카드 (2026-11-14 00:00 KST 이후 단독 표시) -->
+  <div class="all-ended-card" id="allEndedCard">
+    <span class="all-ended-pill">RESCENE · 2026 MAMA &amp; MMA</span>
+    <div class="all-ended-emoji">🪽</div>
+    <h2 class="all-ended-title">지금까지 투표해 주셔서<br>진심으로 감사드립니다!</h2>
+    <p class="all-ended-desc">
+      2026 MAMA와 MMA 투표가 모두 종료되었습니다.<br>
+      긴 투표 기간 동안 리센느를 응원하며<br>
+      소중한 한 표를 보내주신 모든 분들<br>
+      정말 고생 많으셨습니다!
+    </p>
+    <div class="all-ended-footer">
+      RESCENE 4th Mini [PULSE] 대박 기원 💙
+    </div>
+  </div>
 
   <!-- 🪽 리센느 음원총공팀 공식 프로필 카드 -->
   <div class="stream-team-card">
@@ -5812,6 +5907,9 @@
 
   // 📢 첫 접속 안내 팝업 제어
   function checkNoticeModal() {
+    if (typeof isAllVotingEnded === 'function' && isAllVotingEnded()) {
+      return;
+    }
     const hideUntil = localStorage.getItem('rescene_hide_notice_until');
     if (hideUntil) {
       const expireTime = parseInt(hideUntil, 10);
@@ -6332,7 +6430,16 @@
 
   // 🌙 MAMA 2차 투표 종료 및 MMA 전용 모드 전환 제어 (2026-11-09 00:00:00 KST 정각부터)
   const MAMA_END_TIMESTAMP = new Date('2026-11-09T00:00:00+09:00').getTime();
+  // 🕊️ MAMA · MMA 모든 투표 완전 종료 및 감사 카드 단독 전환 (2026-11-14 00:00:00 KST 정각부터)
+  const ALL_VOTING_END_TIMESTAMP = new Date('2026-11-14T00:00:00+09:00').getTime();
   let devPreviewOverride = null;
+
+  function isAllVotingEnded() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('test_all_ended') || urlParams.has('all_ended')) return true;
+    if (urlParams.has('test_mma_only') || urlParams.has('test_mama')) return false;
+    return Date.now() >= ALL_VOTING_END_TIMESTAMP;
+  }
 
   function isMamaEnded() {
     if (devPreviewOverride !== null) return devPreviewOverride;
@@ -6343,6 +6450,23 @@
   }
 
   function applyMamaEndedMode() {
+    if (isAllVotingEnded()) {
+      document.body.classList.remove('mama-ended');
+      document.body.classList.add('all-voting-ended');
+      document.body.style.overflow = '';
+      document.title = 'RESCENE 투표 감사 안내';
+      document.querySelectorAll('.modal-backdrop.show').forEach(m => m.classList.remove('show'));
+      return;
+    }
+
+    document.body.classList.remove('all-voting-ended');
+
+    // 11월 14일 00:00 KST 자정 정각 자동 전환 타이머 등록
+    const remainingAllEnd = ALL_VOTING_END_TIMESTAMP - Date.now();
+    if (remainingAllEnd > 0 && remainingAllEnd < 86400000) {
+      setTimeout(applyMamaEndedMode, remainingAllEnd + 100);
+    }
+
     const ended = isMamaEnded();
     const title = document.getElementById('mainTitle');
     const subtitle = document.getElementById('mainSubtitle');
@@ -6423,6 +6547,7 @@
   }
 
   function showWhenReady() {
+    if (typeof isAllVotingEnded === 'function' && isAllVotingEnded()) return;
     if (offered || isHiddenToday() || document.querySelector('.modal-backdrop.show')) return;
     offered = true;
     const active = document.activeElement;
